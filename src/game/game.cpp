@@ -2,6 +2,7 @@
 #include "../engine/resource_manager.h"
 #include "../engine/gamestate.h"
 #include "gamestate_main.h"
+#include "GameState_001_Point.h"
 
 #include "../engine/math_core.h"
 
@@ -27,7 +28,7 @@ void Game::init(int screenWidth, int screenHeight)
 void Game::load()
 {
 	// Game state
-	changeState(std::make_unique<GameStateMain>());
+	changeState(std::make_unique<GameState_001_Point>());
 }
 
 void Game::handleInputs()
