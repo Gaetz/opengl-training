@@ -1,8 +1,6 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include "renderer_sprite.h"
-#include "renderer_geometry.h"
 #include "game.h"
 #include "input_state.h"
 

@@ -26,38 +26,8 @@ void Game::init(int screenWidth, int screenHeight)
 
 void Game::load()
 {
-	ResourceManager::loadShader("assets/shaders/sprite.vert", "assets/shaders/sprite.frag", "", "sprite");
-    float fWindowWidth = static_cast<float>(windowWidth);
-    float fWindowHeight = static_cast<float>(windowHeight);
-    Matrix4 projection = Matrix4::createOrtho(fWindowWidth, fWindowHeight, -1.0f, 1.0f);
-    Matrix4 twoDimTranslation = Matrix4::createTranslation(Vector3(-fWindowWidth / 2.f, -fWindowHeight / 2.f, 0.0f));
-    Matrix4 finalProjection = twoDimTranslation * projection;
-    // Configure shaders
-    ResourceManager::getShader("sprite").use();
-    ResourceManager::getShader("sprite").setMatrix4("projection", finalProjection);
-    sRenderer = std::make_shared<SpriteRenderer>(ResourceManager::getShader("sprite"));
-
-    /*
-    // Load shaders
-    ResourceManager::loadShader("assets/shaders/sprite.vert", "assets/shaders/sprite.frag", "", "sprite");
-    ResourceManager::loadShader("assets/shaders/rect.vert", "assets/shaders/rect.frag", "", "rect");
-    // Compute projection matrix
-    float fWindowWidth = static_cast<float>(windowWidth);
-    float fWindowHeight = static_cast<float>(windowHeight);
-    Matrix4 projection = Matrix4::createOrtho(fWindowWidth, fWindowHeight, -1.0f, 1.0f);
-    Matrix4 twoDimTranslation = Matrix4::createTranslation(Vector3(-fWindowWidth / 2.f, -fWindowHeight / 2.f, 0.0f));
-    Matrix4 finalProjection = twoDimTranslation * projection;
-    // Configure shaders
-    ResourceManager::getShader("sprite").use();
-    ResourceManager::getShader("sprite").setMatrix4("projection", finalProjection);
-    ResourceManager::getShader("rect").use();
-    ResourceManager::getShader("rect").setMatrix4("projection", finalProjection);
-    // Set render-specific controls
-    sRenderer = std::make_shared<SpriteRenderer>(ResourceManager::getShader("sprite"));
-    gRenderer = std::make_shared<GeometryRenderer>(ResourceManager::getShader("rect"));
-    */
 	// Game state
-	changeState(std::make_unique<GameStateMain>(sRenderer));
+	changeState(std::make_unique<GameStateMain>());
 }
 
 void Game::handleInputs()

@@ -13,8 +13,6 @@
 
 #include "input_manager.h"
 #include "shader.h"
-#include "renderer_sprite.h"
-#include "renderer_geometry.h"
 
 class GameState;
 
@@ -43,12 +41,7 @@ public:
 	int windowWidth, windowHeight;
 
 private:
-	/*
-	std::shared_ptr<SpriteRenderer> sRenderer;
-	std::shared_ptr<GeometryRenderer> gRenderer;
-	*/
-    std::shared_ptr<SpriteRenderer> sRenderer;
-    std::unique_ptr<InputManager> inputManager;
+	std::unique_ptr<InputManager> inputManager;
 	std::vector<std::unique_ptr<GameState>> gameStates;
 };
 
