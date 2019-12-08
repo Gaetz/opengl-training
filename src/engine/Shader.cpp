@@ -16,12 +16,15 @@ Shader &Shader::use()
     return *this;
 }
 
-void Shader::compile(const GLchar *vertexSource, const GLchar *fragmentSource, const GLchar *geometrySource)
+void Shader::compile(const GLchar *vertexSource, const GLchar *fragmentSource,
+        const GLchar *tessControlSource, const GLchar *tessEvalSource, const GLchar *geometrySource)
 {
     compileVertexShader(vertexSource);
-    compileFragmentShader(fragmentSource);
+    bool tessExists = compileTessControlShader(tessControlSource);
+    tessExists &= compileTessEvalShader(tessEvalSource);
     bool gsExists = compileGeometryShader(geometrySource);
-    createShaderProgram(gsExists);
+    compileFragmentShader(fragmentSource);
+    createShaderProgram(tessExists, gsExists);
     printAllParams(id);
 }
 
@@ -41,6 +44,30 @@ void Shader::compileFragmentShader(const GLchar *fragment_source)
     checkShaderErrors(fs, "fragment");
 }
 
+bool Shader::compileTessControlShader(const GLchar *tessControlSource) {
+    if(tessControlSource == nullptr) {
+        return false;
+    }
+
+    tcs = glCreateShader(GL_TESS_CONTROL_SHADER);
+    glShaderSource(tcs, 1, &tessControlSource, NULL);
+    glCompileShader(tcs);
+    checkShaderErrors(tcs, "tessellation control");
+    return true;
+}
+
+bool Shader::compileTessEvalShader(const GLchar *tessEvalSource) {
+    if(tessEvalSource == nullptr) {
+        return false;
+    }
+
+    tes = glCreateShader(GL_TESS_EVALUATION_SHADER);
+    glShaderSource(tes, 1, &tessEvalSource, NULL);
+    glCompileShader(tes);
+    checkShaderErrors(tes, "tessellation evaluation");
+    return true;
+}
+
 bool Shader::compileGeometryShader(const GLchar *geometry_source)
 {
     if (geometry_source == nullptr)
@@ -56,16 +83,21 @@ bool Shader::compileGeometryShader(const GLchar *geometry_source)
     return true;
 }
 
-void Shader::createShaderProgram(bool geometryShaderExists)
+void Shader::createShaderProgram(bool tessShadersExist, bool geometryShaderExists)
 {
     // Create program
     id = glCreateProgram();
     glAttachShader(id, fs);
-    glAttachShader(id, vs);
+    if (tessShadersExist)
+    {
+        glAttachShader(id, tcs);
+        glAttachShader(id, tes);
+    }
     if (geometryShaderExists)
     {
         glAttachShader(id, gs);
     }
+    glAttachShader(id, vs);
     glLinkProgram(id);
 
     // Check for linking error
@@ -83,11 +115,16 @@ void Shader::createShaderProgram(bool geometryShaderExists)
 
     // Delete shaders for they are no longer used
     glDeleteShader(vs);
-    glDeleteShader(fs);
+    if (tessShadersExist)
+    {
+        glDeleteShader(tcs);
+        glDeleteShader(tes);
+    }
     if (geometryShaderExists)
     {
         glDeleteShader(gs);
     }
+    glDeleteShader(fs);
 }
 
 void Shader::setFloat(const GLchar *name, GLfloat value)

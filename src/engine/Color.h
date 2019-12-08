@@ -2,6 +2,7 @@
 #define COLOR_H
 
 #include <cstdint>
+#include <GL/glew.h>
 #include "MathCore.h"
 
 class Color
@@ -16,6 +17,7 @@ public:
     uint8_t g;
     uint8_t b;
     uint8_t a;
+    GLfloat* glArray;
 
     void setColor(uint8_t p_r, uint8_t p_g, uint8_t p_b, uint8_t p_a = 255);
 
@@ -26,6 +28,7 @@ public:
 
     Vector3 toVector3();
     Vector4 toVector4();
+    GLfloat* toGlArray();
 
     static Color lerp(Color value1, Color value2, float amount);
     static Color multiply(Color value, float scale);

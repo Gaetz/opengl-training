@@ -1,11 +1,11 @@
 #include "Color.h"
 
-Color::Color() : r(255), g(255), b(255), a(255) {}
+Color::Color() : r(255), g(255), b(255), a(255), glArray(nullptr) {}
 
 Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
-: r(r), g(g), b(b), a(a) {}
+: r(r), g(g), b(b), a(a), glArray(nullptr) {}
 
-Color::Color(uint32_t i)
+Color::Color(uint32_t i) : glArray(nullptr)
 {
     unsigned char r,g,b,a; 
     r = static_cast<unsigned char>(i & 0x000000FF); 
@@ -67,3 +67,8 @@ Color Color::lightYellow {255, 255, 225};
 Color Color::lightBlue {170, 217, 230};
 Color Color::lightPink {255, 180, 200};
 Color Color::lightGreen {142, 240, 142};
+
+GLfloat* Color::toGlArray() {
+    glArray = new GLfloat[4] { (float)r/255.0f, (float)g/255.0f, (float)b/255.0f, (float)a/255.0f };
+    return glArray;
+}

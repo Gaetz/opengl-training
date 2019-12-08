@@ -30,6 +30,8 @@ public:
 	void compile(
 		const GLchar *vertexSource,
 		const GLchar *fragmentSource,
+        const GLchar *tessControlSource = nullptr,
+        const GLchar *tessEvalSource = nullptr,
 		const GLchar *geometrySource = nullptr
 	);
 
@@ -50,12 +52,16 @@ private:
 
 	GLuint vs;
     GLuint fs;
+    GLuint tcs;
+    GLuint tes;
     GLuint gs;
 
     void compileVertexShader(const GLchar *vertexSource);
     void compileFragmentShader(const GLchar *fragmentSource);
+    bool compileTessControlShader(const GLchar *tessControlSource);
+    bool compileTessEvalShader(const GLchar *tessEvalSource);
     bool compileGeometryShader(const GLchar *geometrySource);
-    void createShaderProgram(bool geometryShaderExists);
+    void createShaderProgram(bool tessShadersExist, bool geometryShaderExists);
 
     void checkShaderErrors(GLuint shader, std::string shaderType);
     void printShaderInfoLog(GLuint shaderIndex);

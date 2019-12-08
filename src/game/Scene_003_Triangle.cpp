@@ -22,7 +22,7 @@ void Scene_003_Triangle::setGame(Game *_game) {
 
 void Scene_003_Triangle::load() {
     std::srand((int) std::time(nullptr));
-    ResourceManager::loadShader("assets/shaders/003_triangle.vert", "assets/shaders/003_triangle.frag", "", "003_triangle");
+    ResourceManager::loadShader("assets/shaders/003_triangle.vert", "assets/shaders/003_triangle.frag", "", "", "", "003_triangle");
     shader = ResourceManager::getShader("003_triangle");
     glCreateVertexArrays(1, &vao);
     glBindVertexArray(vao);
