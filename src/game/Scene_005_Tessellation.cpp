@@ -24,7 +24,7 @@ void Scene_005_Tessellation::load() {
     std::srand((int) std::time(nullptr));
     ResourceManager::loadShader("assets/shaders/005_tessellation.vert", "assets/shaders/005_tessellation.frag",
                                 "assets/shaders/005_tessellation.tecs", "assets/shaders/005_tessellation.tese",
-                                "", "005_tessellation");
+                                "assets/shaders/005_tessellation.geom", "005_tessellation");
 
     glCreateVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -55,6 +55,6 @@ void Scene_005_Tessellation::draw() {
     glClearBufferfv(GL_COLOR, 0, bgColor);
 
     shader.use();
-    glPatchParameteri(GL_PATCH_VERTICES, 3);
+    glPointSize(5.0f);
     glDrawArrays(GL_PATCHES, 0, 3);
 }
