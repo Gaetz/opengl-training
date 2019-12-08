@@ -2,17 +2,17 @@
 // Created by gaetz on 04/12/2019.
 //
 
-#ifndef SCENE_001_POINT_H
-#define SCENE_001_POINT_H
+#ifndef SCENE_001_COLOR_H
+#define SCENE_001_COLOR_H
 
 #include "../engine/Scene.h"
 #include "../engine/ResourceManager.h"
 
 
-class Scene_001_Point : public Scene {
+class Scene_001_Color : public Scene {
 public:
-    Scene_001_Point();
-    ~Scene_001_Point();
+    Scene_001_Color();
+    ~Scene_001_Color();
     void load();
     void clean();
     void pause();
@@ -27,4 +27,4 @@ private:
 };
 
 
-#endif //SCENE_001_POINT_H
+#endif //SCENE_001_COLOR_H

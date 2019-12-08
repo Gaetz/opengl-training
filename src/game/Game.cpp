@@ -1,10 +1,9 @@
 #include "../engine/Game.h"
 #include "../engine/ResourceManager.h"
 #include "../engine/Scene.h"
-#include "SceneMain.h"
-#include "Scene_001_Point.h"
 
 #include "../engine/MathCore.h"
+#include "Scene_002_Point.h"
 
 Game::Game() : isRunning(false),
 			   windowWidth(0),
@@ -28,7 +27,7 @@ void Game::init(int screenWidth, int screenHeight)
 void Game::load()
 {
 	// Game state
-	changeState(std::make_unique<Scene_001_Point>());
+	changeState(std::make_unique<Scene_002_Point>());
 }
 
 void Game::handleInputs()
