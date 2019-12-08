@@ -3,7 +3,7 @@
 #include "../engine/Scene.h"
 
 #include "../engine/MathCore.h"
-#include "Scene_002_Point.h"
+#include "Scene_003_Triangle.h"
 
 Game::Game() : isRunning(false),
 			   windowWidth(0),
@@ -27,7 +27,7 @@ void Game::init(int screenWidth, int screenHeight)
 void Game::load()
 {
 	// Game state
-	changeState(std::make_unique<Scene_002_Point>());
+	changeState(std::make_unique<Scene_003_Triangle>());
 }
 
 void Game::handleInputs()
