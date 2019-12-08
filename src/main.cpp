@@ -1,8 +1,8 @@
 #include <string>
 
-#include "engine/timer.h"
-#include "engine/window.h"
-#include "engine/game.h"
+#include "Timer.h"
+#include "Window.h"
+#include "Game.h"
 
 LogConfig LOG_CONFIG = {};
 

@@ -1,4 +1,4 @@
-#include "input_manager.h"
+#include "InputManager.h"
 #include <cstring>
 
 InputManager::InputManager()

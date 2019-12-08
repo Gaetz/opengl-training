@@ -1,7 +1,7 @@
 #ifndef INPUT_MANAGER_H
 #define INPUT_MANAGER_H
 
-#include "input_state.h"
+#include "InputState.h"
 
 class InputManager
 {

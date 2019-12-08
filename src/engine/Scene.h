@@ -1,13 +1,13 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include "game.h"
-#include "input_state.h"
+#include "Game.h"
+#include "InputState.h"
 
 // Interface for scenes
-class GameState {
+class Scene {
 public:
-	virtual ~GameState() {}
+	virtual ~Scene() {}
 
 	virtual void load() = 0;
 	virtual void clean() = 0;

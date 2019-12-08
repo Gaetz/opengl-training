@@ -11,10 +11,10 @@
 #include <vector>
 #include <memory>
 
-#include "input_manager.h"
-#include "shader.h"
+#include "InputManager.h"
+#include "Shader.h"
 
-class GameState;
+class Scene;
 
 // This game class manages game states and triggers their logic.
 // It supports gamestate stacking. It does not implement a 
@@ -33,8 +33,8 @@ public:
 	void render();
 	void clean();
 
-	void changeState(std::unique_ptr<GameState>);
-	void pushState(std::unique_ptr<GameState>);
+	void changeState(std::unique_ptr<Scene>);
+	void pushState(std::unique_ptr<Scene>);
 	void popState();
 
 	bool isRunning;
@@ -42,7 +42,7 @@ public:
 
 private:
 	std::unique_ptr<InputManager> inputManager;
-	std::vector<std::unique_ptr<GameState>> gameStates;
+	std::vector<std::unique_ptr<Scene>> gameStates;
 };
 
 #endif

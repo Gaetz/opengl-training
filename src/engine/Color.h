@@ -2,7 +2,7 @@
 #define COLOR_H
 
 #include <cstdint>
-#include "math_core.h"
+#include "MathCore.h"
 
 class Color
 {

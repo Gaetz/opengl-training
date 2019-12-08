@@ -1,4 +1,4 @@
-#include "timer.h"
+#include "Timer.h"
 
 Timer::Timer() : frameStart(0), lastFrame(0), frameTime(0)
 {

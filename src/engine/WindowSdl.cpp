@@ -1,5 +1,5 @@
-#include "window_sdl.h"
-#include "gl_debug.hpp"
+#include "WindowSdl.h"
+#include "GlDebug.hpp"
 
 WindowSdl::WindowSdl(const std::string &title) : title(title),
                                                  previousSeconds(0),

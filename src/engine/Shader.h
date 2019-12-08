@@ -9,7 +9,7 @@
 #include <string>
 #include <fstream>
 
-#include "math_core.h"
+#include "MathCore.h"
 
 // General purpose shader object. Compiles from file, generates
 // compile/link-time error messages and hosts several utility 

@@ -9,7 +9,7 @@
 
 #include <GL/glew.h>
 
-#include "window.h"
+#include "Window.h"
 
 extern const float SCREEN_WIDTH;
 extern const float SCREEN_HEIGHT;

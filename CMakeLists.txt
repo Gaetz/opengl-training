@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(RendLargent VERSION 0.1.0)
+project(OpenGLTraining VERSION 0.1.0)
 
 set(OpenGL_GL_PREFERENCE "GLVND")
 set(CMAKE_CXX_STANDARD 17)
@@ -32,8 +32,8 @@ add_subdirectory( src/game )
 if (NOT WIN32)
     string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 endif (NOT WIN32)
-add_executable(RendLargent src/main.cpp)
-target_link_libraries(RendLargent game engine ${GLEW_LIBRARIES} ${SDL2_LIBRARIES} OpenGL::GL OpenGL::GLU)
+add_executable(OpenGLTraining src/main.cpp)
+target_link_libraries(OpenGLTraining game engine ${GLEW_LIBRARIES} ${SDL2_LIBRARIES} OpenGL::GL OpenGL::GLU)
 
 
 if (WIN32)

@@ -1,5 +1,5 @@
-#include "shader.h"
-#include "log.h"
+#include "Shader.h"
+#include "Log.h"
 
 #ifdef __linux__
 #include <SDL2/SDL.h>

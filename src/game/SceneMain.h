@@ -1,14 +1,14 @@
 #ifndef GAMESTATE_MAIN_H
 #define GAMESTATE_MAIN_H
 
-#include "../engine/gamestate.h"
+#include "../engine/Scene.h"
 
 // Main scene of the game, contains all the game's logic
-class GameStateMain : public GameState
+class SceneMain : public Scene
 {
 public:
-	GameStateMain();
-	virtual ~GameStateMain();
+	SceneMain();
+	virtual ~SceneMain();
 
 	void load();
 	void clean();

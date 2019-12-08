@@ -1,10 +1,10 @@
-#include "../engine/game.h"
-#include "../engine/resource_manager.h"
-#include "../engine/gamestate.h"
-#include "gamestate_main.h"
-#include "GameState_001_Point.h"
+#include "../engine/Game.h"
+#include "../engine/ResourceManager.h"
+#include "../engine/Scene.h"
+#include "SceneMain.h"
+#include "Scene_001_Point.h"
 
-#include "../engine/math_core.h"
+#include "../engine/MathCore.h"
 
 Game::Game() : isRunning(false),
 			   windowWidth(0),
@@ -28,7 +28,7 @@ void Game::init(int screenWidth, int screenHeight)
 void Game::load()
 {
 	// Game state
-	changeState(std::make_unique<GameState_001_Point>());
+	changeState(std::make_unique<Scene_001_Point>());
 }
 
 void Game::handleInputs()
@@ -54,7 +54,7 @@ void Game::clean()
 	ResourceManager::clear();
 }
 
-void Game::changeState(std::unique_ptr<GameState> state)
+void Game::changeState(std::unique_ptr<Scene> state)
 {
 	// cleanup the current state
 	if (!gameStates.empty())
@@ -69,7 +69,7 @@ void Game::changeState(std::unique_ptr<GameState> state)
 	gameStates.back()->load();
 }
 
-void Game::pushState(std::unique_ptr<GameState> state)
+void Game::pushState(std::unique_ptr<Scene> state)
 {
 	// pause current state
 	if (!gameStates.empty())

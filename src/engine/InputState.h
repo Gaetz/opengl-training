@@ -1,7 +1,7 @@
 #ifndef INPUT_STATE_H
 #define INPUT_STATE_H
 
-#include "input_keyboard_state.h"
+#include "Input_KeyboardState.h"
 
 struct InputState
 {

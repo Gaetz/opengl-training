@@ -1,7 +1,7 @@
 #include <GL/glew.h>
 #include <algorithm>
 #include <map>
-#include "log.h"
+#include "Log.h"
 
 // Breakpoints that should ALWAYS trigger (EVEN IN RELEASE BUILDS) [x86]!
 #ifdef _MSC_VER
