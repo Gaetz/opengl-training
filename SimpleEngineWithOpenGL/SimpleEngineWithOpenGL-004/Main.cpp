@@ -1,9 +1,7 @@
 #include "Game.h"
-
 int main(int argc, char** argv)
 {
 	Game game;
-
 	bool isGameInit = game.initialize();
 	if (isGameInit)
 	{

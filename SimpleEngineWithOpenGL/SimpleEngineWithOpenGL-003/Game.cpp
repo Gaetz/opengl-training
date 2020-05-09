@@ -4,7 +4,7 @@ Game::Game():
 	isRunning(true),
 	ballPos({ 100, 100 }), 
 	ballVelocity({ 100, 100 }),
-	paddlePos({ 100, 100 }),
+	paddlePos({ 50, 100 }),
 	paddleVelocity({ 0, 80 }),
 	wallThickness(10),
 	topWall(Rectangle()),
