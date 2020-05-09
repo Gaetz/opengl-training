@@ -15,5 +15,8 @@ private:
 
 	Window window;
 	bool isRunning;
+
+	Game(const Game&) = delete;
+	Game& operator=(const Game&) = delete;
 };
 
