@@ -136,6 +136,7 @@ void Game::loop()
 
 void Game::close()
 {
+	renderer.close();
 	window.close();
 	SDL_Quit();
 }
