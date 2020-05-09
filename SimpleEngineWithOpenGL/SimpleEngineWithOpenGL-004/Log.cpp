@@ -2,12 +2,12 @@
 #include <SDL_log.h>
 #include <SDL_error.h>
 
-void Log::info(string message)
+void Log::info(const string& message)
 {
-	SDL_Log("INFO %s", message);
+	SDL_Log(message.c_str());
 }
 
-void Log::error(string message)
+void Log::error(const string& message)
 {
-	SDL_Log("ERROR %s: %s", message, SDL_GetError());
+	SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s | SDL: %s", message.c_str(), SDL_GetError());
 }

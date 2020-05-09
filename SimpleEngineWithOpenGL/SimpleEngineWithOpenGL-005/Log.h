@@ -4,8 +4,8 @@ using std::string;
 
 class Log {
 public:
-	static void info(string message);
-	static void error(string message);
+	static void info(const string& message);
+	static void error(const string& message);
 
 private:
 	Log() = delete;
