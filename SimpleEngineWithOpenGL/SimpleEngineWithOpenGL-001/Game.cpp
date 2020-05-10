@@ -1,9 +1,5 @@
 #include "Game.h"
 
-Game::Game() : isRunning(true)
-{
-}
-
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();

@@ -7,7 +7,7 @@ void Log::info(const string& message)
 	SDL_Log(message.c_str());
 }
 
-void Log::error(const string& message)
+void Log::error(int category, const string& message)
 {
-	SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s | SDL: %s", message.c_str(), SDL_GetError());
+	SDL_LogError(category, "%s | SDL: %s", message.c_str(), SDL_GetError());
 }

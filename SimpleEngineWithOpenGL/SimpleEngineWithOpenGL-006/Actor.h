@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
 #include "Vector2.h"
-#include "Component.h"
 using std::vector;
+
+class Game;
+class Component;
 
 class Actor
 {
@@ -13,9 +15,16 @@ public:
 		Active, Paused, Dead
 	};
 
-	Actor(class Game* gameP);
-	Actor() = delete;
+	Actor();
 	virtual ~Actor();
+	Actor(const Actor&) = delete;
+	Actor& operator=(const Actor&) = delete;
+
+	Game& getGame() const { return game; }
+	const ActorState getState() const { return state; }
+	const Vector2 getPosition() const { return position; }
+	const float getScale() const { return scale; }
+	const float getRotation() const { return rotation; }
 
 	void update(float dt);
 	void updateComponents(float dt);
@@ -23,18 +32,13 @@ public:
 	void addComponent(Component* component);
 	void removeComponent(Component* component);
 
-	inline const ActorState& getState() { return state; }
-
 private:
-	Game* game = nullptr;
+	Game& game;
 	ActorState state;
 	Vector2 position;
 	float scale;
 	float rotation;	// Rotation in radians
 
 	vector<Component*> components;
-
-	Actor(const Actor&) = delete;
-	Actor& operator=(const Actor&) = delete;
 };
 

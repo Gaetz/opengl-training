@@ -1,12 +1,12 @@
 #include "Game.h"
+
 int main(int argc, char** argv)
 {
-	Game game;
-	bool isGameInit = game.initialize();
+	bool isGameInit = Game::instance().initialize();
 	if (isGameInit)
 	{
-		game.loop();
+		Game::instance().loop();
 	}
-	game.close();
+	Game::instance().close();
 	return 0;
 }

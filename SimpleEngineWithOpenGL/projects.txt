@@ -1,5 +1,9 @@
-001-004 : Wall Pong
-005-    : Scrolling background
+Summary
+
+001-004: Wall Pong
+005-008: Scrolling background
+
+Chapters
 
 001: Window, Log and Game class
 002: Renderer
@@ -7,6 +11,9 @@
 004: Wall pong game
 
 005: Actors and components
-006: Texture load and resource manager
+006: Texture load and resource manager + example
+007: Sprite component, renderer drawSprite + example
+008: Animated sprite and parrallax sprite component + example
+
 
 

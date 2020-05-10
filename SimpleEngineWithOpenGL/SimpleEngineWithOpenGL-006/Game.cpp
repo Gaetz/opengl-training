@@ -1,12 +1,7 @@
 #include "Game.h"
 #include "Timer.h"
 #include "ResourceManager.h"
-
-Game::Game() :
-	isRunning(true),
-	isUpdatingActors(false)
-{
-}
+#include "Component.h"
 
 bool Game::initialize()
 {

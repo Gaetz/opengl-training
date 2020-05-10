@@ -1,18 +1,5 @@
 #include "Game.h"
 
-Game::Game():
-	isRunning(true),
-	ballPos({ 100, 100 }), 
-	ballVelocity({ 100, 100 }),
-	paddlePos({ 50, 100 }),
-	paddleVelocity({ 0, 80 }),
-	wallThickness(10),
-	topWall(Rectangle()),
-	bottomWall(Rectangle()),
-	rightWall(Rectangle())
-{
-}
-
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();

@@ -1,21 +1,21 @@
 #include "Actor.h"
+#include <algorithm>
 #include "Game.h"
 #include "Component.h"
-#include <algorithm>
 
-Actor::Actor(Game* gameP)
-	:state(Actor::ActorState::Active),
+Actor::Actor() :
+	state(Actor::ActorState::Active),
 	position(Vector2::zero),
 	scale(1.0f),
 	rotation(0.0f),
-	game(gameP)
+	game(Game::instance())
 {
-	game->addActor(this);
+	game.addActor(this);
 }
 
 Actor::~Actor()
 {
-	game->removeActor(this);
+	game.removeActor(this);
 	// Need to delete components
 	// Because ~Component calls RemoveComponent, need a different style loop
 	while (!components.empty())

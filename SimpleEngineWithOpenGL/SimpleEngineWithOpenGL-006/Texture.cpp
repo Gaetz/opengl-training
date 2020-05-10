@@ -2,7 +2,7 @@
 #include "Log.h"
 #include <SDL_image.h>
 
-Texture::Texture(): filename("")
+Texture::Texture(): filename(""), width(0), height(0)
 {
 }
 
@@ -21,16 +21,18 @@ bool Texture::load(Renderer& renderer, const string& filenameP)
 	SDL_Surface* surf = IMG_Load(filename.c_str());
 	if (!surf)
 	{
-		Log::error("Failed to load texture file " + filename);
+		Log::error(SDL_LOG_CATEGORY_APPLICATION, "Failed to load texture file " + filename);
 		return false;
 	}
+	width = surf->w;
+	height = surf->h;
 
 	// Create texture from surface
 	SDLTexture = SDL_CreateTextureFromSurface(renderer.toSDLRenderer(), surf);
 	SDL_FreeSurface(surf);
 	if (!SDLTexture)
 	{
-		Log::error("Failed to convert surface to texture for "+ filename);
+		Log::error(SDL_LOG_CATEGORY_RENDER, "Failed to convert surface to texture for "+ filename);
 		return false;
 	}
 	Log::info("Loaded texture " + filename);

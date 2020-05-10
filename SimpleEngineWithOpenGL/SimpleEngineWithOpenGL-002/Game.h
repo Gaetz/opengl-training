@@ -4,7 +4,21 @@
 class Game
 {
 public:
-	Game();
+	static Game& instance()
+	{
+		static Game inst;
+		return inst;
+	}
+
+	Game(const Game&) = delete;
+	Game& operator=(const Game&) = delete;
+	Game(Game&&) = delete;
+	Game& operator=(Game&&) = delete;
+
+private:
+	Game() : isRunning(true) {}
+
+public:
 	bool initialize();
 	void loop();
 	void close();
@@ -17,8 +31,5 @@ private:
 	bool isRunning;
 	Window window;
 	Renderer renderer;
-
-	Game(const Game&) = delete;
-	Game& operator=(const Game&) = delete;
 };
 

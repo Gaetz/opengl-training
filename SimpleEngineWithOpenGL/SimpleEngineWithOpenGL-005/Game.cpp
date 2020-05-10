@@ -1,12 +1,6 @@
 #include "Game.h"
 #include "Timer.h"
 
-Game::Game() :
-	isRunning(true),
-	isUpdatingActors(false)
-{
-}
-
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();

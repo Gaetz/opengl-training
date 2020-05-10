@@ -8,7 +8,7 @@ struct Rectangle
 	float width;
 	float height;
 
-	SDL_Rect toSDLRect()
+	SDL_Rect toSDLRect() const
 	{
 		return SDL_Rect{
 			static_cast<int>(x),

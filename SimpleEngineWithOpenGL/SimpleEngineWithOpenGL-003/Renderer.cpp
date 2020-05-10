@@ -10,7 +10,7 @@ bool Renderer::initialize(Window& window)
 	SDLRenderer = SDL_CreateRenderer(window.getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!SDLRenderer)
 	{
-		Log::error("Failed to create renderer");
+		Log::error(SDL_LOG_CATEGORY_VIDEO, "Failed to create renderer");
 		return false;
 	}
 	return true;
@@ -26,8 +26,6 @@ void Renderer::endDraw()
 {
 	SDL_RenderPresent(SDLRenderer);
 }
-
-
 
 void Renderer::drawRect(Rectangle& rect)
 {

@@ -1,20 +1,6 @@
 #include "Game.h"
 #include "Timer.h"
 
-Game::Game() :
-	isRunning(true),
-	ballPos({ 100, 100 }),
-	ballVelocity({ 500, 500 }),
-	paddlePos({ 50, 100 }),
-	paddleVelocity({ 0, 450 }),
-	paddleDirection(0),
-	wallThickness(10),
-	topWall(Rectangle()),
-	bottomWall(Rectangle()),
-	rightWall(Rectangle())
-{
-}
-
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
