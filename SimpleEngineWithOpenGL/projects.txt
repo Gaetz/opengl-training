@@ -15,5 +15,4 @@ Chapters
 007: Sprite component, renderer drawSprite + example
 008: Animated sprite and parrallax sprite component + example
 
-
-
+009: Move component and astroids (+ Random and Actor, Vector2 improvements)

@@ -5,6 +5,7 @@
 #include "Timer.h"
 #include "ResourceManager.h"
 #include "BackgroundSpriteComponent.h"
+#include "Astroid.h"
 
 bool Game::initialize()
 {
@@ -23,6 +24,7 @@ void Game::load()
 	ResourceManager::loadTexture(renderer, "Res\\Farback01.png", "Farback01");
 	ResourceManager::loadTexture(renderer, "Res\\Farback02.png", "Farback02");
 	ResourceManager::loadTexture(renderer, "Res\\Stars.png", "Stars");
+	ResourceManager::loadTexture(renderer, "Res\\Astroid.png", "Astroid");
 
 	// Single sprite
 	/*
@@ -30,7 +32,7 @@ void Game::load()
 	SpriteComponent* sprite = new SpriteComponent(*actor, ResourceManager::getTexture("Ship01"));
 	actor->setPosition(Vector2{ 100, 100 });
 	*/
-	
+
 	// Animated sprite
 	vector<Texture*> animTextures {
 		&ResourceManager::getTexture("Ship01"),
@@ -42,7 +44,6 @@ void Game::load()
 	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(*ship, animTextures);
 	ship->setPosition(Vector2{ 100, 300 });
 
-	
 	// Background
 	// Create the "far back" background
 	vector<Texture*> bgTexsFar {
@@ -64,6 +65,12 @@ void Game::load()
 	bgSpritesClose->setScrollSpeed(-200.0f);
 	bgClose->setPosition(Vector2(512.0f, 384.0f));
 	
+	const int astroidNumber = 20;
+	for (int i = 0; i < astroidNumber; ++i)
+	{
+		new Astroid();
+	}
+
 }
 
 void Game::processInput()
