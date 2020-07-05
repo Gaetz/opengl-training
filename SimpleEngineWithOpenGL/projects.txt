@@ -1,7 +1,7 @@
 Summary
 
 001-004: Wall Pong
-005-012: Scrolling background and component-based shooter
+005-011: Scrolling background and component-based shooter
 
 Chapters
 
@@ -16,4 +16,4 @@ Chapters
 008: Animated sprite and parrallax sprite component + example
 009: Move component and astroids (+ Random and Actor, Vector2 improvements)
 010: Input component and controllable Ship (update Game, Component and Actor)
-011: Circle collisions
+011: Circle collisions (CircleCollisionComponent, Laser - update Game)
