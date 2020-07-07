@@ -2,6 +2,7 @@ Summary
 
 001-004: Wall Pong
 005-011: Scrolling background and component-based shooter
+012-	 A* tower defense
 
 Chapters
 
@@ -17,3 +18,6 @@ Chapters
 009: Move component and astroids (+ Random and Actor, Vector2 improvements)
 010: Input component and controllable Ship (update Game, Component and Actor)
 011: Circle collisions (CircleCollisionComponent, Laser - update Game)
+
+012: Grid and Tiles (Game update)
+013: State

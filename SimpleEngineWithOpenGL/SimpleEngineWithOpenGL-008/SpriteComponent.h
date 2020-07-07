@@ -19,7 +19,7 @@ public:
 	int getTexHeight() const { return texHeight; }
 
 protected:
-	Texture& texture;
+	Texture texture;
 	int drawOrder;
 	int texWidth;
 	int texHeight;
