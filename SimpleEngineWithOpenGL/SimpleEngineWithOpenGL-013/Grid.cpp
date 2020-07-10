@@ -145,7 +145,7 @@ bool Grid::findPath(Tile& start, Tile& goal)
 			break;
 		}
 		// Find lowest cost node in open set
-		auto iter = std::min_element(openSet.begin(), openSet.end(), [](Tile* a, Tile* b) { return a->f < b->f; });
+		auto iter = std::min_element(begin(openSet), end(openSet), [](Tile* a, Tile* b) { return a->f < b->f; });
 		// Set to current and move from open to closed set
 		current = *iter;
 		openSet.erase(iter);

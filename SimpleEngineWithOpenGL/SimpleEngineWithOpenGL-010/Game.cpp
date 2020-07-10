@@ -203,17 +203,17 @@ void Game::addActor(Actor* actor)
 void Game::removeActor(Actor* actor)
 {
 	// Erase actor from the two vectors
-	auto iter = std::find(pendingActors.begin(), pendingActors.end(), actor);
-	if (iter != pendingActors.end())
+	auto iter = std::find(begin(pendingActors), end(pendingActors), actor);
+	if (iter != end(pendingActors))
 	{
 		// Swap to end of vector and pop off (avoid erase copies)
-		std::iter_swap(iter, pendingActors.end() - 1);
+		std::iter_swap(iter, end(pendingActors) - 1);
 		pendingActors.pop_back();
 	}
-	iter = std::find(actors.begin(), actors.end(), actor);
-	if (iter != actors.end())
+	iter = std::find(begin(actors), end(actors), actor);
+	if (iter != end(actors))
 	{
-		std::iter_swap(iter, actors.end() - 1);
+		std::iter_swap(iter, end(actors) - 1);
 		actors.pop_back();
 	}
 }
@@ -222,8 +222,8 @@ void Game::addSprite(SpriteComponent* sprite)
 {
 	// Insert the sprite at the right place in function of drawOrder
 	int spriteDrawOrder = sprite->getDrawOrder();
-	auto iter = sprites.begin();
-	for (; iter != sprites.end(); ++iter)
+	auto iter = begin(sprites);
+	for (; iter != end(sprites); ++iter)
 	{
 		if (spriteDrawOrder < (*iter)->getDrawOrder()) break;
 	}
@@ -232,7 +232,7 @@ void Game::addSprite(SpriteComponent* sprite)
 
 void Game::removeSprite(SpriteComponent* sprite)
 {
-	auto iter = std::find(sprites.begin(), sprites.end(), sprite);
+	auto iter = std::find(begin(sprites), end(sprites), sprite);
 	sprites.erase(iter);
 }
 

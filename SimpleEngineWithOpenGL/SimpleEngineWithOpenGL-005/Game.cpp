@@ -106,17 +106,17 @@ void Game::addActor(Actor* actor)
 void Game::removeActor(Actor* actor)
 {
 	// Erase actor from the two vectors
-	auto iter = std::find(pendingActors.begin(), pendingActors.end(), actor);
-	if (iter != pendingActors.end())
+	auto iter = std::find(begin(pendingActors), end(pendingActors), actor);
+	if (iter != end(pendingActors))
 	{
 		// Swap to end of vector and pop off (avoid erase copies)
-		std::iter_swap(iter, pendingActors.end() - 1);
+		std::iter_swap(iter, end(pendingActors) - 1);
 		pendingActors.pop_back();
 	}
-	iter = std::find(actors.begin(), actors.end(), actor);
-	if (iter != actors.end())
+	iter = std::find(begin(actors), end(actors), actor);
+	if (iter != end(actors))
 	{
-		std::iter_swap(iter, actors.end() - 1);
+		std::iter_swap(iter, end(actors) - 1);
 		actors.pop_back();
 	}
 }

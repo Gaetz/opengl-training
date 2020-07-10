@@ -71,8 +71,8 @@ void Actor::addComponent(Component* component)
 	// Find the insertion point in the sorted vector
 	// (The first element with a order higher than me)
 	int myOrder = component->getUpdateOrder();
-	auto iter = components.begin();
-	for (; iter != components.end(); ++iter)
+	auto iter = begin(components);
+	for (; iter != end(components); ++iter)
 	{
 		if (myOrder < (*iter)->getUpdateOrder())
 		{
@@ -86,8 +86,8 @@ void Actor::addComponent(Component* component)
 
 void Actor::removeComponent(Component* component)
 {
-	auto iter = std::find(components.begin(), components.end(), component);
-	if (iter != components.end())
+	auto iter = std::find(begin(components), end(components), component);
+	if (iter != end(components))
 	{
 		components.erase(iter);
 	}
