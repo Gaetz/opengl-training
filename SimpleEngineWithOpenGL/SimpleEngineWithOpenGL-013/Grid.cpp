@@ -85,7 +85,7 @@ Tile& Grid::getEndTile()
 	return *tiles[3][15];
 }
 
-bool Grid::findPath(Tile& start, Tile& goal)
+bool Grid::findPath(Tile& start, const Tile& goal)
 {
 	for (auto i = 0; i < NB_ROWS; i++)
 	{
@@ -172,7 +172,7 @@ void Grid::selectTile(size_t row, size_t col)
 	}
 }
 
-void Grid::updatePathTiles(Tile& start)
+void Grid::updatePathTiles(const Tile& start)
 {
 	Tile* t = start.parent;
 	while (t != &getEndTile())

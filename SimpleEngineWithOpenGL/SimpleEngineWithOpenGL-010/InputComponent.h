@@ -6,6 +6,9 @@ class InputComponent : public MoveComponent
 {
 public:
 	InputComponent(Actor& ownerP);
+	InputComponent() = delete;
+	InputComponent(const InputComponent&) = delete;
+	InputComponent& operator=(const InputComponent&) = delete;
 
 	void processInput(const Uint8* keyState);
 

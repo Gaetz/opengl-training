@@ -12,11 +12,11 @@ public:
 	void processClick(int x, int y);
 	Tile& getStartTile();
 	Tile& getEndTile();
-	bool findPath(Tile& start, Tile& goal);
+	bool findPath(Tile& start, const Tile& goal);
 
 private:
 	void selectTile(size_t row, size_t col);
-	void updatePathTiles(Tile& start);
+	void updatePathTiles(const Tile& start);
 
 	class Tile* selectedTile;
 
