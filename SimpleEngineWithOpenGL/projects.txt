@@ -21,4 +21,4 @@ Chapters
 
 012: Grid and Tiles (Game update)
 013: A* path finding (update Tile, Grid)
-014: 
+014: Enemy generation: NavComponent and enemy (update Game, Grid)
