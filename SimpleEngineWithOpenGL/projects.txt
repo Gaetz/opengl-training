@@ -20,4 +20,5 @@ Chapters
 011: Circle collisions (CircleCollisionComponent, Laser - update Game)
 
 012: Grid and Tiles (Game update)
-013: State
+013: A* path finding (update Tile, Grid)
+014: 

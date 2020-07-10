@@ -15,7 +15,7 @@ void CircleCollisionComponent::setRadius(float radiusP)
 	radius = radiusP;
 }
 
-const Vector2 CircleCollisionComponent::getCenter() const
+const Vector2& CircleCollisionComponent::getCenter() const
 {
 	return owner.getPosition();
 }

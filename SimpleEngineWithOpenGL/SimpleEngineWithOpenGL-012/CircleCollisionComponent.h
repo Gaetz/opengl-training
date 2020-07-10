@@ -10,7 +10,7 @@ public:
 	float getRadius() const;
 	void setRadius(float radiusP);
 
-	const Vector2& getCenter() const;
+	const Vector2 getCenter() const;
 
 private:
 	float radius;
