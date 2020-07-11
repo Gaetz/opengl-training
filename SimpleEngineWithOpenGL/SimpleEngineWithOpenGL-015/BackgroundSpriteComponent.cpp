@@ -33,16 +33,9 @@ void BackgroundSpriteComponent::draw(Renderer& renderer)
 	// Draw each background texture
 	for (auto& bg : textures)
 	{
-		SDL_Rect r;
-		// Assume screen size dimensions
-		r.w = static_cast<int>(screenSize.x);
-		r.h = static_cast<int>(screenSize.y);
-		// Center the rectangle around the position of the owner
-		r.x = static_cast<int>(owner.getPosition().x - r.w / 2 + bg.offset.x);
-		r.y = static_cast<int>(owner.getPosition().y - r.h / 2 + bg.offset.y);
-
-		// Draw this background
-		SDL_RenderCopy(renderer.toSDLRenderer(), bg.texture.toSDLTexture(),	nullptr, &r);
+		float x = owner.getPosition().x - screenSize.x / 2 + bg.offset.x;
+		float y = owner.getPosition().y - screenSize.y / 2 + bg.offset.y;
+		renderer.drawSprite(Vector2(x, y), 0.0f, 1.0f, bg.texture, Rectangle::nullRect, Vector2::zero, Renderer::Flip::None);
 	}
 }
 

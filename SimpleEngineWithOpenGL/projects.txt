@@ -2,7 +2,8 @@ Summary
 
 001-004: Wall Pong
 005-011: Scrolling background and component-based shooter
-012-015	 A* tower defense
+012-015: A* tower defense
+016-   : OpenGL Renderer for shooter
 
 Chapters
 
@@ -23,3 +24,5 @@ Chapters
 013: A* path finding (update Tile, Grid)
 014: Enemy generation: NavComponent and enemy (update Game, Grid)
 015: Tower placement and shoot Bullet (update Game and Grid)
+
+016: Start with copy of project 011, abstract renderer, the game should be still working
