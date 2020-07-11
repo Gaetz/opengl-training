@@ -26,3 +26,5 @@ Chapters
 015: Tower placement and shoot Bullet (update Game and Grid)
 
 016: Start with copy of project 011, abstract renderer, the game should be still working
+017: OpenGL display. Update Window. RendererOGL, VertexArray.
+018: Shader + shader files. ResourceManager shader load.

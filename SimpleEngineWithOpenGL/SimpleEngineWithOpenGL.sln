@@ -35,6 +35,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleEngineWithOpenGL-015"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleEngineWithOpenGL-016", "SimpleEngineWithOpenGL-016\SimpleEngineWithOpenGL-016.vcxproj", "{B8C90695-B049-4131-B809-2F29E30C9626}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleEngineWithOpenGL-017", "SimpleEngineWithOpenGL-017\SimpleEngineWithOpenGL-017.vcxproj", "{72854C9C-B9F8-4394-835C-9B163D06366A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleEngineWithOpenGL-018", "SimpleEngineWithOpenGL-018\SimpleEngineWithOpenGL-018.vcxproj", "{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -171,6 +175,22 @@ Global
 		{B8C90695-B049-4131-B809-2F29E30C9626}.Release|x64.Build.0 = Release|x64
 		{B8C90695-B049-4131-B809-2F29E30C9626}.Release|x86.ActiveCfg = Release|Win32
 		{B8C90695-B049-4131-B809-2F29E30C9626}.Release|x86.Build.0 = Release|Win32
+		{72854C9C-B9F8-4394-835C-9B163D06366A}.Debug|x64.ActiveCfg = Debug|x64
+		{72854C9C-B9F8-4394-835C-9B163D06366A}.Debug|x64.Build.0 = Debug|x64
+		{72854C9C-B9F8-4394-835C-9B163D06366A}.Debug|x86.ActiveCfg = Debug|Win32
+		{72854C9C-B9F8-4394-835C-9B163D06366A}.Debug|x86.Build.0 = Debug|Win32
+		{72854C9C-B9F8-4394-835C-9B163D06366A}.Release|x64.ActiveCfg = Release|x64
+		{72854C9C-B9F8-4394-835C-9B163D06366A}.Release|x64.Build.0 = Release|x64
+		{72854C9C-B9F8-4394-835C-9B163D06366A}.Release|x86.ActiveCfg = Release|Win32
+		{72854C9C-B9F8-4394-835C-9B163D06366A}.Release|x86.Build.0 = Release|Win32
+		{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}.Debug|x64.ActiveCfg = Debug|x64
+		{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}.Debug|x64.Build.0 = Debug|x64
+		{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}.Debug|x86.ActiveCfg = Debug|Win32
+		{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}.Debug|x86.Build.0 = Debug|Win32
+		{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}.Release|x64.ActiveCfg = Release|x64
+		{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}.Release|x64.Build.0 = Release|x64
+		{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}.Release|x86.ActiveCfg = Release|Win32
+		{18F30EE7-A5FF-4C69-8405-7C794EBA5D07}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
