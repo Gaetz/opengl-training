@@ -2,7 +2,7 @@ Summary
 
 001-004: Wall Pong
 005-011: Scrolling background and component-based shooter
-012-	 A* tower defense
+012-015	 A* tower defense
 
 Chapters
 
@@ -22,3 +22,4 @@ Chapters
 012: Grid and Tiles (Game update)
 013: A* path finding (update Tile, Grid)
 014: Enemy generation: NavComponent and enemy (update Game, Grid)
+015: Tower placement and shoot Bullet (update Game and Grid)

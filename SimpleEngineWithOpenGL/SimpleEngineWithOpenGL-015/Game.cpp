@@ -37,6 +37,29 @@ void Game::load()
 	grid = new Grid();
 }
 
+Enemy* Game::getNearestEnemy(const Vector2& position)
+{
+	Enemy* best = nullptr;
+
+	if (enemies.size() > 0)
+	{
+		best = enemies[0];
+		// Save the distance squared of first enemy, and test if others are closer
+		float bestDistSq = (position - enemies[0]->getPosition()).lengthSq();
+		for (size_t i = 1; i < enemies.size(); ++i)
+		{
+			float newDistSq = (position - enemies[i]->getPosition()).lengthSq();
+			if (newDistSq < bestDistSq)
+			{
+				bestDistSq = newDistSq;
+				best = enemies[i];
+			}
+		}
+	}
+
+	return best;
+}
+
 void Game::processInput()
 {
 	// SDL Event
@@ -57,6 +80,12 @@ void Game::processInput()
 	{
 		isRunning = false;
 	}
+
+	if (keyboardState[SDL_SCANCODE_B])
+	{
+		grid->buildTower();
+	}
+
 	// Actor input
 	isUpdatingActors = true;
 	for (auto actor : actors)

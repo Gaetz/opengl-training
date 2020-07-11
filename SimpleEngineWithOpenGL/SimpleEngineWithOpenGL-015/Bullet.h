@@ -1,16 +1,14 @@
 #pragma once
 #include "Actor.h"
-
-class Enemy : public Actor
+class Bullet : public Actor
 {
 public:
-	Enemy();
-	virtual ~Enemy();
+	Bullet();
 	void updateActor(float dt) override;
-	class CircleCollisionComponent& getCircle() { return *circle; }
 
 
 private:
 	class CircleCollisionComponent* circle;
+	float liveTime;
 };
 

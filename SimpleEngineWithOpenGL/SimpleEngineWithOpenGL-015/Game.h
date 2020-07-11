@@ -40,6 +40,7 @@ public:
 	// Game specific
 	class Grid& getGrid() { return *grid; }
 	std::vector<class Enemy*>& getEnemies() { return enemies; }
+	Enemy* getNearestEnemy(const Vector2& position);
 
 private:
 	void processInput();
