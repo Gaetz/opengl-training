@@ -179,7 +179,7 @@
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="Log.h" />
-    <ClInclude Include="Math.h" />
+    <ClInclude Include="Maths.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />

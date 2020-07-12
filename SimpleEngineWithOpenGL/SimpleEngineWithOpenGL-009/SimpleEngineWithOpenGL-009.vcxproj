@@ -172,7 +172,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Log.h" />
-    <ClInclude Include="Math.h" />
+    <ClInclude Include="Maths.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />

@@ -183,7 +183,7 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="Log.h" />
-    <ClInclude Include="Math.h" />
+    <ClInclude Include="Maths.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="NavComponent.h" />
     <ClInclude Include="Random.h" />

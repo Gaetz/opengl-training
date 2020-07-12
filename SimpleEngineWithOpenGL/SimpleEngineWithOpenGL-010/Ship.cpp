@@ -2,7 +2,7 @@
 #include "SpriteComponent.h"
 #include "ResourceManager.h"
 #include "InputComponent.h"
-#include "Math.h"
+#include "Maths.h"
 
 Ship::Ship() : Actor()
 {

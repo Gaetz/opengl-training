@@ -83,9 +83,6 @@
     <ClInclude Include="Texture.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
-      <Filter>Maths</Filter>
-    </ClInclude>
     <ClInclude Include="AnimSpriteComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -112,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="Laser.h">
       <Filter>GameSpecific</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths.h">
+      <Filter>Maths</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

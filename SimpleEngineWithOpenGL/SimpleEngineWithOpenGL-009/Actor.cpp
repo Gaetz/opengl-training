@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "Game.h"
 #include "Component.h"
-#include "Math.h"
+#include "Maths.h"
 
 Actor::Actor():
 	state(Actor::ActorState::Active),

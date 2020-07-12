@@ -28,4 +28,4 @@ Chapters
 016: Start with copy of project 011, abstract renderer, the game should be still working
 017: OpenGL display. Update Window. RendererOGL, VertexArray.
 018: Shader + shader files + BVasic shader draw. ResourceManager shader load.
-019: 
+019: Matrix4 + Transform + Sprite display

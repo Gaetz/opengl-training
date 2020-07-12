@@ -1,7 +1,7 @@
 #include "Astroid.h"
 #include "Random.h"
 #include "Window.h"
-#include "Math.h"
+#include "Maths.h"
 #include "SpriteComponent.h"
 #include "MoveComponent.h"
 #include "ResourceManager.h"

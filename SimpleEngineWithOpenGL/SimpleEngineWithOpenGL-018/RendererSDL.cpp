@@ -1,7 +1,7 @@
 #include "RendererSDL.h"
 #include "Log.h"
 #include "Texture.h"
-#include "Math.h"
+#include "Maths.h"
 
 RendererSDL::RendererSDL() : SDLRenderer(nullptr)
 {

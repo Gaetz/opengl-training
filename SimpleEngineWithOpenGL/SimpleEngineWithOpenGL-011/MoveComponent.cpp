@@ -1,5 +1,5 @@
 #include "MoveComponent.h"
-#include "Math.h"
+#include "Maths.h"
 #include "Actor.h"
 #include "Window.h"
 

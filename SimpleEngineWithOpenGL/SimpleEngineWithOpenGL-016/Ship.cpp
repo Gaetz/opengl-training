@@ -2,7 +2,7 @@
 #include "SpriteComponent.h"
 #include "ResourceManager.h"
 #include "InputComponent.h"
-#include "Math.h"
+#include "Maths.h"
 #include "Laser.h"
 
 Ship::Ship() : Actor(), laserCooldown(0.0f)

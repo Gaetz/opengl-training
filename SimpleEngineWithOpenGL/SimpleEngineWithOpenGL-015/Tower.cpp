@@ -5,7 +5,7 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "ResourceManager.h"
-#include "Math.h"
+#include "Maths.h"
 
 Tower::Tower() : Actor()
 {

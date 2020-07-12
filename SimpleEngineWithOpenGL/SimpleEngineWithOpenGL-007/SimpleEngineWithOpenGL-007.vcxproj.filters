@@ -56,7 +56,7 @@
     <ClInclude Include="Texture.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
+    <ClInclude Include="Maths.h">
       <Filter>Maths</Filter>
     </ClInclude>
   </ItemGroup>

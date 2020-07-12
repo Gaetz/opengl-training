@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "NavComponent.h"
 #include "CircleCollisionComponent.h"
-#include "Math.h"
+#include "Maths.h"
 
 Enemy::Enemy() : Actor(), circle(nullptr)
 {

@@ -1,5 +1,5 @@
 #include "Vector2.h"
-#include "Math.h"
+#include "Maths.h"
 
 const Vector2 Vector2::zero(0, 0);
 const Vector2 Vector2::unitX(1.0f, 0.0f);
