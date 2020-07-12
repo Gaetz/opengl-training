@@ -3,6 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include "../SimpleEngineWithOpenGL-006/Log.h"
+#include "RendererOGL.h"
 
 std::map<std::string, Texture> ResourceManager::textures;
 std::map<std::string, Shader> ResourceManager::shaders;
@@ -45,6 +46,10 @@ Texture ResourceManager::loadTextureFromFile(IRenderer& renderer, const string& 
     if (renderer.type() == IRenderer::Type::SDL)
     {
         texture.loadSDL(dynamic_cast<RendererSDL&>(renderer), filename);
+    }
+    else if (renderer.type() == IRenderer::Type::OGL)
+    {
+        texture.loadOGL(dynamic_cast<RendererOGL&>(renderer), filename);
     }
     return texture;
 }

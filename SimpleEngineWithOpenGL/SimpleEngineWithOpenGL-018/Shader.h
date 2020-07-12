@@ -48,9 +48,6 @@ public:
 	*/
 
 private:
-	// Checks if compilation or linking failed and if so, print the error logs
-	void checkCompileErrors(GLuint object, std::string type);
-
 	GLuint vs;
 	GLuint fs;
 	GLuint tcs;

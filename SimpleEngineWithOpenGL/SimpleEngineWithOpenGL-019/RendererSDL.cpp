@@ -2,6 +2,7 @@
 #include "Log.h"
 #include "Texture.h"
 #include "Maths.h"
+#include "Actor.h"
 
 RendererSDL::RendererSDL() : SDLRenderer(nullptr)
 {
@@ -40,9 +41,12 @@ void RendererSDL::drawRect(const Rectangle& rect) const
 	SDL_RenderFillRect(SDLRenderer, &SDLRect);
 }
 
-void RendererSDL::drawSprite(Vector2 position, float rotation, float scale, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
+void RendererSDL::drawSprite(Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
 	SDL_Rect dstRect;
+	Vector2 position = actor.getPosition();
+	float rotation = actor.getRotation();
+	float scale = actor.getScale();
 	// Scale the width/height by owner's scale
 	dstRect.w = static_cast<int>(tex.getWidth() * scale);
 	dstRect.h = static_cast<int>(tex.getHeight() * scale);

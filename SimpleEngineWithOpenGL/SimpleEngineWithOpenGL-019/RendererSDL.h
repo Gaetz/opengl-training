@@ -17,7 +17,7 @@ public:
 
 	void beginDraw();
 	void drawRect(const Rectangle& rect) const;
-	void drawSprite(Vector2 position, float rotation, float scale, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
+	void drawSprite(Actor& actor, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
 	void endDraw();
 	IRenderer::Type type() { return Type::SDL; }
 

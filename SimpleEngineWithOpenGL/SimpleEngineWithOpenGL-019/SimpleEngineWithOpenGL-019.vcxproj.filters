@@ -16,9 +16,6 @@
     <ClCompile Include="SpriteComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>Maths</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -65,6 +62,12 @@
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Matrix4.cpp">
+      <Filter>Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
       <Filter>Maths</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,6 +143,9 @@
     <ClInclude Include="Maths.h">
       <Filter>Maths</Filter>
     </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Maths</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
@@ -169,6 +175,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Res\Shaders\Sprite.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Res\Shaders\Transform.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

@@ -30,6 +30,7 @@ void Game::load()
 	ResourceManager::loadTexture(renderer, "Res\\Laser.png", "Laser");
 
 	ResourceManager::loadShader("Res\\Shaders\\Basic.vert", "Res\\Shaders\\Basic.frag", "", "", "", "Basic");
+	ResourceManager::loadShader("Res\\Shaders\\Transform.vert", "Res\\Shaders\\Basic.frag", "", "", "", "Transform");
 	ResourceManager::loadShader("Res\\Shaders\\Sprite.vert", "Res\\Shaders\\Sprite.frag", "", "", "", "Sprite");
 
 	// Single sprite
@@ -58,6 +59,7 @@ void Game::load()
 
 	// Background
 	// Create the "far back" background
+	/*
 	vector<Texture*> bgTexsFar {
 		&ResourceManager::getTexture("Farback01"),
 		&ResourceManager::getTexture("Farback02")
@@ -76,7 +78,7 @@ void Game::load()
 	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(*bgClose, bgTexsClose, 50);
 	bgSpritesClose->setScrollSpeed(-200.0f);
 	bgClose->setPosition(Vector2(512.0f, 384.0f));
-	
+	*/
 	const int astroidNumber = 20;
 	for (int i = 0; i < astroidNumber; ++i)
 	{
@@ -126,6 +128,7 @@ void Game::update(float dt)
 	// Move pending actors to actors
 	for (auto pendingActor: pendingActors)
 	{
+		pendingActor->computeWorldTransform();
 		actors.emplace_back(pendingActor);
 	}
 	pendingActors.clear();

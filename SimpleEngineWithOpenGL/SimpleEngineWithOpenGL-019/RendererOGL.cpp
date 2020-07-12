@@ -1,10 +1,14 @@
 #include "RendererOGL.h"
 #include <GL/glew.h>
 #include "Rectangle.h"
-#include "Vector2.h"
 #include "ResourceManager.h"
+#include "Actor.h"
 
-RendererOGL::RendererOGL() : window(nullptr), vertexArray(nullptr), shader(nullptr)
+RendererOGL::RendererOGL():
+	window(nullptr),
+	vertexArray(nullptr),
+	shader(nullptr),
+	viewProj(Matrix4::createSimpleViewProj(WINDOW_WIDTH, WINDOW_HEIGHT))
 {
 }
 
@@ -16,7 +20,7 @@ bool RendererOGL::initialize(Window& windowP)
 {
 	window = &windowP;
 	vertexArray = new VertexArray(vertices, 4, indices, 6);
-	shader = &ResourceManager::getShader("Basic");
+	shader = &ResourceManager::getShader("Transform");
     return true;
 }
 
@@ -30,11 +34,16 @@ void RendererOGL::beginDraw()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	// Active shader and vertex array
 	shader->use();
+	shader->setMatrix4("uViewProj", viewProj);
 	vertexArray->setActive();
 }
 
-void RendererOGL::drawSprite(Vector2 position, float rotation, float scale, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
+void RendererOGL::drawSprite(Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
+	Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
+	Matrix4 world = scaleMat * actor.getWorldTransform();
+	Matrix4 pixelTranslation = Matrix4::createTranslation(Vector3(-WINDOW_WIDTH / 2, -WINDOW_HEIGHT / 2, 0.0f)); // Screen pixel coordinates
+	shader->setMatrix4("uWorldTransform", world * pixelTranslation);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 

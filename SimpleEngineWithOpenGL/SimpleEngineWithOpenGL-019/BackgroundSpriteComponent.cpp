@@ -36,7 +36,8 @@ void BackgroundSpriteComponent::draw(IRenderer& renderer)
 	{
 		float x = owner.getPosition().x - screenSize.x / 2 + bg.offset.x;
 		float y = owner.getPosition().y - screenSize.y / 2 + bg.offset.y;
-		renderer.drawSprite(Vector2(x, y), 0.0f, 1.0f, bg.texture, Rectangle::nullRect, Vector2::zero, IRenderer::Flip::None);
+		// TODO update position
+		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2::zero, IRenderer::Flip::None);
 	}
 }
 
