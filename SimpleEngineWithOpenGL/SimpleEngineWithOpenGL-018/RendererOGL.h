@@ -1,6 +1,8 @@
 #pragma once
 #include "IRenderer.h"
 #include "VertexArray.h"
+#include "Shader.h"
+
 class RendererOGL : public IRenderer
 {
 public:
@@ -20,5 +22,6 @@ public:
 private:
 	Window* window;
 	VertexArray* vertexArray;
+	Shader* shader;
 };
 

@@ -2,8 +2,9 @@
 #include <GL/glew.h>
 #include "Rectangle.h"
 #include "Vector2.h"
+#include "ResourceManager.h"
 
-RendererOGL::RendererOGL() : window(nullptr), vertexArray(nullptr)
+RendererOGL::RendererOGL() : window(nullptr), vertexArray(nullptr), shader(nullptr)
 {
 }
 
@@ -15,6 +16,7 @@ bool RendererOGL::initialize(Window& windowP)
 {
 	window = &windowP;
 	vertexArray = new VertexArray(vertices, 4, indices, 6);
+	shader = &ResourceManager::getShader("Basic");
     return true;
 }
 
@@ -26,10 +28,14 @@ void RendererOGL::beginDraw()
 	// Enable alpha blending on the color buffer
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	// Active shader and vertex array
+	shader->use();
+	vertexArray->setActive();
 }
 
 void RendererOGL::drawSprite(Vector2 position, float rotation, float scale, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
 void RendererOGL::endDraw()

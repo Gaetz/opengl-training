@@ -100,12 +100,16 @@ void Shader::createShaderProgram(bool tessShadersExist, bool geometryShaderExist
     glGetProgramiv(id, GL_LINK_STATUS, &params);
     if (params != GL_TRUE)
     {
-        Log::error(SDL_LOG_CATEGORY_RENDER, "Could not link shader programme GL index " + id);
+        std::ostringstream s;
+        s << "Could not link shader programme GL index " << id;
+        Log::error(SDL_LOG_CATEGORY_RENDER, s.str());
         printProgrammeInfoLog(id);
     }
     if (!isValid(id))
     {
-        Log::error(SDL_LOG_CATEGORY_RENDER, "Could not validate shader " + id);
+        std::ostringstream s;
+        s << "Could not validate shader " << id;
+        Log::error(SDL_LOG_CATEGORY_RENDER, s.str());
     }
 
     // Delete shaders for they are no longer used
@@ -166,7 +170,9 @@ void Shader::printShaderInfoLog(GLuint shaderIndex)
     int actual_length = 0;
     char log[2048];
     glGetShaderInfoLog(shaderIndex, max_length, &actual_length, log);
-    Log::info("Shader info log for GL index " + shaderIndex);
+    std::ostringstream s;
+    s << "Shader info log for GL index " << shaderIndex;
+    Log::info(s.str());
 }
 
 void Shader::printProgrammeInfoLog(GLuint id)
@@ -175,8 +181,9 @@ void Shader::printProgrammeInfoLog(GLuint id)
     int actual_length = 0;
     char log[2048];
     glGetProgramInfoLog(id, max_length, &actual_length, log);
-    Log::info("Program info log for GL index " + id);
-
+    std::ostringstream s;
+    s << "Program info log for GL index " << id;
+    Log::info(s.str());
 }
 
 void Shader::checkShaderErrors(GLuint shader, std::string shaderType)
@@ -236,13 +243,19 @@ void Shader::printAllParams(GLuint id)
     Log::info(s.str());
     int params = -1;
     glGetProgramiv(id, GL_LINK_STATUS, &params);
-    Log::info("GL_LINK_STATUS = " + params);
+    s.str("");
+    s << "GL_LINK_STATUS = " << params;
+    Log::info(s.str());
 
     glGetProgramiv(id, GL_ATTACHED_SHADERS, &params);
-    Log::info("GL_ATTACHED_SHADERS = " + params);
+    s.str("");
+    s << "GL_ATTACHED_SHADERS = " << params;
+    Log::info(s.str());
 
     glGetProgramiv(id, GL_ACTIVE_ATTRIBUTES, &params);
-    Log::info("GL_ACTIVE_ATTRIBUTES = " + params);
+    s.str("");
+    s << "GL_ACTIVE_ATTRIBUTES = " << params;
+    Log::info(s.str());
     for (GLuint i = 0; i < (GLuint)params; i++)
     {
         char name[64];
@@ -273,7 +286,9 @@ void Shader::printAllParams(GLuint id)
     }
 
     glGetProgramiv(id, GL_ACTIVE_UNIFORMS, &params);
-    Log::info("GL_ACTIVE_UNIFORMS = " + params);
+    s.str("");
+    s << "GL_ACTIVE_UNIFORMS = " << params;
+    Log::info(s.str());
     for (GLuint i = 0; i < (GLuint)params; i++)
     {
         char name[64];
