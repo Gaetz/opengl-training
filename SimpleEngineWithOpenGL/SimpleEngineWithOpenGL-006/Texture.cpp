@@ -8,7 +8,7 @@ Texture::Texture(): filename(""), width(0), height(0)
 
 Texture::~Texture()
 {
-	if (!SDLTexture)
+	if (SDLTexture)
 	{
 		SDL_DestroyTexture(SDLTexture);
 	}

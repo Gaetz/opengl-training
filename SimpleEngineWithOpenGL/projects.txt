@@ -29,4 +29,4 @@ Chapters
 017: OpenGL display. Update Window. RendererOGL, VertexArray.
 018: Shader + shader files + Basic shader draw. ResourceManager shader load.
 019: Display quads. Matrix4 and Vector3 + Transform in Actor (update Game, Component, Shader, Texture).
-020: Display sprites. 
+020: Display sprites' textures. Update Texture.

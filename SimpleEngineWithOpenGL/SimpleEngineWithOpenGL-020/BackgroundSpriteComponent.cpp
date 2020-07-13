@@ -35,7 +35,7 @@ void BackgroundSpriteComponent::draw(IRenderer& renderer)
 	for (auto& bg : textures)
 	{
 		owner.setPosition(Vector2(bg.offset.x, bg.offset.y));
-		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2::zero, IRenderer::Flip::None);
+		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2(-screenSize.x / 2, -screenSize.y / 2), IRenderer::Flip::None);
 	}
 }
 
