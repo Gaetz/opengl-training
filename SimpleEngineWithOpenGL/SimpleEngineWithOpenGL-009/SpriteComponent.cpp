@@ -26,14 +26,6 @@ void SpriteComponent::setTexture(const Texture& textureP)
 void SpriteComponent::draw(Renderer& renderer)
 {
 	Vector2 origin{ texWidth / 2.f, texHeight / 2.f };
-	renderer.drawSprite(
-		owner.getPosition(),
-		owner.getRotation(),
-		owner.getScale(),
-		texture,
-		Rectangle::nullRect,
-		origin,
-		Renderer::Flip::None
-	);
+	renderer.drawSprite(owner, texture, Rectangle::nullRect, origin, Renderer::Flip::None);
 }
 

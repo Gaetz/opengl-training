@@ -38,7 +38,7 @@ void RendererOGL::beginDraw()
 	vertexArray->setActive();
 }
 
-void RendererOGL::drawSprite(Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
+void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
 	Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
 	Matrix4 world = scaleMat * actor.getWorldTransform();

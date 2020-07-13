@@ -11,7 +11,7 @@ VertexArray::VertexArray(const float* verticesP, unsigned int nbVerticesP, const
 	// Create vertex buffer
 	glGenBuffers(1, &vertexBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-	glBufferData(GL_ARRAY_BUFFER, nbVertices * 5.0 * sizeof(float), verticesP, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, nbVertices * 3.0 * sizeof(float), verticesP, GL_STATIC_DRAW);
 
 	// Create index buffer
 	glGenBuffers(1, &indexBuffer);
@@ -22,9 +22,7 @@ VertexArray::VertexArray(const float* verticesP, unsigned int nbVerticesP, const
 	// (For now, assume one vertex format)
 	// Position is 3 floats starting at offset 0
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, 0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, reinterpret_cast<void*>(sizeof(float) * 3));
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
 }
 
 VertexArray::~VertexArray()

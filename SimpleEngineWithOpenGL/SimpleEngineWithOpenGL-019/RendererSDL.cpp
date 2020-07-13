@@ -41,7 +41,7 @@ void RendererSDL::drawRect(const Rectangle& rect) const
 	SDL_RenderFillRect(SDLRenderer, &SDLRect);
 }
 
-void RendererSDL::drawSprite(Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
+void RendererSDL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
 	SDL_Rect dstRect;
 	Vector2 position = actor.getPosition();

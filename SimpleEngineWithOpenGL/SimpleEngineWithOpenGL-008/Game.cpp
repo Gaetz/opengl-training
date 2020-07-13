@@ -52,7 +52,6 @@ void Game::load()
 	Actor* bgFar = new Actor();
 	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(*bgFar, bgTexsFar);
 	bgSpritesFar->setScrollSpeed(-100.0f);
-	bgFar->setPosition(Vector2(512.0f, 384.0f));
 
 	// Create the closer background
 	Actor* bgClose = new Actor();
@@ -61,9 +60,7 @@ void Game::load()
 		&ResourceManager::getTexture("Stars")
 	};
 	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(*bgClose, bgTexsClose, 50);
-	bgSpritesClose->setScrollSpeed(-200.0f);
-	bgClose->setPosition(Vector2(512.0f, 384.0f));
-	
+	bgSpritesClose->setScrollSpeed(-200.0f);	
 }
 
 void Game::processInput()

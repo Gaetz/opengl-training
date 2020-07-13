@@ -34,9 +34,8 @@ void BackgroundSpriteComponent::draw(IRenderer& renderer)
 	// Draw each background texture
 	for (auto& bg : textures)
 	{
-		float x = owner.getPosition().x - screenSize.x / 2 + bg.offset.x;
-		float y = owner.getPosition().y - screenSize.y / 2 + bg.offset.y;
-		renderer.drawSprite(Vector2(x, y), 0.0f, 1.0f, bg.texture, Rectangle::nullRect, Vector2::zero, IRenderer::Flip::None);
+		owner.setPosition(Vector2(bg.offset.x, bg.offset.y));
+		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2::zero, IRenderer::Flip::None);
 	}
 }
 

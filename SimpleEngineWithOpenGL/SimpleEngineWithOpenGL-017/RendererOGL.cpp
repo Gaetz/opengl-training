@@ -28,7 +28,7 @@ void RendererOGL::beginDraw()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-void RendererOGL::drawSprite(Vector2 position, float rotation, float scale, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
+void RendererOGL::drawSprite(const Actor& owner, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
 }
 

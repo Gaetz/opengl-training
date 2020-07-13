@@ -13,7 +13,7 @@ public:
 
 	bool initialize(Window& window);
 	void beginDraw();
-	void drawSprite(Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
+	void drawSprite(const Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
 	void endDraw();
 	void close();
 	IRenderer::Type type() { return Type::OGL; }

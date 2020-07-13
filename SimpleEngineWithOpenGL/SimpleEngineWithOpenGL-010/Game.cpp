@@ -61,7 +61,6 @@ void Game::load()
 	Actor* bgFar = new Actor();
 	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(*bgFar, bgTexsFar);
 	bgSpritesFar->setScrollSpeed(-100.0f);
-	bgFar->setPosition(Vector2(512.0f, 384.0f));
 
 	// Create the closer background
 	Actor* bgClose = new Actor();
@@ -71,7 +70,6 @@ void Game::load()
 	};
 	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(*bgClose, bgTexsClose, 50);
 	bgSpritesClose->setScrollSpeed(-200.0f);
-	bgClose->setPosition(Vector2(512.0f, 384.0f));
 	
 	const int astroidNumber = 20;
 	for (int i = 0; i < astroidNumber; ++i)

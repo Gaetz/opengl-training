@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include "Window.h"
 #include "Vector2.h"
+#include "Actor.h"
 
 class Renderer
 {
@@ -23,7 +24,7 @@ public:
 
 	void beginDraw();
 	void drawRect(const Rectangle& rect) const;
-	void drawSprite(Vector2 position, float rotation, float scale, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
+	void drawSprite(const Actor& actor, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
 	void endDraw();
 
 	SDL_Renderer* toSDLRenderer() const { return SDLRenderer; }

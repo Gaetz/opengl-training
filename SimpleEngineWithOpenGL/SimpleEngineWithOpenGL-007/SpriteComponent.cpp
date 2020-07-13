@@ -27,9 +27,7 @@ void SpriteComponent::draw(Renderer& renderer)
 {
 	Vector2 origin{ texWidth / 2.f, texHeight / 2.f };
 	renderer.drawSprite(
-		owner.getPosition(),
-		owner.getRotation(),
-		owner.getScale(),
+		owner,
 		texture,
 		Rectangle::nullRect,
 		origin,
