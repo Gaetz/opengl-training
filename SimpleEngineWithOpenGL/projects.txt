@@ -3,7 +3,8 @@ Summary
 001-004: Wall Pong
 005-011: Scrolling background and component-based shooter
 012-015: A* tower defense
-016-   : OpenGL Renderer for shooter
+016-020: OpenGL Renderer for shooter
+021-   : 3D basics
 
 Chapters
 
@@ -30,3 +31,5 @@ Chapters
 018: Shader + shader files + Basic shader draw. ResourceManager shader load.
 019: Display quads. Matrix4 and Vector3 + Transform in Actor (update Game, Component, Shader, Texture).
 020: Display sprites' textures. Update Texture.
+
+21: Update copy of project 020. Quaternions (Matrix4, Vector3 and Actor update). Delete RenderSDL. Sprites on OGL renderer.
