@@ -148,12 +148,7 @@ void Game::update(float dt)
 void Game::render()
 {
 	renderer.beginDraw();
-
-	for (auto sprite : sprites)
-	{
-		sprite->draw(renderer);
-	}
-
+	renderer.draw();
 	renderer.endDraw();
 }
 
@@ -239,22 +234,3 @@ void Game::removeActor(Actor* actor)
 		actors.pop_back();
 	}
 }
-
-void Game::addSprite(SpriteComponent* sprite)
-{
-	// Insert the sprite at the right place in function of drawOrder
-	int spriteDrawOrder = sprite->getDrawOrder();
-	auto iter = begin(sprites);
-	for (; iter != end(sprites); ++iter)
-	{
-		if (spriteDrawOrder < (*iter)->getDrawOrder()) break;
-	}
-	sprites.insert(iter, sprite);
-}
-
-void Game::removeSprite(SpriteComponent* sprite)
-{
-	auto iter = std::find(begin(sprites), end(sprites), sprite);
-	sprites.erase(iter);
-}
-

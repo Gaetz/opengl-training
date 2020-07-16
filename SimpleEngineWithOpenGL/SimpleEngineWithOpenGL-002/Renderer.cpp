@@ -27,8 +27,6 @@ void Renderer::endDraw()
 	SDL_RenderPresent(SDLRenderer);
 }
 
-
-
 void Renderer::drawRect(Rectangle& rect)
 {
 

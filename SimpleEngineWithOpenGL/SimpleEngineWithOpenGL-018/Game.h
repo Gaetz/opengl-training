@@ -35,8 +35,8 @@ public:
 
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
-	void addSprite(SpriteComponent* sprite);
-	void removeSprite(SpriteComponent* sprite);
+
+	RendererOGL& getRenderer() { return renderer; }
 
 	// Game specific
 	vector<Astroid*>& getAstroids();
@@ -55,7 +55,6 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
-	std::vector<SpriteComponent*> sprites;
 
 	// Game specific
 	vector<Astroid*> astroids;

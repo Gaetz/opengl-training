@@ -1,7 +1,9 @@
 #pragma once
 #include "IRenderer.h"
 #include "VertexArray.h"
+#include "Vector2.h"
 #include "Shader.h"
+
 #include <vector>
 
 class RendererOGL : public IRenderer

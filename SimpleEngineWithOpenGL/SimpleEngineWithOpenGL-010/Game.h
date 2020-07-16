@@ -33,8 +33,8 @@ public:
 
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
-	void addSprite(SpriteComponent* sprite);
-	void removeSprite(SpriteComponent* sprite);
+
+	Renderer& getRenderer() { return renderer; }
 
 private:
 	void processInput();
@@ -48,6 +48,5 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
-	std::vector<SpriteComponent*> sprites;
 };
 

@@ -19,6 +19,7 @@ public:
 	virtual bool initialize(Window& window) = 0;
 	virtual void beginDraw() = 0;
 	virtual void draw() = 0;
+
 	virtual void drawSprite(const class Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const = 0;
 	virtual void endDraw() = 0;
 	virtual void close() = 0;

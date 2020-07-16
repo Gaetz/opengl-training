@@ -2,6 +2,9 @@
 #include "Log.h"
 #include "Texture.h"
 #include "Maths.h"
+#include "SpriteComponent.h"
+
+#include <SDL_image.h>
 
 Renderer::Renderer() : SDLRenderer(nullptr)
 {
@@ -19,6 +22,11 @@ bool Renderer::initialize(Window& window)
 		Log::error(SDL_LOG_CATEGORY_VIDEO, "Failed to create renderer");
 		return false;
 	}
+	if (IMG_Init(IMG_INIT_PNG) == 0)
+	{
+		Log::error(SDL_LOG_CATEGORY_VIDEO, "Unable to initialize SDL_image");
+		return false;
+	}
 	return true;
 }
 
@@ -26,6 +34,11 @@ void Renderer::beginDraw()
 {
 	SDL_SetRenderDrawColor(SDLRenderer, 120, 120, 255, 255);
 	SDL_RenderClear(SDLRenderer);
+}
+
+void Renderer::draw()
+{
+	drawSprites();
 }
 
 void Renderer::endDraw()
@@ -38,6 +51,14 @@ void Renderer::drawRect(const Rectangle& rect) const
 	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
 	SDL_Rect SDLRect = rect.toSDLRect();
 	SDL_RenderFillRect(SDLRenderer, &SDLRect);
+}
+
+void Renderer::drawSprites()
+{
+	for (auto sprite : sprites)
+	{
+		sprite->draw(*this);
+	}
 }
 
 void Renderer::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
@@ -80,3 +101,22 @@ void Renderer::close()
 {
 	SDL_DestroyRenderer(SDLRenderer);
 }
+
+void Renderer::addSprite(SpriteComponent* sprite)
+{
+	// Insert the sprite at the right place in function of drawOrder
+	int spriteDrawOrder = sprite->getDrawOrder();
+	auto iter = begin(sprites);
+	for (; iter != end(sprites); ++iter)
+	{
+		if (spriteDrawOrder < (*iter)->getDrawOrder()) break;
+	}
+	sprites.insert(iter, sprite);
+}
+
+void Renderer::removeSprite(SpriteComponent* sprite)
+{
+	auto iter = std::find(begin(sprites), end(sprites), sprite);
+	sprites.erase(iter);
+}
+

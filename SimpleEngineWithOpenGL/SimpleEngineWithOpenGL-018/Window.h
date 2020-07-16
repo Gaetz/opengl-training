@@ -20,7 +20,6 @@ public:
 
 private:
 	SDL_Window* SDLWindow;
-	SDL_GLContext context;
 	int width;
 	int height;
 };

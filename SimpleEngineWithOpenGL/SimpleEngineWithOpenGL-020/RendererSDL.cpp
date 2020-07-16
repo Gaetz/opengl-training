@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "Maths.h"
 #include "Actor.h"
+#include "SpriteComponent.h"
 
 RendererSDL::RendererSDL() : SDLRenderer(nullptr)
 {
@@ -29,6 +30,11 @@ void RendererSDL::beginDraw()
 	SDL_RenderClear(SDLRenderer);
 }
 
+void RendererSDL::draw()
+{
+	drawSprites();
+}
+
 void RendererSDL::endDraw()
 {
 	SDL_RenderPresent(SDLRenderer);
@@ -39,6 +45,14 @@ void RendererSDL::drawRect(const Rectangle& rect) const
 	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
 	SDL_Rect SDLRect = rect.toSDLRect();
 	SDL_RenderFillRect(SDLRenderer, &SDLRect);
+}
+
+void RendererSDL::drawSprites()
+{
+	for (auto sprite : sprites)
+	{
+		sprite->draw(*this);
+	}
 }
 
 void RendererSDL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
@@ -80,4 +94,22 @@ void RendererSDL::drawSprite(const Actor& actor, const Texture& tex, Rectangle s
 void RendererSDL::close()
 {
 	SDL_DestroyRenderer(SDLRenderer);
+}
+
+void RendererSDL::addSprite(SpriteComponent* sprite)
+{
+	// Insert the sprite at the right place in function of drawOrder
+	int spriteDrawOrder = sprite->getDrawOrder();
+	auto iter = begin(sprites);
+	for (; iter != end(sprites); ++iter)
+	{
+		if (spriteDrawOrder < (*iter)->getDrawOrder()) break;
+	}
+	sprites.insert(iter, sprite);
+}
+
+void RendererSDL::removeSprite(SpriteComponent* sprite)
+{
+	auto iter = std::find(begin(sprites), end(sprites), sprite);
+	sprites.erase(iter);
 }
