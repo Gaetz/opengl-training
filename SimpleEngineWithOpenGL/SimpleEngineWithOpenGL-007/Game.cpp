@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "Timer.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 
 bool Game::initialize()
 {
@@ -13,9 +13,9 @@ bool Game::initialize()
 
 void Game::load()
 {
-	ResourceManager::loadTexture(renderer, "Res\\Ship01.png", "ship01");
+	Assets::loadTexture(renderer, "Res\\Ship01.png", "ship01");
 	auto actor = new Actor();
-	auto sprite = new SpriteComponent(*actor, ResourceManager::getTexture("ship01"));
+	auto sprite = new SpriteComponent(*actor, Assets::getTexture("ship01"));
 	actor->setPosition(Vector2{ 100, 100 });
 }
 
@@ -104,7 +104,7 @@ void Game::unload()
 	}
 
 	// Resources
-	ResourceManager::clear();
+	Assets::clear();
 }
 
 void Game::close()

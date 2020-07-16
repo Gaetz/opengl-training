@@ -3,7 +3,7 @@
 #include "SpriteComponent.h"
 #include "AnimSpriteComponent.h"
 #include "Timer.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "BackgroundSpriteComponent.h"
 
 bool Game::initialize()
@@ -16,27 +16,27 @@ bool Game::initialize()
 void Game::load()
 {
 	// Load textures
-	ResourceManager::loadTexture(renderer, "Res\\Ship01.png", "Ship01");
-	ResourceManager::loadTexture(renderer, "Res\\Ship02.png", "Ship02");
-	ResourceManager::loadTexture(renderer, "Res\\Ship03.png", "Ship03");
-	ResourceManager::loadTexture(renderer, "Res\\Ship04.png", "Ship04");
-	ResourceManager::loadTexture(renderer, "Res\\Farback01.png", "Farback01");
-	ResourceManager::loadTexture(renderer, "Res\\Farback02.png", "Farback02");
-	ResourceManager::loadTexture(renderer, "Res\\Stars.png", "Stars");
+	Assets::loadTexture(renderer, "Res\\Ship01.png", "Ship01");
+	Assets::loadTexture(renderer, "Res\\Ship02.png", "Ship02");
+	Assets::loadTexture(renderer, "Res\\Ship03.png", "Ship03");
+	Assets::loadTexture(renderer, "Res\\Ship04.png", "Ship04");
+	Assets::loadTexture(renderer, "Res\\Farback01.png", "Farback01");
+	Assets::loadTexture(renderer, "Res\\Farback02.png", "Farback02");
+	Assets::loadTexture(renderer, "Res\\Stars.png", "Stars");
 
 	// Single sprite
 	/*
 	Actor* actor = new Actor();
-	SpriteComponent* sprite = new SpriteComponent(*actor, ResourceManager::getTexture("Ship01"));
+	SpriteComponent* sprite = new SpriteComponent(*actor, Assets::getTexture("Ship01"));
 	actor->setPosition(Vector2{ 100, 100 });
 	*/
 	
 	// Animated sprite
 	vector<Texture*> animTextures {
-		&ResourceManager::getTexture("Ship01"),
-		&ResourceManager::getTexture("Ship02"),
-		&ResourceManager::getTexture("Ship03"),
-		&ResourceManager::getTexture("Ship04"),
+		&Assets::getTexture("Ship01"),
+		&Assets::getTexture("Ship02"),
+		&Assets::getTexture("Ship03"),
+		&Assets::getTexture("Ship04"),
 	};
 	Actor* ship = new Actor();
 	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(*ship, animTextures);
@@ -46,8 +46,8 @@ void Game::load()
 	// Background
 	// Create the "far back" background
 	vector<Texture*> bgTexsFar {
-		&ResourceManager::getTexture("Farback01"),
-		&ResourceManager::getTexture("Farback02")
+		&Assets::getTexture("Farback01"),
+		&Assets::getTexture("Farback02")
 	};
 	Actor* bgFar = new Actor();
 	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(*bgFar, bgTexsFar);
@@ -56,8 +56,8 @@ void Game::load()
 	// Create the closer background
 	Actor* bgClose = new Actor();
 	std::vector<Texture*> bgTexsClose {
-		&ResourceManager::getTexture("Stars"),
-		&ResourceManager::getTexture("Stars")
+		&Assets::getTexture("Stars"),
+		&Assets::getTexture("Stars")
 	};
 	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(*bgClose, bgTexsClose, 50);
 	bgSpritesClose->setScrollSpeed(-200.0f);	
@@ -148,7 +148,7 @@ void Game::unload()
 	}
 
 	// Resources
-	ResourceManager::clear();
+	Assets::clear();
 }
 
 void Game::close()

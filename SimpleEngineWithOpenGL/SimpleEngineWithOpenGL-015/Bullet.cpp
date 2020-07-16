@@ -4,11 +4,11 @@
 #include "CircleCollisionComponent.h"
 #include "Game.h"
 #include "Enemy.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 
 Bullet::Bullet()
 {
-	SpriteComponent* sc = new SpriteComponent(*this, ResourceManager::getTexture("Projectile"));
+	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Projectile"));
 	MoveComponent* mc = new MoveComponent(*this);
 	mc->setForwardSpeed(400.0f);
 	circle = new CircleCollisionComponent(*this);

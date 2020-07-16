@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "Timer.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "Component.h"
 
 bool Game::initialize()
@@ -12,7 +12,7 @@ bool Game::initialize()
 
 void Game::load()
 {
-	ResourceManager::loadTexture(renderer, "Res\\Ship01.png", "ship01");
+	Assets::loadTexture(renderer, "Res\\Ship01.png", "ship01");
 }
 
 void Game::processInput()
@@ -92,7 +92,7 @@ void Game::loop()
 
 void Game::unload()
 {
-	ResourceManager::clear();
+	Assets::clear();
 }
 
 void Game::close()

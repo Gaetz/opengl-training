@@ -4,7 +4,7 @@
 #include "Maths.h"
 #include "SpriteComponent.h"
 #include "MoveComponent.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 
 Astroid::Astroid() : Actor()
 {
@@ -12,7 +12,7 @@ Astroid::Astroid() : Actor()
 	setPosition(randPos);
 	setRotation(Random::getFloatRange(0.0f, Maths::twoPi));
 
-	SpriteComponent* sc = new SpriteComponent(*this, ResourceManager::getTexture("Astroid"));
+	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Astroid"));
 	MoveComponent* mc = new MoveComponent(*this);
 	mc->setForwardSpeed(150.0f);
 }

@@ -1,6 +1,6 @@
 #include "Enemy.h"
 #include "Game.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "NavComponent.h"
 #include "CircleCollisionComponent.h"
 #include "Maths.h"
@@ -9,7 +9,7 @@ Enemy::Enemy() : Actor(), circle(nullptr)
 {
 	getGame().getEnemies().emplace_back(this);
 
-	SpriteComponent* sc = new SpriteComponent(*this, ResourceManager::getTexture("Airplane"));
+	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Airplane"));
 	setPosition(getGame().getGrid().getStartTile().getPosition());
 	NavComponent* nc = new NavComponent(*this);
 	nc->setForwardSpeed(150.0f);

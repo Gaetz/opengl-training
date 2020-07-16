@@ -2,7 +2,7 @@
 #include <GL/glew.h>
 #include "Rectangle.h"
 #include "Vector2.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "Log.h"
 #include "SpriteComponent.h"
 #include "Actor.h"
@@ -58,7 +58,7 @@ bool RendererOGL::initialize(Window& windowP)
 	}
 
 	vertexArray = new VertexArray(vertices, 4, indices, 6);
-	shader = &ResourceManager::getShader("Sprite");
+	shader = &Assets::getShader("Sprite");
     return true;
 }
 

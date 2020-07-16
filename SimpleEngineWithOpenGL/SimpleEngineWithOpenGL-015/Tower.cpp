@@ -4,12 +4,12 @@
 #include "Game.h"
 #include "Enemy.h"
 #include "Bullet.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "Maths.h"
 
 Tower::Tower() : Actor()
 {
-	SpriteComponent* sc = new SpriteComponent(*this, ResourceManager::getTexture("Tower"), 200);
+	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Tower"), 200);
 	move = new MoveComponent(*this);
 	//move->setAngularSpeed(Maths::pi);
 	nextAttackTimer = ATTACK_TIME;

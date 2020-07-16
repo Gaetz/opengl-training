@@ -4,7 +4,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Actor.cpp">
@@ -64,11 +63,11 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>GameSpecific</Filter>
     </ClCompile>
+    <ClCompile Include="Assets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Log.h" />
-    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Actor.h">
@@ -131,6 +130,7 @@
     <ClInclude Include="Maths.h">
       <Filter>Maths</Filter>
     </ClInclude>
+    <ClInclude Include="Assets.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

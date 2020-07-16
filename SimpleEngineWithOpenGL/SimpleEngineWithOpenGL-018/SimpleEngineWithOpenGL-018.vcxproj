@@ -161,7 +161,7 @@
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RendererOGL.cpp" />
     <ClCompile Include="RendererSDL.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
@@ -189,7 +189,7 @@
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RendererOGL.h" />
     <ClInclude Include="RendererSDL.h" />
-    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Assets.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="SpriteComponent.h" />

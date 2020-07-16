@@ -3,7 +3,7 @@
 #include "SpriteComponent.h"
 #include "AnimSpriteComponent.h"
 #include "Timer.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "BackgroundSpriteComponent.h"
 
 bool Game::initialize()
@@ -16,19 +16,19 @@ bool Game::initialize()
 void Game::load()
 {
 	// Load textures
-	ResourceManager::loadTexture(renderer, "Res\\Airplane.png", "Airplane");
-	ResourceManager::loadTexture(renderer, "Res\\Base.png", "Base");
-	ResourceManager::loadTexture(renderer, "Res\\Missile.png", "Missile");
-	ResourceManager::loadTexture(renderer, "Res\\Projectile.png", "Projectile");
-	ResourceManager::loadTexture(renderer, "Res\\TileBrown.png", "TileBrown");
-	ResourceManager::loadTexture(renderer, "Res\\TileBrownSelected.png", "TileBrownSelected");
-	ResourceManager::loadTexture(renderer, "Res\\TileGreen.png", "TileGreen");
-	ResourceManager::loadTexture(renderer, "Res\\TileGreenSelected.png", "TileGreenSelected");
-	ResourceManager::loadTexture(renderer, "Res\\TileGrey.png", "TileGrey");
-	ResourceManager::loadTexture(renderer, "Res\\TileGreySelected.png", "TileGreySelected");
-	ResourceManager::loadTexture(renderer, "Res\\TileTan.png", "TileTan");
-	ResourceManager::loadTexture(renderer, "Res\\TileTanSelected.png", "TileTanSelected");
-	ResourceManager::loadTexture(renderer, "Res\\Tower.png", "Tower");
+	Assets::loadTexture(renderer, "Res\\Airplane.png", "Airplane");
+	Assets::loadTexture(renderer, "Res\\Base.png", "Base");
+	Assets::loadTexture(renderer, "Res\\Missile.png", "Missile");
+	Assets::loadTexture(renderer, "Res\\Projectile.png", "Projectile");
+	Assets::loadTexture(renderer, "Res\\TileBrown.png", "TileBrown");
+	Assets::loadTexture(renderer, "Res\\TileBrownSelected.png", "TileBrownSelected");
+	Assets::loadTexture(renderer, "Res\\TileGreen.png", "TileGreen");
+	Assets::loadTexture(renderer, "Res\\TileGreenSelected.png", "TileGreenSelected");
+	Assets::loadTexture(renderer, "Res\\TileGrey.png", "TileGrey");
+	Assets::loadTexture(renderer, "Res\\TileGreySelected.png", "TileGreySelected");
+	Assets::loadTexture(renderer, "Res\\TileTan.png", "TileTan");
+	Assets::loadTexture(renderer, "Res\\TileTanSelected.png", "TileTanSelected");
+	Assets::loadTexture(renderer, "Res\\Tower.png", "Tower");
 
 	grid = new Grid();
 }
@@ -133,7 +133,7 @@ void Game::unload()
 	}
 
 	// Resources
-	ResourceManager::clear();
+	Assets::clear();
 }
 
 void Game::close()

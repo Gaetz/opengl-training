@@ -154,7 +154,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Assets.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -171,7 +171,7 @@
     <ClInclude Include="Maths.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Renderer.h" />
-    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Assets.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />

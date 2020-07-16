@@ -39,7 +39,5 @@ Chapters
 
 NOTES
 
-Refactor renderer: utiliser draw et dessiner avec des fonctions privées
-passer les initialisation de window dans le renderer
 Refactor chargement : ajouter une fonction unload dans tous les assets et l'appeler depuis le resource manager
 Comprendre pourquoi le destructeur des textures est appelé

@@ -1,5 +1,5 @@
 #include "Tile.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 
 Tile::Tile() : 
 	Actor(), 
@@ -7,7 +7,7 @@ Tile::Tile() :
 	tileState(TileState::Default),
 	isSelected(false)
 {
-	sprite = new SpriteComponent(*this, ResourceManager::getTexture("BrownTile"));
+	sprite = new SpriteComponent(*this, Assets::getTexture("BrownTile"));
 }
 
 void Tile::setTileState(TileState tileStateP)
@@ -47,5 +47,5 @@ void Tile::updateTexture()
 			text = "TileBrown";
 		break;
 	}
-	sprite->setTexture(ResourceManager::getTexture(text));
+	sprite->setTexture(Assets::getTexture(text));
 }

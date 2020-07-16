@@ -1,6 +1,6 @@
 #include "RendererOGL.h"
 #include "Rectangle.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
@@ -65,12 +65,12 @@ bool RendererOGL::initialize(Window& windowP)
 		return false;
 	}
 
-	ResourceManager::getShader("BasicMesh").use();
-	ResourceManager::getShader("BasicMesh").setMatrix4("uViewProj", view * projection);
+	Assets::getShader("BasicMesh").use();
+	Assets::getShader("BasicMesh").setMatrix4("uViewProj", view * projection);
 
 	spriteVertexArray = new VertexArray(spriteVertices, 4, indices, 6);
-	ResourceManager::getShader("Sprite").use();
-	ResourceManager::getShader("Sprite").setMatrix4("uViewProj", spriteViewProj);
+	Assets::getShader("Sprite").use();
+	Assets::getShader("Sprite").setMatrix4("uViewProj", spriteViewProj);
     return true;
 }
 
@@ -103,12 +103,12 @@ void RendererOGL::drawMeshes()
 	// Enable depth buffering/disable alpha blend
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
-	ResourceManager::getShader("BasicMesh").use();
+	Assets::getShader("BasicMesh").use();
 	// Update view-projection matrix
-	ResourceManager::getShader("BasicMesh").setMatrix4("uViewProj", view * projection);
+	Assets::getShader("BasicMesh").setMatrix4("uViewProj", view * projection);
 	for (auto mc : meshes)
 	{
-		mc->draw(ResourceManager::getShader("BasicMesh"));
+		mc->draw(Assets::getShader("BasicMesh"));
 	}
 }
 

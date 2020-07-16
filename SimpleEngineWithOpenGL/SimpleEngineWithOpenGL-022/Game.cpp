@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "Actor.h"
 #include "Timer.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "MeshComponent.h"
 
 bool Game::initialize()
@@ -13,19 +13,19 @@ bool Game::initialize()
 
 void Game::load()
 {
-	ResourceManager::loadShader("Res\\Shaders\\Sprite.vert", "Res\\Shaders\\Sprite.frag", "", "", "", "Sprite");
-	ResourceManager::loadShader("Res\\Shaders\\BasicMesh.vert", "Res\\Shaders\\BasicMesh.frag", "", "", "", "BasicMesh");
+	Assets::loadShader("Res\\Shaders\\Sprite.vert", "Res\\Shaders\\Sprite.frag", "", "", "", "Sprite");
+	Assets::loadShader("Res\\Shaders\\BasicMesh.vert", "Res\\Shaders\\BasicMesh.frag", "", "", "", "BasicMesh");
 	
-	ResourceManager::loadTexture(renderer, "Res\\Textures\\Default.png", "Default");
-	ResourceManager::loadTexture(renderer, "Res\\Textures\\Cube.png", "Cube");
-	ResourceManager::loadTexture(renderer, "Res\\Textures\\HealthBar.png", "HealthBar");
-	ResourceManager::loadTexture(renderer, "Res\\Textures\\Plane.png", "Plane");
-	ResourceManager::loadTexture(renderer, "Res\\Textures\\Radar.png", "Radar");
-	ResourceManager::loadTexture(renderer, "Res\\Textures\\Sphere.png", "Sphere");
+	Assets::loadTexture(renderer, "Res\\Textures\\Default.png", "Default");
+	Assets::loadTexture(renderer, "Res\\Textures\\Cube.png", "Cube");
+	Assets::loadTexture(renderer, "Res\\Textures\\HealthBar.png", "HealthBar");
+	Assets::loadTexture(renderer, "Res\\Textures\\Plane.png", "Plane");
+	Assets::loadTexture(renderer, "Res\\Textures\\Radar.png", "Radar");
+	Assets::loadTexture(renderer, "Res\\Textures\\Sphere.png", "Sphere");
 	
-	ResourceManager::loadMesh("Res\\Meshes\\Cube.gpmesh", "Mesh_Cube");
-	ResourceManager::loadMesh("Res\\Meshes\\Plane.gpmesh", "Mesh_Plane");
-	ResourceManager::loadMesh("Res\\Meshes\\Sphere.gpmesh", "Mesh_Sphere");
+	Assets::loadMesh("Res\\Meshes\\Cube.gpmesh", "Mesh_Cube");
+	Assets::loadMesh("Res\\Meshes\\Plane.gpmesh", "Mesh_Plane");
+	Assets::loadMesh("Res\\Meshes\\Sphere.gpmesh", "Mesh_Sphere");
 	
 	camera = new Camera();
 
@@ -36,13 +36,13 @@ void Game::load()
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
 	a->setRotation(q);
 	MeshComponent* mc = new MeshComponent(*a);
-	mc->setMesh(&ResourceManager::getMesh("Mesh_Cube"));
+	mc->setMesh(&Assets::getMesh("Mesh_Cube"));
 	
 	Actor* b = new Actor();
 	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
 	b->setScale(3.0f);
 	MeshComponent* mcb = new MeshComponent(*b);
-	mcb->setMesh(&ResourceManager::getMesh("Mesh_Sphere"));
+	mcb->setMesh(&Assets::getMesh("Mesh_Sphere"));
 	
 }
 
@@ -139,7 +139,7 @@ void Game::unload()
 	}
 
 	// Resources
-	ResourceManager::clear();
+	Assets::clear();
 }
 
 void Game::close()

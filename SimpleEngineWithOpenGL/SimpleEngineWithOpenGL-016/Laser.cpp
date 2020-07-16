@@ -1,6 +1,6 @@
 #include "Laser.h"
 #include "SpriteComponent.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "MoveComponent.h"
 #include "Game.h"
 #include "Astroid.h"
@@ -10,7 +10,7 @@ Laser::Laser() :
 	deathTimer(1.0f), 
 	collision(nullptr)
 {
-	new SpriteComponent(*this, ResourceManager::getTexture("Laser"));
+	new SpriteComponent(*this, Assets::getTexture("Laser"));
 	MoveComponent* mc = new MoveComponent(*this);
 	mc->setForwardSpeed(800.0f);
 	collision = new CircleCollisionComponent(*this);

@@ -160,7 +160,7 @@
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RendererSDL.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -185,7 +185,7 @@
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RendererSDL.h" />
-    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Assets.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Texture.h" />

@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "Actor.h"
 #include "Timer.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 
 bool Game::initialize()
 {
@@ -13,7 +13,7 @@ bool Game::initialize()
 void Game::load()
 {
 	// Load textures
-	ResourceManager::loadShader("Res\\Shaders\\Sprite.vert", "Res\\Shaders\\Sprite.frag", "", "", "", "Sprite");
+	Assets::loadShader("Res\\Shaders\\Sprite.vert", "Res\\Shaders\\Sprite.frag", "", "", "", "Sprite");
 
 }
 
@@ -110,7 +110,7 @@ void Game::unload()
 	}
 
 	// Resources
-	ResourceManager::clear();
+	Assets::clear();
 }
 
 void Game::close()

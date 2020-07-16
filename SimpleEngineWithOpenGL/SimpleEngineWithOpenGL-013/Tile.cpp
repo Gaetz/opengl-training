@@ -1,5 +1,5 @@
 #include "Tile.h"
-#include "ResourceManager.h"
+#include "Assets.h"
 
 Tile::Tile() : 
 	Actor(), 
@@ -14,7 +14,7 @@ Tile::Tile() :
 	isInClosedSet(false),
 	parent(nullptr)
 {
-	sprite = new SpriteComponent(*this, ResourceManager::getTexture("BrownTile"));
+	sprite = new SpriteComponent(*this, Assets::getTexture("BrownTile"));
 }
 
 Tile::Tile(const Tile& tileP):
@@ -30,13 +30,13 @@ Tile::Tile(const Tile& tileP):
 	isInClosedSet(tileP.isInClosedSet),
 	parent(tileP.parent)
 {
-	sprite = new SpriteComponent(*this, ResourceManager::getTexture("BrownTile"));
+	sprite = new SpriteComponent(*this, Assets::getTexture("BrownTile"));
 }
 
 Tile Tile::operator=(const Tile& tileP)
 {
 	Tile t;
-	t.sprite = new SpriteComponent(*this, ResourceManager::getTexture("BrownTile"));
+	t.sprite = new SpriteComponent(*this, Assets::getTexture("BrownTile"));
 	t.tileState = tileP.tileState;
 	t.isSelected = tileP.isSelected;
 	t.f = tileP.f;
@@ -93,5 +93,5 @@ void Tile::updateTexture()
 			text = "TileBrown";
 		break;
 	}
-	sprite->setTexture(ResourceManager::getTexture(text));
+	sprite->setTexture(Assets::getTexture(text));
 }
