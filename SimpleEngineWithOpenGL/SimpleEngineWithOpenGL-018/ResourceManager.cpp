@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include "../SimpleEngineWithOpenGL-006/Log.h"
+#include "Log.h"
 
 std::map<std::string, Texture> ResourceManager::textures;
 std::map<std::string, Shader> ResourceManager::shaders;

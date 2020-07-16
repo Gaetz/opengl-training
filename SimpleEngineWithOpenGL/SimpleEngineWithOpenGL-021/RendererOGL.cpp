@@ -20,7 +20,7 @@ RendererOGL::~RendererOGL()
 bool RendererOGL::initialize(Window& windowP)
 {
 	window = &windowP;
-	vertexArray = new VertexArray(vertices, 4, indices, 6);
+	vertexArray = new VertexArray(spriteVertices, 4, indices, 6);
 	shader = &ResourceManager::getShader("Sprite");
     return true;
 }

@@ -33,3 +33,14 @@ Chapters
 020: Display sprites' textures. Update Texture.
 
 21: Update copy of project 020. Quaternions (Matrix4, Vector3 and Actor update). Delete RenderSDL. Sprites on OGL renderer.
+22: Load mesh dans display it with its shader. Update renderer. Include rapidjson.
+
+
+
+NOTES
+
+Refactor renderer: utiliser draw et dessiner avec des fonctions privées
+passer les initialisation de window dans le renderer
+Refactor chargement : ajouter une fonction unload dans tous les assets et l'appeler depuis le resource manager
+Comprendre pourquoi le destructeur des textures est appelé
+Mettre les sprites au bon format pour le shooter (ceux du projet 020)
