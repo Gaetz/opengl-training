@@ -209,8 +209,6 @@
     <None Include="Res\Meshes\Sphere.gpmesh" />
     <None Include="Res\Shaders\BasicMesh.frag" />
     <None Include="Res\Shaders\BasicMesh.vert" />
-    <None Include="Res\Shaders\Phong.frag" />
-    <None Include="Res\Shaders\Phong.vert" />
     <None Include="Res\Shaders\Sprite.frag" />
     <None Include="Res\Shaders\Sprite.vert" />
   </ItemGroup>

@@ -13,7 +13,6 @@ RendererOGL::RendererOGL():
 	window(nullptr),
 	vertexArray(nullptr),
 	context(nullptr),
-	shader(nullptr),
 	viewProj(Matrix4::createSimpleViewProj(WINDOW_WIDTH, WINDOW_HEIGHT))
 {
 }
@@ -63,7 +62,6 @@ bool RendererOGL::initialize(Window& windowP)
 	}
 	
 	vertexArray = new VertexArray(spriteVertices, 4, indices, 6);
-	shader = &Assets::getShader("Sprite");
     return true;
 }
 
@@ -76,8 +74,8 @@ void RendererOGL::beginDraw()
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	// Active shader and vertex array
-	shader->use();
-	shader->setMatrix4("uViewProj", viewProj);
+	Assets::getShader("Sprite").use();
+	Assets::getShader("Sprite").setMatrix4("uViewProj", viewProj);
 	vertexArray->setActive();
 }
 
@@ -90,8 +88,8 @@ void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle s
 {
 	Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
 	Matrix4 world = scaleMat * actor.getWorldTransform();
-	Matrix4 pixelTranslation = Matrix4::createTranslation(Vector3(-WINDOW_WIDTH / 2 - origin.x, -WINDOW_HEIGHT / 2 - origin.y, 0.0f)); // Screen pixel coordinates
-	shader->setMatrix4("uWorldTransform", world * pixelTranslation);
+	//Matrix4 pixelTranslation = Matrix4::createTranslation(Vector3(-WINDOW_WIDTH / 2 - origin.x, -WINDOW_HEIGHT / 2 - origin.y, 0.0f)); // Screen pixel coordinates
+	Assets::getShader("Sprite").setMatrix4("uWorldTransform", world /** pixelTranslation*/);
 	tex.setActive();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }

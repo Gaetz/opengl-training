@@ -1,11 +1,3 @@
-// ----------------------------------------------------------------
-// From Game Programming in C++ by Sanjay Madhav
-// Copyright (C) 2017 Sanjay Madhav. All rights reserved.
-// 
-// Released under the BSD License
-// See LICENSE in root directory for full details.
-// ----------------------------------------------------------------
-
 // Request GLSL 3.3
 #version 330
 
@@ -27,11 +19,11 @@ uniform sampler2D uTexture;
 struct DirectionalLight
 {
 	// Direction of light
-	vec3 mDirection;
+	vec3 direction;
 	// Diffuse color
-	vec3 mDiffuseColor;
+	vec3 diffuseColor;
 	// Specular color
-	vec3 mSpecColor;
+	vec3 specColor;
 };
 
 // Uniforms for lighting
@@ -50,7 +42,7 @@ void main()
 	// Surface normal
 	vec3 N = normalize(fragNormal);
 	// Vector from surface to light
-	vec3 L = normalize(-uDirLight.mDirection);
+	vec3 L = normalize(-uDirLight.direction);
 	// Vector from surface to camera
 	vec3 V = normalize(uCameraPos - fragWorldPos);
 	// Reflection of -L about N
@@ -61,8 +53,8 @@ void main()
 	float NdotL = dot(N, L);
 	if (NdotL > 0)
 	{
-		vec3 Diffuse = uDirLight.mDiffuseColor * NdotL;
-		vec3 Specular = uDirLight.mSpecColor * pow(max(0.0, dot(R, V)), uSpecPower);
+		vec3 Diffuse = uDirLight.diffuseColor * NdotL;
+		vec3 Specular = uDirLight.specColor * pow(max(0.0, dot(R, V)), uSpecPower);
 		Phong += Diffuse + Specular;
 	}
 

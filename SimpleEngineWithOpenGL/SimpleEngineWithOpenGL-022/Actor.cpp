@@ -61,7 +61,7 @@ void Actor::computeWorldTransform()
 		mustRecomputeWorldTransform = false;
 		worldTransform = Matrix4::createScale(scale);
 		worldTransform *= Matrix4::createFromQuaternion(rotation);
-		worldTransform *= Matrix4::createTranslation(Vector3(position.x, position.y, 0.0f));
+		worldTransform *= Matrix4::createTranslation(position);
 
 		for (auto component : components)
 		{

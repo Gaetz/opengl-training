@@ -12,9 +12,12 @@ bool Game::initialize()
 
 void Game::load()
 {
-	// Load textures
+	Assets::loadTexture(renderer, "Res\\Textures\\HealthBar.png", "HealthBar");
 	Assets::loadShader("Res\\Shaders\\Sprite.vert", "Res\\Shaders\\Sprite.frag", "", "", "", "Sprite");
 
+	Actor* ui = new Actor();
+	ui->setPosition(Vector3(-350.0f, -350.0f, 0.0f));
+	SpriteComponent* sc = new SpriteComponent(*ui, Assets::getTexture("HealthBar"));
 }
 
 void Game::processInput()

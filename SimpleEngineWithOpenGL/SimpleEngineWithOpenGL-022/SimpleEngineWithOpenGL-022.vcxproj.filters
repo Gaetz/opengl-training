@@ -192,11 +192,5 @@
     <None Include="Res\Shaders\BasicMesh.vert">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="Res\Shaders\Phong.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="Res\Shaders\Phong.vert">
-      <Filter>Shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

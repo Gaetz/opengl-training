@@ -41,3 +41,4 @@ NOTES
 
 Refactor chargement : ajouter une fonction unload dans tous les assets et l'appeler depuis le resource manager
 Comprendre pourquoi le destructeur des textures est appelé
+load error pour les assets

@@ -65,12 +65,7 @@ bool RendererOGL::initialize(Window& windowP)
 		return false;
 	}
 
-	Assets::getShader("BasicMesh").use();
-	Assets::getShader("BasicMesh").setMatrix4("uViewProj", view * projection);
-
 	spriteVertexArray = new VertexArray(spriteVertices, 4, indices, 6);
-	Assets::getShader("Sprite").use();
-	Assets::getShader("Sprite").setMatrix4("uViewProj", spriteViewProj);
     return true;
 }
 

@@ -18,6 +18,12 @@ Texture Assets::loadTexture(IRenderer& renderer, const string& filename, const s
 
 Texture& Assets::getTexture(const string& name) 
 {
+    if (textures.find(name) == end(textures))
+    {
+        std::ostringstream loadError;
+        loadError << "Texture " << name << " has not been loaded.";
+        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+    }
     return textures[name];
 }
 
@@ -29,6 +35,12 @@ Shader Assets::loadShader(const std::string& vShaderFile, const std::string& fSh
 
 Shader& Assets::getShader(const std::string& name)
 {
+    if (shaders.find(name) == end(shaders))
+    {
+        std::ostringstream loadError;
+        loadError << "Shader " << name << " has not been loaded.";
+        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+    }
     return shaders[name];
 }
 
@@ -40,6 +52,12 @@ Mesh Assets::loadMesh(const string& filename, const string& name)
 
 Mesh& Assets::getMesh(const std::string& name)
 {
+	if (meshes.find(name) == end(meshes))
+    {
+        std::ostringstream loadError;
+        loadError << "Mesh " << name << " has not been loaded.";
+        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+    }
     return meshes[name];
 }
 
