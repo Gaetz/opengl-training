@@ -34,7 +34,7 @@ Chapters
 
 21: Update copy of project 020. Quaternions (Matrix4, Vector3 and Actor update). Delete RenderSDL. Sprites on OGL renderer.
 22: Load mesh dans display it with its shader. Update renderer. Include rapidjson.
-
+23: Add light (Phong), display meshes and sprites. Update Assets management.
 
 
 NOTES
