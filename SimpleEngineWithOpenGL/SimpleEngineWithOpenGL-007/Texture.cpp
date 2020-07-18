@@ -8,7 +8,11 @@ Texture::Texture(): filename(""), width(0), height(0), SDLTexture(nullptr)
 
 Texture::~Texture()
 {
-	if (!SDLTexture)
+}
+
+void Texture::unload()
+{
+	if (SDLTexture)
 	{
 		SDL_DestroyTexture(SDLTexture);
 	}
@@ -36,6 +40,7 @@ bool Texture::load(Renderer& renderer, const string& filenameP)
 		return false;
 	}
 	Log::info("Loaded texture " + filename);
+
 	return true;
 }
 

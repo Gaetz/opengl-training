@@ -9,6 +9,7 @@ public:
 	Texture();
 	~Texture();
 
+	void unload();
 	bool load(Renderer& rendererP, const string& filenameP);
 	inline SDL_Texture* toSDLTexture() const { return SDLTexture; }
 
@@ -17,7 +18,7 @@ public:
 
 private:
 	string filename;
-	SDL_Texture* SDLTexture = nullptr;
+	SDL_Texture* SDLTexture;
 	int width;
 	int height;
 };

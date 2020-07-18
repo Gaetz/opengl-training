@@ -9,6 +9,7 @@ public:
 	Texture();
 	~Texture();
 
+	void unload();
 	bool loadSDL(RendererSDL& rendererP, const string& filenameP);
 	inline SDL_Texture* toSDLTexture() const { return SDLTexture; }
 	void updateInfo(int& widthOut, int& heightOut);

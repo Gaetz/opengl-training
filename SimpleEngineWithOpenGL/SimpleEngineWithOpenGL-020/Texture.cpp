@@ -9,12 +9,18 @@ Texture::Texture(): textureID(0), filename(""), width(0), height(0), SDLTexture(
 
 Texture::~Texture()
 {
-	// TODO solve
-	if (!SDLTexture)
+}
+
+void Texture::unload()
+{
+	if (SDLTexture)
 	{
 		SDL_DestroyTexture(SDLTexture);
 	}
-	//glDeleteTextures(1, &textureID);
+	else
+	{
+		glDeleteTextures(1, &textureID);
+	}
 }
 
 bool Texture::loadSDL(RendererSDL& renderer, const string& filenameP)
@@ -54,8 +60,15 @@ bool Texture::loadOGL(RendererOGL& renderer, const string& filenameP)
 	}
 	width = surf->w;
 	height = surf->h;
-	int format = GL_RGBA;
-
+	int format = 0;
+	if (surf->format->format == SDL_PIXELFORMAT_RGB24)
+	{
+		format = GL_RGB;
+	}
+	else if (surf->format->format == SDL_PIXELFORMAT_RGBA32)
+	{
+		format = GL_RGBA;
+	}
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, surf->pixels);

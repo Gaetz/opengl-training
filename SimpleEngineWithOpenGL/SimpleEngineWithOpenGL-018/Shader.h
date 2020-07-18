@@ -21,6 +21,9 @@ public:
 	// Constructor
 	Shader(): id(0), vs(0), fs(0), gs(0), tcs(0), tes(0) { }
 
+	// Unload the shader
+	void unload();
+
 	// Sets the current shader as active
 	Shader& use();
 

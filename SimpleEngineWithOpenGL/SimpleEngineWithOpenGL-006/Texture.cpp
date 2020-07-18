@@ -2,11 +2,15 @@
 #include "Log.h"
 #include <SDL_image.h>
 
-Texture::Texture(): filename(""), width(0), height(0)
+Texture::Texture(): filename(""), width(0), height(0), SDLTexture(nullptr)
 {
 }
 
 Texture::~Texture()
+{
+}
+
+void Texture::unload()
 {
 	if (SDLTexture)
 	{

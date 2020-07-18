@@ -5,6 +5,11 @@
 #include <sstream>
 #include <string>
 
+void Shader::unload()
+{
+    glDeleteProgram(id);
+}
+
 Shader& Shader::use()
 {
     glUseProgram(id);

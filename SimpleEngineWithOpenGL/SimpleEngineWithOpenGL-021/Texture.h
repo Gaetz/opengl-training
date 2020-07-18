@@ -9,6 +9,7 @@ public:
 	Texture();
 	~Texture();
 
+	void unload();
 	//bool loadSDL(RendererSDL& rendererP, const string& filenameP);
 	bool loadOGL(RendererOGL& rendererP, const string& filenameP);
 

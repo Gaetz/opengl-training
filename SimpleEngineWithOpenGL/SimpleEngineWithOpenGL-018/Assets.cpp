@@ -44,10 +44,13 @@ Shader& Assets::getShader(const std::string& name)
 void Assets::clear() 
 {
     // (Properly) delete all textures
+    for (auto iter : textures)
+        iter.second.unload();
     textures.clear();
     // (Properly) delete all shaders
     for (auto iter : shaders)
-        glDeleteProgram(iter.second.id);
+        iter.second.unload();
+    shaders.clear();
 }
 
 Texture Assets::loadTextureFromFile(IRenderer& renderer, const string& filename)
