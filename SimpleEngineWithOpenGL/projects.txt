@@ -4,7 +4,9 @@ Summary
 005-011: Scrolling background and component-based shooter
 012-015: A* tower defense
 016-020: OpenGL Renderer for shooter
-021-   : 3D basics
+021-023: 3D basics
+024-025: 3D sound manager
+
 
 Chapters
 
@@ -36,7 +38,9 @@ Chapters
 22: Load mesh dans display it with its shader. Update renderer. Include rapidjson.
 23: Add light (Phong), display meshes and sprites. Update Assets management.
 
+24: AudioSystem, SoundEvent (utiliser les linker/input vers les fichier 64), AudioComponent, Game update
+25: Add audio in the game and modify the camera to listen sound
 
 NOTES
 
-Comprendre pourquoi le destructeur des textures est appelé
+Remplacer les SDL log category par un wrapper
