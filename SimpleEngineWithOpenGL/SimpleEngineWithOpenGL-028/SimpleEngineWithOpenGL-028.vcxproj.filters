@@ -97,6 +97,9 @@
     <ClCompile Include="Ship.cpp">
       <Filter>GameSpecific</Filter>
     </ClCompile>
+    <ClCompile Include="ControllerState.cpp">
+      <Filter>Systems\Input</Filter>
+    </ClCompile>
     <ClCompile Include="InputSystem.cpp">
       <Filter>Systems\Input</Filter>
     </ClCompile>
@@ -211,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="Ship.h">
       <Filter>GameSpecific</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerState.h">
+      <Filter>Systems\Input</Filter>
     </ClInclude>
     <ClInclude Include="InputSystem.h">
       <Filter>Systems\Input</Filter>
