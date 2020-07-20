@@ -42,7 +42,7 @@ Chapters
 025: Add audio in the game and modify the camera to listen sound
 
 026: 2D astroid game with new keyboard input management.
-027: Mouse input management
+027: Mouse input management, click to teleport ship
 028: Controller input management
 
 
