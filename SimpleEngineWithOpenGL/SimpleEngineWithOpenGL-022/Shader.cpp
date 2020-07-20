@@ -107,14 +107,14 @@ void Shader::createShaderProgram(bool tessShadersExist, bool geometryShaderExist
     {
         std::ostringstream s;
         s << "Could not link shader programme GL index " << id;
-        Log::error(SDL_LOG_CATEGORY_RENDER, s.str());
+        Log::error(LogCategory::Render, s.str());
         printProgrammeInfoLog(id);
     }
     if (!isValid(id))
     {
         std::ostringstream s;
         s << "Could not validate shader " << id;
-        Log::error(SDL_LOG_CATEGORY_RENDER, s.str());
+        Log::error(LogCategory::Render, s.str());
     }
 
     // Delete shaders for they are no longer used
@@ -201,7 +201,7 @@ void Shader::checkShaderErrors(GLuint shader, std::string shaderType)
     {
         std::ostringstream s;
         s << "GL " << shaderType << " shader index " << shader << " did not compile.";
-        Log::error(SDL_LOG_CATEGORY_RENDER, s.str());
+        Log::error(LogCategory::Render, s.str());
         printShaderInfoLog(shader);
     }
 }

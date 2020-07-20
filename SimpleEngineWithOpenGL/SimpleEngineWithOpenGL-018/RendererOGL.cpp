@@ -38,7 +38,7 @@ bool RendererOGL::initialize(Window& windowP)
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
 	{
-		Log::error(SDL_LOG_CATEGORY_VIDEO, "Failed to initialize GLEW.");
+		Log::error(LogCategory::Video, "Failed to initialize GLEW.");
 		return false;
 	}
 
@@ -47,7 +47,7 @@ bool RendererOGL::initialize(Window& windowP)
 
 	if (IMG_Init(IMG_INIT_PNG) == 0)
 	{
-		Log::error(SDL_LOG_CATEGORY_VIDEO, "Unable to initialize SDL_image");
+		Log::error(LogCategory::Video, "Unable to initialize SDL_image");
 		return false;
 	}
 

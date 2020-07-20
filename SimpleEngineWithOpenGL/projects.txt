@@ -6,7 +6,7 @@ Summary
 016-020: OpenGL Renderer for shooter
 021-023: 3D basics
 024-025: 3D sound manager
-
+026-028: Input system
 
 Chapters
 
@@ -34,13 +34,17 @@ Chapters
 019: Display quads. Matrix4 and Vector3 + Transform in Actor (update Game, Component, Shader, Texture).
 020: Display sprites' textures. Update Texture.
 
-21: Update copy of project 020. Quaternions (Matrix4, Vector3 and Actor update). Delete RenderSDL. Sprites on OGL renderer.
-22: Load mesh dans display it with its shader. Update renderer. Include rapidjson.
-23: Add light (Phong), display meshes and sprites. Update Assets management.
+021: Update copy of project 020. Quaternions (Matrix4, Vector3 and Actor update). Delete RenderSDL. Sprites on OGL renderer.
+022: Load mesh dans display it with its shader. Update renderer. Include rapidjson.
+023: Add light (Phong), display meshes and sprites. Update Assets management.
 
-24: AudioSystem, SoundEvent (utiliser les linker/input vers les fichier 64), AudioComponent, Game update
-25: Add audio in the game and modify the camera to listen sound
+024: AudioSystem, SoundEvent (utiliser les linker/input vers les fichier 64), AudioComponent, Game update
+025: Add audio in the game and modify the camera to listen sound
+
+026: 2D astroid game with new keyboard input management.
+027: Mouse input management
+028: Controller input management
+
 
 NOTES
 
-Remplacer les SDL log category par un wrapper

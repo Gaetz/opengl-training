@@ -40,7 +40,7 @@ bool AudioSystem::initialize()
 	{
 		std::ostringstream error;
 		error << "Failed to create FMOD system: " << FMOD_ErrorString(result);
-		Log::error(SDL_LOG_CATEGORY_AUDIO, error.str());
+		Log::error(LogCategory::Audio, error.str());
 		return false;
 	}
 
@@ -55,7 +55,7 @@ bool AudioSystem::initialize()
 	{
 		std::ostringstream error;
 		error << "Failed to initialize FMOD system: " << FMOD_ErrorString(result);
-		Log::error(SDL_LOG_CATEGORY_AUDIO, error.str());
+		Log::error(LogCategory::Audio, error.str());
 		return false;
 	}
 

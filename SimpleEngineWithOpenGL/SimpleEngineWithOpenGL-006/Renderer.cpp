@@ -11,12 +11,12 @@ bool Renderer::initialize(Window& window)
 	SDLRenderer = SDL_CreateRenderer(window.getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!SDLRenderer)
 	{
-		Log::error(SDL_LOG_CATEGORY_VIDEO, "Failed to create renderer");
+		Log::error(LogCategory::Video, "Failed to create renderer");
 		return false;
 	}
 	if (IMG_Init(IMG_INIT_PNG) == 0)
 	{
-		Log::error(SDL_LOG_CATEGORY_VIDEO, "Unable to initialize SDL_image");
+		Log::error(LogCategory::Video, "Unable to initialize SDL_image");
 		return false;
 	}
 	return true;

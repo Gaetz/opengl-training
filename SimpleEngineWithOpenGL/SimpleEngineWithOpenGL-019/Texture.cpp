@@ -25,7 +25,7 @@ bool Texture::loadSDL(RendererSDL& renderer, const string& filenameP)
 	SDL_Surface* surf = IMG_Load(filename.c_str());
 	if (!surf)
 	{
-		Log::error(SDL_LOG_CATEGORY_APPLICATION, "Failed to load texture file " + filename);
+		Log::error(LogCategory::Application, "Failed to load texture file " + filename);
 		return false;
 	}
 	width = surf->w;
@@ -36,7 +36,7 @@ bool Texture::loadSDL(RendererSDL& renderer, const string& filenameP)
 	SDL_FreeSurface(surf);
 	if (!SDLTexture)
 	{
-		Log::error(SDL_LOG_CATEGORY_RENDER, "Failed to convert surface to texture for "+ filename);
+		Log::error(LogCategory::Render, "Failed to convert surface to texture for "+ filename);
 		return false;
 	}
 	Log::info("Loaded texture " + filename);
@@ -50,7 +50,7 @@ bool Texture::loadOGL(RendererOGL& renderer, const string& filenameP)
 	SDL_Surface* surf = IMG_Load(filename.c_str());
 	if (!surf)
 	{
-		Log::error(SDL_LOG_CATEGORY_APPLICATION, "Failed to load texture file " + filename);
+		Log::error(LogCategory::Application, "Failed to load texture file " + filename);
 		return false;
 	}
 	width = surf->w;
@@ -62,7 +62,7 @@ bool Texture::loadOGL(RendererOGL& renderer, const string& filenameP)
 	/*
 	if (!SDLTexture)
 	{
-		Log::error(SDL_LOG_CATEGORY_RENDER, "Failed to convert surface to texture for " + filename);
+		Log::error(LogCategory::Render, "Failed to convert surface to texture for " + filename);
 		return false;
 	}
 	*/

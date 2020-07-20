@@ -16,7 +16,7 @@ Texture& Assets::getTexture(const string& name)
     {
         std::ostringstream loadError;
         loadError << "Texture " << name << " has not been loaded.";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+        Log::error(LogCategory::Application, loadError.str());
     }
     return textures[name];
 }

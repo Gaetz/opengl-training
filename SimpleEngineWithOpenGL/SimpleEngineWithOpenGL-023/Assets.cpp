@@ -22,7 +22,7 @@ Texture& Assets::getTexture(const string& name)
     {
         std::ostringstream loadError;
         loadError << "Texture " << name << " has not been loaded.";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+        Log::error(LogCategory::Application, loadError.str());
     }
     return textures[name];
 }
@@ -39,7 +39,7 @@ Shader& Assets::getShader(const std::string& name)
     {
         std::ostringstream loadError;
         loadError << "Shader " << name << " has not been loaded.";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+        Log::error(LogCategory::Application, loadError.str());
     }
     return shaders[name];
 }
@@ -56,7 +56,7 @@ Mesh& Assets::getMesh(const std::string& name)
     {
         std::ostringstream loadError;
         loadError << "Mesh " << name << " has not been loaded.";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+        Log::error(LogCategory::Application, loadError.str());
     }
     return meshes[name];
 }
@@ -149,7 +149,7 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
             << geomShaderFile << "\n"
             << "\n -- --------------------------------------------------- -- "
             << std::endl;
-        Log::error(SDL_LOG_CATEGORY_RENDER, loadError.str());
+        Log::error(LogCategory::Render, loadError.str());
     }
     const GLchar* vShaderCode = vertexCode.c_str();
     const GLchar* fShaderCode = fragmentCode.c_str();
@@ -172,7 +172,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	std::ifstream file(filename);
 	if (!file.is_open())
 	{
-		Log::error(SDL_LOG_CATEGORY_APPLICATION, "File not found: Mesh " + filename);
+		Log::error(LogCategory::Application, "File not found: Mesh " + filename);
 	}
 
 	std::stringstream fileStream;
@@ -186,7 +186,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	{
         std::ostringstream s;
         s << "Mesh " << filename << " is not valid json";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, s.str());
+        Log::error(LogCategory::Application, s.str());
 	}
 
 	mesh.setShaderName(doc["shader"].GetString());
@@ -201,7 +201,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	{
         std::ostringstream s;
         s << "Mesh " << filename << " has no textures, there should be at least one";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, s.str());
+        Log::error(LogCategory::Application, s.str());
 	}
 
 	mesh.setSpecularPower(static_cast<float>(doc["specularPower"].GetDouble()));
@@ -219,7 +219,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	{
         std::ostringstream s;
         s << "Mesh " << filename << " has no vertices";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, s.str());
+        Log::error(LogCategory::Application, s.str());
 	}
 
 	std::vector<float> vertices;
@@ -233,7 +233,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 		{
             std::ostringstream s;
             s << "Unexpected vertex format for " << filename;
-            Log::error(SDL_LOG_CATEGORY_APPLICATION, s.str());
+            Log::error(LogCategory::Application, s.str());
 		}
 
 		Vector3 pos(static_cast<float>(vert[0].GetDouble()), static_cast<float>(vert[1].GetDouble()), static_cast<float>(vert[2].GetDouble()));
@@ -255,7 +255,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	{
         std::ostringstream s;
         s << "Mesh " << filename << " has no indices";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, s.str());
+        Log::error(LogCategory::Application, s.str());
 	}
 
 	std::vector<unsigned int> indices;
@@ -267,7 +267,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 		{
             std::ostringstream s;
             s << "Invalid indices for " << filename;
-            Log::error(SDL_LOG_CATEGORY_APPLICATION, s.str());
+            Log::error(LogCategory::Application, s.str());
 		}
 
 		indices.emplace_back(ind[0].GetUint());

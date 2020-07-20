@@ -19,7 +19,7 @@ Texture& Assets::getTexture(const string& name)
     {
         std::ostringstream loadError;
         loadError << "Texture " << name << " has not been loaded.";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+        Log::error(LogCategory::Application, loadError.str());
     }
     return textures[name];
 }
@@ -36,7 +36,7 @@ Shader& Assets::getShader(const std::string& name)
     {
         std::ostringstream loadError;
         loadError << "Shader " << name << " has not been loaded.";
-        Log::error(SDL_LOG_CATEGORY_APPLICATION, loadError.str());
+        Log::error(LogCategory::Application, loadError.str());
     }
     return shaders[name];
 }
@@ -121,7 +121,7 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
             << geomShaderFile << "\n"
             << "\n -- --------------------------------------------------- -- "
             << std::endl;
-        Log::error(SDL_LOG_CATEGORY_RENDER, loadError.str());
+        Log::error(LogCategory::Render, loadError.str());
     }
     const GLchar* vShaderCode = vertexCode.c_str();
     const GLchar* fShaderCode = fragmentCode.c_str();
