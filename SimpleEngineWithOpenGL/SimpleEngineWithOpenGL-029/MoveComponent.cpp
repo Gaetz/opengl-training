@@ -34,7 +34,7 @@ void MoveComponent::update(float dt)
 		newRotation = Quaternion::concatenate(newRotation, increment);
 		owner.setRotation(newRotation);
 	}
-	if (!Maths::nearZero(forwardSpeed) || Maths::nearZero(strafeSpeed))
+	if (!Maths::nearZero(forwardSpeed) || !Maths::nearZero(strafeSpeed))
 	{
 		Vector3 newPosition = owner.getPosition();
 		newPosition += owner.getForward() * forwardSpeed * dt;

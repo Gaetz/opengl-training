@@ -25,7 +25,7 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr) {}
+	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr) {}
 
 public:
 	bool initialize();

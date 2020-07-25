@@ -47,6 +47,8 @@ Chapters
 028: Controller input management, control the ship with twin sticks, shoot with right trigger
 
 029: First person camera + model and crosshair
+030: Follow camera with spring
+
 
 NOTES
 
