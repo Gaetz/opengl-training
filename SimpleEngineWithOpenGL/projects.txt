@@ -7,7 +7,7 @@ Summary
 021-023: 3D basics
 024-025: 3D sound manager
 026-028: Input system
-029-   : Camera
+029-032: Cameras
 
 Chapters
 
@@ -49,6 +49,7 @@ Chapters
 029: First person camera + model and crosshair
 030: Follow camera with spring
 031: Orbit camera on right mouse button
+032: Camera follows a spline
 
 NOTES
 

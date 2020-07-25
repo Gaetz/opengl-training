@@ -112,8 +112,12 @@
     <ClCompile Include="FollowCameraComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="OrbitActor.cpp" />
-    <ClCompile Include="OrbitCameraComponent.cpp" />
+    <ClCompile Include="OrbitCameraComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="OrbitActor.cpp">
+      <Filter>Prefabs\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -235,8 +239,12 @@
     <ClInclude Include="FollowCameraComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="OrbitActor.h" />
-    <ClInclude Include="OrbitCameraComponent.h" />
+    <ClInclude Include="OrbitCameraComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbitActor.h">
+      <Filter>Prefabs\Views</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
