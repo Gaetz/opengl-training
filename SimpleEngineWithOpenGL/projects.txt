@@ -8,6 +8,7 @@ Summary
 024-025: 3D sound manager
 026-028: Input system
 029-032: Cameras
+033-036: Basic physics
 
 Chapters
 
@@ -50,6 +51,11 @@ Chapters
 030: Follow camera with spring
 031: Orbit camera on right mouse button
 032: Camera follows a spline
+
+033: Collision algorithms
+034: BoxCollider and PhysicsSystem
+035: Player shooting bouncing balls
+036: Targets
 
 NOTES
 
