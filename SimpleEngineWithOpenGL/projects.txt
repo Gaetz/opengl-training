@@ -54,8 +54,8 @@ Chapters
 
 033: Collision algorithms
 034: BoxCollider and PhysicsSystem
-035: Player shooting bouncing balls
-036: Targets
+035: Player shooting bouncing balls + targets
+036: Wall collisions
 
 NOTES
 
