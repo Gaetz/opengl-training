@@ -15,7 +15,7 @@ Texture& Assets::getTexture(const string& name)
     if (textures.find(name) == end(textures))
     {
         std::ostringstream loadError;
-        loadError << "Texture " << name << " has not been loaded.";
+        loadError << "Texture " << name << " does not exist in assets manager.";
         Log::error(LogCategory::Application, loadError.str());
     }
     return textures[name];

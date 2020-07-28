@@ -8,17 +8,19 @@ using std::vector;
 
 class PhysicsSystem
 {
-struct CollisionInfo
-{
-	// Point of collision
-	Vector3 point;
-	// Normal at collision
-	Vector3 normal;
-	// Component collided with
-	class BoxComponent* box;
-	// Owning actor of component
-	class Actor* actor;
-};
+public:
+	struct CollisionInfo
+	{
+		// Point of collision
+		Vector3 point;
+		// Normal at collision
+		Vector3 normal;
+		// Component collided with
+		class BoxComponent* box;
+		// Owning actor of component
+		class Actor* actor;
+	};
+
 
 public:
 	PhysicsSystem();

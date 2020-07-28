@@ -378,5 +378,8 @@
     <None Include="Res\Meshes\Rifle.gpmesh">
       <Filter>Meshes</Filter>
     </None>
+    <None Include="Res\Meshes\Target.gpmesh">
+      <Filter>Meshes</Filter>
+    </None>
   </ItemGroup>
 </Project>
