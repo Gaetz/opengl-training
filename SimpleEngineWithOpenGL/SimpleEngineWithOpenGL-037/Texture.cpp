@@ -95,3 +95,18 @@ void Texture::setActive() const
 {
 	glBindTexture(GL_TEXTURE_2D, textureID);
 }
+
+void Texture::createFromSurface(SDL_Surface* surface)
+{
+	width = surface->w;
+	height = surface->h;
+
+	// Generate a GL texture
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_BGRA, GL_UNSIGNED_BYTE, surface->pixels);
+
+	// Use linear filtering
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+}

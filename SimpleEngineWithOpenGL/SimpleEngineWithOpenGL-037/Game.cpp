@@ -239,6 +239,7 @@ void Game::unload()
 
 void Game::close()
 {
+	Font::close();
 	inputSystem.close();
 	renderer.close();
 	audioSystem.close();

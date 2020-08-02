@@ -59,6 +59,7 @@ Chapters
 036: Wall collisions
 
 037: Font loading
+038: UI screen and pause menu
 
 NOTES
 
