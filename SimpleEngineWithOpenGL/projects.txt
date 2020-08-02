@@ -9,6 +9,7 @@ Summary
 026-028: Input system
 029-032: Cameras
 033-036: Basic physics
+037-   : Basic UI
 
 Chapters
 
@@ -56,6 +57,8 @@ Chapters
 034: BoxCollider and PhysicsSystem
 035: Player shooting bouncing balls + targets
 036: Wall collisions
+
+037: Font loading
 
 NOTES
 
