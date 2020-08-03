@@ -83,6 +83,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleEngineWithOpenGL-039"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleEngineWithOpenGL-040", "SimpleEngineWithOpenGL-040\SimpleEngineWithOpenGL-040.vcxproj", "{8126B3E5-4E98-4F68-BF6E-6C8A9AE61540}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleEngineWithOpenGL-041", "SimpleEngineWithOpenGL-041\SimpleEngineWithOpenGL-041.vcxproj", "{6EA7FD73-449C-45C4-AC21-01032B9E28C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -411,6 +413,14 @@ Global
 		{8126B3E5-4E98-4F68-BF6E-6C8A9AE61540}.Release|x64.Build.0 = Release|x64
 		{8126B3E5-4E98-4F68-BF6E-6C8A9AE61540}.Release|x86.ActiveCfg = Release|Win32
 		{8126B3E5-4E98-4F68-BF6E-6C8A9AE61540}.Release|x86.Build.0 = Release|Win32
+		{6EA7FD73-449C-45C4-AC21-01032B9E28C0}.Debug|x64.ActiveCfg = Debug|x64
+		{6EA7FD73-449C-45C4-AC21-01032B9E28C0}.Debug|x64.Build.0 = Debug|x64
+		{6EA7FD73-449C-45C4-AC21-01032B9E28C0}.Debug|x86.ActiveCfg = Debug|Win32
+		{6EA7FD73-449C-45C4-AC21-01032B9E28C0}.Debug|x86.Build.0 = Debug|Win32
+		{6EA7FD73-449C-45C4-AC21-01032B9E28C0}.Release|x64.ActiveCfg = Release|x64
+		{6EA7FD73-449C-45C4-AC21-01032B9E28C0}.Release|x64.Build.0 = Release|x64
+		{6EA7FD73-449C-45C4-AC21-01032B9E28C0}.Release|x86.ActiveCfg = Release|Win32
+		{6EA7FD73-449C-45C4-AC21-01032B9E28C0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
