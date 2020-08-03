@@ -63,7 +63,7 @@ Chapters
 039: Buttons
 040: Dialog boxes
 041: Aiming reticule and radar
-042: Internationalization
+042: Localization
 
 NOTES
 
