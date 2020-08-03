@@ -60,6 +60,10 @@ Chapters
 
 037: Font loading
 038: UI screen and pause menu
+039: Buttons
+040: Dialog boxes
+041: Aiming reticule and radar
+042: Internationalization
 
 NOTES
 
