@@ -409,7 +409,7 @@
     <Filter Include="UI">
       <UniqueIdentifier>{fa39d1ff-5987-449f-baca-4324ad491f7e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\Localization">
+    <Filter Include="Localization">
       <UniqueIdentifier>{dfac073a-bddc-4ee1-bf3f-cd834948e8c5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -451,10 +451,10 @@
       <Filter>Meshes</Filter>
     </None>
     <None Include="Res\Localization\English.gptext">
-      <Filter>UI\Localization</Filter>
+      <Filter>Localization</Filter>
     </None>
     <None Include="Res\Localization\Russian.gptext">
-      <Filter>UI\Localization</Filter>
+      <Filter>Localization</Filter>
     </None>
   </ItemGroup>
 </Project>

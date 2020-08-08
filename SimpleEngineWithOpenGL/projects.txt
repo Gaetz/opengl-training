@@ -9,7 +9,8 @@ Summary
 026-028: Input system
 029-032: Cameras
 033-036: Basic physics
-037-   : Basic UI
+037-042: Basic UI
+043-   : Skelettal animation
 
 Chapters
 
@@ -64,6 +65,10 @@ Chapters
 040: Dialog boxes
 041: Aiming reticule and radar
 042: Localization
+
+043: Loading skeleton and animations
+
+
 
 NOTES
 
