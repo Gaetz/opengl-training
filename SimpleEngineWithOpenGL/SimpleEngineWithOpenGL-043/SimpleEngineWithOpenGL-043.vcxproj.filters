@@ -178,9 +178,15 @@
     <ClCompile Include="TargetComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="BoneTransform.cpp" />
-    <ClCompile Include="Skeleton.cpp" />
-    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Animation.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="BoneTransform.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -371,9 +377,15 @@
     <ClInclude Include="TargetComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="BoneTransform.h" />
-    <ClInclude Include="Skeleton.h" />
-    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Animation.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="BoneTransform.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

@@ -10,7 +10,7 @@ Summary
 029-032: Cameras
 033-036: Basic physics
 037-042: Basic UI
-043-   : Skelettal animation
+043-044: Skelettal animation
 
 Chapters
 
@@ -67,7 +67,7 @@ Chapters
 042: Localization
 
 043: Loading skeleton and animations
-
+044: Display and animate the skeletal mesh, update renderer, mesh, mesh load, vertex array
 
 
 NOTES
