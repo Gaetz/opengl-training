@@ -25,12 +25,12 @@ uniform sampler2D uGWorldPos;
 struct PointLight
 {
 	// Position of light
-	vec3 mWorldPos;
+	vec3 worldPos;
 	// Diffuse color
-	vec3 mDiffuseColor;
+	vec3 diffuseColor;
 	// Radius of the light
-	float mInnerRadius;
-	float mOuterRadius;
+	float innerRadius;
+	float outerRadius;
 };
 
 uniform PointLight uPointLight;
@@ -50,7 +50,7 @@ void main()
 	// Surface normal
 	vec3 N = normalize(gbufferNorm);
 	// Vector from surface to light
-	vec3 L = normalize(uPointLight.mWorldPos - gbufferWorldPos);
+	vec3 L = normalize(uPointLight.worldPos - gbufferWorldPos);
 
 	// Compute Phong diffuse component for the light
 	vec3 Phong = vec3(0.0, 0.0, 0.0);
@@ -58,14 +58,12 @@ void main()
 	if (NdotL > 0)
 	{
 		// Get the distance between the light and the world pos
-		float dist = distance(uPointLight.mWorldPos, gbufferWorldPos);
+		float dist = distance(uPointLight.worldPos, gbufferWorldPos);
 		// Use smoothstep to compute value in range [0,1]
 		// between inner/outer radius
-		float intensity = smoothstep(uPointLight.mInnerRadius,
-									 uPointLight.mOuterRadius, dist);
+		float intensity = smoothstep(uPointLight.innerRadius, uPointLight.outerRadius, dist);
 		// The diffuse color of the light depends on intensity
-		vec3 DiffuseColor = mix(uPointLight.mDiffuseColor,
-								vec3(0.0, 0.0, 0.0), intensity);
+		vec3 DiffuseColor = mix(uPointLight.diffuseColor, vec3(0.0, 0.0, 0.0), intensity);
 		Phong = DiffuseColor * NdotL;
 	}
 
