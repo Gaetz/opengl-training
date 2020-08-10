@@ -72,7 +72,7 @@ Chapters
 044: Display and animate the skeletal mesh, update renderer, mesh, mesh load, vertex array
 
 045: Mipmapping and anisotropic filtering
-046: Rendering on a texture
+046: Rendering on a texture. Update renderer, rexture, follow actor, uiscreen and hud.
 047: Defered shading and multiple point lights
 
 NOTES
