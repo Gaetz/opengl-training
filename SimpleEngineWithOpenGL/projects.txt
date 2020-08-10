@@ -11,7 +11,7 @@ Summary
 033-036: Basic physics
 037-042: Basic UI
 043-044: Skelettal animation
-045-047: Intermediate graphics
+045-048: Intermediate graphics
 
 
 Chapters
@@ -73,7 +73,8 @@ Chapters
 
 045: Mipmapping and anisotropic filtering
 046: Rendering on a texture. Update renderer, rexture, follow actor, uiscreen and hud.
-047: Defered shading and multiple point lights
+047: Defered shading. Update renderer, texture, game
+048: Point lights
 
 NOTES
 

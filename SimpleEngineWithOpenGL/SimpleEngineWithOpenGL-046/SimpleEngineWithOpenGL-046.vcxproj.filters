@@ -190,7 +190,9 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="MirrorCameraComponent.cpp" />
+    <ClCompile Include="MirrorCameraComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -396,7 +398,9 @@
     <ClInclude Include="MatrixPalette.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="MirrorCameraComponent.h" />
+    <ClInclude Include="MirrorCameraComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

@@ -13,7 +13,7 @@ bool Window::initialize()
 		return false;
 	}
 
-	SDLWindow = SDL_CreateWindow("Basic UI", 100, 100, width, height, SDL_WINDOW_OPENGL);
+	SDLWindow = SDL_CreateWindow("Intermediate graphics", 100, 100, width, height, SDL_WINDOW_OPENGL);
 	if (!SDLWindow)
 	{
 		Log::error(LogCategory::System, "Failed to create window");
