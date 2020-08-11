@@ -12,6 +12,7 @@ Summary
 037-042: Basic UI
 043-044: Skelettal animation
 045-048: Intermediate graphics
+049-   : Data files for levels
 
 
 Chapters
@@ -76,5 +77,10 @@ Chapters
 047: Defered shading. Update renderer, texture, game.
 048: Point lights. Update game, renderer, gbuffer.
 
-NOTES
+049: Loading json and lights
+050: Loading actor and components
+051: Saving game files
+052: Loading and saving binaries (meshes)
 
+NOTES
+Change component owner parameter from reference to pointer
