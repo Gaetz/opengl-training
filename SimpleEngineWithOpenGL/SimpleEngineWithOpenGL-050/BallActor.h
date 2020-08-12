@@ -9,7 +9,6 @@ public:
 	void setPlayer(Actor* player);
 	void hitTarget();
 
-
 private:
 	class AudioComponent* audio;
 	class BallMoveComponent* ballMove;

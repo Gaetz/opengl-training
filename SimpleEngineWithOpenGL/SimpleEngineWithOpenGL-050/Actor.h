@@ -12,11 +12,11 @@ class Game;
 
 enum class ActorType
 {
-	TActor = 0,
-	TBallActor,
-	TFollowActor,
-	TPlaneActor,
-	TTargetActor,
+	Actor = 0,
+	BallActor,
+	FollowActor,
+	PlaneActor,
+	TargetActor,
 
 	NB_ACTOR_TYPES
 };

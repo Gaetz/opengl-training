@@ -20,7 +20,7 @@ enum class ComponentType
 	Sprite,
 	Target,
 
-	NUM_COMPONENT_TYPES
+	NB_COMPONENT_TYPES
 };
 
 class Component
