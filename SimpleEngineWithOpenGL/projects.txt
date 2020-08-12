@@ -12,7 +12,7 @@ Summary
 037-042: Basic UI
 043-044: Skelettal animation
 045-048: Intermediate graphics
-049-   : Data files for levels
+049-052: Data files for levels
 
 
 Chapters
@@ -79,8 +79,8 @@ Chapters
 
 049: Loading json and lights.
 050: Loading actor and components. Update Actor, Component and multiple components.
-051: Saving game files. Update Assets, Game
-052: Loading and saving binaries (meshes)
+051: Saving game files. Update Assets, Game.
+052: Loading and saving binaries (meshes). Update Assets, VertexArray.
 
 NOTES
 Change component owner parameter from reference to pointer
