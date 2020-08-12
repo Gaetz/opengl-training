@@ -77,10 +77,11 @@ Chapters
 047: Defered shading. Update renderer, texture, game.
 048: Point lights. Update game, renderer, gbuffer.
 
-049: Loading json and lights
-050: Loading actor and components
+049: Loading json and lights.
+050: Loading actor and components. Update Actor, Component and multiple components.
 051: Saving game files
 052: Loading and saving binaries (meshes)
 
 NOTES
 Change component owner parameter from reference to pointer
+setSkeleton and setMesh to reference
