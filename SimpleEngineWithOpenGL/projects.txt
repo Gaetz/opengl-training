@@ -85,3 +85,4 @@ Chapters
 NOTES
 Change component owner parameter from reference to pointer
 setSkeleton and setMesh to reference
+Optimize binary operators
