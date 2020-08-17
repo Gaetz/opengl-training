@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		Log::restart();
 	}
 
-	// Delta time
+	// Delta time in milliseconds
 	unsigned int dt;
 
 	// Main game elements loading

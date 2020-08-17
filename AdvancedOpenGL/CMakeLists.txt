@@ -9,7 +9,7 @@ enable_testing()
 
 # Includes and libraries
 if (WIN32)
-    set(SDL2_DIR ${CMAKE_SOURCE_DIR}/external/SDL2-2.0.10)
+    set(SDL2_DIR ${CMAKE_SOURCE_DIR}/external/SDL2-2.0.12)
     set(GLEW_DIR ${CMAKE_SOURCE_DIR}/external/glew-2.1.0)
 endif (WIN32)
 
@@ -37,14 +37,18 @@ target_link_libraries(OpenGLTraining game engine ${GLEW_LIBRARIES} ${SDL2_LIBRAR
 
 
 if (WIN32)
-file(COPY external/SDL2-2.0.10/lib/x64/SDL2.dll DESTINATION ${CMAKE_BINARY_DIR})
-file(COPY external/SDL2_mixer-2.0.2/lib/x64/SDL2_mixer.dll DESTINATION ${CMAKE_BINARY_DIR})
-file(COPY external/SDL2_ttf-2.0.15/lib/x64/SDL2_ttf.dll DESTINATION ${CMAKE_BINARY_DIR})
-file(COPY external/SDL2_ttf-2.0.15/lib/x64/zlib1.dll DESTINATION ${CMAKE_BINARY_DIR})
-file(COPY external/glew-2.1.0/bin/Release/x64/glew32.dll DESTINATION ${CMAKE_BINARY_DIR})
+    file(COPY external/SDL2-2.0.12/lib/x64/SDL2.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
+    file(COPY external/SDL2_mixer-2.0.4/lib/x64/SDL2_mixer.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
+    file(COPY external/SDL2_ttf-2.0.15/lib/x64/SDL2_ttf.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
+    file(COPY external/SDL2_ttf-2.0.15/lib/x64/zlib1.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
+    file(COPY external/glew-2.1.0/bin/Release/x64/glew32.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
 endif (WIN32)
 
-file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
+if (WIN32)
+    file(COPY assets DESTINATION ${CMAKE_BINARY_DIR}/Debug)
+else (WIN32)
+    file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
+endif (WIN32)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
