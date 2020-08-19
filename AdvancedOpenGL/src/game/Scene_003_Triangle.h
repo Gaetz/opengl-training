@@ -6,7 +6,7 @@
 #define Scene_003_Triangle_H
 
 #include "../engine/Scene.h"
-#include "../engine/ResourceManager.h"
+#include "../engine/Assets.h"
 
 
 class Scene_003_Triangle : public Scene {

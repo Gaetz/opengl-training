@@ -1,4 +1,4 @@
-#include "ResourceManager.h"
+#include "Assets.h"
 #include "Log.h"
 
 #include <iostream>
@@ -7,30 +7,30 @@
 #include <memory>
 
 // Instantiate static variables
-std::map<std::string, Texture2D> ResourceManager::textures;
-std::map<std::string, Shader> ResourceManager::shaders;
+std::map<std::string, Texture2D> Assets::textures;
+std::map<std::string, Shader> Assets::shaders;
 
-Shader ResourceManager::loadShader(const std::string &vShaderFile, const std::string &fShaderFile,
+Shader Assets::loadShader(const std::string &vShaderFile, const std::string &fShaderFile,
                                    const std::string &tcShaderFile, const std::string &teShaderFile,
                                    const std::string &gShaderFile, const std::string &name) {
     shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, tcShaderFile, teShaderFile, gShaderFile);
     return shaders[name];
 }
 
-Shader &ResourceManager::getShader(const std::string &name) {
+Shader& Assets::getShader(const std::string &name) {
     return shaders[name];
 }
 
-Texture2D ResourceManager::loadTexture(const std::string &file, const std::string &name) {
+Texture2D Assets::loadTexture(const std::string &file, const std::string &name) {
     textures[name] = loadTextureFromFile(file.c_str());
     return textures[name];
 }
 
-Texture2D &ResourceManager::getTexture(const std::string &name) {
+Texture2D& Assets::getTexture(const std::string &name) {
     return textures[name];
 }
 
-void ResourceManager::clear() {
+void Assets::clear() {
     // (Properly) delete all shaders
     for (auto iter : shaders)
         glDeleteProgram(iter.second.id);
@@ -39,7 +39,7 @@ void ResourceManager::clear() {
         glDeleteTextures(1, &iter.second.id);
 }
 
-Shader ResourceManager::loadShaderFromFile(const std::string &vShaderFile, const std::string &fShaderFile,
+Shader Assets::loadShaderFromFile(const std::string &vShaderFile, const std::string &fShaderFile,
                                            const std::string &tcShaderFile, const std::string &teShaderFile,
                                            const std::string &gShaderFile) {
     // 1. Retrieve the vertex/fragment source code from filePath
@@ -113,7 +113,7 @@ Shader ResourceManager::loadShaderFromFile(const std::string &vShaderFile, const
     return shader;
 }
 
-Texture2D ResourceManager::loadTextureFromFile(const std::string &file) {
+Texture2D Assets::loadTextureFromFile(const std::string &file) {
     // Create Texture object
     Texture2D texture;
     texture.load(file);

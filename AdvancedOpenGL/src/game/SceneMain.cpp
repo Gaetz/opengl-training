@@ -1,5 +1,5 @@
 #include "SceneMain.h"
-#include "../engine/ResourceManager.h"
+#include "../engine/Assets.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -22,8 +22,8 @@ void SceneMain::setGame(Game *_game)
 void SceneMain::load()
 {
     std::srand((int) std::time(nullptr));
-    //ResourceManager::loadTexture("./assets/textures/wall.png", "wall");
-    //ResourceManager::loadShader("assets/shaders/sprite.vert", "assets/shaders/sprite.frag", "", "sprite");
+    //Assets::loadTexture("./assets/textures/wall.png", "wall");
+    //Assets::loadShader("assets/shaders/sprite.vert", "assets/shaders/sprite.frag", "", "sprite");
 }
 
 void SceneMain::clean()

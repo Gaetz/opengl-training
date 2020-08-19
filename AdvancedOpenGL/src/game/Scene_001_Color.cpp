@@ -26,8 +26,8 @@ void Scene_001_Color::setGame(Game *_game)
 void Scene_001_Color::load()
 {
     std::srand((int) std::time(nullptr));
-    //ResourceManager::loadTexture("./assets/textures/wall.png", "wall");
-    //ResourceManager::loadShader("assets/shaders/sprite.vert", "assets/shaders/sprite.frag", "", "sprite");
+    //Assets::loadTexture("./assets/textures/wall.png", "wall");
+    //Assets::loadShader("assets/shaders/sprite.vert", "assets/shaders/sprite.frag", "", "sprite");
 }
 
 void Scene_001_Color::clean()

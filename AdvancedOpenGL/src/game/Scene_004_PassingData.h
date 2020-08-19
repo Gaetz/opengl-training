@@ -6,7 +6,7 @@
 #define Scene_004_Tessellation_H
 
 #include "../engine/Scene.h"
-#include "../engine/ResourceManager.h"
+#include "../engine/Assets.h"
 #include "../engine/Color.h"
 
 

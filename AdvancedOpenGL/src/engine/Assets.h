@@ -9,12 +9,12 @@
 #include "Texture.h"
 #include "Shader.h"
 
-// A static singleton ResourceManager class that hosts several
+// A static singleton Assets class that hosts several
 // functions to load Textures and Shaders. Each loaded texture
 // and/or shader is also stored for future reference by string
 // handles. All functions and resources are static and no 
 // public constructor is defined.
-class ResourceManager {
+class Assets {
 public:
     // Resource storage
     static std::map<std::string, Shader> shaders;
@@ -42,7 +42,7 @@ public:
 private:
     // Private constructor, that is we do not want any actual resource manager objects.
     // Its members and functions should be publicly available (static).
-    ResourceManager() {}
+    Assets() {}
 
     // Loads and generates a shader from file
     static Shader loadShaderFromFile(const std::string &vShaderFile, const std::string &fShaderFile,

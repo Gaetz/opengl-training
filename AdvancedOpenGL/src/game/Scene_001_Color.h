@@ -6,7 +6,7 @@
 #define SCENE_001_COLOR_H
 
 #include "../engine/Scene.h"
-#include "../engine/ResourceManager.h"
+#include "../engine/Assets.h"
 
 
 class Scene_001_Color : public Scene {

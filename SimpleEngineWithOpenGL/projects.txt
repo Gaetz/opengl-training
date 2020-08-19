@@ -83,4 +83,3 @@ Chapters
 052: Loading and saving binaries (meshes). Update Assets, VertexArray.
 
 NOTES
-Optimize binary operators

@@ -1,8 +1,8 @@
 #include "../engine/Game.h"
-#include "../engine/ResourceManager.h"
+#include "../engine/Assets.h"
 #include "../engine/Scene.h"
 
-#include "../engine/MathCore.h"
+#include "../engine/Maths.h"
 #include "Scene_005_Tessellation.h"
 
 Game::Game() : isRunning(false),
@@ -17,8 +17,6 @@ void Game::init(int screenWidth, int screenHeight) {
     windowWidth = screenWidth;
     windowHeight = screenHeight;
     isRunning = true;
-
-    inputManager = std::make_unique<InputManager>();
 }
 
 void Game::load() {
@@ -27,9 +25,9 @@ void Game::load() {
 }
 
 void Game::handleInputs() {
-    inputManager->prepareForUpdate();
-    isRunning = inputManager->pollInputs();
-    const InputState &inputState = inputManager->getState();
+    inputManager.prepareForUpdate();
+    isRunning = inputManager.pollInputs();
+    const InputState &inputState = inputManager.getState();
     gameStates.back()->handleEvent(inputState);
 }
 
@@ -42,10 +40,10 @@ void Game::render() {
 }
 
 void Game::clean() {
-    ResourceManager::clear();
+    Assets::clear();
 }
 
-void Game::changeState(std::unique_ptr<Scene> state) {
+void Game::changeState(unique_ptr<Scene> state) {
     // cleanup the current state
     if (!gameStates.empty()) {
         gameStates.back()->clean();
@@ -58,7 +56,7 @@ void Game::changeState(std::unique_ptr<Scene> state) {
     gameStates.back()->load();
 }
 
-void Game::pushState(std::unique_ptr<Scene> state) {
+void Game::pushState(unique_ptr<Scene> state) {
     // pause current state
     if (!gameStates.empty()) {
         gameStates.back()->pause();

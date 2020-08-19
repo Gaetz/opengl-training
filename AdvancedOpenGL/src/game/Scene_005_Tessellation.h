@@ -6,7 +6,7 @@
 #define Scene_005_Tessellation_H
 
 #include "../engine/Scene.h"
-#include "../engine/ResourceManager.h"
+#include "../engine/Assets.h"
 
 
 class Scene_005_Tessellation : public Scene {

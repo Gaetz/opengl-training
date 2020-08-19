@@ -10,9 +10,11 @@
 #include <GL/glew.h>
 #include <vector>
 #include <memory>
-
 #include "InputManager.h"
 #include "Shader.h"
+
+using std::vector;
+using std::unique_ptr;
 
 class Scene;
 
@@ -33,16 +35,16 @@ public:
 	void render();
 	void clean();
 
-	void changeState(std::unique_ptr<Scene>);
-	void pushState(std::unique_ptr<Scene>);
+	void changeState(unique_ptr<Scene>);
+	void pushState(unique_ptr<Scene>);
 	void popState();
 
 	bool isRunning;
 	int windowWidth, windowHeight;
 
 private:
-	std::unique_ptr<InputManager> inputManager;
-	std::vector<std::unique_ptr<Scene>> gameStates;
+	InputManager inputManager;
+	vector<unique_ptr<Scene>> gameStates;
 };
 
 #endif

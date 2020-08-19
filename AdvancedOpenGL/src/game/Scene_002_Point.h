@@ -6,7 +6,7 @@
 #define SCENE_002_POINT_H
 
 #include "../engine/Scene.h"
-#include "../engine/ResourceManager.h"
+#include "../engine/Assets.h"
 
 
 class Scene_002_Point : public Scene {

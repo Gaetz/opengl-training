@@ -22,8 +22,8 @@ void Scene_004_PassingData::setGame(Game *_game) {
 
 void Scene_004_PassingData::load() {
     std::srand((int) std::time(nullptr));
-    ResourceManager::loadShader("assets/shaders/004_tessellation.vert", "assets/shaders/004_tessellation.frag", "", "", "", "004_tessellation");
-    shader = ResourceManager::getShader("004_tessellation");
+    Assets::loadShader("assets/shaders/004_tessellation.vert", "assets/shaders/004_tessellation.frag", "", "", "", "004_tessellation");
+    shader = Assets::getShader("004_tessellation");
     glCreateVertexArrays(1, &vao);
     glBindVertexArray(vao);
 }

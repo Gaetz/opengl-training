@@ -6,7 +6,7 @@
 // See LICENSE in root directory for full details.
 // ----------------------------------------------------------------
 
-#include "MathCore.h"
+#include "Maths.h"
 
 const Vector2 Vector2::zero(0.0f, 0.0f);
 const Vector2 Vector2::unitX(1.0f, 0.0f);
@@ -21,8 +21,8 @@ const Vector3 Vector3::unitZ(0.0f, 0.0f, 1.0f);
 const Vector3 Vector3::negUnitX(-1.0f, 0.0f, 0.0f);
 const Vector3 Vector3::negUnitY(0.0f, -1.0f, 0.0f);
 const Vector3 Vector3::negUnitZ(0.0f, 0.0f, -1.0f);
-const Vector3 Vector3::infinity(Math::infinity, Math::infinity, Math::infinity);
-const Vector3 Vector3::negInfinity(Math::negInfinity, Math::negInfinity, Math::negInfinity);
+const Vector3 Vector3::infinity(Maths::infinity, Maths::infinity, Maths::infinity);
+const Vector3 Vector3::negInfinity(Maths::negInfinity, Maths::negInfinity, Maths::negInfinity);
 
 static float m3Ident[3][3] =
 {
@@ -78,7 +78,7 @@ Vector3 Vector3::transformWithPerspDiv(const Vector3& vec, const Matrix4& mat, f
 		vec.z * mat.mat[2][2] + w * mat.mat[3][2];
 	float transformedW = vec.x * mat.mat[0][3] + vec.y * mat.mat[1][3] +
 		vec.z * mat.mat[2][3] + w * mat.mat[3][3];
-	if (!Math::nearZero(Math::abs(transformedW)))
+	if (!Maths::nearZero(Maths::abs(transformedW)))
 	{
 		transformedW = 1.0f / transformedW;
 		retVal *= transformedW;

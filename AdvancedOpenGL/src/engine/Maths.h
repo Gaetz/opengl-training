@@ -13,7 +13,7 @@
 #include <memory>
 #include <limits>
 
-namespace Math
+namespace Maths
 {
 	const float pi = 3.1415926535f;
 	const float twoPi = pi * 2.0f;
@@ -200,7 +200,7 @@ public:
 	// Length of vector
 	float length() const
 	{
-		return (Math::sqrt(lengthSq()));
+		return (Maths::sqrt(lengthSq()));
 	}
 
 	// Normalize this vector
@@ -347,7 +347,7 @@ public:
 	// Length of vector
 	float length() const
 	{
-		return (Math::sqrt(lengthSq()));
+		return (Maths::sqrt(lengthSq()));
 	}
 
 	// Normalize this vector
@@ -564,8 +564,8 @@ public:
 	{
 		float temp[3][3] =
 		{
-			{ Math::cos(theta), Math::sin(theta), 0.0f },
-			{ -Math::sin(theta), Math::cos(theta), 0.0f },
+			{ Maths::cos(theta), Maths::sin(theta), 0.0f },
+			{ -Maths::sin(theta), Maths::cos(theta), 0.0f },
 			{ 0.0f, 0.0f, 1.0f },
 		};
 		return Matrix3(temp);
@@ -801,8 +801,8 @@ public:
 		float temp[4][4] =
 		{
 			{ 1.0f, 0.0f, 0.0f , 0.0f },
-			{ 0.0f, Math::cos(theta), Math::sin(theta), 0.0f },
-			{ 0.0f, -Math::sin(theta), Math::cos(theta), 0.0f },
+			{ 0.0f, Maths::cos(theta), Maths::sin(theta), 0.0f },
+			{ 0.0f, -Maths::sin(theta), Maths::cos(theta), 0.0f },
 			{ 0.0f, 0.0f, 0.0f, 1.0f },
 		};
 		return Matrix4(temp);
@@ -813,9 +813,9 @@ public:
 	{
 		float temp[4][4] =
 		{
-			{ Math::cos(theta), 0.0f, -Math::sin(theta), 0.0f },
+			{ Maths::cos(theta), 0.0f, -Maths::sin(theta), 0.0f },
 			{ 0.0f, 1.0f, 0.0f, 0.0f },
-			{ Math::sin(theta), 0.0f, Math::cos(theta), 0.0f },
+			{ Maths::sin(theta), 0.0f, Maths::cos(theta), 0.0f },
 			{ 0.0f, 0.0f, 0.0f, 1.0f },
 		};
 		return Matrix4(temp);
@@ -826,8 +826,8 @@ public:
 	{
 		float temp[4][4] =
 		{
-			{ Math::cos(theta), Math::sin(theta), 0.0f, 0.0f },
-			{ -Math::sin(theta), Math::cos(theta), 0.0f, 0.0f },
+			{ Maths::cos(theta), Maths::sin(theta), 0.0f, 0.0f },
+			{ -Maths::sin(theta), Maths::cos(theta), 0.0f, 0.0f },
 			{ 0.0f, 0.0f, 1.0f, 0.0f },
 			{ 0.0f, 0.0f, 0.0f, 1.0f },
 		};
@@ -883,7 +883,7 @@ public:
 
 	static Matrix4 createPerspectiveFOV(float fovY, float width, float height, float near, float far)
 	{
-		float yScale = Math::cot(fovY / 2.0f);
+		float yScale = Maths::cot(fovY / 2.0f);
 		float xScale = yScale * height / width;
 		float temp[4][4] =
 		{
@@ -937,11 +937,11 @@ public:
 	// and the angle is in radians
 	explicit Quaternion(const Vector3& axis, float angle)
 	{
-		float scalar = Math::sin(angle / 2.0f);
+		float scalar = Maths::sin(angle / 2.0f);
 		x = axis.x * scalar;
 		y = axis.y * scalar;
 		z = axis.z * scalar;
-		w = Math::cos(angle / 2.0f);
+		w = Maths::cos(angle / 2.0f);
 	}
 
 	// Directly set the internal components
@@ -967,7 +967,7 @@ public:
 
 	float length() const
 	{
-		return Math::sqrt(lengthSq());
+		return Maths::sqrt(lengthSq());
 	}
 
 	void normalize()
@@ -991,10 +991,10 @@ public:
 	static Quaternion lerp(const Quaternion& a, const Quaternion& b, float f)
 	{
 		Quaternion retVal;
-		retVal.x = Math::lerp(a.x, b.x, f);
-		retVal.y = Math::lerp(a.y, b.y, f);
-		retVal.z = Math::lerp(a.z, b.z, f);
-		retVal.w = Math::lerp(a.w, b.w, f);
+		retVal.x = Maths::lerp(a.x, b.x, f);
+		retVal.y = Maths::lerp(a.y, b.y, f);
+		retVal.z = Maths::lerp(a.z, b.z, f);
+		retVal.w = Maths::lerp(a.w, b.w, f);
 		retVal.normalize();
 		return retVal;
 	}
@@ -1019,10 +1019,10 @@ public:
 
 		if (cosom < 0.9999f)
 		{
-			const float omega = Math::acos(cosom);
-			const float invSin = 1.f / Math::sin(omega);
-			scale0 = Math::sin((1.f - f) * omega) * invSin;
-			scale1 = Math::sin(f * omega) * invSin;
+			const float omega = Maths::acos(cosom);
+			const float invSin = 1.f / Maths::sin(omega);
+			scale0 = Maths::sin((1.f - f) * omega) * invSin;
+			scale1 = Maths::sin(f * omega) * invSin;
 		}
 		else
 		{
