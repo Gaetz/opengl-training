@@ -3,7 +3,7 @@
 #include "../engine/Scene.h"
 
 #include "../engine/Maths.h"
-#include "Scene_005_Tessellation.h"
+#include "Scene_006_Fragment.h"
 
 Game::Game() : isRunning(false),
                windowWidth(0),
@@ -21,7 +21,7 @@ void Game::init(int screenWidth, int screenHeight) {
 
 void Game::load() {
     // Game state
-    changeState(std::make_unique<Scene_005_Tessellation>());
+    changeState(std::make_unique<Scene_006_Fragment>());
 }
 
 void Game::handleInputs() {
