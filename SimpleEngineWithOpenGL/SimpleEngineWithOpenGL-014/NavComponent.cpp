@@ -3,7 +3,7 @@
 #include "Tile.h"
 #include "Maths.h"
 
-NavComponent::NavComponent(Actor& owner, int updateOrder):
+NavComponent::NavComponent(Actor* owner, int updateOrder):
 	MoveComponent(owner, updateOrder),
 	nextNode(nullptr)
 {

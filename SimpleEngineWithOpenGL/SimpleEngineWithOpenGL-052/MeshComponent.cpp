@@ -5,9 +5,9 @@
 #include "LevelLoader.h"
 #include "Assets.h"
 
-MeshComponent::MeshComponent(Actor& owner, bool isSkeletalP) : Component(owner), mesh(nullptr), textureIndex(0), isVisible(true), isSkeletal(isSkeletalP)
+MeshComponent::MeshComponent(Actor* owner, bool isSkeletalP) : Component(owner), mesh(nullptr), textureIndex(0), isVisible(true), isSkeletal(isSkeletalP)
 {
-	owner.getGame().getRenderer().addMesh(this);
+	owner->getGame().getRenderer().addMesh(this);
 }
 
 MeshComponent::~MeshComponent()
@@ -38,9 +38,9 @@ void MeshComponent::draw(Shader& shader)
 	}
 }
 
-void MeshComponent::setMesh(Mesh* meshP)
+void MeshComponent::setMesh(Mesh& meshP)
 {
-	mesh = meshP;
+	mesh = &meshP;
 }
 
 void MeshComponent::setTextureIndex(size_t textureIndexP)
@@ -55,7 +55,7 @@ void MeshComponent::loadProperties(const rapidjson::Value& inObj)
 	std::string meshFile;
 	if (JsonHelper::getString(inObj, "meshFile", meshFile))
 	{
-		setMesh(&Assets::getMesh(meshFile));
+		setMesh(Assets::getMesh(meshFile));
 	}
 
 	int idx;

@@ -11,12 +11,12 @@ FollowActor::FollowActor() :
 	cameraComponent(nullptr),
 	meshComponent(nullptr)
 {
-	meshComponent = new MeshComponent(*this);
-	meshComponent->setMesh(&Assets::getMesh("Mesh_RacingCar"));
+	meshComponent = new MeshComponent(this);
+	meshComponent->setMesh(Assets::getMesh("Mesh_RacingCar"));
 	setPosition(Vector3(0.0f, 0.0f, -100.0f));
 
-	moveComponent = new MoveComponent(*this);
-	cameraComponent = new FollowCameraComponent(*this);
+	moveComponent = new MoveComponent(this);
+	cameraComponent = new FollowCameraComponent(this);
 	cameraComponent->snapToIdeal();
 }
 

@@ -6,7 +6,7 @@
 class InputComponent : public MoveComponent
 {
 public:
-	InputComponent(Actor& ownerP);
+	InputComponent(Actor* ownerP);
 	InputComponent() = delete;
 	InputComponent(const InputComponent&) = delete;
 	InputComponent& operator=(const InputComponent&) = delete;

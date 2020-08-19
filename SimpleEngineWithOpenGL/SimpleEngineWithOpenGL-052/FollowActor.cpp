@@ -14,18 +14,18 @@ FollowActor::FollowActor() :
 	cameraComponent(nullptr),
 	meshComponent(nullptr)
 {
-	meshComponent = new SkeletalMeshComponent(*this);
-	meshComponent->setMesh(&Assets::getMesh("Mesh_CatWarrior"));
-	meshComponent->setSkeleton(&Assets::getSkeleton("Skel_CatWarrior"));
+	meshComponent = new SkeletalMeshComponent(this);
+	meshComponent->setMesh(Assets::getMesh("Mesh_CatWarrior"));
+	meshComponent->setSkeleton(Assets::getSkeleton("Skel_CatWarrior"));
 	meshComponent->playAnimation(&Assets::getAnimation("CatActionIdle"));
 
 	setPosition(Vector3(0.0f, 0.0f, -100.0f));
 
-	moveComponent = new MoveComponent(*this);
-	cameraComponent = new FollowCameraComponent(*this);
+	moveComponent = new MoveComponent(this);
+	cameraComponent = new FollowCameraComponent(this);
 	cameraComponent->snapToIdeal();
 
-	MirrorCameraComponent* mirror = new MirrorCameraComponent(*this);
+	MirrorCameraComponent* mirror = new MirrorCameraComponent(this);
 	mirror->snapToIdeal();
 
 	Game::instance().setPlayer(this);

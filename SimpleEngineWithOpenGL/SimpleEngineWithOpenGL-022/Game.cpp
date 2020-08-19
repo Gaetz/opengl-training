@@ -35,14 +35,14 @@ void Game::load()
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
 	a->setRotation(q);
-	MeshComponent* mc = new MeshComponent(*a);
-	mc->setMesh(&Assets::getMesh("Mesh_Cube"));
+	MeshComponent* mc = new MeshComponent(a);
+	mc->setMesh(Assets::getMesh("Mesh_Cube"));
 	
 	Actor* b = new Actor();
 	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
 	b->setScale(3.0f);
-	MeshComponent* mcb = new MeshComponent(*b);
-	mcb->setMesh(&Assets::getMesh("Mesh_Sphere"));
+	MeshComponent* mcb = new MeshComponent(b);
+	mcb->setMesh(Assets::getMesh("Mesh_Sphere"));
 	
 }
 

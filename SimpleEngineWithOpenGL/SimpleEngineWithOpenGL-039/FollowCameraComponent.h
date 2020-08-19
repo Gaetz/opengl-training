@@ -3,7 +3,7 @@
 class FollowCameraComponent : public CameraComponent
 {
 public:
-	FollowCameraComponent(class Actor& ownerP);
+	FollowCameraComponent(class Actor* ownerP);
 
 	void update(float dt) override;
 	void snapToIdeal();

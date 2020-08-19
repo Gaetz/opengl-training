@@ -4,7 +4,7 @@
 #include "Window.h"
 #include "LevelLoader.h"
 
-MoveComponent::MoveComponent(Actor& ownerP, int updateOrderP)
+MoveComponent::MoveComponent(Actor* ownerP, int updateOrderP)
 	: Component(ownerP, updateOrderP), forwardSpeed(0.0f), angularSpeed(0.0f), strafeSpeed(0.0f)
 {
 

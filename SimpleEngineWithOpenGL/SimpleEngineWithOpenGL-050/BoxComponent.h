@@ -5,7 +5,7 @@
 class BoxComponent : public Component
 {
 public:
-	BoxComponent(class Actor& ownerP, int updateOrderP = 100);
+	BoxComponent(class Actor* ownerP, int updateOrderP = 100);
 	virtual ~BoxComponent();
 
 	const AABB& getWorldBox() const { return worldBox; }

@@ -29,7 +29,7 @@ class Component
 public:
 	static const char* typeNames[static_cast<int>(ComponentType::NB_COMPONENT_TYPES)];
 
-	Component(Actor& ownerP, int updateOrderP = 100);
+	Component(Actor* ownerP, int updateOrderP = 100);
 	Component() = delete;
 	virtual ~Component();
 	Component(const Component&) = delete;
@@ -51,7 +51,7 @@ public:
 	static Component* Create(class Actor* actor, const rapidjson::Value& inObj)
 	{
 		// Dynamically allocate component of type T
-		T* t = new T(*actor);
+		T* t = new T(actor);
 		// Call loadProperties on new component
 		t->loadProperties(inObj);
 		return t;

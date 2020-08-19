@@ -107,13 +107,13 @@ void Game::load()
 	Sphere* soundSphere = new Sphere();
 	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
 	soundSphere->setScale(1.0f);
-	AudioComponent* ac = new AudioComponent(*soundSphere);
+	AudioComponent* ac = new AudioComponent(soundSphere);
 	ac->playEvent("event:/FireLoop");
 
 	// Corsshair
 	Actor* crosshairActor = new Actor();
 	crosshairActor->setScale(2.0f);
-	crosshair = new SpriteComponent(*crosshairActor, Assets::getTexture("Crosshair"));
+	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
 
 	// Start music
 	musicEvent = audioSystem.playEvent("event:/Music");

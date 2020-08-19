@@ -83,6 +83,4 @@ Chapters
 052: Loading and saving binaries (meshes). Update Assets, VertexArray.
 
 NOTES
-Change component owner parameter from reference to pointer
-setSkeleton and setMesh to reference
 Optimize binary operators

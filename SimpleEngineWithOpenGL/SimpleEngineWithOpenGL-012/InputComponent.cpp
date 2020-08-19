@@ -1,7 +1,7 @@
 #include "InputComponent.h"
 #include <SDL_scancode.h>
 
-InputComponent::InputComponent(Actor& ownerP) :
+InputComponent::InputComponent(Actor* ownerP) :
 	MoveComponent(ownerP),
 	maxForwardSpeed(100.0f),
 	maxAngularSpeed(1.0f),

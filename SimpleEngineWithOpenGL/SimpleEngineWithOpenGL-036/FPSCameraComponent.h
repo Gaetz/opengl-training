@@ -5,7 +5,7 @@
 class FPSCameraComponent : public CameraComponent
 {
 public:
-	FPSCameraComponent(class Actor& ownerP);
+	FPSCameraComponent(class Actor* ownerP);
 
 	void update(float dt) override;
 

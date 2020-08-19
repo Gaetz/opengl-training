@@ -3,7 +3,7 @@
 
 SplineActor::SplineActor() : Actor(), cameraComponent(nullptr)
 {
-	cameraComponent = new SplineCameraComponent(*this);
+	cameraComponent = new SplineCameraComponent(this);
 
 	// Create a spline
 	Spline spline;

@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "Game.h"
 
-MirrorCameraComponent::MirrorCameraComponent(Actor& owner):
+MirrorCameraComponent::MirrorCameraComponent(Actor* owner):
 	CameraComponent(owner),
 	horizontalDist(150.0f),
 	verticalDist(200.0f),

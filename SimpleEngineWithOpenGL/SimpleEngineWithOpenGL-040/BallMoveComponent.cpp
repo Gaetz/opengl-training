@@ -8,7 +8,7 @@
 #include "TargetActor.h"
 #include "Game.h"
 
-BallMoveComponent::BallMoveComponent(Actor& ownerP) : MoveComponent(ownerP), player(nullptr)
+BallMoveComponent::BallMoveComponent(Actor* ownerP) : MoveComponent(ownerP), player(nullptr)
 {
 }
 

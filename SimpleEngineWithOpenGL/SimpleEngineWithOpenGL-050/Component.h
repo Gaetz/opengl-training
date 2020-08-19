@@ -26,7 +26,7 @@ enum class ComponentType
 class Component
 {
 public:
-	Component(Actor& ownerP, int updateOrderP = 100);
+	Component(Actor* ownerP, int updateOrderP = 100);
 	Component() = delete;
 	virtual ~Component();
 	Component(const Component&) = delete;
@@ -47,7 +47,7 @@ public:
 	static Component* Create(class Actor* actor, const rapidjson::Value& inObj)
 	{
 		// Dynamically allocate component of type T
-		T* t = new T(*actor);
+		T* t = new T(actor);
 		// Call loadProperties on new component
 		t->loadProperties(inObj);
 		return t;

@@ -3,8 +3,8 @@
 #include "InputSystem.h"
 #include "LevelLoader.h"
 
-Component::Component(Actor& ownerP, int updateOrderP):
-	owner(ownerP),
+Component::Component(Actor* ownerP, int updateOrderP):
+	owner(*ownerP),
 	updateOrder(updateOrderP)
 {
 	owner.addComponent(this);

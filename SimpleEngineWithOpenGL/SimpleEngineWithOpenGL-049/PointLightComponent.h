@@ -4,7 +4,7 @@
 class PointLightComponent : public Component
 {
 public:
-	PointLightComponent(class Actor& owner);
+	PointLightComponent(class Actor* owner);
 	virtual ~PointLightComponent();
 
 	void draw(class Shader& shader, class Mesh& mesh);

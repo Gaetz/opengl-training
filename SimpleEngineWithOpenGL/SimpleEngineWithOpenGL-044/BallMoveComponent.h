@@ -3,7 +3,7 @@
 class BallMoveComponent : public MoveComponent
 {
 public:
-	BallMoveComponent(class Actor& ownerP);
+	BallMoveComponent(class Actor* ownerP);
 
 	void setPlayer(class Actor* playerP);
 

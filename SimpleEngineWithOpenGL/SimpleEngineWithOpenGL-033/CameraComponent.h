@@ -5,7 +5,7 @@
 class CameraComponent : public Component
 {
 public:
-	CameraComponent(class Actor& owner, int updateOrder = 200);
+	CameraComponent(class Actor* owner, int updateOrder = 200);
 
 protected:
 	void setViewMatrix(const Matrix4& view);

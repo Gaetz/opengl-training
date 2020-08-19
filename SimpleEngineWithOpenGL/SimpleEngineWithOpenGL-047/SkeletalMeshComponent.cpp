@@ -6,7 +6,7 @@
 #include "Skeleton.h"
 #include "Animation.h"
 
-SkeletalMeshComponent::SkeletalMeshComponent(Actor& owner):
+SkeletalMeshComponent::SkeletalMeshComponent(Actor* owner):
 	MeshComponent(owner, true),
 	skeleton(nullptr),
 	animation(nullptr),
@@ -15,9 +15,9 @@ SkeletalMeshComponent::SkeletalMeshComponent(Actor& owner):
 {
 }
 
-void SkeletalMeshComponent::setSkeleton(const Skeleton* skeletonP)
+void SkeletalMeshComponent::setSkeleton(const Skeleton& skeletonP)
 {
-	skeleton = skeletonP;
+	skeleton = &skeletonP;
 }
 
 void SkeletalMeshComponent::update(float dt)

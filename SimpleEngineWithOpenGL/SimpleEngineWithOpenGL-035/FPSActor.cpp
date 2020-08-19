@@ -17,17 +17,17 @@ FPSActor::FPSActor() :
 	cameraComponent(nullptr),
 	lastFootstep(0.0f)
 {
-	moveComponent = new MoveComponent(*this);
-	audioComponent = new AudioComponent(*this);
-	cameraComponent = new FPSCameraComponent(*this);
+	moveComponent = new MoveComponent(this);
+	audioComponent = new AudioComponent(this);
+	cameraComponent = new FPSCameraComponent(this);
 
 	footstep = audioComponent->playEvent("event:/Footstep");
 	footstep.setPaused(true);
 
 	FPSModel = new Actor();
 	FPSModel->setScale(0.75f);
-	meshComponent = new MeshComponent(*FPSModel);
-	meshComponent->setMesh(&Assets::getMesh("Mesh_Rifle"));
+	meshComponent = new MeshComponent(FPSModel);
+	meshComponent->setMesh(Assets::getMesh("Mesh_Rifle"));
 }
 
 void FPSActor::updateActor(float dt)

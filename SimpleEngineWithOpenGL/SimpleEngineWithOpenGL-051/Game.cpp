@@ -102,7 +102,7 @@ void Game::load()
 	SphereActor* soundSphere = new SphereActor();
 	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
 	soundSphere->setScale(1.0f);
-	AudioComponent* ac = new AudioComponent(*soundSphere);
+	AudioComponent* ac = new AudioComponent(soundSphere);
 	ac->playEvent("event:/FireLoop");
 
 	*/

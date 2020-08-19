@@ -7,7 +7,7 @@
 class AudioComponent : public Component
 {
 public:
-	AudioComponent(class Actor& owner, int updateOrder = 200);
+	AudioComponent(class Actor* owner, int updateOrder = 200);
 	~AudioComponent();
 
 	void update(float dt) override;

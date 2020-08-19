@@ -1,7 +1,7 @@
 #include "CameraComponent.h"
 #include "Game.h"
 
-CameraComponent::CameraComponent(Actor& owner, int updateOrder) : Component(owner, updateOrder)
+CameraComponent::CameraComponent(Actor* owner, int updateOrder) : Component(owner, updateOrder)
 {
 }
 

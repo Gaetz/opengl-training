@@ -2,8 +2,8 @@
 #include "Actor.h"
 #include "InputSystem.h"
 
-Component::Component(Actor& ownerP, int updateOrderP):
-	owner(ownerP),
+Component::Component(Actor* ownerP, int updateOrderP):
+	owner(*ownerP),
 	updateOrder(updateOrderP)
 {
 	owner.addComponent(this);

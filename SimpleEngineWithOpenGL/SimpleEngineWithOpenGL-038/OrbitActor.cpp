@@ -6,10 +6,10 @@
 
 OrbitActor::OrbitActor() : Actor(), cameraComponent(nullptr), meshComponent(nullptr)
 {
-	meshComponent = new MeshComponent(*this);
-	meshComponent->setMesh(&Assets::getMesh("Mesh_RacingCar"));
+	meshComponent = new MeshComponent(this);
+	meshComponent->setMesh(Assets::getMesh("Mesh_RacingCar"));
 	setPosition(Vector3(0.0f, 0.0f, -100.0f));
-	cameraComponent = new OrbitCameraComponent(*this);
+	cameraComponent = new OrbitCameraComponent(this);
 }
 
 void OrbitActor::actorInput(const InputState& inputState)

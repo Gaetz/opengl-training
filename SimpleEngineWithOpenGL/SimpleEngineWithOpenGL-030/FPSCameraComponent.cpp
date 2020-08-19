@@ -1,6 +1,6 @@
 #include "FPSCameraComponent.h"
 
-FPSCameraComponent::FPSCameraComponent(Actor& ownerP):
+FPSCameraComponent::FPSCameraComponent(Actor* ownerP):
 	CameraComponent(ownerP),
 	pitchSpeed(0.0f),
 	maxPitch(Maths::pi / 3.0f),

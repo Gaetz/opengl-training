@@ -5,7 +5,7 @@ class Actor;
 class Component
 {
 public:
-	Component(Actor& ownerP, int updateOrderP = 100);
+	Component(Actor* ownerP, int updateOrderP = 100);
 	Component() = delete;
 	virtual ~Component();
 	Component(const Component&) = delete;

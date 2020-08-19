@@ -5,7 +5,7 @@
 #include "LevelLoader.h"
 #include "Assets.h"
 
-SpriteComponent::SpriteComponent(Actor& ownerP, Texture* textureP, int drawOrderP):
+SpriteComponent::SpriteComponent(Actor* ownerP, Texture* textureP, int drawOrderP):
 	Component(ownerP),
 	texture(textureP), 
 	drawOrder(drawOrderP), 

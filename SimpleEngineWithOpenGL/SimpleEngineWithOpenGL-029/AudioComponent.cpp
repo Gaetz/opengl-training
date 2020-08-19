@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "AudioSystem.h"
 
-AudioComponent::AudioComponent(Actor& owner, int updateOrder):
+AudioComponent::AudioComponent(Actor* owner, int updateOrder):
 	Component(owner, updateOrder)
 {
 }

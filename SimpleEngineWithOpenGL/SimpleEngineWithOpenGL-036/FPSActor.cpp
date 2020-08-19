@@ -20,19 +20,19 @@ FPSActor::FPSActor() :
 	lastFootstep(0.0f),
 	boxComponent(nullptr)
 {
-	moveComponent = new MoveComponent(*this);
-	audioComponent = new AudioComponent(*this);
-	cameraComponent = new FPSCameraComponent(*this);
+	moveComponent = new MoveComponent(this);
+	audioComponent = new AudioComponent(this);
+	cameraComponent = new FPSCameraComponent(this);
 
 	footstep = audioComponent->playEvent("event:/Footstep");
 	footstep.setPaused(true);
 
 	FPSModel = new Actor();
 	FPSModel->setScale(0.75f);
-	meshComponent = new MeshComponent(*FPSModel);
-	meshComponent->setMesh(&Assets::getMesh("Mesh_Rifle"));
+	meshComponent = new MeshComponent(FPSModel);
+	meshComponent->setMesh(Assets::getMesh("Mesh_Rifle"));
 
-	boxComponent = new BoxComponent(*this);
+	boxComponent = new BoxComponent(this);
 	AABB collision(Vector3(-25.0f, -25.0f, -87.5f), Vector3(25.0f, 25.0f, 87.5f));
 	boxComponent->setObjectBox(collision);
 	boxComponent->setShouldRotate(false);

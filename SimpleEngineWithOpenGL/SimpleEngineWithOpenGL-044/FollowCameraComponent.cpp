@@ -1,7 +1,7 @@
 #include "FollowCameraComponent.h"
 #include "Actor.h"
 
-FollowCameraComponent::FollowCameraComponent(Actor& ownerP):
+FollowCameraComponent::FollowCameraComponent(Actor* ownerP):
 	CameraComponent(ownerP),
 	horizontalDistance(FOLLOW_HORIZONTAL_DISTANCE),
 	verticalDistance(FOLLOW_VERTICAL_DISTANCE),

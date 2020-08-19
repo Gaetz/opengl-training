@@ -13,11 +13,11 @@ Astroid::Astroid() : Actor(), collision(nullptr)
 	setPosition(Vector3(randPos.x, randPos.y, 0.0f));
 	rotate(Vector3::unitZ, Random::getFloatRange(0.0f, Maths::twoPi));
 
-	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Astroid"));
-	MoveComponent* mc = new MoveComponent(*this);
+	SpriteComponent* sc = new SpriteComponent(this, Assets::getTexture("Astroid"));
+	MoveComponent* mc = new MoveComponent(this);
 	mc->setForwardSpeed(150.0f);
 
-	collision = new CircleCollisionComponent(*this);
+	collision = new CircleCollisionComponent(this);
 	collision->setRadius(40.0f);
 
 	getGame().addAstroid(this);

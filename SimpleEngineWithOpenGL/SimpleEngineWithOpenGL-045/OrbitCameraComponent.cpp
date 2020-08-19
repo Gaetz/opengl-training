@@ -1,7 +1,7 @@
 #include "OrbitCameraComponent.h"
 #include "Actor.h"
 
-OrbitCameraComponent::OrbitCameraComponent(Actor& ownerP):
+OrbitCameraComponent::OrbitCameraComponent(Actor* ownerP):
 	CameraComponent(ownerP),
 	offset(-400.0f, 0.0f, 0.0f),
 	up(Vector3::unitZ),

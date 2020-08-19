@@ -8,7 +8,7 @@
 
 Ship::Ship() : Actor(), laserCooldown(0.0f), speed(400.0f)
 {
-	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Ship"));
+	SpriteComponent* sc = new SpriteComponent(this, Assets::getTexture("Ship"));
 }
 
 void Ship::actorInput(const InputState& inputState)

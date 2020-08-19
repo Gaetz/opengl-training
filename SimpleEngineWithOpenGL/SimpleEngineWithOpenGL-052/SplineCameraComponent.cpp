@@ -1,6 +1,6 @@
 #include "SplineCameraComponent.h"
 
-SplineCameraComponent::SplineCameraComponent(Actor& ownerP) :
+SplineCameraComponent::SplineCameraComponent(Actor* ownerP) :
 	CameraComponent(ownerP),
 	index(1),
 	t(0.0f),

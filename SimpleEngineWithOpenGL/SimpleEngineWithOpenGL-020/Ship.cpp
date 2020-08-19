@@ -7,8 +7,8 @@
 
 Ship::Ship() : Actor(), laserCooldown(0.0f)
 {
-	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Ship"));
-	InputComponent* ic = new InputComponent(*this);
+	SpriteComponent* sc = new SpriteComponent(this, Assets::getTexture("Ship"));
+	InputComponent* ic = new InputComponent(this);
 	ic->setMaxForwardSpeed(300.0f);
 	ic->setMaxAngularSpeed(Maths::twoPi);
 }

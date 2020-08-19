@@ -8,7 +8,7 @@
 #include "LevelLoader.h"
 #include "Assets.h"
 
-SkeletalMeshComponent::SkeletalMeshComponent(Actor& owner):
+SkeletalMeshComponent::SkeletalMeshComponent(Actor* owner):
 	MeshComponent(owner, true),
 	skeleton(nullptr),
 	animation(nullptr),
@@ -17,9 +17,9 @@ SkeletalMeshComponent::SkeletalMeshComponent(Actor& owner):
 {
 }
 
-void SkeletalMeshComponent::setSkeleton(const Skeleton* skeletonP)
+void SkeletalMeshComponent::setSkeleton(const Skeleton& skeletonP)
 {
-	skeleton = skeletonP;
+	skeleton = &skeletonP;
 }
 
 void SkeletalMeshComponent::update(float dt)
@@ -82,7 +82,7 @@ void SkeletalMeshComponent::loadProperties(const rapidjson::Value& inObj)
 	std::string skelFile;
 	if (JsonHelper::getString(inObj, "skelFile", skelFile))
 	{
-		setSkeleton(&Assets::getSkeleton(skelFile));
+		setSkeleton(Assets::getSkeleton(skelFile));
 	}
 
 	std::string animFile;

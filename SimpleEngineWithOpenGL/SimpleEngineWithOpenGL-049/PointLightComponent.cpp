@@ -3,7 +3,7 @@
 #include "RendererOGL.h"
 #include "Mesh.h"
 
-PointLightComponent::PointLightComponent(Actor& owner) :
+PointLightComponent::PointLightComponent(Actor* owner) :
 	Component(owner),
 	diffuseColor{ 1.0f, 1.0f, 1.0f },
 	innerRadius(1.0f),

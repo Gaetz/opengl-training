@@ -8,10 +8,10 @@
 
 Bullet::Bullet()
 {
-	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Projectile"));
-	MoveComponent* mc = new MoveComponent(*this);
+	SpriteComponent* sc = new SpriteComponent(this, Assets::getTexture("Projectile"));
+	MoveComponent* mc = new MoveComponent(this);
 	mc->setForwardSpeed(400.0f);
-	circle = new CircleCollisionComponent(*this);
+	circle = new CircleCollisionComponent(this);
 	circle->setRadius(5.0f);
 	liveTime = 1.0f;
 }

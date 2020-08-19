@@ -4,7 +4,7 @@
 
 Camera::Camera() : Actor(), moveComponent(nullptr)
 {
-	moveComponent = new MoveComponent(*this);
+	moveComponent = new MoveComponent(this);
 }
 
 void Camera::updateActor(float deltaTime)

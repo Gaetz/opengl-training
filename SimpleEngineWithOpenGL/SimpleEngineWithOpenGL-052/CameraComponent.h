@@ -5,7 +5,7 @@
 class CameraComponent : public Component
 {
 public:
-	CameraComponent(class Actor& owner, int updateOrder = 200);
+	CameraComponent(class Actor* owner, int updateOrder = 200);
 	ComponentType getType() const override { return ComponentType::Camera; }
 
 protected:

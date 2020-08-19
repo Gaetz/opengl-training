@@ -4,7 +4,7 @@
 class SplineCameraComponent : public CameraComponent
 {
 public:
-	SplineCameraComponent(class Actor& ownerP);
+	SplineCameraComponent(class Actor* ownerP);
 
 	void update(float dt) override;
 

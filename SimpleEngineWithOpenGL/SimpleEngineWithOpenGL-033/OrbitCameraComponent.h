@@ -3,7 +3,7 @@
 class OrbitCameraComponent : public CameraComponent
 {
 public:
-	OrbitCameraComponent(class Actor& owner);
+	OrbitCameraComponent(class Actor* owner);
 
 	void update(float dt) override;
 

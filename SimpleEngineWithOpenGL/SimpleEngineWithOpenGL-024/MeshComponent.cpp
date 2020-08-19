@@ -3,9 +3,9 @@
 #include "Game.h"
 #include "Mesh.h"
 
-MeshComponent::MeshComponent(Actor& owner) : Component(owner), mesh(nullptr), textureIndex(0)
+MeshComponent::MeshComponent(Actor* owner) : Component(owner), mesh(nullptr), textureIndex(0)
 {
-	owner.getGame().getRenderer().addMesh(this);
+	owner->getGame().getRenderer().addMesh(this);
 }
 
 MeshComponent::~MeshComponent()
@@ -31,9 +31,9 @@ void MeshComponent::draw(Shader& shader)
 	}
 }
 
-void MeshComponent::setMesh(Mesh* meshP)
+void MeshComponent::setMesh(Mesh& meshP)
 {
-	mesh = meshP;
+	mesh = &meshP;
 }
 
 void MeshComponent::setTextureIndex(size_t textureIndexP)

@@ -3,7 +3,7 @@
 class MirrorCameraComponent : public CameraComponent
 {
 public:
-	MirrorCameraComponent(class Actor& owner);
+	MirrorCameraComponent(class Actor* owner);
 
 	void setHorizontalDist(float dist) { horizontalDist = dist; }
 	void setVerticalDist(float dist) { verticalDist = dist; }

@@ -4,9 +4,9 @@
 class SkeletalMeshComponent : public MeshComponent
 {
 public:
-	SkeletalMeshComponent(Actor& owner);
+	SkeletalMeshComponent(Actor* owner);
 
-	void setSkeleton(const class Skeleton* skeletonP);
+	void setSkeleton(const class Skeleton& skeletonP);
 
 	void update(float dt) override;
 	void draw(class Shader& shader) override;

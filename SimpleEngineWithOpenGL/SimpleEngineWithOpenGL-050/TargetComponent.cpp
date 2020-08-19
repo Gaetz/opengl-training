@@ -1,7 +1,7 @@
 #include "TargetComponent.h"
 #include "Game.h"
 
-TargetComponent::TargetComponent(Actor& owner) : Component(owner)
+TargetComponent::TargetComponent(Actor* owner) : Component(owner)
 {
 	Game::instance().getHUD()->addTargetComponent(this);
 }

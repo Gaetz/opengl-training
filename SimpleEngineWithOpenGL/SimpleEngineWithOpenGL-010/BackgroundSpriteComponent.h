@@ -6,7 +6,7 @@ using std::vector;
 class BackgroundSpriteComponent : public SpriteComponent
 {
 public:
-	BackgroundSpriteComponent(Actor& ownerP, const vector<Texture*>& texturesP, int drawOrderP = 10);
+	BackgroundSpriteComponent(Actor* ownerP, const vector<Texture*>& texturesP, int drawOrderP = 10);
 	virtual ~BackgroundSpriteComponent();
 	BackgroundSpriteComponent() = delete;
 	BackgroundSpriteComponent(const BackgroundSpriteComponent&) = delete;

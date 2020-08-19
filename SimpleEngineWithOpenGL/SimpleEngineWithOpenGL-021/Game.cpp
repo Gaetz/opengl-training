@@ -17,7 +17,7 @@ void Game::load()
 
 	Actor* ui = new Actor();
 	ui->setPosition(Vector3(-350.0f, -350.0f, 0.0f));
-	SpriteComponent* sc = new SpriteComponent(*ui, Assets::getTexture("HealthBar"));
+	SpriteComponent* sc = new SpriteComponent(ui, Assets::getTexture("HealthBar"));
 }
 
 void Game::processInput()

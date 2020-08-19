@@ -19,8 +19,8 @@ const char* Component::typeNames[static_cast<int>(ComponentType::NB_COMPONENT_TY
 	"Target"
 };
 
-Component::Component(Actor& ownerP, int updateOrderP):
-	owner(ownerP),
+Component::Component(Actor* ownerP, int updateOrderP):
+	owner(*ownerP),
 	updateOrder(updateOrderP)
 {
 	owner.addComponent(this);

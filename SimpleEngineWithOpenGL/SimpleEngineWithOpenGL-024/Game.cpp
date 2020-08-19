@@ -95,12 +95,12 @@ void Game::load()
 	// UI elements
 	Actor* ui = new Actor();
 	ui->setPosition(Vector3(-350.0f, -350.0f, 0.0f));
-	SpriteComponent* sc = new SpriteComponent(*ui, Assets::getTexture("HealthBar"));
+	SpriteComponent* sc = new SpriteComponent(ui, Assets::getTexture("HealthBar"));
 
 	ui = new Actor();
 	ui->setPosition(Vector3(375.0f, -275.0f, 0.0f));
 	ui->setScale(0.75f);
-	sc = new SpriteComponent(*ui, Assets::getTexture("Radar"));
+	sc = new SpriteComponent(ui, Assets::getTexture("Radar"));
 }
 
 void Game::processInput()

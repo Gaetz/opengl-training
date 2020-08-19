@@ -10,10 +10,10 @@ Laser::Laser() :
 	deathTimer(1.0f), 
 	collision(nullptr)
 {
-	new SpriteComponent(*this, Assets::getTexture("Laser"));
-	MoveComponent* mc = new MoveComponent(*this);
+	new SpriteComponent(this, Assets::getTexture("Laser"));
+	MoveComponent* mc = new MoveComponent(this);
 	mc->setForwardSpeed(800.0f);
-	collision = new CircleCollisionComponent(*this);
+	collision = new CircleCollisionComponent(this);
 	collision->setRadius(11.0f);
 }
 

@@ -9,8 +9,8 @@
 
 Tower::Tower() : Actor()
 {
-	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Tower"), 200);
-	move = new MoveComponent(*this);
+	SpriteComponent* sc = new SpriteComponent(this, Assets::getTexture("Tower"), 200);
+	move = new MoveComponent(this);
 	//move->setAngularSpeed(Maths::pi);
 	nextAttackTimer = ATTACK_TIME;
 }

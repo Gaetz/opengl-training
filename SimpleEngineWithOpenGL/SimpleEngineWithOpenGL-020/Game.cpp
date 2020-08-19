@@ -36,7 +36,7 @@ void Game::load()
 	// Single sprite
 	/*
 	Actor* actor = new Actor();
-	SpriteComponent* sprite = new SpriteComponent(*actor, Assets::getTexture("Ship01"));
+	SpriteComponent* sprite = new SpriteComponent(actor, Assets::getTexture("Ship01"));
 	actor->setPosition(Vector2{ 100, 100 });
 	*/
 
@@ -49,7 +49,7 @@ void Game::load()
 		&Assets::getTexture("Ship04"),
 	};
 	Actor* ship = new Actor();
-	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(*ship, animTextures);
+	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ship, animTextures);
 	ship->setPosition(Vector2{ 100, 300 });
 	*/
 
@@ -64,7 +64,7 @@ void Game::load()
 		&Assets::getTexture("Farback02")
 	};
 	Actor* bgFar = new Actor();
-	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(*bgFar, bgTexsFar);
+	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(bgFar, bgTexsFar);
 	bgSpritesFar->setScrollSpeed(-100.0f);
 
 	// Create the closer background
@@ -73,7 +73,7 @@ void Game::load()
 		&Assets::getTexture("Stars"),
 		&Assets::getTexture("Stars")
 	};
-	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(*bgClose, bgTexsClose, 50);
+	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose, 50);
 	bgSpritesClose->setScrollSpeed(-200.0f);
 	
 	const int astroidNumber = 20;

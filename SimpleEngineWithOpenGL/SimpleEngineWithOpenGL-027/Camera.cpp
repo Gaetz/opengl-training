@@ -5,8 +5,8 @@
 
 Camera::Camera() : Actor(), moveComponent(nullptr), audioComponent(nullptr), lastFootstep(0.0f)
 {
-	moveComponent = new MoveComponent(*this);
-	audioComponent = new AudioComponent(*this);
+	moveComponent = new MoveComponent(this);
+	audioComponent = new AudioComponent(this);
 	footstep = audioComponent->playEvent("event:/Footstep");
 	footstep.setPaused(true);
 }

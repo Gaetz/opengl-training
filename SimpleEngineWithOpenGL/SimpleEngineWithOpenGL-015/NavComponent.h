@@ -5,7 +5,7 @@
 class NavComponent : public MoveComponent
 {
 public:
-	NavComponent(class Actor& owner, int updateOrder = 10);
+	NavComponent(class Actor* owner, int updateOrder = 10);
 	NavComponent() = delete;
 	NavComponent(const NavComponent&) = delete;
 	NavComponent& operator=(const NavComponent&) = delete;

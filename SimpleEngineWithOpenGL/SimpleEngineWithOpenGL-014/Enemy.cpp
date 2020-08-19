@@ -9,12 +9,12 @@ Enemy::Enemy() : Actor(), circle(nullptr)
 {
 	getGame().getEnemies().emplace_back(this);
 
-	SpriteComponent* sc = new SpriteComponent(*this, Assets::getTexture("Airplane"));
+	SpriteComponent* sc = new SpriteComponent(this, Assets::getTexture("Airplane"));
 	setPosition(getGame().getGrid().getStartTile().getPosition());
-	NavComponent* nc = new NavComponent(*this);
+	NavComponent* nc = new NavComponent(this);
 	nc->setForwardSpeed(150.0f);
 	nc->startPath(getGame().getGrid().getStartTile());
-	circle = new CircleCollisionComponent(*this);
+	circle = new CircleCollisionComponent(this);
 	circle->setRadius(25.0f);
 }
 
