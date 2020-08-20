@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${vcpkgRoot}/x86-windows/include"
+                "${vcpkgRoot}/x86-windows/include",
+                "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/include"
             ],
             "defines": [
                 "_DEBUG",
