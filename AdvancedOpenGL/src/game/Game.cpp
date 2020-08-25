@@ -2,7 +2,6 @@
 #include "../engine/Assets.h"
 #include "../engine/Scene.h"
 
-#include "../engine/Maths.h"
 #include "Scene_006_Fragment.h"
 
 Game::Game() : isRunning(false),

@@ -9,7 +9,9 @@
 #include <string>
 #include <fstream>
 
-#include "Maths.h"
+#include "maths/Matrix4.h"
+#include "maths/Vector2.h"
+#include "maths/Vector4.h"
 
 // General purpose shader object. Compiles from file, generates
 // compile/link-time error messages and hosts several utility 

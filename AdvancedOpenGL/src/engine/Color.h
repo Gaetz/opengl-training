@@ -3,7 +3,8 @@
 
 #include <cstdint>
 #include <GL/glew.h>
-#include "Maths.h"
+#include "maths/Vector3.h"
+#include "maths/Vector4.h"
 
 class Color
 {
