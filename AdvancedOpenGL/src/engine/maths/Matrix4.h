@@ -5,6 +5,7 @@
 #include "Vector3.h"
 #include "Quaternion.h"
 
+// Row major order 4*4 matrix
 class Matrix4
 {
 public:
@@ -305,10 +306,10 @@ public:
 	{
 		float temp[4][4] =
 		{
-			{ 2.0f / width, 0.0f, 0.0f, 0.0f },
-			{ 0.0f, 2.0f / height, 0.0f, 0.0f },
-			{ 0.0f, 0.0f, 1.0f / (far - near), 0.0f },
-			{ 0.0f, 0.0f, near / (near - far), 1.0f }
+			{ 1.0f / width, 0.0f, 0.0f, 0.0f },
+			{ 0.0f, 1.0f / height, 0.0f, 0.0f },
+			{ 0.0f, 0.0f, -2.0f / (far - near), 0.0f },
+			{ 0.0f, 0.0f, (far + near) / (near - far), 1.0f }
 		};
 		return Matrix4(temp);
 	}
@@ -323,6 +324,18 @@ public:
 			{ 0.0f, yScale, 0.0f, 0.0f },
 			{ 0.0f, 0.0f, far / (far - near), 1.0f },
 			{ 0.0f, 0.0f, -near * far / (far - near), 0.0f }
+		};
+		return Matrix4(temp);
+	}
+
+	static Matrix4 createPerspective(float left, float right, float bottom, float top, float near, float far)
+	{
+		float temp[4][4] =
+		{
+			{ 2 * near / (right - left), 0.0f, 0.0f, 0.0f },
+			{ 0.0f, 2 * near / (top - bottom), 0.0f, 0.0f },
+			{ (right + left) / (right - left), (top + bottom) / (top - bottom), (far + near) / (near - far), -1.0f },
+			{ 0.0f, 0.0f, 2 * near * far / (near - far), 0.0f }
 		};
 		return Matrix4(temp);
 	}
