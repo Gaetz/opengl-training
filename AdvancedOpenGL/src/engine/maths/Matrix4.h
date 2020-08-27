@@ -1,141 +1,194 @@
 #ifndef MATHS_MATRIX4_H
 #define MATHS_MATRIX4_H
 
-#include <memory.h>
-#include "Vector3.h"
+#include <memory>
+#include "Vector4.h"
+#include <vector>
 #include "Quaternion.h"
 
-// Row major order 4*4 matrix
+// Col major order 4*4 matrix
 class Matrix4
 {
 public:
-	float mat[4][4];
+	Vector4 mat[4];
 
 	Matrix4()
 	{
 		*this = Matrix4::identity;
 	}
 
-	explicit Matrix4(float inMat[4][4])
+	inline void assign(const Vector4 (&inMat)[4])
 	{
-		memcpy(mat, inMat, 16 * sizeof(float));
-
+		int n = 0;
+        for (n = 0; n < 4; n++)
+            mat[n] = inMat[n];
 	}
 
-	// Cast to a const float pointer
+	inline Matrix4(const Matrix4& that)
+    {
+        assign(that.mat);
+    }
+
+	inline Matrix4(const Vector4 (&inMat)[4])
+    {
+        assign(inMat);
+    }
+
 	const float* getAsFloatPtr() const
 	{
-		return reinterpret_cast<const float*>(&mat[0][0]);
+		return reinterpret_cast<const float*>(&mat[0]);
 	}
 
-	// Matrix multiplication (a * b)
-	friend Matrix4 operator*(const Matrix4& a, const Matrix4& b)
+	inline Vector4& operator[](const int i)
 	{
-		Matrix4 retVal;
-		// row 0
-		retVal.mat[0][0] =
-			a.mat[0][0] * b.mat[0][0] +
-			a.mat[0][1] * b.mat[1][0] +
-			a.mat[0][2] * b.mat[2][0] +
-			a.mat[0][3] * b.mat[3][0];
+		return mat[i];
+	}
 
-		retVal.mat[0][1] =
-			a.mat[0][0] * b.mat[0][1] +
-			a.mat[0][1] * b.mat[1][1] +
-			a.mat[0][2] * b.mat[2][1] +
-			a.mat[0][3] * b.mat[3][1];
+	inline Matrix4& operator=(const Matrix4& that)
+    {
+        assign(that.mat);
+		return  *this;
+    }
 
-		retVal.mat[0][2] =
-			a.mat[0][0] * b.mat[0][2] +
-			a.mat[0][1] * b.mat[1][2] +
-			a.mat[0][2] * b.mat[2][2] +
-			a.mat[0][3] * b.mat[3][2];
+	inline Matrix4 operator+(const Matrix4& that) const
+    {
+        Matrix4 result;
+        int n;
+        for (n = 0; n < 4; n++)
+            result.mat[n] = mat[n] + that.mat[n];
+        return result;
+    }
 
-		retVal.mat[0][3] =
-			a.mat[0][0] * b.mat[0][3] +
-			a.mat[0][1] * b.mat[1][3] +
-			a.mat[0][2] * b.mat[2][3] +
-			a.mat[0][3] * b.mat[3][3];
+    inline Matrix4& operator+=(const Matrix4& that)
+    {
+        return (*this = *this + that);
+    }
 
-		// row 1
-		retVal.mat[1][0] =
-			a.mat[1][0] * b.mat[0][0] +
-			a.mat[1][1] * b.mat[1][0] +
-			a.mat[1][2] * b.mat[2][0] +
-			a.mat[1][3] * b.mat[3][0];
+    inline Matrix4 operator-(const Matrix4& that) const
+    {
+        Matrix4 result;
+        int n;
+        for (n = 0; n < 4; n++)
+            result.mat[n] = mat[n] - that.mat[n];
+        return result;
+    }
 
-		retVal.mat[1][1] =
-			a.mat[1][0] * b.mat[0][1] +
-			a.mat[1][1] * b.mat[1][1] +
-			a.mat[1][2] * b.mat[2][1] +
-			a.mat[1][3] * b.mat[3][1];
+    inline Matrix4& operator-=(const Matrix4& that)
+    {
+        return (*this = *this - that);
+    }
 
-		retVal.mat[1][2] =
-			a.mat[1][0] * b.mat[0][2] +
-			a.mat[1][1] * b.mat[1][2] +
-			a.mat[1][2] * b.mat[2][2] +
-			a.mat[1][3] * b.mat[3][2];
+	// Matrix multiplication (a * b)
+	friend Matrix4 operator*(Matrix4& a, Matrix4& b)
+	{
+		Vector4 vec0;
+		Vector4 vec1;
+		Vector4 vec2;
+		Vector4 vec3;
 
-		retVal.mat[1][3] =
-			a.mat[1][0] * b.mat[0][3] +
-			a.mat[1][1] * b.mat[1][3] +
-			a.mat[1][2] * b.mat[2][3] +
-			a.mat[1][3] * b.mat[3][3];
+		vec0[0] = 
+		a[0][0] * b[0][0] +
+		a[1][0] * b[0][1] +
+		a[2][0] * b[0][2] +
+		a[3][0] * b[0][3];
 
-		// row 2
-		retVal.mat[2][0] =
-			a.mat[2][0] * b.mat[0][0] +
-			a.mat[2][1] * b.mat[1][0] +
-			a.mat[2][2] * b.mat[2][0] +
-			a.mat[2][3] * b.mat[3][0];
+		vec0[1] = 
+		a[0][1] * b[0][0] +
+		a[1][1] * b[0][1] +
+		a[2][1] * b[0][2] +
+		a[3][1] * b[0][3];
 
-		retVal.mat[2][1] =
-			a.mat[2][0] * b.mat[0][1] +
-			a.mat[2][1] * b.mat[1][1] +
-			a.mat[2][2] * b.mat[2][1] +
-			a.mat[2][3] * b.mat[3][1];
+		vec0[2] = 
+		a[0][2] * b[0][0] +
+		a[1][2] * b[0][1] +
+		a[2][2] * b[0][2] +
+		a[3][2] * b[0][3];
 
-		retVal.mat[2][2] =
-			a.mat[2][0] * b.mat[0][2] +
-			a.mat[2][1] * b.mat[1][2] +
-			a.mat[2][2] * b.mat[2][2] +
-			a.mat[2][3] * b.mat[3][2];
+		vec0[3] = 
+		a[0][3] * b[0][0] +
+		a[1][3] * b[0][1] +
+		a[2][3] * b[0][2] +
+		a[3][3] * b[0][3];
 
-		retVal.mat[2][3] =
-			a.mat[2][0] * b.mat[0][3] +
-			a.mat[2][1] * b.mat[1][3] +
-			a.mat[2][2] * b.mat[2][3] +
-			a.mat[2][3] * b.mat[3][3];
+		vec1[0] = 
+		a[0][0] * b[1][0] +
+		a[1][0] * b[1][1] +
+		a[2][0] * b[1][2] +
+		a[3][0] * b[1][3];
 
-		// row 3
-		retVal.mat[3][0] =
-			a.mat[3][0] * b.mat[0][0] +
-			a.mat[3][1] * b.mat[1][0] +
-			a.mat[3][2] * b.mat[2][0] +
-			a.mat[3][3] * b.mat[3][0];
+		vec1[1] = 
+		a[0][1] * b[1][0] +
+		a[1][1] * b[1][1] +
+		a[2][1] * b[1][2] +
+		a[3][1] * b[1][3];
 
-		retVal.mat[3][1] =
-			a.mat[3][0] * b.mat[0][1] +
-			a.mat[3][1] * b.mat[1][1] +
-			a.mat[3][2] * b.mat[2][1] +
-			a.mat[3][3] * b.mat[3][1];
+		vec1[2] = 
+		a[0][2] * b[1][0] +
+		a[1][2] * b[1][1] +
+		a[2][2] * b[1][2] +
+		a[3][2] * b[1][3];
 
-		retVal.mat[3][2] =
-			a.mat[3][0] * b.mat[0][2] +
-			a.mat[3][1] * b.mat[1][2] +
-			a.mat[3][2] * b.mat[2][2] +
-			a.mat[3][3] * b.mat[3][2];
+		vec1[3] = 
+		a[0][3] * b[1][0] +
+		a[1][3] * b[1][1] +
+		a[2][3] * b[1][2] +
+		a[3][3] * b[1][3];
 
-		retVal.mat[3][3] =
-			a.mat[3][0] * b.mat[0][3] +
-			a.mat[3][1] * b.mat[1][3] +
-			a.mat[3][2] * b.mat[2][3] +
-			a.mat[3][3] * b.mat[3][3];
+		vec2[0] = 
+		a[0][0] * b[2][0] +
+		a[1][0] * b[2][1] +
+		a[2][0] * b[2][2] +
+		a[3][0] * b[2][3];
+
+		vec2[1] = 
+		a[0][1] * b[2][0] +
+		a[1][1] * b[2][1] +
+		a[2][1] * b[2][2] +
+		a[3][1] * b[2][3];
+
+		vec2[2] = 
+		a[0][2] * b[2][0] +
+		a[1][2] * b[2][1] +
+		a[2][2] * b[2][2] +
+		a[3][2] * b[2][3];
+
+		vec2[3] = 
+		a[0][3] * b[2][0] +
+		a[1][3] * b[2][1] +
+		a[2][3] * b[2][2] +
+		a[3][3] * b[2][3];
+
+		vec3[0] = 
+		a[0][0] * b[3][0] +
+		a[1][0] * b[3][1] +
+		a[2][0] * b[3][2] +
+		a[3][0] * b[3][3];
+
+		vec3[1] = 
+		a[0][1] * b[3][0] +
+		a[1][1] * b[3][1] +
+		a[2][1] * b[3][2] +
+		a[3][1] * b[3][3];
+
+		vec3[2] = 
+		a[0][2] * b[3][0] +
+		a[1][2] * b[3][1] +
+		a[2][2] * b[3][2] +
+		a[3][2] * b[3][3];
+
+		vec3[3] = 
+		a[0][3] * b[3][0] +
+		a[1][3] * b[3][1] +
+		a[2][3] * b[3][2] +
+		a[3][3] * b[3][3];
+
+		Vector4 newMat[4] { vec0, vec1, vec2, vec3 };
+		Matrix4 retVal(newMat);
 
 		return retVal;
 	}
 
-	Matrix4& operator*=(const Matrix4& right)
+	Matrix4& operator*=(Matrix4& right)
 	{
 		*this = *this * right;
 		return *this;
@@ -146,41 +199,45 @@ public:
 
 	Vector3 getTranslation() const
 	{
-		return Vector3(mat[3][0], mat[3][1], mat[3][2]);
+		auto transVector = mat[3];
+		return Vector3(transVector[0], transVector[1], transVector[2]);
 	}
 
 	Vector3 getXAxis() const
 	{
-		return Vector3::normalize(Vector3(mat[0][0], mat[0][1], mat[0][2]));
+		auto xVector = mat[0];
+		return Vector3::normalize(Vector3(xVector[0], xVector[1], xVector[2]));
 	}
 
 	Vector3 getYAxis() const
 	{
-		return Vector3::normalize(Vector3(mat[1][0], mat[1][1], mat[1][2]));
+		auto yVector = mat[1];
+		return Vector3::normalize(Vector3(yVector[0], yVector[1], yVector[2]));
 	}
 
 	Vector3 getZAxis() const
 	{
-		return Vector3::normalize(Vector3(mat[2][0], mat[2][1], mat[2][2]));
+		auto zVector = mat[2];
+		return Vector3::normalize(Vector3(zVector[0], zVector[1], zVector[2]));
 	}
 
 	Vector3 getScale() const
 	{
 		Vector3 retVal;
-		retVal.x = Vector3(mat[0][0], mat[0][1], mat[0][2]).length();
-		retVal.y = Vector3(mat[1][0], mat[1][1], mat[1][2]).length();
-		retVal.z = Vector3(mat[2][0], mat[2][1], mat[2][2]).length();
+		retVal.x = Vector3(mat[0].x, mat[0].y, mat[0].z).length();
+		retVal.y = Vector3(mat[1].x, mat[1].y, mat[1].y).length();
+		retVal.z = Vector3(mat[2].x, mat[2].y, mat[2].z).length();
 		return retVal;
 	}
 
 	static Matrix4 createScale(float xScale, float yScale, float zScale)
 	{
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ xScale, 0.0f, 0.0f, 0.0f },
-			{ 0.0f, yScale, 0.0f, 0.0f },
-			{ 0.0f, 0.0f, zScale, 0.0f },
-			{ 0.0f, 0.0f, 0.0f, 1.0f }
+			Vector4 { xScale, 0.0f, 0.0f, 0.0f },
+			Vector4 { 0.0f, yScale, 0.0f, 0.0f },
+			Vector4 { 0.0f, 0.0f, zScale, 0.0f },
+			Vector4 { 0.0f, 0.0f, 0.0f, 1.0f }
 		};
 		return Matrix4(temp);
 	}
@@ -197,87 +254,91 @@ public:
 
 	static Matrix4 createRotationX(float theta)
 	{
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ 1.0f, 0.0f, 0.0f , 0.0f },
-			{ 0.0f, Maths::cos(theta), Maths::sin(theta), 0.0f },
-			{ 0.0f, Maths::sin(theta), Maths::cos(theta), 0.0f },
-			{ 0.0f, 0.0f, 0.0f, 1.0f },
+			Vector4 { 1.0f, 0.0f, 0.0f , 0.0f },
+			Vector4 { 0.0f, Maths::cos(theta), -Maths::sin(theta), 0.0f },
+			Vector4 { 0.0f, Maths::sin(theta), Maths::cos(theta), 0.0f },
+			Vector4 { 0.0f, 0.0f, 0.0f, 1.0f },
 		};
 		return Matrix4(temp);
 	}
 
 	static Matrix4 createRotationY(float theta)
 	{
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ Maths::cos(theta), 0.0f, -Maths::sin(theta), 0.0f },
-			{ 0.0f, 1.0f, 0.0f, 0.0f },
-			{ Maths::sin(theta), 0.0f, Maths::cos(theta), 0.0f },
-			{ 0.0f, 0.0f, 0.0f, 1.0f },
+			Vector4 { Maths::cos(theta), 0.0f, Maths::sin(theta), 0.0f },
+			Vector4 { 0.0f, 1.0f, 0.0f, 0.0f },
+			Vector4 { -Maths::sin(theta), 0.0f, Maths::cos(theta), 0.0f },
+			Vector4 { 0.0f, 0.0f, 0.0f, 1.0f },
 		};
 		return Matrix4(temp);
 	}
 
 	static Matrix4 createRotationZ(float theta)
 	{
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ Maths::cos(theta), Maths::sin(theta), 0.0f, 0.0f },
-			{ -Maths::sin(theta), Maths::cos(theta), 0.0f, 0.0f },
-			{ 0.0f, 0.0f, 1.0f, 0.0f },
-			{ 0.0f, 0.0f, 0.0f, 1.0f },
+			Vector4 { Maths::cos(theta), Maths::sin(theta), 0.0f, 0.0f },
+			Vector4 { -Maths::sin(theta), Maths::cos(theta), 0.0f, 0.0f },
+			Vector4 { 0.0f, 0.0f, 1.0f, 0.0f },
+			Vector4 { 0.0f, 0.0f, 0.0f, 1.0f },
 		};
 		return Matrix4(temp);
 	}
 
 	static Matrix4 createTranslation(const Vector3& trans)
 	{
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ 1.0f, 0.0f, 0.0f, 0.0f },
-			{ 0.0f, 1.0f, 0.0f, 0.0f },
-			{ 0.0f, 0.0f, 1.0f, 0.0f },
-			{ trans.x, trans.y, trans.z, 1.0f }
+			Vector4 { 1.0f, 0.0f, 0.0f, 0.0f },
+			Vector4 { 0.0f, 1.0f, 0.0f, 0.0f },
+			Vector4 { 0.0f, 0.0f, 1.0f, 0.0f },
+			Vector4 { trans.x, trans.y, trans.z, 1.0f }
 		};
 		return Matrix4(temp);
 	}
 
 	static Matrix4 createSimpleViewProj(float width, float height)
 	{
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ 2.0f / width, 0.0f, 0.0f, 0.0f },
-			{ 0.0f, 2.0f / height, 0.0f, 0.0f },
-			{ 0.0f, 0.0f, 1.0f, 0.0f },
-			{ 0.0f, 0.0f, 1.0f, 1.0f }
+			Vector4 { 2.0f / width, 0.0f, 0.0f, 0.0f },
+			Vector4 { 0.0f, 2.0f / height, 0.0f, 0.0f },
+			Vector4 { 0.0f, 0.0f, 1.0f, 1.0f },
+			Vector4 { 0.0f, 0.0f, 0.0f, 1.0f }
 		};
 		return Matrix4(temp);
 	}
 
 	static Matrix4 createFromQuaternion(const Quaternion& q)
 	{
-		float mat[4][4];
+		Vector4 vec0;
+		vec0[0] = 1.0f - 2.0f * q.y * q.y - 2.0f * q.z * q.z;
+		vec0[1] = 2.0f * q.x * q.y - 2.0f * q.w * q.z;
+		vec0[2] = 2.0f * q.x * q.z + 2.0f * q.w * q.y;
+		vec0[3] = 0.0f;
 
-		mat[0][0] = 1.0f - 2.0f * q.y * q.y - 2.0f * q.z * q.z;
-		mat[0][1] = 2.0f * q.x * q.y + 2.0f * q.w * q.z;
-		mat[0][2] = 2.0f * q.x * q.z - 2.0f * q.w * q.y;
-		mat[0][3] = 0.0f;
+		Vector4 vec1;
+		vec1[0] = 2.0f * q.x * q.y + 2.0f * q.w * q.z;
+		vec1[1] = 1.0f - 2.0f * q.x * q.x - 2.0f * q.z * q.z;
+		vec1[2] = 2.0f * q.y * q.z - 2.0f * q.w * q.x;
+		vec1[3] = 0.0f;
 
-		mat[1][0] = 2.0f * q.x * q.y - 2.0f * q.w * q.z;
-		mat[1][1] = 1.0f - 2.0f * q.x * q.x - 2.0f * q.z * q.z;
-		mat[1][2] = 2.0f * q.y * q.z + 2.0f * q.w * q.x;
-		mat[1][3] = 0.0f;
+		Vector4 vec2;
+		vec2[0] = 2.0f * q.x * q.z - 2.0f * q.w * q.y;
+		vec2[1] = 2.0f * q.y * q.z - 2.0f * q.w * q.x;
+		vec2[2] = 1.0f - 2.0f * q.x * q.x - 2.0f * q.y * q.y;
+		vec2[3] = 0.0f;
 
-		mat[2][0] = 2.0f * q.x * q.z + 2.0f * q.w * q.y;
-		mat[2][1] = 2.0f * q.y * q.z - 2.0f * q.w * q.x;
-		mat[2][2] = 1.0f - 2.0f * q.x * q.x - 2.0f * q.y * q.y;
-		mat[2][3] = 0.0f;
+		Vector4 vec3;
+		vec3[0] = 0.0f;
+		vec3[1] = 0.0f;
+		vec3[2] = 0.0f;
+		vec3[3] = 1.0f;
 
-		mat[3][0] = 0.0f;
-		mat[3][1] = 0.0f;
-		mat[3][2] = 0.0f;
-		mat[3][3] = 1.0f;
+		Vector4 mat[4] { vec0, vec1, vec2, vec3 };
 
 		return Matrix4(mat);
 	}
@@ -292,24 +353,24 @@ public:
 		trans.y = -Vector3::dot(yaxis, eye);
 		trans.z = -Vector3::dot(zaxis, eye);
 
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ xaxis.x, yaxis.x, zaxis.x, 0.0f },
-			{ xaxis.y, yaxis.y, zaxis.y, 0.0f },
-			{ xaxis.z, yaxis.z, zaxis.z, 0.0f },
-			{ trans.x, trans.y, trans.z, 1.0f }
+			Vector4 { xaxis.x, xaxis.y, xaxis.z, 0.0f },
+			Vector4 { yaxis.x, yaxis.y, yaxis.z, 0.0f },
+			Vector4 { zaxis.x, zaxis.y, zaxis.z, 0.0f },
+			Vector4 { trans.x, trans.y, trans.z, 1.0f }
 		};
 		return Matrix4(temp);
 	}
 
 	static Matrix4 createOrtho(float width, float height, float near, float far)
 	{
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ 1.0f / width, 0.0f, 0.0f, 0.0f },
-			{ 0.0f, 1.0f / height, 0.0f, 0.0f },
-			{ 0.0f, 0.0f, -2.0f / (far - near), 0.0f },
-			{ 0.0f, 0.0f, (far + near) / (near - far), 1.0f }
+			Vector4 { 2.0f / width, 0.0f, 0.0f, 0.0f },
+			Vector4 { 0.0f, 2.0f / height, 0.0f, 0.0f },
+			Vector4 { 0.0f, 0.0f, 2.0f / (near - far), 0.0f },
+			Vector4 { 0.0f, 0.0f, (far + near) / (far - far), 1.0f }
 		};
 		return Matrix4(temp);
 	}
@@ -318,24 +379,24 @@ public:
 	{
 		float yScale = Maths::cot(fovY / 2.0f);
 		float xScale = yScale * height / width;
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ xScale, 0.0f, 0.0f, 0.0f },
-			{ 0.0f, yScale, 0.0f, 0.0f },
-			{ 0.0f, 0.0f, far / (far - near), 1.0f },
-			{ 0.0f, 0.0f, -near * far / (far - near), 0.0f }
+			Vector4 { xScale, 0.0f, 0.0f, 0.0f },
+			Vector4 { 0.0f, yScale, 0.0f, 0.0f },
+			Vector4 { 0.0f, 0.0f, near + far / (near - far), -1.0f },
+			Vector4 { 0.0f, 0.0f,  2.0f * near * far / (near - far), 0.0f }
 		};
 		return Matrix4(temp);
 	}
 
 	static Matrix4 createPerspective(float left, float right, float bottom, float top, float near, float far)
 	{
-		float temp[4][4] =
+		Vector4 temp[4] =
 		{
-			{ 2 * near / (right - left), 0.0f, 0.0f, 0.0f },
-			{ 0.0f, 2 * near / (top - bottom), 0.0f, 0.0f },
-			{ (right + left) / (right - left), (top + bottom) / (top - bottom), (far + near) / (near - far), -1.0f },
-			{ 0.0f, 0.0f, 2 * near * far / (near - far), 0.0f }
+			Vector4 { 2 * near / (right - left), 0.0f, 0.0f, 0.0f },
+			Vector4 { 0.0f, 2 * near / (top - bottom), 0.0f, 0.0f },
+			Vector4 { (right + left) / (right - left), (top + bottom) / (top - bottom), (far + near) / (near - far), -1.0f },
+			Vector4 { 0.0f, 0.0f, 2 * near * far / (near - far), 0.0f }
 		};
 		return Matrix4(temp);
 	}

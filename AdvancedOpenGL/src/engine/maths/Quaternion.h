@@ -127,7 +127,9 @@ public:
 		return retVal;
 	}
 
-	Matrix4 asMatrix() const;
+	class Matrix4 asMatrix() const;
+
+	class Matrix4Row asMatrixRow() const;
 
 	static const Quaternion identity;
 };

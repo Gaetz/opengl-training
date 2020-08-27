@@ -1,16 +1,16 @@
-#include "Matrix4.h"
+#include "Matrix4Row.h"
 
-static Vector4 m4Ident[4] =
+static float m4IdentRow[4][4] =
 {
-	Vector4 { 1.0f, 0.0f, 0.0f, 0.0f },
-	Vector4 { 0.0f, 1.0f, 0.0f, 0.0f },
-	Vector4 { 0.0f, 0.0f, 1.0f, 0.0f },
-	Vector4 { 0.0f, 0.0f, 0.0f, 1.0f }
+	{ 1.0f, 0.0f, 0.0f, 0.0f },
+	{ 0.0f, 1.0f, 0.0f, 0.0f },
+	{ 0.0f, 0.0f, 1.0f, 0.0f },
+	{ 0.0f, 0.0f, 0.0f, 1.0f }
 };
 
-const Matrix4 Matrix4::identity(m4Ident);
+const Matrix4Row Matrix4Row::identity(m4IdentRow);
 
-void Matrix4::invert()
+void Matrix4Row::invert()
 {
 	float tmp[12];
 	float src[16];
