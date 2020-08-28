@@ -42,7 +42,7 @@ void SceneMain::handleEvent(const InputState &inputState)
 {
 }
 
-void SceneMain::update(unsigned int dt)
+void SceneMain::update(float dt)
 {
 }
 

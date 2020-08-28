@@ -22,9 +22,13 @@ public:
     // Wait if the game run faster than the decided FPS
     void delayTime();
 
+	// Get time since the game started, in seconds
+	static double getTimeSinceStart() { return timeSinceStart; }
+
 private:
 	const static int FPS = 60;
 	const static int frameDelay = 1000 / FPS;
+	const unsigned int MAX_DT = 50;
 
 	// Time in milliseconds when frame starts
 	unsigned int frameStart;
@@ -34,6 +38,9 @@ private:
 
 	// Time it tooks to run the loop. Used to cap framerate.
 	unsigned int frameTime;
+
+	// Time in seconds since the game started
+	static double timeSinceStart;
 };
 
 #endif

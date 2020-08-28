@@ -3,13 +3,15 @@
 //
 
 #include "Scene_007_SpinningCube.h"
+#include "../engine/Timer.h"
 
 #include <cstdlib>
 #include <ctime>
 #include <GL/glew.h>
 
 
-Scene_007_SpinningCube::Scene_007_SpinningCube() {
+Scene_007_SpinningCube::Scene_007_SpinningCube()
+{
 }
 
 Scene_007_SpinningCube::~Scene_007_SpinningCube() {
@@ -109,14 +111,12 @@ void Scene_007_SpinningCube::resume() {
 void Scene_007_SpinningCube::handleEvent(const InputState &inputState) {
 }
 
-void Scene_007_SpinningCube::update(unsigned int dt) {
-    timeSinceStart = (float)SDL_GetTicks() / 1000.0f;
-    const float t = timeSinceStart / 1000.0f;
-    transform = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -4.0f)) * Matrix4::createRotationX(t * 200.0f) * Matrix4::createRotationZ(t * 200.0f);
-        /* * Matrix4::createTranslation(Vector3(Maths::sin(2.1f * t) * 0.5f, Maths::cos(1.7f * t) * 0.5f, Maths::sin(1.3f * t) * Maths::cos(1.5f * t) * 2.0f))
-        * * Matrix4::createRotationY(t * 45.0f)
-        * Matrix4::createRotationX(t * 81.0f);
-        */
+void Scene_007_SpinningCube::update(float dt) {
+    const float t = Timer::getTimeSinceStart() * 0.3f;
+    transform = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -4.0f))
+        * Matrix4::createTranslation(Vector3(Maths::sin(2.1f * t) * 0.5f, Maths::cos(1.7f * t) * 0.5f, Maths::sin(1.3f * t) * Maths::cos(1.5f * t) * 2.0f))
+        * Matrix4::createRotationY(t * 45.0f / 10.0f)
+        * Matrix4::createRotationX(t * 81.0f / 10.0f);
 }
 
 void Scene_007_SpinningCube::draw() {

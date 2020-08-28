@@ -144,11 +144,11 @@ void WindowSdl::logGlParams()
     LOG(Info) << "";
 };
 
-void WindowSdl::updateFpsCounter(long dt)
+void WindowSdl::updateFpsCounter(float dt)
 {
     double elapsedSeconds;
 
-    currentSeconds += dt / 1000.0;
+    currentSeconds += dt;
     elapsedSeconds = currentSeconds - previousSeconds;
     /* limit text updates to 4 per second */
     if (elapsedSeconds > 0.25)

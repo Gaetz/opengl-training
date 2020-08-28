@@ -41,7 +41,7 @@ void Scene_003_Triangle::resume() {
 void Scene_003_Triangle::handleEvent(const InputState &inputState) {
 }
 
-void Scene_003_Triangle::update(unsigned int dt) {
+void Scene_003_Triangle::update(float dt) {
 }
 
 void Scene_003_Triangle::draw() {

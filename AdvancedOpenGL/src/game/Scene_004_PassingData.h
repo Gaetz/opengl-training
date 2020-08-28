@@ -19,7 +19,7 @@ public:
     void pause();
     void resume();
     void handleEvent(const InputState &);
-    void update(unsigned int dt);
+    void update(float dt);
     void draw();
     void setGame(Game *);
 

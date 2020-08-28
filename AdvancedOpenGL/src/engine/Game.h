@@ -31,7 +31,7 @@ public:
 	void init(int screenWidth, int screenHeight);
 	void load();
 	void handleInputs();
-	void update(unsigned int dt);
+	void update(float dt);
 	void render();
 	void clean();
 

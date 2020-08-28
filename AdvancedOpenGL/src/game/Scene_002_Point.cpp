@@ -42,7 +42,7 @@ void Scene_002_Point::resume() {
 void Scene_002_Point::handleEvent(const InputState &inputState) {
 }
 
-void Scene_002_Point::update(unsigned int dt) {
+void Scene_002_Point::update(float dt) {
 }
 
 void Scene_002_Point::draw() {

@@ -37,7 +37,7 @@ public:
     void logGlParams() override;
     //bool should_close();
     //void handle_close();
-    void updateFpsCounter(long dt) override;
+    void updateFpsCounter(float dt) override;
     void clear() override;
     void swapBuffer() override;
     void clean() override;

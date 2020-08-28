@@ -46,7 +46,7 @@ void Scene_005_Tessellation::resume() {
 void Scene_005_Tessellation::handleEvent(const InputState &inputState) {
 }
 
-void Scene_005_Tessellation::update(unsigned int dt) {
+void Scene_005_Tessellation::update(float dt) {
 }
 
 void Scene_005_Tessellation::draw() {

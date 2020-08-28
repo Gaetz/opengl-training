@@ -13,7 +13,7 @@ public:
 	virtual void clean() = 0;
 	
 	virtual void handleEvent(const InputState&) = 0;
-	virtual void update(unsigned int dt) = 0;
+	virtual void update(float dt) = 0;
 	virtual void draw() = 0;
 
 	virtual void pause() = 0;

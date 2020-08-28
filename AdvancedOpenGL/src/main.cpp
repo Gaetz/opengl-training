@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
 		Log::restart();
 	}
 
-	// Delta time in milliseconds
-	unsigned int dt;
+	// Delta time in seconds
+	float dt;
 
 	// Main game elements loading
 	auto window(IWindow::create(title));
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 
 	// Game loop
 	while (game.isRunning) {
-		dt = timer.computeDeltaTime();
+		dt = timer.computeDeltaTime() / 1000.0f;
 		window->updateFpsCounter(dt);
 
 		game.handleInputs();

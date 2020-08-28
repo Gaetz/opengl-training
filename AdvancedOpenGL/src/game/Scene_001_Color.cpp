@@ -46,7 +46,7 @@ void Scene_001_Color::handleEvent(const InputState &inputState)
 {
 }
 
-void Scene_001_Color::update(unsigned int dt)
+void Scene_001_Color::update(float dt)
 {
 }
 

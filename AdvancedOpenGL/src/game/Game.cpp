@@ -30,7 +30,7 @@ void Game::handleInputs() {
     gameStates.back()->handleEvent(inputState);
 }
 
-void Game::update(unsigned int dt) {
+void Game::update(float dt) {
     gameStates.back()->update(dt);
 }
 

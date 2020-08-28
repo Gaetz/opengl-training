@@ -44,7 +44,7 @@ void Scene_006_Fragment::resume() {
 void Scene_006_Fragment::handleEvent(const InputState &inputState) {
 }
 
-void Scene_006_Fragment::update(unsigned int dt) {
+void Scene_006_Fragment::update(float dt) {
     timeSinceStart = (float)SDL_GetTicks() / 1000.0f;
 }
 

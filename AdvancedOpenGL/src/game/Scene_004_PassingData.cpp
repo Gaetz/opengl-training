@@ -41,7 +41,7 @@ void Scene_004_PassingData::resume() {
 void Scene_004_PassingData::handleEvent(const InputState &inputState) {
 }
 
-void Scene_004_PassingData::update(unsigned int dt) {
+void Scene_004_PassingData::update(float dt) {
     timeSinceStart = (float)SDL_GetTicks() / 1000.0f;
     displayColor = Color((float)sin(timeSinceStart) *0.5f * 255.0f, (float)cos(timeSinceStart) *0.5f * 255.0f, 0.0f, 255);
 }
