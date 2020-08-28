@@ -2,7 +2,7 @@
 #include "../engine/Assets.h"
 #include "../engine/Scene.h"
 
-#include "Scene_007_SpinningCube.h"
+#include "Scene_008_SpinningCubes.h"
 
 Game::Game() : isRunning(false),
                windowWidth(0),
@@ -20,7 +20,7 @@ void Game::init(int screenWidth, int screenHeight) {
 
 void Game::load() {
     // Game state
-    changeState(std::make_unique<Scene_007_SpinningCube>());
+    changeState(std::make_unique<Scene_008_SpinningCubes>());
 }
 
 void Game::handleInputs() {
