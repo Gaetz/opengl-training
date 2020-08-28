@@ -87,6 +87,12 @@ void Scene_007_SpinningCube::load() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
     glEnableVertexAttribArray(0);
 
+    glEnable(GL_CULL_FACE);
+    glFrontFace(GL_CW);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+
     shader = Assets::getShader("007_spinning_cube");
 }
 
