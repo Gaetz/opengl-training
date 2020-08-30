@@ -9,6 +9,7 @@
 // Instantiate static variables
 std::map<std::string, Texture2D> Assets::textures;
 std::map<std::string, Shader> Assets::shaders;
+std::map<std::string, unsigned int> Assets::ktxTextures;
 
 Shader Assets::loadShader(const std::string &vShaderFile, const std::string &fShaderFile,
                                    const std::string &tcShaderFile, const std::string &teShaderFile,

@@ -62,7 +62,7 @@ public:
 //	void generate(std::unique_ptr<SDL_Surface, SdlSurfaceDestroyer> &surface);
 
 	// Binds the texture as the current active GL_TEXTURE_2D texture object
-	void setActive() const;
+	void use() const;
 };
 
 #endif

@@ -73,7 +73,7 @@ void Texture2D::generate()
 	delete image_data;
 }
 
-void Texture2D::setActive() const
+void Texture2D::use() const
 {
 	glBindTexture(GL_TEXTURE_2D, id);
 }

@@ -19,6 +19,7 @@ public:
     // Resource storage
     static std::map<std::string, Shader> shaders;
     static std::map<std::string, Texture2D> textures;
+    static std::map<std::string, unsigned int> ktxTextures;
 
     // Loads (and generates) a shader program from file loading vertex, fragment (and tessellation control, evaluation,
     // geometry) shader's source code. If tcShaderFile, teShaderFile, gShaderFile are not nullptr, it also loads
@@ -35,6 +36,12 @@ public:
 
     // Retrieves a stored texture
     static Texture2D &getTexture(const std::string &name);
+
+    // Loads (and generates) a texture from file
+    static Texture2D loadTextureKtx(const std::string &file, const std::string &name);
+
+    // Retrieves a stored texture
+    static Texture2D &getTextureKtx(const std::string &name);
 
     // Properly de-allocates all loaded resources
     static void clear();
