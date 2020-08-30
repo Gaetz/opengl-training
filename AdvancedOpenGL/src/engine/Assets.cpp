@@ -9,7 +9,7 @@
 // Instantiate static variables
 std::map<std::string, Texture2D> Assets::textures;
 std::map<std::string, Shader> Assets::shaders;
-std::map<std::string, unsigned int> Assets::ktxTextures;
+std::map<std::string, TextureKtx> Assets::ktxTextures;
 
 Shader Assets::loadShader(const std::string &vShaderFile, const std::string &fShaderFile,
                                    const std::string &tcShaderFile, const std::string &teShaderFile,
@@ -38,6 +38,19 @@ void Assets::clear() {
     // (Properly) delete all textures
     for (auto iter : textures)
         glDeleteTextures(1, &iter.second.id);
+    for (auto iter : ktxTextures)
+        glDeleteTextures(1, &iter.second.id);
+}
+
+TextureKtx Assets::loadTextureKtx(const std::string &file, const std::string &name) {
+    auto texture = TextureKtx();
+    texture.load(file.c_str(), texture.id);
+    ktxTextures[name] = texture;
+    return ktxTextures[name];
+}
+
+TextureKtx& Assets::getTextureKtx(const std::string &name) {
+    return ktxTextures[name];
 }
 
 Shader Assets::loadShaderFromFile(const std::string &vShaderFile, const std::string &fShaderFile,

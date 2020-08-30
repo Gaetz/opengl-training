@@ -2,17 +2,17 @@
 // Created by gaetz on 28/08/2020.
 //
 
-#ifndef Scene_009_Textures_H
-#define Scene_009_Textures_H
+#ifndef Scene_009_TextureAsData_H
+#define Scene_009_TextureAsData_H
 
 #include "../engine/Scene.h"
 #include "../engine/Assets.h"
 
 
-class Scene_009_Textures : public Scene {
+class Scene_009_TextureAsData : public Scene {
 public:
-    Scene_009_Textures();
-    ~Scene_009_Textures();
+    Scene_009_TextureAsData();
+    ~Scene_009_TextureAsData();
     void load();
     void clean();
     void pause();
@@ -26,10 +26,13 @@ private:
     Game *game;
     GLuint vao;
     GLuint buffer;
+    GLuint texture;
     Matrix4 transform[24];
     Matrix4 projection;
 
     Shader shader;
+
+    void generateTexture(float * data, int width, int height);
 };
 
 

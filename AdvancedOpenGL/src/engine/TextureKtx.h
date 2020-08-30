@@ -23,7 +23,7 @@ struct TextureKtxHeader
 class TextureKtx
 {
 public:
-    TextureKtx();
+    unsigned int id;
 
     union keyvaluepair
     {
@@ -36,7 +36,6 @@ public:
     void use() const;
 
 private:
-    unsigned int id;
     int width, height;
     GLenum textureTarget;
 

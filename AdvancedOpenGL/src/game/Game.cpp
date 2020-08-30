@@ -2,7 +2,7 @@
 #include "../engine/Assets.h"
 #include "../engine/Scene.h"
 
-#include "Scene_009_Textures.h"
+#include "Scene_009_TextureAsData.h"
 
 Game::Game() : isRunning(false),
                windowWidth(0),
@@ -20,7 +20,7 @@ void Game::init(int screenWidth, int screenHeight) {
 
 void Game::load() {
     // Game state
-    changeState(std::make_unique<Scene_009_Textures>());
+    changeState(std::make_unique<Scene_009_TextureAsData>());
 }
 
 void Game::handleInputs() {
