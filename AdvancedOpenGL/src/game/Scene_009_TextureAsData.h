@@ -8,7 +8,6 @@
 #include "../engine/Scene.h"
 #include "../engine/Assets.h"
 
-
 class Scene_009_TextureAsData : public Scene {
 public:
     Scene_009_TextureAsData();
@@ -25,11 +24,7 @@ public:
 private:
     Game *game;
     GLuint vao;
-    GLuint buffer;
     GLuint texture;
-    Matrix4 transform[24];
-    Matrix4 projection;
-
     Shader shader;
 
     void generateTexture(float * data, int width, int height);

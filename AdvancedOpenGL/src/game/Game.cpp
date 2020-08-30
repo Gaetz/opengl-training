@@ -1,8 +1,9 @@
+// Those macro allow to quickly change scene
+#include "../engine/MacroUtils.h"
 #include "../engine/Game.h"
 #include "../engine/Assets.h"
 #include "../engine/Scene.h"
-
-#include "Scene_009_TextureAsData.h"
+#include PATH(SCENE_NAME,EXT)
 
 Game::Game() : isRunning(false),
                windowWidth(0),
@@ -20,7 +21,7 @@ void Game::init(int screenWidth, int screenHeight) {
 
 void Game::load() {
     // Game state
-    changeState(std::make_unique<Scene_009_TextureAsData>());
+    changeState(std::make_unique<SCENE_NAME>());
 }
 
 void Game::handleInputs() {

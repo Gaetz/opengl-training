@@ -1,14 +1,14 @@
 //
 // Created by gaetz on 28/08/2020.
 //
-
-#include "Scene_009_TextureAsData.h"
+#include "../engine/Game.h"
 #include "../engine/Timer.h"
+#include "../engine/MacroUtils.h"
+#include PATH(SCENE_NAME, EXT)
 
 #include <cstdlib>
 #include <ctime>
 #include <GL/glew.h>
-
 
 Scene_009_TextureAsData::Scene_009_TextureAsData()
 {
@@ -24,7 +24,7 @@ void Scene_009_TextureAsData::setGame(Game *_game) {
 
 void Scene_009_TextureAsData::load() {
     std::srand((int) std::time(nullptr));
-    Assets::loadShader("assets/shaders/009_texture_as_data.vert", "assets/shaders/009_texture_as_data.frag", "", "", "", "009_texture_as_data");
+    Assets::loadShader(SHADER_VERT(SHADER_NAME), SHADER_FRAG(SHADER_NAME), "", "", "", SHADER_ID(SHADER_NAME));
 
     // Generate a name for the texture
     glGenTextures(1, &texture);
