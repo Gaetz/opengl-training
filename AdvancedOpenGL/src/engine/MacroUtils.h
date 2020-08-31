@@ -8,11 +8,11 @@
 #define EXT_FRAG .frag
 #define SHADER_PATH assets/shaders/
 #define SHADER_VERT(s) PATH3(SHADER_PATH, s, EXT_VERT)
-#define SHADER_FRAG(s) PATH3(SHADER_PATH, s, EXT_FRAG)
+#define SHADER_FRAG(s) PATH3(SHADER_PATH, s, EXT_FRAG) 
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_011_MipmapTunnel
-#define SHADER_NAME IDENT(011_MipmapTunnel)
+#define SCENE_NAME Scene_012_ArrayTextureAlienRain
+#define SHADER_NAME IDENT(012_ArrayTextureAlienRain)
 
 /**
  * Scene_011_MipmapTunnel
