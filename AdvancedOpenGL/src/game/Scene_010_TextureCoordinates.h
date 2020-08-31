@@ -25,7 +25,7 @@ public:
 private:
     Game *game;
     Shader shader;
-    GLuint tex_object[2];
+    GLuint texObject[2];
     GLuint texIndex;
     Matrix4 transform;
     Matrix4 projection;

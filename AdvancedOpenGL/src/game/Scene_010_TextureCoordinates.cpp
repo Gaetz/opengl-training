@@ -52,14 +52,14 @@ void Scene_010_TextureCoordinates::load() {
     #undef B
     #undef W
 
-    glGenTextures(1, &tex_object[0]);
-    glBindTexture(GL_TEXTURE_2D, tex_object[0]);
+    glGenTextures(1, &texObject[0]);
+    glBindTexture(GL_TEXTURE_2D, texObject[0]);
     glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGB8, 16, 16);
     glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 16, 16, GL_RGBA, GL_UNSIGNED_BYTE, tex_data);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-    tex_object[1] = Assets::getTextureKtx("pattern1").id;
+    texObject[1] = Assets::getTextureKtx("pattern1").id;
 
     shader = Assets::getShader(SHADER_ID(SHADER_NAME));
     projection = Matrix4::createPerspectiveFOV(70.0f, game->windowWidth, game->windowHeight, 0.1f, 1000.0f);
@@ -82,11 +82,14 @@ void Scene_010_TextureCoordinates::resume() {
 }
 
 void Scene_010_TextureCoordinates::handleEvent(const InputState &inputState) {
+    if(inputState.keyboardState.isJustPressed(SDL_SCANCODE_T)) {
+        texIndex = ++texIndex % 2;
+    }
 }
 
 void Scene_010_TextureCoordinates::update(float dt) {
     float t = Timer::getTimeSinceStart();
-    float fixedDt = 60.0f / 1000.0f;        // usual dt creates an unstable variation
+    float fixedDt = 1.0f / 60.0f;        // usual dt creates an unstable variation
     Quaternion rotY { Vector3::unitY, t * 19.3f * fixedDt };
     Quaternion rotZ { Vector3::unitZ, t * 21.1f * fixedDt };
     Quaternion rotation = Quaternion::concatenate(rotY, rotZ);
@@ -99,7 +102,7 @@ void Scene_010_TextureCoordinates::draw()
     static const GLfloat ones[] = { 1.0f };
     glClearBufferfv(GL_COLOR, 0, bgColor);
     glClearBufferfv(GL_DEPTH, 0, ones);
-    glBindTexture(GL_TEXTURE_2D, tex_object[texIndex]);
+    glBindTexture(GL_TEXTURE_2D, texObject[texIndex]);
 
     shader.setMatrix4("mv_matrix", transform);
 
