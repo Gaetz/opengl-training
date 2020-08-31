@@ -280,8 +280,8 @@ public:
 	{
 		Vector4 temp[4] =
 		{
-			Vector4 { Maths::cos(theta), Maths::sin(theta), 0.0f, 0.0f },
-			Vector4 { -Maths::sin(theta), Maths::cos(theta), 0.0f, 0.0f },
+			Vector4 { Maths::cos(theta), -Maths::sin(theta), 0.0f, 0.0f },
+			Vector4 { Maths::sin(theta), Maths::cos(theta), 0.0f, 0.0f },
 			Vector4 { 0.0f, 0.0f, 1.0f, 0.0f },
 			Vector4 { 0.0f, 0.0f, 0.0f, 1.0f },
 		};

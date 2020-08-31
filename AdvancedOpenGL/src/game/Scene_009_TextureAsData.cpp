@@ -1,10 +1,11 @@
 //
 // Created by gaetz on 28/08/2020.
 //
+#include "Scene_009_TextureAsData.h"
 #include "../engine/Game.h"
 #include "../engine/Timer.h"
 #include "../engine/MacroUtils.h"
-#include PATH(SCENE_NAME, EXT)
+//#include PATH(SCENE_NAME, EXT)
 
 #include <cstdlib>
 #include <ctime>
@@ -59,7 +60,7 @@ void Scene_009_TextureAsData::load() {
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
-    shader = Assets::getShader("009_texture_as_data");
+    shader = Assets::getShader(SHADER_ID(SHADER_NAME));
 }
 
 void Scene_009_TextureAsData::clean() {

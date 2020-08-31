@@ -45,6 +45,8 @@ void Quaternion::normalize()
 
 Matrix4 Quaternion::asMatrix() const
 {
+	// Transposed?
+
 	const float xx = x * x;
 	const float yy = y * y;
 	const float zz = z * z;
@@ -62,17 +64,17 @@ Matrix4 Quaternion::asMatrix() const
 	Vector4 vec3;
 
 	vec0[0] = 1.0f - 2.0f * (yy + zz);
-	vec0[1] =        2.0f * (xy + zw);
-	vec0[2] =        2.0f * (xz - yw);
+	vec0[1] =        2.0f * (xy - zw);
+	vec0[2] =        2.0f * (xz + yw);
 	vec0[3] =        0.0f;
 
-	vec1[0] =        2.0f * (xy - zw);
+	vec1[0] =        2.0f * (xy + zw);
 	vec1[1] = 1.0f - 2.0f * (xx + zz);
-	vec1[2] =        2.0f * (yz + xw);
+	vec1[2] =        2.0f * (yz - xw);
 	vec1[3] =        0.0f;
 
-	vec2[0] =        2.0f * (xz + yw);
-	vec2[1] =        2.0f * (yz - xw);
+	vec2[0] =        2.0f * (xz - yw);
+	vec2[1] =        2.0f * (yz + xw);
 	vec2[2] = 1.0f - 2.0f * (xx + yy);
 	vec2[3] =        0.0f;
 

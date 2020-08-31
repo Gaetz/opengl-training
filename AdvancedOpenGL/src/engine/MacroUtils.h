@@ -11,5 +11,5 @@
 #define SHADER_FRAG(s) PATH3(SHADER_PATH, s, EXT_FRAG)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_009_TextureAsData
-#define SHADER_NAME IDENT(009_texture_as_data)
+#define SCENE_NAME Scene_010_TextureCoordinates
+#define SHADER_NAME IDENT(010_texture_coordinates)

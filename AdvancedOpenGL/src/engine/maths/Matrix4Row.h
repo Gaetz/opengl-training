@@ -200,7 +200,7 @@ public:
 		float temp[4][4] =
 		{
 			{ 1.0f, 0.0f, 0.0f , 0.0f },
-			{ 0.0f, Maths::cos(theta), Maths::sin(theta), 0.0f },
+			{ 0.0f, Maths::cos(theta), -Maths::sin(theta), 0.0f },
 			{ 0.0f, Maths::sin(theta), Maths::cos(theta), 0.0f },
 			{ 0.0f, 0.0f, 0.0f, 1.0f },
 		};
@@ -211,9 +211,9 @@ public:
 	{
 		float temp[4][4] =
 		{
-			{ Maths::cos(theta), 0.0f, -Maths::sin(theta), 0.0f },
+			{ Maths::cos(theta), 0.0f, Maths::sin(theta), 0.0f },
 			{ 0.0f, 1.0f, 0.0f, 0.0f },
-			{ Maths::sin(theta), 0.0f, Maths::cos(theta), 0.0f },
+			{ -Maths::sin(theta), 0.0f, Maths::cos(theta), 0.0f },
 			{ 0.0f, 0.0f, 0.0f, 1.0f },
 		};
 		return Matrix4Row(temp);
@@ -223,8 +223,8 @@ public:
 	{
 		float temp[4][4] =
 		{
-			{ Maths::cos(theta), Maths::sin(theta), 0.0f, 0.0f },
-			{ -Maths::sin(theta), Maths::cos(theta), 0.0f, 0.0f },
+			{ Maths::cos(theta), -Maths::sin(theta), 0.0f, 0.0f },
+			{ Maths::sin(theta), Maths::cos(theta), 0.0f, 0.0f },
 			{ 0.0f, 0.0f, 1.0f, 0.0f },
 			{ 0.0f, 0.0f, 0.0f, 1.0f },
 		};
