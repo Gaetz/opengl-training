@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 
 	// Game loop
 	while (game.isRunning) {
-		dt = timer.computeDeltaTime() / 1000.0f;
+		dt = static_cast<float>(timer.computeDeltaTime()) / 1000.0f;
 		window->updateFpsCounter(dt);
 
 		game.handleInputs();

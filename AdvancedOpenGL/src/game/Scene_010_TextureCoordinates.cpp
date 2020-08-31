@@ -90,8 +90,8 @@ void Scene_010_TextureCoordinates::handleEvent(const InputState &inputState) {
 void Scene_010_TextureCoordinates::update(float dt) {
     float t = Timer::getTimeSinceStart();
     float fixedDt = 1.0f / 60.0f;        // usual dt creates an unstable variation
-    Quaternion rotY { Vector3::unitY, t * 19.3f * fixedDt };
-    Quaternion rotZ { Vector3::unitZ, t * 21.1f * fixedDt };
+    Quaternion rotY { Vector3::unitY, t * Maths::toRadians(19.3f) * fixedDt };
+    Quaternion rotZ { Vector3::unitZ, t * Maths::toRadians(21.1f) * fixedDt };
     Quaternion rotation = Quaternion::concatenate(rotY, rotZ);
     transform = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -3.0f)) * rotation.asMatrix();
 }

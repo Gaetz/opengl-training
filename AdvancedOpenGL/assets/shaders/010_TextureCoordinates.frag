@@ -11,5 +11,6 @@ out vec4 color;
 
 void main(void)
 {
+    // Read the texture and scale coordinates, then assign color
     color = texture(tex_object, fs_in.tc * vec2(3.0, 1.0));
 }

@@ -117,8 +117,8 @@ void Scene_008_SpinningCubes::update(float dt) {
     {
         const float t = i + Timer::getTimeSinceStart() * 0.3f;
         transform[i] = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -10.0f))
-            * Matrix4::createRotationY(t * 45.0f / 10.0f)
-            * Matrix4::createRotationX(t * 21.0f / 10.0f)
+            * Matrix4::createRotationY(t * Maths::toRadians(45.0f))
+            * Matrix4::createRotationX(t * Maths::toRadians(21.0f))
             * Matrix4::createTranslation(Vector3(Maths::sin(2.1f * t) * 2.0f, Maths::cos(1.7f * t) * 2.0f, Maths::sin(1.3f * t) * Maths::cos(1.5f * t) * 2.0f));
     }
 }
