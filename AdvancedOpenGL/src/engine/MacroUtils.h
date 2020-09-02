@@ -11,10 +11,11 @@
 #define SHADER_FRAG(s) PATH3(SHADER_PATH, s, EXT_FRAG) 
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_012_ArrayTextureAlienRain
-#define SHADER_NAME IDENT(012_ArrayTextureAlienRain)
+#define SCENE_NAME Scene_013_InstancedGrassBlades
+#define SHADER_NAME IDENT(013_InstancedGrassBlades)
 
 /**
+ * Scene_013_InstancedGrassBlades
  * Scene_012_ArrayTextureAlienRain
  * Scene_011_MipmapTunnel
  * Scene_010_TextureCoordinates
