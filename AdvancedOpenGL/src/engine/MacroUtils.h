@@ -15,6 +15,7 @@
 #define SHADER_NAME IDENT(012_ArrayTextureAlienRain)
 
 /**
+ * Scene_012_ArrayTextureAlienRain
  * Scene_011_MipmapTunnel
  * Scene_010_TextureCoordinates
  * Scene_009_TextureAsData
