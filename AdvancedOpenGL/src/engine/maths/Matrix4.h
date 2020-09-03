@@ -345,22 +345,19 @@ public:
 
 	static Matrix4 createLookAt(const Vector3& eye, const Vector3& target, const Vector3& up)
 	{
-		Vector3 zaxis = Vector3::normalize(target - eye);
-		Vector3 xaxis = Vector3::normalize(Vector3::cross(up, zaxis));
+		Vector3 zaxis = Vector3::normalize(eye - target);
+		Vector3 normalizedUp = Vector3::normalize(up);
+		Vector3 xaxis = Vector3::normalize(Vector3::cross(normalizedUp, zaxis));
 		Vector3 yaxis = Vector3::normalize(Vector3::cross(zaxis, xaxis));
-		Vector3 trans;
-		trans.x = -Vector3::dot(xaxis, eye);
-		trans.y = -Vector3::dot(yaxis, eye);
-		trans.z = -Vector3::dot(zaxis, eye);
 
 		Vector4 temp[4] =
 		{
-			Vector4 { xaxis.x, xaxis.y, xaxis.z, 0.0f },
-			Vector4 { yaxis.x, yaxis.y, yaxis.z, 0.0f },
-			Vector4 { zaxis.x, zaxis.y, zaxis.z, 0.0f },
-			Vector4 { trans.x, trans.y, trans.z, 1.0f }
+			Vector4 { xaxis.x, yaxis.x, zaxis.x, 0.0f },
+			Vector4 { xaxis.y, yaxis.y, zaxis.y, 0.0f },
+			Vector4 { xaxis.z, yaxis.z, zaxis.z, 0.0f },
+			Vector4 { 0.0f, 0.0f, 0.0f, 1.0f }
 		};
-		return Matrix4(temp);
+		return Matrix4(temp) * Matrix4::createTranslation(Vector3(-eye.x, -eye.y, -eye.z));
 	}
 
 	static Matrix4 createOrtho(float width, float height, float near, float far)

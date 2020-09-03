@@ -6,8 +6,7 @@ in vec4 vVertex;
 // Output varyings 
 out vec4 color;
 
-uniform mat4 mvp_matrix;
-uniform float time;
+uniform mat4 mvp_matrix;    
 
 layout (binding = 0) uniform sampler1D grasspalette_texture;
 layout (binding = 1) uniform sampler2D length_texture;
@@ -63,22 +62,23 @@ void main(void)
                    0.0f,                                                    
                    float(number2 & 0xFF) / 256.0,                           
                    0.0f);                                                   
+    // float angle = float(random(number2, 2) & 0x3FF) / 1024.0;            
                                                                             
     vec2 texcoord = offset.xz / 1024.0 + vec2(0.5);                         
                                                                             
+    // float bend_factor = float(random(number2, 7) & 0x3FF) / 1024.0;      
     float bend_factor = texture(bend_texture, texcoord).r * 2.0;            
     float bend_amount = cos(vVertex.y);                                     
-
-    // Make grass angle change with texture move
-    vec2 texcoord_angle = texcoord + time * 0.05;
-    float angle = texture(orientation_texture, texcoord_angle).r * 2.0 * 3.141592;
-
+                                                                            
+    float angle = texture(orientation_texture, texcoord).r * 2.0 * 3.141592;
     mat4 rot = construct_rotation_matrix(angle);                            
     vec4 position = (rot * (vVertex + vec4(0.0, 0.0, bend_amount * bend_factor, 0.0))) + offset;
                                                                             
     position *= vec4(1.0, texture(length_texture, texcoord).r * 0.9 + 0.3, 1.0, 1.0);           
                                                                             
-    gl_Position =  mvp_matrix * position;                     
+    gl_Position =  mvp_matrix * position; //   (rot * position);   
+    // color = vec4(random_vector(gl_InstanceID).xyz * vec3(0.1, 0.5, 0.1) + vec3(0.1, 0.4, 0.1), 1.0);
+    // color = texture(orientation_texture, texcoord);                      
     color = texture(grasspalette_texture, texture(grasscolor_texture, texcoord).r) +            
              vec4(random_vector(gl_InstanceID).xyz * vec3(0.1, 0.5, 0.1), 1.0);  
 }  

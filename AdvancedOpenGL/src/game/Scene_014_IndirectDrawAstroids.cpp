@@ -1,7 +1,7 @@
 //
 // Created by gaetz on 28/08/2020.
 //
-#include "Scene_013_InstancedGrassBlades.h"
+#include "Scene_014_IndirectDrawAstroids.h"
 #include "../engine/Game.h"
 #include "../engine/Timer.h"
 #include "../engine/MacroUtils.h"
@@ -12,17 +12,17 @@
 #include <ctime>
 #include <GL/glew.h>
 
-Scene_013_InstancedGrassBlades::Scene_013_InstancedGrassBlades() {}
+Scene_014_IndirectDrawAstroids::Scene_014_IndirectDrawAstroids() {}
 
-Scene_013_InstancedGrassBlades::~Scene_013_InstancedGrassBlades() {
+Scene_014_IndirectDrawAstroids::~Scene_014_IndirectDrawAstroids() {
     clean();
 }
 
-void Scene_013_InstancedGrassBlades::setGame(Game *_game) {
+void Scene_014_IndirectDrawAstroids::setGame(Game *_game) {
     game = _game;
 }
 
-void Scene_013_InstancedGrassBlades::load() {
+void Scene_014_IndirectDrawAstroids::load() {
     std::srand((int) std::time(nullptr));
     Assets::loadShader(SHADER_VERT(SHADER_NAME), SHADER_FRAG(SHADER_NAME), "", "", "", SHADER_ID(SHADER_NAME));
     glGenVertexArrays(1, &vao);
@@ -70,31 +70,31 @@ void Scene_013_InstancedGrassBlades::load() {
     shader.use();
 }
 
-void Scene_013_InstancedGrassBlades::clean() {
+void Scene_014_IndirectDrawAstroids::clean() {
 
 }
 
-void Scene_013_InstancedGrassBlades::pause() {
+void Scene_014_IndirectDrawAstroids::pause() {
 }
 
-void Scene_013_InstancedGrassBlades::resume() {
+void Scene_014_IndirectDrawAstroids::resume() {
 }
 
-void Scene_013_InstancedGrassBlades::handleEvent(const InputState &inputState) {
+void Scene_014_IndirectDrawAstroids::handleEvent(const InputState &inputState) {
     
 }
 
-void Scene_013_InstancedGrassBlades::update(float dt) {
+void Scene_014_IndirectDrawAstroids::update(float dt) {
     float t = Timer::getTimeSinceStart() * 0.20f + 1.0f;
     float r = 20.0f;
-    shader.setFloat("time", t);
-    view = Matrix4::createTranslation(Vector3(0, -25, 0))
-           * Matrix4::createLookAt(Vector3(Maths::sin(t) * r, 25.0f, Maths::cos(t) * r), 
+    view = Matrix4::createLookAt(Vector3(Maths::sin(t) * r, 25.0f, Maths::cos(t) * r), 
                                     Vector3(0.0f, 15.0f, 10.0f), 
-                                    Vector3::unitY);
+                                    Vector3::unitY)
+            * Matrix4::createRotationX(Maths::pi)
+            * Matrix4::createTranslation(Vector3(0, 30, 0));
 }
 
-void Scene_013_InstancedGrassBlades::draw() 
+void Scene_014_IndirectDrawAstroids::draw() 
 {
     shader.setMatrix4("mvp_matrix", projection * view);
     glEnable(GL_DEPTH_TEST);
