@@ -1,4 +1,6 @@
-#include <GL/glew.h>
+#ifndef GL_DEBUG_HPP
+#define GL_DEBUG_HPP
+
 #include <algorithm>
 #include <map>
 #include "Log.h"
@@ -81,3 +83,5 @@ void debugGlErrorCallback(GLenum source,
       LOG(Debug) << glLog;
     }
 }
+
+#endif

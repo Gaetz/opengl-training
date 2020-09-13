@@ -10,7 +10,7 @@
 #include <GL/glew.h>
 #include <vector>
 #include <memory>
-#include "InputManager.h"
+#include "input/InputManager.h"
 #include "Shader.h"
 
 using std::vector;

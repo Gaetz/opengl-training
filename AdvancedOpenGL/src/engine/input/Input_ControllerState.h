@@ -2,7 +2,7 @@
 #define INPUT_CONTROLLER_STATE_H
 
 #include "Input_KeyStatus.h"
-#include "maths/Vector2.h"
+#include "../maths/Vector2.h"
 
 #ifdef __linux__
 #include <SDL2/SDL_stdinc.h>

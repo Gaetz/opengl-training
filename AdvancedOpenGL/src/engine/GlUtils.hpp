@@ -1,3 +1,8 @@
+#ifndef GL_UTILS_HPP
+#define GL_UTILS_HPP
+
+#include <GL/glew.h>
+
 // Check if extension is supported
 int isExtensionSupported(const char* extname)
 {
@@ -23,3 +28,5 @@ GL3WglProc getProcAddress(const char * funcname)
 {
     return gl3wGetProcAddress(funcname);
 }
+
+#endif

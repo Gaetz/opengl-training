@@ -2,7 +2,7 @@
 #define GAMESTATE_H
 
 #include "Game.h"
-#include "InputState.h"
+#include "input/InputState.h"
 
 // Interface for scenes
 class Scene {
