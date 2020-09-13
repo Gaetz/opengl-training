@@ -1,19 +1,13 @@
 #ifndef INPUT_KEYBOARD_STATE_H
 #define INPUT_KEYBOARD_STATE_H
 
+#include "Input_KeyStatus.h"
+
 #ifdef __linux__
 #include <SDL2/SDL.h>
 #elif _WIN32
 #include <SDL.h>
 #endif
-
-enum KeyStatus
-{
-    None,
-    JustPressed,
-    Held,
-    JustReleased
-};
 
 // Holds the keyboard state
 class KeyboardState

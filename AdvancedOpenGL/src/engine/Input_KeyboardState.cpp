@@ -11,22 +11,22 @@ KeyStatus KeyboardState::getKeyState(SDL_Scancode keyCode) const
 	{
 		if (currentValue[keyCode] == 0)
 		{
-			return None;
+			return KeyStatus::None;
 		}
 		else
 		{
-			return JustPressed;
+			return KeyStatus::JustPressed;
 		}
 	}
 	else // Prev state must be 1
 	{
 		if (currentValue[keyCode] == 0)
 		{
-			return JustReleased;
+			return KeyStatus::JustReleased;
 		}
 		else
 		{
-			return Held;
+			return KeyStatus::Held;
 		}
 	}
 }
@@ -38,12 +38,12 @@ bool KeyboardState::isUp(SDL_Scancode keyCode) const
 
 bool KeyboardState::isFree(SDL_Scancode keyCode) const
 {
-	return getKeyState(keyCode) == None;
+	return getKeyState(keyCode) == KeyStatus::None;
 }
 
 bool KeyboardState::isJustPressed(SDL_Scancode keyCode) const
 {
-	return getKeyState(keyCode) == JustPressed;
+	return getKeyState(keyCode) == KeyStatus::JustPressed;
 }
 
 bool KeyboardState::isDown(SDL_Scancode keyCode) const
@@ -53,10 +53,10 @@ bool KeyboardState::isDown(SDL_Scancode keyCode) const
 
 bool KeyboardState::isHeld(SDL_Scancode keyCode) const
 {
-	return getKeyState(keyCode) == Held;
+	return getKeyState(keyCode) == KeyStatus::Held;
 }
 
 bool KeyboardState::isJustReleased(SDL_Scancode keyCode) const
 {
-	return getKeyState(keyCode) == JustReleased;
+	return getKeyState(keyCode) == KeyStatus::JustReleased;
 }
