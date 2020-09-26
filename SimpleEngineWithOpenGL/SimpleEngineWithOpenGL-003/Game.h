@@ -23,6 +23,7 @@ private:
 		ballVelocity({ 500, 500 }),
 		paddlePos({ 50, 100 }),
 		paddleVelocity({ 0, 450 }),
+		paddleDirection(0),
 		wallThickness(10),
 		topWall(Rectangle()),
 		bottomWall(Rectangle()),
@@ -56,6 +57,6 @@ private:
 	Vector2 paddleVelocity;
 	const float paddleWidth = 10;
 	const float paddleHeight = 64;
-
+	float paddleDirection;
 };
 

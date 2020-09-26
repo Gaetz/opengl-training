@@ -29,8 +29,9 @@ void Renderer::endDraw()
 
 void Renderer::drawRect(Rectangle& rect)
 {
-
-
+	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
+	SDL_Rect SDLRect = rect.toSDLRect();
+	SDL_RenderFillRect(SDLRenderer, &SDLRect);
 }
 
 void Renderer::close()

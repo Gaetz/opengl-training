@@ -6,9 +6,11 @@ bool Game::initialize()
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
 
-	topWall = { 0, 0, static_cast<float>(window.getWidth()), wallThickness };
-	bottomWall = { 0, window.getHeight() - wallThickness, static_cast<float>(window.getWidth()), wallThickness };
-	rightWall = { window.getWidth() - wallThickness, 0, wallThickness, static_cast<float>(window.getHeight()) };
+	int windowWidth = window.getWidth();
+	int windowHeight = window.getHeight();
+	topWall = { 0, 0, static_cast<float>(windowWidth), wallThickness };
+	bottomWall = { 0, windowHeight - wallThickness, static_cast<float>(windowWidth), wallThickness };
+	rightWall = { windowWidth - wallThickness, 0, wallThickness, static_cast<float>(windowHeight) };
 
 	return isWindowInit && isRendererInit; // Return bool && bool && bool ...to detect error
 }
