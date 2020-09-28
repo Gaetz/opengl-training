@@ -17,7 +17,7 @@ unsigned int Timer::computeDeltaTime()
 void Timer::delayTime()
 {
 	frameTime = SDL_GetTicks() - frameStart;
-	if (frameTime < frameDelay) {
-		SDL_Delay(frameDelay - frameTime);
+	if (frameTime < FRAME_DELAY) {
+		SDL_Delay(FRAME_DELAY - frameTime);
 	}
 }

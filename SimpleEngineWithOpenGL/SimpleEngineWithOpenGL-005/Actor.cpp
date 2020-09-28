@@ -24,6 +24,21 @@ Actor::~Actor()
 	}
 }
 
+void Actor::setPosition(Vector2 positionP)
+{
+	position = positionP;
+}
+
+void Actor::setScale(float scaleP)
+{
+	scale = scaleP;
+}
+
+void Actor::setRotation(float rotationP)
+{
+	rotation = rotationP;
+}
+
 void Actor::update(float dt)
 {
 	if (state == Actor::ActorState::Active)

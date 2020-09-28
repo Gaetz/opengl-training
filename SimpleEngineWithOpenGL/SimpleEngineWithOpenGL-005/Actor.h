@@ -26,13 +26,15 @@ public:
 	const float getScale() const { return scale; }
 	const float getRotation() const { return rotation; }
 
+	void setPosition(Vector2 positionP);
+	void setScale(float scaleP);
+	void setRotation(float rotationP);
+
 	void update(float dt);
 	void updateComponents(float dt);
 	virtual void updateActor(float dt);
 	void addComponent(Component* component);
 	void removeComponent(Component* component);
-
-	inline const ActorState& getState() { return state; }
 
 private:
 	Game& game;

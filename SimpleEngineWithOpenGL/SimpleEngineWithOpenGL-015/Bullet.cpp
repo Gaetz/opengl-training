@@ -13,7 +13,7 @@ Bullet::Bullet()
 	mc->setForwardSpeed(400.0f);
 	circle = new CircleCollisionComponent(this);
 	circle->setRadius(5.0f);
-	liveTime = 1.0f;
+	lifetime = 1.0f;
 }
 
 void Bullet::updateActor(float dt)
@@ -31,8 +31,8 @@ void Bullet::updateActor(float dt)
 		}
 	}
 
-	liveTime -= dt;
-	if (liveTime <= 0.0f)
+	lifetime -= dt;
+	if (lifetime <= 0.0f)
 	{
 		setState(ActorState::Dead);
 	}

@@ -1,6 +1,7 @@
 #pragma once
 struct Vector2
 {
+	Vector2() : x(0), y(0) {}
 	Vector2(float xP, float yP) : x(xP), y(yP) {}
 
 	float x;

@@ -92,6 +92,14 @@ void Game::loop()
 
 void Game::unload()
 {
+	// Delete actors
+	// Because ~Actor calls RemoveActor, have to use a different style loop
+	while (!actors.empty())
+	{
+		delete actors.back();
+	}
+
+	// Resources
 	Assets::clear();
 }
 

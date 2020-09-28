@@ -43,3 +43,9 @@ bool Texture::load(Renderer& renderer, const string& filenameP)
 
 	return true;
 }
+
+void Texture::updateInfo(int& widthOut, int& heightOut)
+{
+	widthOut = width;
+	heightOut = height;
+}

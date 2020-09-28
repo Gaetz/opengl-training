@@ -1,6 +1,4 @@
 #include "Game.h"
-#include "Actor.h"
-#include "SpriteComponent.h"
 #include "Timer.h"
 #include "Assets.h"
 

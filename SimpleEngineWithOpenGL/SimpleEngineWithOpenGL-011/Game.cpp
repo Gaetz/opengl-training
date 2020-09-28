@@ -75,7 +75,7 @@ void Game::load()
 	const int astroidNumber = 20;
 	for (int i = 0; i < astroidNumber; ++i)
 	{
-		Astroid* a = new Astroid();
+		new Astroid();
 	}
 }
 

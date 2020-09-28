@@ -9,6 +9,6 @@ public:
 
 private:
 	class CircleCollisionComponent* circle;
-	float liveTime;
+	float lifetime;
 };
 

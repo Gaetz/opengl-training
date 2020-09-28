@@ -7,7 +7,7 @@ Tile::Tile() :
 	tileState(TileState::Default),
 	isSelected(false)
 {
-	sprite = new SpriteComponent(this, Assets::getTexture("BrownTile"));
+	sprite = new SpriteComponent(this, Assets::getTexture("TileBrown"));
 }
 
 void Tile::setTileState(TileState tileStateP)

@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "Component.h"
 
-Actor::Actor() :
+Actor::Actor():
 	state(Actor::ActorState::Active),
 	position(Vector2::zero),
 	scale(1.0f),
@@ -22,6 +22,21 @@ Actor::~Actor()
 	{
 		delete components.back();
 	}
+}
+
+void Actor::setPosition(Vector2 positionP)
+{
+	position = positionP;
+}
+
+void Actor::setScale(float scaleP)
+{
+	scale = scaleP;
+}
+
+void Actor::setRotation(float rotationP)
+{
+	rotation = rotationP;
 }
 
 void Actor::update(float dt)

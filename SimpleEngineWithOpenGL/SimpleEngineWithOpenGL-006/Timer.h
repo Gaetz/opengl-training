@@ -3,6 +3,8 @@ class Timer
 {
 public:
 	Timer();
+	Timer(const Timer&) = delete;
+	Timer& operator=(const Timer&) = delete;
 
 	// Compute delta time as the number of milliseconds since last frame
 	// Clamp it so debug won't think delta time is really high during breakpoints
@@ -12,9 +14,9 @@ public:
 	void delayTime();
 
 private:
-	const static int FPS = 60;
+	const static unsigned int FPS = 60;
+	const static unsigned int FRAME_DELAY = 1000 / FPS;
 	const unsigned int MAX_DT = 50;
-	const static int frameDelay = 1000 / FPS;
 
 	// Time in milliseconds when frame starts
 	unsigned int frameStart;

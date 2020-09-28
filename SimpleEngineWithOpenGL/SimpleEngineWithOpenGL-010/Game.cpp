@@ -76,7 +76,6 @@ void Game::load()
 	{
 		new Astroid();
 	}
-
 }
 
 void Game::processInput()

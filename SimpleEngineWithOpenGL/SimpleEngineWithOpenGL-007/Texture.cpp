@@ -40,7 +40,6 @@ bool Texture::load(Renderer& renderer, const string& filenameP)
 		return false;
 	}
 	Log::info("Loaded texture " + filename);
-
 	return true;
 }
 
