@@ -30,9 +30,9 @@ private:
 	void drawSprites();
 
 	Window* window;
+	SDL_GLContext context;
 	VertexArray* vertexArray;
 	Shader* shader;
-	SDL_GLContext context;
 	std::vector<class SpriteComponent*> sprites;
 	Matrix4 viewProj;
 };

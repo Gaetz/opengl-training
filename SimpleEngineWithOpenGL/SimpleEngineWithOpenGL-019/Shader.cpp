@@ -147,7 +147,7 @@ void Shader::setVector2f(const GLchar* name, const Vector2& value)
 {
     glUniform2f(glGetUniformLocation(id, name), value.x, value.y);
 }
-/*
+
 void Shader::setVector3f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z)
 {
     glUniform3f(glGetUniformLocation(id, name), x, y, z);
@@ -156,6 +156,7 @@ void Shader::setVector3f(const GLchar* name, const Vector3& value)
 {
     glUniform3f(glGetUniformLocation(id, name), value.x, value.y, value.z);
 }
+/*
 void Shader::setVector4f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
     glUniform4f(glGetUniformLocation(id, name), x, y, z, w);

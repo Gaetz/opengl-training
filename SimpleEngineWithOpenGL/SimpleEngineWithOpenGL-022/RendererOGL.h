@@ -37,8 +37,6 @@ private:
 	Window* window;
 	SDL_GLContext context;
 	VertexArray* spriteVertexArray;
-	Shader* spriteShader;
-	Shader* meshShader;
 	Matrix4 spriteViewProj;
 	Matrix4 view;
 	Matrix4 projection;
