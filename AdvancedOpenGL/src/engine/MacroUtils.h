@@ -11,8 +11,8 @@
 #define SHADER_FRAG(s) PATH3(SHADER_PATH, s, EXT_FRAG) 
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_013_InstancedGrassBlades
-#define SHADER_NAME IDENT(013_InstancedGrassBlades)
+#define SCENE_NAME Scene_014_IndirectDrawAstroids
+#define SHADER_NAME IDENT(014_IndirectDrawAstroids)
 
 /**
  * Scene_014_IndirectDrawAstroids

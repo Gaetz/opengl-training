@@ -9,7 +9,24 @@
 #include "../engine/Assets.h"
 #include "../engine/MeshObject.h"
 
-class Scene_014_IndirectDrawAstroids : public Scene {
+struct DrawArraysIndirectCommand
+{
+    GLuint count;
+    GLuint primCount;
+    GLuint first;
+    GLuint baseInstance;
+};
+
+enum class Mode
+{
+    MODE_FIRST,
+    MODE_MULTIDRAW = 0,
+    MODE_SEPARATE_DRAWS,
+    MODE_MAX = MODE_SEPARATE_DRAWS
+};
+
+class Scene_014_IndirectDrawAstroids : public Scene
+{
 public:
     Scene_014_IndirectDrawAstroids();
     ~Scene_014_IndirectDrawAstroids();
@@ -25,28 +42,17 @@ public:
 private:
     Game *game;
     Shader shader;
-    GLuint vao;
-    GLuint buffer;
-    GLuint texGrassColor;
-    GLuint texGrassLength;
-    GLuint texGrassOrientation;
-    GLuint texGrassBend;
+
+    MeshObject object;
+    GLuint indirectDrawBuffer;
+    GLuint drawIndexBuffer;
+    Mode mode;
+    bool paused;
+    bool vsync;
+    float t;
 
     Matrix4 view;
     Matrix4 projection;
 };
-
-static unsigned int seed = 0x13371337;
-static inline float randomFloat()
-{
-    float res;
-    unsigned int tmp;
-
-    seed *= 16807;
-    tmp = seed ^ (seed >> 4) ^ (seed << 15);
-    *((unsigned int *) &res) = (tmp >> 9) | 0x3F800000;
-
-    return (res - 1.0f);
-}
 
 #endif //Scene_014_IndirectDrawAstroids_H
