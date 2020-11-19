@@ -1,4 +1,4 @@
-#include "../engine/game.h"
+#include "../engine/Game.h"
 #include <iostream>
 
 using std::cout;

@@ -1,8 +1,8 @@
 #include <SDL.h>
 #include <iostream>
 
-#include "engine/game.h"
-#include "engine/window.h"
+#include "engine/Game.h"
+#include "engine/Window.h"
 
 using std::cout;
 using std::endl;
