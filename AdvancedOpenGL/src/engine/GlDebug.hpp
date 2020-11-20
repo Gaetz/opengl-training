@@ -64,7 +64,8 @@ void debugGlErrorCallback(GLenum source,
                           GLvoid *userParam)
 {
     std::string glLog(" --- OpenGL -------------------");
-    glLog.append("\n                                "); glLog.append("message: "); glLog.append(message);
+    glLog.append("\n                                "); glLog.append("message ("); glLog.append(std::to_string(length));  glLog.append("): "); glLog.append(message);
+    glLog.append("\n                                "); glLog.append("source: "); glLog.append(debugGlSourceToStr(source));
     glLog.append("\n                                "); glLog.append("type: "); glLog.append(debugGlTypeToStr(type));
     glLog.append("\n                                "); glLog.append( "id: "); glLog.append(std::to_string(id));
     glLog.append("\n                                "); glLog.append("severity: "); glLog.append(debugGlSeverityToStr(severity));
