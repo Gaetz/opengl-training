@@ -2,6 +2,9 @@
 #include "Vector4.h"
 #include "Matrix4.h"
 #include "Matrix4Row.h"
+#include <array>
+
+using std::array;
 
 const Quaternion Quaternion::identity(0.0f, 0.0f, 0.0f, 1.0f);
 
@@ -58,34 +61,30 @@ Matrix4 Quaternion::asMatrix() const
 	const float yw = y * w;
 	const float zw = z * w;
 
-	Vector4 vec0;
-	Vector4 vec1;
-	Vector4 vec2;
-	Vector4 vec3;
 
-	vec0[0] = 1.0f - 2.0f * (yy + zz);
-	vec0[1] =        2.0f * (xy - zw);
-	vec0[2] =        2.0f * (xz + yw);
-	vec0[3] =        0.0f;
+	array<float,16> temp;
 
-	vec1[0] =        2.0f * (xy + zw);
-	vec1[1] = 1.0f - 2.0f * (xx + zz);
-	vec1[2] =        2.0f * (yz - xw);
-	vec1[3] =        0.0f;
+	temp[0] = 1.0f - 2.0f * (yy + zz);
+	temp[1] =        2.0f * (xy - zw);
+	temp[2] =        2.0f * (xz + yw);
+	temp[3] =        0.0f;
 
-	vec2[0] =        2.0f * (xz - yw);
-	vec2[1] =        2.0f * (yz + xw);
-	vec2[2] = 1.0f - 2.0f * (xx + yy);
-	vec2[3] =        0.0f;
+	temp[4] =        2.0f * (xy + zw);
+	temp[5] = 1.0f - 2.0f * (xx + zz);
+	temp[6] =        2.0f * (yz - xw);
+	temp[7] =        0.0f;
 
-	vec3[0] =        0.0f;
-	vec3[1] =        0.0f;
-	vec3[2] =        0.0f;
-	vec3[3] =        1.0f;
+	temp[8] =        2.0f * (xz - yw);
+	temp[9] =        2.0f * (yz + xw);
+	temp[10] = 1.0f - 2.0f * (xx + yy);
+	temp[11] =        0.0f;
 
-	Vector4 temp[4] { vec0, vec1, vec2, vec3 };
-	Matrix4 m(temp);
+	temp[12] =        0.0f;
+	temp[13] =        0.0f;
+	temp[14] =        0.0f;
+	temp[15] =        1.0f;
 
+	Matrix4 m = Matrix4(temp);
 	return m;
 }
 

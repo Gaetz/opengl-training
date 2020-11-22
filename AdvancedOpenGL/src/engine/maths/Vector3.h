@@ -117,12 +117,12 @@ public:
 	{
 		return v - 2.0f * Vector3::dot(v, n) * n;
 	}
-/*
-	static Vector3 transform(const Vector3& vec, const class Matrix4& mat, float w = 1.0f);
+
+	static Vector3 transform(Vector3& vec, class Matrix4& mat, float w = 1.0f);
 
 	// This will transform the vector and renormalize the w component
-	static Vector3 transformWithPerspDiv(const Vector3& vec, const class Matrix4& mat, float w = 1.0f);
-*/
+	static Vector3 transformWithPerspDiv(Vector3& vec, class Matrix4& mat, float w = 1.0f);
+
 	// Transform a Vector3 by a quaternion
 	static Vector3 transform(const Vector3& v, const class Quaternion& q);
 
