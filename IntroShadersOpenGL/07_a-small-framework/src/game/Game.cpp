@@ -28,14 +28,14 @@ void Game::load() {
     const char* vertexShader =
         "#version 460\n"
         "in vec3 vp;"
-        "void main () {"
+        "void main() {"
         "  gl_Position = vec4 (vp, 1.0);"
         "}";
 
     const char* fragmentShader =
         "#version 460\n"
         "out vec4 color;"
-        "void main () {"
+        "void main() {"
         "  color = vec4 (0.8, 0.5, 0.0, 1.0);"
         "}";
 

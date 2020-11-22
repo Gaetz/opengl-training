@@ -20,7 +20,7 @@
 class Shader
 {
 public:
-	// State
+	// Program id
 	GLuint id;
 
 	// Constructor
@@ -69,10 +69,10 @@ private:
 
     void checkShaderErrors(GLuint shader, std::string shaderType);
     void printShaderInfoLog(GLuint shaderIndex);
-    void printProgrammeInfoLog(GLuint programme);
+    void printProgramInfoLog(GLuint programId);
     const char *GLTypeToString(GLenum type);
-    void printAllParams(GLuint programme);
-    bool isValid(GLuint programme);
+    void printAllParams(GLuint programId);
+    bool isValid(GLuint programId);
 };
 
 #endif

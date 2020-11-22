@@ -106,7 +106,7 @@ void Shader::createShaderProgram(bool tessShadersExist, bool geometryShaderExist
     if (params != GL_TRUE)
     {
         LOG(Error) << "Could not link shader programme GL index " << id;
-        printProgrammeInfoLog(id);
+        printProgramInfoLog(id);
     }
     if (!isValid(id))
     {
@@ -169,21 +169,21 @@ void Shader::setMatrix4Row(const GLchar *name, const Matrix4Row &matrix)
 }
 void Shader::printShaderInfoLog(GLuint shaderIndex)
 {
-    int max_length = 2048;
-    int actual_length = 0;
+    int maxLength = 2048;
+    int actualLength = 0;
     char log[2048];
-    glGetShaderInfoLog(shaderIndex, max_length, &actual_length, log);
+    glGetShaderInfoLog(shaderIndex, maxLength, &actualLength, log);
     LOG(Info) << "Shader info log for GL index" << shaderIndex;
     LOG(Info) << log;
 }
 
-void Shader::printProgrammeInfoLog(GLuint id)
+void Shader::printProgramInfoLog(GLuint programId)
 {
-    int max_length = 2048;
-    int actual_length = 0;
+    int maxLength = 2048;
+    int actualLength = 0;
     char log[2048];
-    glGetProgramInfoLog(id, max_length, &actual_length, log);
-    LOG(Info) << "program info log for GL index" << id;
+    glGetProgramInfoLog(programId, maxLength, &actualLength, log);
+    LOG(Info) << "program info log for GL index" << programId;
     LOG(Info) << log;
 }
 
@@ -229,91 +229,90 @@ const char *Shader::GLTypeToString(GLenum type)
     case GL_SAMPLER_2D_SHADOW:
         return "sampler2DShadow";
     default:
-        break;
+        return "other";
     }
-    return "other";
 }
 
-void Shader::printAllParams(GLuint id)
+void Shader::printAllParams(GLuint programId)
 {
     LOG(Info) << "-----------------------------";
-    LOG(Info) << "Shader programme " << id << " info:";
+    LOG(Info) << "Shader programme " << programId << " info:";
     int params = -1;
-    glGetProgramiv(id, GL_LINK_STATUS, &params);
+    glGetProgramiv(programId, GL_LINK_STATUS, &params);
     LOG(Info) << "GL_LINK_STATUS = " << params;
 
-    glGetProgramiv(id, GL_ATTACHED_SHADERS, &params);
+    glGetProgramiv(programId, GL_ATTACHED_SHADERS, &params);
     LOG(Info) << "GL_ATTACHED_SHADERS = " << params;
 
-    glGetProgramiv(id, GL_ACTIVE_ATTRIBUTES, &params);
+    glGetProgramiv(programId, GL_ACTIVE_ATTRIBUTES, &params);
     LOG(Info) << "GL_ACTIVE_ATTRIBUTES = " << params;
     for (GLuint i = 0; i < (GLuint)params; i++)
     {
         char name[64];
-        int max_length = 64;
-        int actual_length = 0;
+        int maxLength = 64;
+        int actualLength = 0;
         int size = 0;
         GLenum type;
-        glGetActiveAttrib(id, i, max_length, &actual_length, &size, &type, name);
+        glGetActiveAttrib(programId, i, maxLength, &actualLength, &size, &type, name);
         if (size > 1)
         {
             for (int j = 0; j < size; j++)
             {
-                char long_name[77];
+                char longName[77];
 #if __linux__
-                sprintf(long_name, "%s[%i]", name, j);
+                sprintf(longName, "%s[%i]", name, j);
 #else
-                sprintf_s(long_name, "%s[%i]", name, j);
+                sprintf_s(longName, "%s[%i]", name, j);
 #endif
-                int location = glGetAttribLocation(id, long_name);
-                LOG(Info) << "  " << i << ") type:" << GLTypeToString(type) << " name:" << long_name << " location:" << location;
+                int location = glGetAttribLocation(programId, longName);
+                LOG(Info) << "  " << i << ") type:" << GLTypeToString(type) << " name:" << longName << " location:" << location;
             }
         }
         else
         {
-            int location = glGetAttribLocation(id, name);
+            int location = glGetAttribLocation(programId, name);
             LOG(Info) << "  " << i << ") type:" << GLTypeToString(type) << " name:" << name << " location:" << location;
         }
     }
 
-    glGetProgramiv(id, GL_ACTIVE_UNIFORMS, &params);
+    glGetProgramiv(programId, GL_ACTIVE_UNIFORMS, &params);
     LOG(Info) << "GL_ACTIVE_UNIFORMS = " << params;
     for (GLuint i = 0; i < (GLuint)params; i++)
     {
         char name[64];
-        int max_length = 64;
-        int actual_length = 0;
+        int maxLength = 64;
+        int actualLength = 0;
         int size = 0;
         GLenum type;
-        glGetActiveUniform(id, i, max_length, &actual_length, &size, &type, name);
+        glGetActiveUniform(programId, i, maxLength, &actualLength, &size, &type, name);
         if (size > 1)
         {
             for (int j = 0; j < size; j++)
             {
-                char long_name[77];
-                sprintf(long_name, "%s[%i]", name, j);
-                int location = glGetUniformLocation(id, long_name);
-                LOG(Info) << "  " << i << ") type:" << GLTypeToString(type) << " name:" << long_name << " location:" << location;
+                char longName[77];
+                sprintf(longName, "%s[%i]", name, j);
+                int location = glGetUniformLocation(programId, longName);
+                LOG(Info) << "  " << i << ") type:" << GLTypeToString(type) << " name:" << longName << " location:" << location;
             }
         }
         else
         {
-            int location = glGetUniformLocation(id, name);
+            int location = glGetUniformLocation(programId, name);
             LOG(Info) << "  " << i << ") type:" << GLTypeToString(type) << " name:" << name << " location:" << location;
         }
     }
-    printProgrammeInfoLog(id);
+    printProgramInfoLog(programId);
 }
 
-bool Shader::isValid(GLuint id)
+bool Shader::isValid(GLuint programId)
 {
-    glValidateProgram(id);
+    glValidateProgram(programId);
     int params = -1;
-    glGetProgramiv(id, GL_VALIDATE_STATUS, &params);
-    LOG(Info) << "program " << id << " GL_VALIDATE_STATUS = " << params;
+    glGetProgramiv(programId, GL_VALIDATE_STATUS, &params);
+    LOG(Info) << "program " << programId << " GL_VALIDATE_STATUS = " << params;
     if (params != GL_TRUE)
     {
-        printProgrammeInfoLog(id);
+        printProgramInfoLog(programId);
         return false;
     }
     return true;
