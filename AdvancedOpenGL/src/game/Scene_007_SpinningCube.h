@@ -8,7 +8,6 @@
 #include "../engine/Scene.h"
 #include "../engine/Assets.h"
 
-
 class Scene_007_SpinningCube : public Scene {
 public:
     Scene_007_SpinningCube();

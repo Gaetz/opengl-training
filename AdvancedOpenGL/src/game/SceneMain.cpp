@@ -22,8 +22,6 @@ void SceneMain::setGame(Game *_game)
 void SceneMain::load()
 {
     std::srand((int) std::time(nullptr));
-    //Assets::loadTexture("./assets/textures/wall.png", "wall");
-    //Assets::loadShader("assets/shaders/sprite.vert", "assets/shaders/sprite.frag", "", "sprite");
 }
 
 void SceneMain::clean()

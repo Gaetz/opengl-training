@@ -3,6 +3,7 @@
 //
 
 #include "Scene_006_Fragment.h"
+#include "../engine/MacroUtils.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -23,12 +24,12 @@ void Scene_006_Fragment::setGame(Game *_game) {
 void Scene_006_Fragment::load() {
     std::srand((int) std::time(nullptr));
     //Assets::loadShader("assets/shaders/006_tessellation.vert", "assets/shaders/006_fragment.frag", "", "", "", "006_fragment");
-    Assets::loadShader("assets/shaders/006_fragment_b.vert", "assets/shaders/006_fragment_b.frag", "", "", "", "006_fragment_b");
+    Assets::loadShader(SHADER_VERT(SHADER_NAME), SHADER_FRAG(SHADER_NAME), "", "", "", SHADER_ID(SHADER_NAME));
 
     glCreateVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
-    shader = Assets::getShader("006_fragment_b");
+    shader = Assets::getShader(SHADER_ID(SHADER_NAME));
 }
 
 void Scene_006_Fragment::clean() {

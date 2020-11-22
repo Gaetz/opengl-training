@@ -4,6 +4,7 @@
 
 #include "Scene_007_SpinningCube.h"
 #include "../engine/Timer.h"
+#include "../engine/MacroUtils.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -24,7 +25,7 @@ void Scene_007_SpinningCube::setGame(Game *_game) {
 
 void Scene_007_SpinningCube::load() {
     std::srand((int) std::time(nullptr));
-    Assets::loadShader("assets/shaders/007_spinning_cube.vert", "assets/shaders/007_spinning_cube.frag", "", "", "", "007_spinning_cube");
+    Assets::loadShader(SHADER_VERT(SHADER_NAME), SHADER_FRAG(SHADER_NAME), "", "", "", SHADER_ID(SHADER_NAME));
 
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -95,7 +96,7 @@ void Scene_007_SpinningCube::load() {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
-    shader = Assets::getShader("007_spinning_cube");
+    shader = Assets::getShader(SHADER_ID(SHADER_NAME));
 }
 
 void Scene_007_SpinningCube::clean() {
