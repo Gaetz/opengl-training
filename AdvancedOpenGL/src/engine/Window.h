@@ -16,7 +16,7 @@ public:
     //virtual bool should_close() = 0;
     //virtual void handle_close() = 0;
     virtual void updateFpsCounter(float dt) = 0;
-    virtual void clear() = 0;
+    virtual void clearBuffer() = 0;
     virtual void swapBuffer() = 0;
     virtual void clean() = 0;
 

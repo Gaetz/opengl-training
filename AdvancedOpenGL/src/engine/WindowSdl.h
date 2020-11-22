@@ -38,7 +38,7 @@ public:
     //bool should_close();
     //void handle_close();
     void updateFpsCounter(float dt) override;
-    void clear() override;
+    void clearBuffer() override;
     void swapBuffer() override;
     void clean() override;
 

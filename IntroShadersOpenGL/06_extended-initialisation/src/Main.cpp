@@ -124,14 +124,14 @@ int main(int argc = 0, char** argv = nullptr) {
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
-    const char* vertex_shader =
+    const char* vertexShader =
         "#version 460\n"
         "in vec3 vp;"
         "void main () {"
         "  gl_Position = vec4 (vp, 1.0);"
         "}";
 
-    const char* fragment_shader =
+    const char* fragmentShader =
         "#version 460\n"
         "out vec4 color;"
         "void main () {"
@@ -139,16 +139,16 @@ int main(int argc = 0, char** argv = nullptr) {
         "}";
 
     GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vs, 1, &vertex_shader, NULL);
+    glShaderSource(vs, 1, &vertexShader, NULL);
     glCompileShader(vs);
     GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fs, 1, &fragment_shader, NULL);
+    glShaderSource(fs, 1, &fragmentShader, NULL);
     glCompileShader(fs);
 
-    GLuint shader_programme = glCreateProgram();
-    glAttachShader(shader_programme, fs);
-    glAttachShader(shader_programme, vs);
-    glLinkProgram(shader_programme);
+    GLuint shaderProgram = glCreateProgram();
+    glAttachShader(shaderProgram, fs);
+    glAttachShader(shaderProgram, vs);
+    glLinkProgram(shaderProgram);
 
     // Game loop
     bool isRunning = true;
@@ -171,7 +171,7 @@ int main(int argc = 0, char** argv = nullptr) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // Clear the screen
 
         /* Draw Here */
-        glUseProgram(shader_programme);
+        glUseProgram(shaderProgram);
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 

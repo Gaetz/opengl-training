@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 		game.handleInputs();
 		game.update(dt);
 
-		window->clear();
+		window->clearBuffer();
 		game.render();
 		window->swapBuffer();
 
