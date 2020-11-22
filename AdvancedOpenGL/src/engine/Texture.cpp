@@ -16,8 +16,8 @@ Texture2D::Texture2D()
 
 void Texture2D::load(const std::string& filename)
 {
-	image_data = stbi_load(filename.c_str(), &width, &height, &n, 4);
-    if (!image_data)
+	imageData = stbi_load(filename.c_str(), &width, &height, &n, 4);
+    if (!imageData)
     {
         LOG(Error) << "Could not load " << filename;
     }
@@ -35,8 +35,8 @@ void Texture2D::load(const std::string& filename)
 
     for (int row = 0; row < half_height; row++)
     {
-        top = image_data + row * width_in_bytes;
-        bottom = image_data + (height - row - 1) * width_in_bytes;
+        top = imageData + row * width_in_bytes;
+        bottom = imageData + (height - row - 1) * width_in_bytes;
         for (int col = 0; col < width_in_bytes; col++)
         {
             temp = *top;
@@ -61,7 +61,7 @@ void Texture2D::generate()
         0,
         GL_RGBA,
         GL_UNSIGNED_BYTE,
-        image_data);
+        imageData);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapS);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapT); // GL_CLAMP_TO_EDGE
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filterMax);
@@ -70,7 +70,7 @@ void Texture2D::generate()
     glGenerateMipmap(GL_TEXTURE_2D);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
-	delete image_data;
+	delete imageData;
 }
 
 void Texture2D::use() const

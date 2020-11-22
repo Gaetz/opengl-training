@@ -31,7 +31,7 @@ public:
 	GLuint id;
 
 	// Hold loaded data
-	unsigned char * image_data;
+	unsigned char * imageData;
 
 	// Texture image dimensions
 	int width, height; // Width and height of loaded image in pixels
