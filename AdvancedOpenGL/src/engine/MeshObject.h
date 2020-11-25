@@ -33,31 +33,22 @@
 
 //#include <GL/glcorearb.h>
 
-class MeshObject
-{
-public:
+class MeshObject {
+   public:
     MeshObject();
     ~MeshObject();
 
-    inline void render(unsigned int instance_count = 1,
-                       unsigned int base_instance = 0)
-    {
-        renderSubObject(0, instance_count, base_instance);
+    inline void render(unsigned int instanceCount = 1, unsigned int baseInstance = 0) {
+        renderSubObject(0, instanceCount, baseInstance);
     }
 
-    void renderSubObject(unsigned int object_index,
-                           unsigned int instance_count = 1,
-                           unsigned int base_instance = 0);
+    void renderSubObject(unsigned int objectIndex, unsigned int instanceCount = 1, unsigned int baseInstance = 0);
 
-    void getSubObjectInfo(unsigned int index, GLuint &first, GLuint &count)
-    {
-        if (index >= numSubObjects)
-        {
+    void getSubObjectInfo(unsigned int index, GLuint &first, GLuint &count) {
+        if (index >= numSubObjects) {
             first = 0;
             count = 0;
-        }
-        else
-        {
+        } else {
             first = subObject[index].first;
             count = subObject[index].count;
         }
@@ -65,10 +56,10 @@ public:
 
     unsigned int getSubObjectCount() const { return numSubObjects; }
     GLuint getVao() const { return vao; }
-    void load(const char * filename);
+    void load(const char *filename);
     void free();
 
-private:
+   private:
     GLuint dataBuffer;
     GLuint vao;
     GLuint indexType;
@@ -79,8 +70,6 @@ private:
     SB6M_SUB_OBJECT_DECL subObject[MAX_SUB_OBJECTS];
 };
 
-
 #endif /* SB6M_FILETYPES_ONLY */
 
 #endif /* __OBJECT_H__ */
-

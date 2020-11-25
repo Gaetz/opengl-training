@@ -22,8 +22,8 @@ void Scene_002_Point::setGame(Game *_game) {
 
 void Scene_002_Point::load() {
     std::srand((int) std::time(nullptr));
-    Assets::loadShader("assets/shaders/002_point.vert", "assets/shaders/002_point.frag", "", "", "", "002_point");
-    shader = Assets::getShader("002_point");
+    Assets::loadShader("assets/shaders/002_Point.vert", "assets/shaders/002_Point.frag", "", "", "", "002_Point");
+    shader = Assets::getShader("002_Point");
     glCreateVertexArrays(1, &vao);
     glBindVertexArray(vao);
     glPointSize(40.0f);

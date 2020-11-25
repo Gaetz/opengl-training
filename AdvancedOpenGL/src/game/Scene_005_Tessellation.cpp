@@ -50,7 +50,6 @@ void Scene_005_Tessellation::update(float dt) {
 }
 
 void Scene_005_Tessellation::draw() {
-
     static const GLfloat bgColor[] = {0.0f, 0.0f, 0.2f, 1.0f};
     glClearBufferfv(GL_COLOR, 0, bgColor);
 

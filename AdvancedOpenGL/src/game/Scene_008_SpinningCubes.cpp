@@ -113,7 +113,6 @@ void Scene_008_SpinningCubes::handleEvent(const InputState &inputState) {
 }
 
 void Scene_008_SpinningCubes::update(float dt) {
-
     for(int i = 0; i < 24; ++i)
     {
         const float t = i + Timer::getTimeSinceStart() * 0.3f;
@@ -136,5 +135,4 @@ void Scene_008_SpinningCubes::draw()
         shader.setMatrix4("mv_matrix", transform[i]);
         glDrawArrays(GL_TRIANGLES, 0, 36);
     }
-
 }

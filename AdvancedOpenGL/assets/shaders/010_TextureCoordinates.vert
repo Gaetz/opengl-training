@@ -1,4 +1,3 @@
-
 #version 450 core
 
 uniform mat4 mv_matrix;

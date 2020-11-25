@@ -11,8 +11,8 @@
 #define SHADER_FRAG(s) PATH3(SHADER_PATH, s, EXT_FRAG) 
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_006_Fragment
-#define SHADER_NAME IDENT(006_Fragment)
+#define SCENE_NAME Scene_010_TextureCoordinates
+#define SHADER_NAME IDENT(010_TextureCoordinates)
 
 /**
  * Scene_014_IndirectDrawAstroids

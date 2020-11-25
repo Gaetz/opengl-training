@@ -30,7 +30,7 @@ void Scene_010_TextureCoordinates::load() {
     Assets::loadTextureKtx("assets/textures/pattern1.ktx", "pattern1");
     #define B 0x00, 0x00, 0x00, 0x00
     #define W 0xFF, 0xFF, 0xFF, 0xFF
-    static const GLubyte tex_data[] =
+    static const GLubyte texData[] =
     {
         B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
         W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
@@ -55,7 +55,7 @@ void Scene_010_TextureCoordinates::load() {
     glGenTextures(1, &texObject[0]);
     glBindTexture(GL_TEXTURE_2D, texObject[0]);
     glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGB8, 16, 16);
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 16, 16, GL_RGBA, GL_UNSIGNED_BYTE, tex_data);
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 16, 16, GL_RGBA, GL_UNSIGNED_BYTE, texData);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
