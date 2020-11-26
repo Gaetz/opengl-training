@@ -1,6 +1,3 @@
-//
-// Created by gaetz on 28/08/2020.
-//
 #include "Scene_012_ArrayTextureAlienRain.h"
 #include "../engine/Game.h"
 #include "../engine/Timer.h"
@@ -84,10 +81,10 @@ void Scene_012_ArrayTextureAlienRain::draw()
     }
     glUnmapBuffer(GL_UNIFORM_BUFFER);
 
-    int alien_index;
-    for (alien_index = 0; alien_index < 256; alien_index++)
+    int alienIndex;
+    for (alienIndex = 0; alienIndex < 256; alienIndex++)
     {
-        glVertexAttribI1i(0, alien_index);
+        glVertexAttribI1i(0, alienIndex);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
 }

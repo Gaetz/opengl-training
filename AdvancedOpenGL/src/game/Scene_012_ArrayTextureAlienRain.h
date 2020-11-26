@@ -1,7 +1,3 @@
-//
-// Created by gaetz on 28/08/2020.
-//
-
 #ifndef Scene_012_ArrayTextureAlienRain_H
 #define Scene_012_ArrayTextureAlienRain_H
 
