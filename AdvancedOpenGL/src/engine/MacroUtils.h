@@ -17,10 +17,11 @@
 #define SHADER_GEOM(s) PATH3(SHADER_PATH, s, EXT_GEOM)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_015_TessellationModes
-#define SHADER_NAME IDENT(015_TessellationModes)
+#define SCENE_NAME Scene_016_TerrainRendering
+#define SHADER_NAME IDENT(016_TerrainRendering)
 
 /**
+ * Scene_016_TerrainRendering
  * Scene_015_TessellationModes
  * Scene_014_IndirectDrawAstroids
  * Scene_013_InstancedGrassBlades
