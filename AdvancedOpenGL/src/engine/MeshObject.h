@@ -28,6 +28,7 @@
 #define __OBJECT_H__
 
 #include "sb6mfile.h"
+#include <GL/glew.h>
 
 #ifndef SB6M_FILETYPES_ONLY
 
