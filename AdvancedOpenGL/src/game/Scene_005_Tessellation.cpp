@@ -23,7 +23,7 @@ void Scene_005_Tessellation::setGame(Game *_game) {
 void Scene_005_Tessellation::load() {
     std::srand((int) std::time(nullptr));
     Assets::loadShader("assets/shaders/005_tessellation.vert", "assets/shaders/005_tessellation.frag",
-                                "assets/shaders/005_tessellation.tecs", "assets/shaders/005_tessellation.tese",
+                                "assets/shaders/005_tessellation.tesc", "assets/shaders/005_tessellation.tese",
                                 "assets/shaders/005_tessellation.geom", "005_tessellation");
 
     glCreateVertexArrays(1, &vao);

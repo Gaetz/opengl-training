@@ -6,7 +6,7 @@
 #define EXT .h
 #define EXT_VERT .vert
 #define EXT_FRAG .frag
-#define EXT_TECS .tecs
+#define EXT_TECS .tesc
 #define EXT_TESE .tese
 #define EXT_GEOM .geom
 #define SHADER_PATH assets/shaders/
