@@ -2,17 +2,17 @@
 // Created by gaetz on 04/12/2019.
 //
 
-#ifndef Scene_019_ModifyGeometry_H
-#define Scene_019_ModifyGeometry_H
+#ifndef Scene_020_GenerateGeometry_H
+#define Scene_020_GenerateGeometry_H
 
 #include "../engine/Scene.h"
 #include "../engine/Assets.h"
 #include "../engine/MeshObject.h"
 
-class Scene_019_ModifyGeometry : public Scene {
+class Scene_020_GenerateGeometry : public Scene {
 public:
-    Scene_019_ModifyGeometry();
-    ~Scene_019_ModifyGeometry();
+    Scene_020_GenerateGeometry();
+    ~Scene_020_GenerateGeometry();
     void load();
     void clean();
     void pause();
@@ -26,9 +26,8 @@ private:
     Game *game;
     GLuint vao;
     GLuint buffer;
-    MeshObject object;
     float totalTime;
-    const float timeScale = 0.01f;
+    const float timeScale = 0.05f;
 
     // Uniforms
     Matrix4 mvp;
@@ -39,4 +38,4 @@ private:
 };
 
 
-#endif //Scene_019_ModifyGeometry_H
+#endif //Scene_020_GenerateGeometry_H

@@ -41,7 +41,7 @@ private:
 
     float totalTime;
     float t;
-    float rotationScale = 0.05f;
+    float timeScale = 0.05f;
     float morphScale = 50.0f;
 
     Shader shader;

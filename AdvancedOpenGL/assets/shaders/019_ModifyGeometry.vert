@@ -1,4 +1,4 @@
-#version 410 core
+#version 450 core
 
 // Incoming per vertex... position and normal
 layout (location = 0) in vec4 vVertex;

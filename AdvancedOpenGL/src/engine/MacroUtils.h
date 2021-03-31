@@ -17,10 +17,12 @@
 #define SHADER_GEOM(s) PATH3(SHADER_PATH, s, EXT_GEOM)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_018_DiscardGeometry
-#define SHADER_NAME IDENT(018_DiscardGeometry)
+#define SCENE_NAME Scene_020_GenerateGeometry
+#define SHADER_NAME IDENT(020_GenerateGeometry)
 
 /**
+ * Scene_020_GenerateGeometry
+ * Scene_019_ModifyGeometry
  * Scene_018_DiscardGeometry
  * Scene_017_CubicBezierPatches
  * Scene_016_TerrainRendering

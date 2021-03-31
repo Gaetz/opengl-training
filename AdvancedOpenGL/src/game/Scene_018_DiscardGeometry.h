@@ -28,6 +28,7 @@ private:
     GLuint buffer;
     MeshObject object;
     float totalTime;
+    const float timeScale = 0.01f;
 
     // Uniforms
     Matrix4 mvp;

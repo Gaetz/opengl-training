@@ -85,7 +85,7 @@ void Scene_017_CubicBezierPatches::update(float dt) {
     if (!paused)
         totalTime += dt;
 
-    t = totalTime * rotationScale;
+    t = totalTime * timeScale;
 }
 
 void Scene_017_CubicBezierPatches::draw()
