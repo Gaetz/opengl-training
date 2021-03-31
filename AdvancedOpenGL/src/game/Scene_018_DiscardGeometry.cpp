@@ -51,7 +51,7 @@ void Scene_018_DiscardGeometry::update(float dt) {
 
 void Scene_018_DiscardGeometry::draw()
 {
-        static const GLfloat black[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+        static const GLfloat black[] = {0.0f, 0.0f, 0.2f, 1.0f};
         static const GLfloat one = 1.0f;
         float f = totalTime * timeScale;
 

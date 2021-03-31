@@ -3,37 +3,31 @@
 layout (triangles) in;
 layout (triangle_strip, max_vertices = 3) out;
 
-in Vertex
+in VS_OUT
 {
     vec3 normal;
     vec4 color;
-} vertex[];
+} gs_in[];
 
-out vec4 color;
+out GS_OUT
+{
+    vec3 normal;
+    vec4 color;
+} gs_out;
 
-uniform vec3 vLightPosition = vec3(-10.0, 40.0, 200.0);
-uniform mat4 mvpMatrix;
-uniform mat4 mvMatrix;
-
-uniform vec3 viewpoint;
+uniform float explode_factor = 0.2;
 
 void main(void)
 {
-    int n;
-
     vec3 ab = gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz;
     vec3 ac = gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz;
-    vec3 normal = normalize(cross(ab, ac));
-    vec3 transformed_normal = (mat3(mvMatrix) * normal);
-    vec4 worldspace = /* mvMatrix * */ gl_in[0].gl_Position;
-    vec3 vt = normalize(viewpoint - worldspace.xyz);
-
-    if (dot(normal, vt) > 0.0) {
-        for (n = 0; n < 3; n++) {
-            gl_Position = mvpMatrix * gl_in[n].gl_Position;
-            color = vertex[n].color;
-            EmitVertex();
-        }
-        EndPrimitive();
+    vec3 face_normal = -normalize(cross(ab, ac));
+    for (int i = 0; i < gl_in.length(); i++)
+    {
+        gl_Position = gl_in[i].gl_Position + vec4(face_normal * explode_factor, 0.0);
+        gs_out.normal = gs_in[i].normal;
+        gs_out.color = gs_in[i].color;
+        EmitVertex();
     }
+    EndPrimitive();
 }
