@@ -50,23 +50,23 @@ void Scene_019_ModifyGeometry::update(float dt) {
 
 void Scene_019_ModifyGeometry::draw()
 {
-        static const GLfloat black[] = {0.0f, 0.0f, 0.2f, 1.0f};
-        static const GLfloat one = 1.0f;
-        float f = totalTime * timeScale;
+    static const GLfloat black[] = {0.0f, 0.0f, 0.2f, 1.0f};
+    static const GLfloat one = 1.0f;
+    float f = totalTime * timeScale;
 
-        glClearBufferfv(GL_COLOR, 0, black);
-        glClearBufferfv(GL_DEPTH, 0, &one);
+    glClearBufferfv(GL_COLOR, 0, black);
+    glClearBufferfv(GL_DEPTH, 0, &one);
 
-        shader.use();
+    shader.use();
 
-        proj = Matrix4::createPerspectiveFOV(45.0f, game->windowWidth, game->windowHeight, 0.1f, 1000.0f);
-        view = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -3.0f)) *
-                                Matrix4::createRotationY(45.0f) *
-                                Matrix4::createRotationX(81.0f);
+    proj = Matrix4::createPerspectiveFOV(45.0f, game->windowWidth, game->windowHeight, 0.1f, 1000.0f);
+    view = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -3.0f)) *
+                            Matrix4::createRotationY(45.0f) *
+                            Matrix4::createRotationX(81.0f);
 
-        shader.setMatrix4("proj_matrix", proj);
-        shader.setMatrix4("mv_matrix", view);
-        shader.setFloat("explode_factor", sinf((float)f * 8.0f) * cosf((float)f * 6.0f) * 0.7f + 0.1f);
+    shader.setMatrix4("proj_matrix", proj);
+    shader.setMatrix4("mv_matrix", view);
+    shader.setFloat("explode_factor", sinf((float)f * 8.0f) * cosf((float)f * 6.0f) * 0.7f + 0.1f);
 
-        object.render();
+    object.render();
 }

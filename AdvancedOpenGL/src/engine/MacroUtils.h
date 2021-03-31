@@ -17,8 +17,8 @@
 #define SHADER_GEOM(s) PATH3(SHADER_PATH, s, EXT_GEOM)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_019_ModifyGeometry
-#define SHADER_NAME IDENT(019_ModifyGeometry)
+#define SCENE_NAME Scene_018_DiscardGeometry
+#define SHADER_NAME IDENT(018_DiscardGeometry)
 
 /**
  * Scene_021_ChangePrimitiveType

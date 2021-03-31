@@ -50,23 +50,23 @@ void Scene_021_ChangePrimitiveType::update(float dt) {
 
 void Scene_021_ChangePrimitiveType::draw()
 {
-        static const GLfloat black[] = {0.0f, 0.0f, 0.2f, 1.0f};
-        static const GLfloat one = 1.0f;
-        float f = totalTime * timeScale;
+    static const GLfloat black[] = {0.0f, 0.0f, 0.2f, 1.0f};
+    static const GLfloat one = 1.0f;
+    float f = totalTime * timeScale;
 
-        glClearBufferfv(GL_COLOR, 0, black);
-        glClearBufferfv(GL_DEPTH, 0, &one);
+    glClearBufferfv(GL_COLOR, 0, black);
+    glClearBufferfv(GL_DEPTH, 0, &one);
 
 
-        proj = Matrix4::createPerspectiveFOV(45.0f, game->windowWidth, game->windowHeight, 0.1f, 1000.0f);
-        view = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -8.0f)) *
-                                Matrix4::createRotationY(f * 15.0f) *
-                                Matrix4::createRotationX(f * 21.0f);
+    proj = Matrix4::createPerspectiveFOV(45.0f, game->windowWidth, game->windowHeight, 0.1f, 1000.0f);
+    view = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -8.0f)) *
+                            Matrix4::createRotationY(f * 15.0f) *
+                            Matrix4::createRotationX(f * 21.0f);
 
-        shader.use();
-        shader.setMatrix4("proj_matrix", proj);
-        shader.setMatrix4("mv_matrix", view);
-        shader.setFloat("normal_length", sinf((float)f * 8.0f) * cosf((float)f * 6.0f) * 0.03f + 0.05f);
+    shader.use();
+    shader.setMatrix4("proj_matrix", proj);
+    shader.setMatrix4("mv_matrix", view);
+    shader.setFloat("normal_length", sinf((float)f * 8.0f) * cosf((float)f * 6.0f) * 0.03f + 0.05f);
 
-        object.render();
+    object.render();
 }
