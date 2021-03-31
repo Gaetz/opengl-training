@@ -1,5 +1,5 @@
 /*
- * Copyright © 2012-2015 Graham Sellers
+ * Copyright ï¿½ 2012-2015 Graham Sellers
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -190,7 +190,7 @@ void cubicbezier_app::render(double currentTime)
     vmath::mat4 mv_matrix = vmath::translate(0.0f, 0.0f, -4.0f) *
                             vmath::rotate(t * 10.0f, 0.0f, 1.0f, 0.0f) *
                             vmath::rotate(t * 17.0f, 1.0f, 0.0f, 0.0f);
-    
+
     glUniformMatrix4fv(uniforms.patch.mv_matrix, 1, GL_FALSE, mv_matrix);
     glUniformMatrix4fv(uniforms.patch.proj_matrix, 1, GL_FALSE, proj_matrix);
     glUniformMatrix4fv(uniforms.patch.mvp, 1, GL_FALSE, proj_matrix * mv_matrix);
