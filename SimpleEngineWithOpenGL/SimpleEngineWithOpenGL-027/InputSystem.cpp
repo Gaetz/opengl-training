@@ -88,5 +88,9 @@ void InputSystem::setMouseCursor(bool isCursorDisplayedP)
 
 void InputSystem::setMouseRelativeMode(bool isMouseRelativeOnP)
 {
+	SDL_bool set = isMouseRelativeOnP ? SDL_TRUE : SDL_FALSE;
+	SDL_SetRelativeMouseMode(set);
+
 	inputState.mouse.isRelativeMode = isMouseRelativeOnP;
 }
+
