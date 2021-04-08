@@ -2,7 +2,7 @@
 #include "Log.h"
 #include <SDL_image.h>
 
-Texture::Texture(): textureID(0), filename(""), width(0), height(0), SDLTexture(nullptr)
+Texture::Texture(): filename(""), width(0), height(0), SDLTexture(nullptr)
 {
 }
 

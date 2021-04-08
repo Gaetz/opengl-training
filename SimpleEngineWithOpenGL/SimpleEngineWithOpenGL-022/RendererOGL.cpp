@@ -133,8 +133,9 @@ void RendererOGL::drawSprites()
 	glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
 	// Active shader and vertex array
-	spriteShader->use();
-	spriteShader->setMatrix4("uViewProj", spriteViewProj);
+	Shader& spriteShader = Assets::getShader("Sprite");
+	spriteShader.use();
+	spriteShader.setMatrix4("uViewProj", spriteViewProj);
 	spriteVertexArray->setActive();
 
 	for (auto sprite : sprites)
@@ -148,7 +149,8 @@ void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle s
 	Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
 	Matrix4 world = scaleMat * actor.getWorldTransform();
 	Matrix4 pixelTranslation = Matrix4::createTranslation(Vector3(-WINDOW_WIDTH / 2 - origin.x, -WINDOW_HEIGHT / 2 - origin.y, 0.0f)); // Screen pixel coordinates
-	spriteShader->setMatrix4("uWorldTransform", world * pixelTranslation);
+	Shader& spriteShader = Assets::getShader("Sprite");
+	spriteShader.setMatrix4("uWorldTransform", world * pixelTranslation);
 	tex.setActive();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }

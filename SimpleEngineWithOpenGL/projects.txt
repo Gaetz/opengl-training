@@ -3,11 +3,11 @@ Summary
 -- PART 1 --
 001-004: Wall Pong
 005-011: Scrolling background and component-based shooter
-012-015: A* tower defense
+012-015: A* tower defense (optional)
 -- PART 2 --
 016-020: OpenGL Renderer for shooter
 021-023: 3D basics
-024-025: 3D sound manager
+024-025: 3D sound manager (optional)
 -- PART 3 --
 026-028: Input system
 029-032: Cameras
@@ -15,7 +15,7 @@ Summary
 033-036: Basic physics
 037-042: Basic UI
 043-044: Skelettal animation
--- PART5 --
+-- PART 5 --
 045-048: Intermediate graphics
 049-052: Data files for levels
 
@@ -50,6 +50,7 @@ Chapters
 022: Load mesh dans display it with its shader. Update renderer. Include rapidjson.
 023: Add light (Phong), display meshes and sprites. Update Assets management.
 
+(optional)
 024: AudioSystem, SoundEvent (utiliser les linker/input vers les fichier 64), AudioComponent, Game update
 025: Add audio in the game and modify the camera to listen sound
 
