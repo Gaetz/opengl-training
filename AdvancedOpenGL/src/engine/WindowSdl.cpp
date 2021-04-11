@@ -64,7 +64,7 @@ bool WindowSdl::init(int xPos, int yPos, int width, int height, bool isFullscree
         else
             return false;
 
-        
+
         // Get graphics info
         const GLubyte *renderer = glGetString(GL_RENDERER);
         const GLubyte *version = glGetString(GL_VERSION);

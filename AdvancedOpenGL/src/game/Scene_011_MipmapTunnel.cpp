@@ -58,7 +58,7 @@ void Scene_011_MipmapTunnel::resume() {
 }
 
 void Scene_011_MipmapTunnel::handleEvent(const InputState &inputState) {
-    
+
 }
 
 void Scene_011_MipmapTunnel::update(float dt) {
@@ -74,7 +74,7 @@ void Scene_011_MipmapTunnel::update(float dt) {
     }
 }
 
-void Scene_011_MipmapTunnel::draw() 
+void Scene_011_MipmapTunnel::draw()
 {
     float t = Timer::getTimeSinceStart();
     shader.setFloat("offset", t * 0.003f);
@@ -82,7 +82,8 @@ void Scene_011_MipmapTunnel::draw()
     GLuint textures[] = { texWall, texFloor, texWall, texCeiling };
     for (i = 0; i < 4; i++)
     {
-        Matrix4 mvp = projection * transform[i];
+        Matrix4 view = Matrix4::identity;
+        Matrix4 mvp = projection * view * transform[i];
         shader.setMatrix4("mvp_matrix", mvp);
         glBindTexture(GL_TEXTURE_2D, textures[i]);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

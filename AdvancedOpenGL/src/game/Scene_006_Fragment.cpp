@@ -53,10 +53,10 @@ void Scene_006_Fragment::draw() {
 
     static const GLfloat bgColor[] = {0.0f, 0.0f, 0.2f, 1.0f};
     glClearBufferfv(GL_COLOR, 0, bgColor);
-    
-    GLfloat offset[] = { (float)sin(timeSinceStart) *0.5f + 0.5f, (float)cos(timeSinceStart) *0.5f + 0.5f, 0.0f, 1.0f};
+
+    GLfloat offset[] = { (float)sin(timeSinceStart) * 0.5f + 0.5f, (float)cos(timeSinceStart) *0.5f + 0.5f, 0.0f, 1.0f};
     glVertexAttrib4fv(0, offset);
     shader.use();
-    
+
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
