@@ -47,6 +47,8 @@
         "xstddef": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "bit": "cpp",
+        "clocale": "cpp"
     }
 }

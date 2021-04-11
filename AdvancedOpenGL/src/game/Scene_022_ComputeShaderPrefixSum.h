@@ -5,6 +5,8 @@
 #include "../engine/Assets.h"
 #include "../engine/MeshObject.h"
 
+constexpr int NUM_ELEMENTS = 2048;
+
 class Scene_022_ComputeShaderPrefixSum : public Scene {
 public:
     Scene_022_ComputeShaderPrefixSum();
@@ -20,19 +22,28 @@ public:
 
 private:
     Game *game;
-    GLuint vao;
-    GLuint buffer;
-    float totalTime;
-    const float timeScale = 0.05f;
-    MeshObject object;
 
-    // Uniforms
-    Matrix4 mvp;
-    Matrix4 view;
-    Matrix4 proj;
+    GLuint dataBuffer[2];
+    float inputData[NUM_ELEMENTS];
+    float outputData[NUM_ELEMENTS];
+    ComputeShader cShader;
 
-    Shader shader;
+    void prefixSum(const float * input, float * output, int elements);
 };
+
+static inline float randomFloat()
+{
+    static unsigned int seed = 0x13371337;
+
+    float res;
+    unsigned int tmp;
+
+    seed *= 16807;
+    tmp = seed ^ (seed >> 4) ^ (seed << 15);
+    *((unsigned int *) &res) = (tmp >> 9) | 0x3F800000;
+
+    return (res - 1.0f);
+}
 
 
 #endif //Scene_022_ComputeShaderPrefixSum_H

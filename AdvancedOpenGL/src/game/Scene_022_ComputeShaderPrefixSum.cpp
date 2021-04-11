@@ -1,13 +1,14 @@
 #include "Scene_022_ComputeShaderPrefixSum.h"
 #include "../engine/Timer.h"
 #include "../engine/MacroUtils.h"
+#include "../engine/Log.h"
 
 #include <cstdlib>
 #include <ctime>
 #include <GL/glew.h>
 
 
-Scene_022_ComputeShaderPrefixSum::Scene_022_ComputeShaderPrefixSum(): totalTime(0) {
+Scene_022_ComputeShaderPrefixSum::Scene_022_ComputeShaderPrefixSum() {
 
 }
 
@@ -20,7 +21,7 @@ void Scene_022_ComputeShaderPrefixSum::setGame(Game *_game) {
 }
 
 void Scene_022_ComputeShaderPrefixSum::clean() {
-    glDeleteVertexArrays(1, &vao);
+
 }
 
 void Scene_022_ComputeShaderPrefixSum::pause() {
@@ -34,39 +35,76 @@ void Scene_022_ComputeShaderPrefixSum::handleEvent(const InputState &inputState)
 }
 
 void Scene_022_ComputeShaderPrefixSum::load() {
-    Assets::loadShader(SHADER_VERT(SHADER_NAME), SHADER_FRAG(SHADER_NAME), "", "", SHADER_GEOM(SHADER_NAME), SHADER_ID(SHADER_NAME));
+    Assets::loadComputeShader(SHADER_COMP(SHADER_NAME), SHADER_ID(SHADER_NAME));
 
-    object.load("assets/meshes/torus.sbm");
+    glGenBuffers(2, dataBuffer);
 
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, dataBuffer[0]);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, NUM_ELEMENTS * sizeof(float), NULL, GL_DYNAMIC_DRAW);
 
-    shader = Assets::getShader(SHADER_ID(SHADER_NAME));
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, dataBuffer[1]);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, NUM_ELEMENTS * sizeof(float), NULL, GL_DYNAMIC_COPY);
+
+    int i;
+
+    for (i = 0; i < NUM_ELEMENTS; i++)
+    {
+        inputData[i] = randomFloat();
+    }
+
+    prefixSum(inputData, outputData, NUM_ELEMENTS);
+
+    cShader = Assets::getComputeShader(SHADER_ID(SHADER_NAME));
+
+    int n;
+    glGetIntegerv(GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS, &n);
+
+
+    glShaderStorageBlockBinding(cShader.id, 0, 0);
+    glShaderStorageBlockBinding(cShader.id, 1, 1);
 }
 
 void Scene_022_ComputeShaderPrefixSum::update(float dt) {
-    totalTime += dt;
+    float * ptr;
+
+    glBindBufferRange(GL_SHADER_STORAGE_BUFFER, 0, dataBuffer[0], 0, sizeof(float) * NUM_ELEMENTS);
+    glBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, sizeof(float) * NUM_ELEMENTS, inputData);
+
+    glBindBufferRange(GL_SHADER_STORAGE_BUFFER, 1, dataBuffer[1], 0, sizeof(float) * NUM_ELEMENTS);
+
+    cShader.use();
+    glDispatchCompute(1, 1, 1);
+
+    glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
+    glFinish();
+
+    glBindBufferRange(GL_SHADER_STORAGE_BUFFER, 0, dataBuffer[1], 0, sizeof(float) * NUM_ELEMENTS);
+    ptr = (float *)glMapBufferRange(GL_SHADER_STORAGE_BUFFER, 0, sizeof(float) * NUM_ELEMENTS, GL_MAP_READ_BIT);
+
+    char buffer[1024];
+    sprintf(buffer, "SUM: %2.2f %2.2f %2.2f %2.2f %2.2f %2.2f %2.2f %2.2f "
+                    "%2.2f %2.2f %2.2f %2.2f %2.2f %2.2f %2.2f %2.2f",
+                    ptr[0], ptr[1], ptr[2], ptr[3], ptr[4], ptr[5], ptr[6], ptr[7],
+                    ptr[8], ptr[9], ptr[10], ptr[11], ptr[12], ptr[13], ptr[14], ptr[15]);
+
+    LOG(Info) << buffer;
+
+    glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
 }
 
 void Scene_022_ComputeShaderPrefixSum::draw()
 {
-    static const GLfloat black[] = {0.0f, 0.0f, 0.2f, 1.0f};
-    static const GLfloat one = 1.0f;
-    float f = totalTime * timeScale;
 
-    glClearBufferfv(GL_COLOR, 0, black);
-    glClearBufferfv(GL_DEPTH, 0, &one);
+}
 
+void Scene_022_ComputeShaderPrefixSum::prefixSum(const float * input, float * output, int elements)
+{
+    float f = 0.0f;
+    int i;
 
-    proj = Matrix4::createPerspectiveFOV(45.0f, game->windowWidth, game->windowHeight, 0.1f, 1000.0f);
-    view = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -8.0f)) *
-                            Matrix4::createRotationY(f * 15.0f) *
-                            Matrix4::createRotationX(f * 21.0f);
-
-    shader.use();
-    shader.setMatrix4("proj_matrix", proj);
-    shader.setMatrix4("mv_matrix", view);
-    shader.setFloat("normal_length", sinf((float)f * 8.0f) * cosf((float)f * 6.0f) * 0.03f + 0.05f);
-
-    object.render();
+    for (i = 0; i < elements; i++)
+    {
+        f += input[i];
+        output[i] = f;
+    }
 }
