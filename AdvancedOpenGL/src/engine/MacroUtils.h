@@ -19,10 +19,11 @@
 #define SHADER_COMP(s) PATH3(SHADER_PATH, s, EXT_COMP)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_022_ComputeShaderPrefixSum
-#define SHADER_NAME IDENT(022_ComputeShaderPrefixSum)
+#define SCENE_NAME Scene_023_ComputeShaderBoids
+#define SHADER_NAME IDENT(023_ComputeShaderBoids)
 
 /**
+ * Scene_023_ComputeShaderBoids
  * Scene_022_ComputeShaderPrefixSum
  * Scene_021_ChangePrimitiveType
  * Scene_020_GenerateGeometry

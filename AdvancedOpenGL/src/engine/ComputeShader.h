@@ -1,6 +1,8 @@
 #ifndef COMPUTE_SHADER_H
 #define COMPUTE_SHADER_H
 
+#include "maths/Vector3.h"
+
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -19,6 +21,9 @@ public:
 
 	// Compiles the shader from given source code
 	void compile(const GLchar *source);
+
+	void setVector3f(const GLchar *name, GLfloat x, GLfloat y, GLfloat z);
+	void setVector3f(const GLchar *name, const Vector3 &value);
 
 private:
     GLuint cs;

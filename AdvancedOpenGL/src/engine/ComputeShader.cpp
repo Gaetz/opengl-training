@@ -45,3 +45,12 @@ void ComputeShader::createShaderProgram()
     // Delete shaders for they are no longer used
     glDeleteShader(cs);
 }
+
+void ComputeShader::setVector3f(const GLchar *name, GLfloat x, GLfloat y, GLfloat z)
+{
+    glUniform3f(glGetUniformLocation(id, name), x, y, z);
+}
+void ComputeShader::setVector3f(const GLchar *name, const Vector3 &value)
+{
+    glUniform3f(glGetUniformLocation(id, name), value.x, value.y, value.z);
+}
