@@ -67,8 +67,11 @@ void Game::load() {
     shader.createShaderProgram();
 
     shader.use();
-    int texLoc = glGetUniformLocation(shader.programId, "basicTexture");
-    glUniform1i (texLoc, 0); // use active texture 0
+    //int texLoc = glGetUniformLocation(shader.programId, "basicTexture");
+    //glUniform1i (texLoc, 0); // use active texture 0
+
+    int vec2Loc = glGetUniformLocation(shader.programId, "iResolution");
+    glUniform2f (vec2Loc, 1280, 720); 
 }
 
 void Game::handleInputs() {

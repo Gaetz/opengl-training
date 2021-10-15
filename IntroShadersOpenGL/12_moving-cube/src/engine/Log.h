@@ -35,7 +35,7 @@ class Log
 {
 public:
     Log();
-    ~Log();
+    virtual ~Log();
     std::ostringstream &get(LogLevel level = Info);
     static void restart();
 
