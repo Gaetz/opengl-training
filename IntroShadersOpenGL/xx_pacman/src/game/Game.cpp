@@ -18,80 +18,26 @@ void Game::init(int screenWidth, int screenHeight) {
 void Game::load() {
     std::srand((int) std::time(nullptr));
 
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-    projection = Matrix4::createPerspectiveFOV(70.0f, windowWidth, windowHeight, 0.1f, 1000.0f);
-    static const GLfloat vertexPositions[]
-    {
-            -0.25f,  0.25f, -0.25f,
-            -0.25f, -0.25f, -0.25f,
-             0.25f, -0.25f, -0.25f,
-
-             0.25f, -0.25f, -0.25f,
-             0.25f,  0.25f, -0.25f,
-            -0.25f,  0.25f, -0.25f,
-
-             0.25f, -0.25f, -0.25f,
-             0.25f, -0.25f,  0.25f,
-             0.25f,  0.25f, -0.25f,
-
-             0.25f, -0.25f,  0.25f,
-             0.25f,  0.25f,  0.25f,
-             0.25f,  0.25f, -0.25f,
-
-             0.25f, -0.25f,  0.25f,
-            -0.25f, -0.25f,  0.25f,
-             0.25f,  0.25f,  0.25f,
-
-            -0.25f, -0.25f,  0.25f,
-            -0.25f,  0.25f,  0.25f,
-             0.25f,  0.25f,  0.25f,
-
-            -0.25f, -0.25f,  0.25f,
-            -0.25f, -0.25f, -0.25f,
-            -0.25f,  0.25f,  0.25f,
-
-            -0.25f, -0.25f, -0.25f,
-            -0.25f,  0.25f, -0.25f,
-            -0.25f,  0.25f,  0.25f,
-
-            -0.25f, -0.25f,  0.25f,
-             0.25f, -0.25f,  0.25f,
-             0.25f, -0.25f, -0.25f,
-
-             0.25f, -0.25f, -0.25f,
-            -0.25f, -0.25f, -0.25f,
-            -0.25f, -0.25f,  0.25f,
-
-            -0.25f,  0.25f, -0.25f,
-             0.25f,  0.25f, -0.25f,
-             0.25f,  0.25f,  0.25f,
-
-             0.25f,  0.25f,  0.25f,
-            -0.25f,  0.25f,  0.25f,
-            -0.25f,  0.25f, -0.25f
-    };
-
-    // Generate data and put it in buffer object
-    glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
-
-    // Setup vertex attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-    glEnableVertexAttribArray(0);
-
+    // Setup OpenGL
     glEnable(GL_CULL_FACE);
     glFrontFace(GL_CW);
-
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
+    // Setup shader
     shader.compileVertexShader();
     shader.compileFragmentShader();
     shader.createShaderProgram();
 
+    // Setup 3D scene
+    projection = Matrix4::createPerspectiveFOV(70.0f, windowWidth, windowHeight, 0.1f, 1000.0f);
     shader.use();
+    shader.setMatrix4("proj_matrix", projection);
+    for(int i = 0; i < 100; ++i) {
+        Cube cube { Vector2 { static_cast<float>(i % 10), static_cast<float>(i / 10) }, WHITE };
+        cube.load();
+        cubes.push_back(cube);
+    }
 }
 
 void Game::handleInputs() {
@@ -126,19 +72,25 @@ void Game::update(float dt) {
     Matrix4 translation = basePosition * move;
     Matrix4 rotation = yRotation * xRotation;
     transform = translation * rotation;
+
+    for(auto& cube:cubes) {
+        Vector2 offset { cube.getTilePos() };
+        Matrix4 translationOffset = Matrix4::createTranslation(Vector3(offset.x, offset.y, -4.0f));
+        cube.setTransform(transform * translationOffset);
+    }
 }
 
 void Game::render() {
     static const GLfloat bgColor[] = {0.0f, 0.0f, 0.2f, 1.0f};
     glClearBufferfv(GL_COLOR, 0, bgColor);
     
-    shader.use();
-    shader.setMatrix4("mv_matrix", transform);
-    shader.setMatrix4("proj_matrix", projection);
-    
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    for(auto& cube:cubes) {
+        cube.draw(shader);
+    }
 }
 
 void Game::clean() {
-    glDeleteVertexArrays(1, &vao);
+    for(auto& cube:cubes) {
+        cube.clean();
+    }
 }

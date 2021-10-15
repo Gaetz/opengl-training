@@ -5,11 +5,12 @@
 #include <SDL.h>
 
 #include <memory>
-#include <array>
+#include <vector>
 
 #include "Shader.h"
+#include "../game/Cube.h"
 
-using std::array;
+using std::vector;
 
 // This game class runs a simple game loop
 class Game {
@@ -34,6 +35,9 @@ class Game {
 
     Matrix4 transform;
     Matrix4 projection;
+
+    vector<Cube> cubes;
+
     Shader shader;
 };
 

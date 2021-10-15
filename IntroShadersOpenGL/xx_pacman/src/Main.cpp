@@ -29,7 +29,7 @@ int main(int argc = 0, char **argv = nullptr) {
     }
 
     // Init window
-    Window window = Window("Shaders");
+    Window window = Window("Pacman");
     if (!window.init(SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, false)) {
         return 1;
     }
