@@ -43,11 +43,6 @@ private:
         "#version 430\n"
         "in vec4 position;"
 
-        "out VS_OUT"
-        "{"
-            "vec4 color;"
-        "} vs_out;"
-
         "uniform mat4 mv_matrix;"
         "uniform mat4 proj_matrix;"
 
@@ -55,23 +50,19 @@ private:
         "void main(void)"
         "{"
             "gl_Position = proj_matrix * mv_matrix * position;"
-            "vs_out.color = position * 2.0 + vec4(0.5, 0.5, 0.5, 0.0);"
         "}";
 
 
     const char* fragmentShader =
         "#version 430\n"
 
-        "out vec4 color;"
+        "uniform vec4 cube_color;"
 
-        "in VS_OUT"
-        "{"
-            "vec4 color;"
-        "} fs_in;"
+        "out vec4 color;"
 
         "void main()"
         "{"
-            "color = fs_in.color;"
+            "color = cube_color;"
         "}";
  
     void checkShaderErrors(GLuint shader, std::string shaderType);

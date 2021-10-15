@@ -7,6 +7,8 @@ struct Color
     float g;
     float b;
     float a;
+
+    Vector4 toVector() { return Vector4 { r, g, b, a }; }
 };
 
 constexpr Color WHITE { 1.0f, 0.9f, 0.9f, 1.0f };

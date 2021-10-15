@@ -51,8 +51,8 @@ const array<float, 108> Cube::vertexPositions {{
 }};
 
 Cube::Cube(Vector2 tilePosP, Color colorP) : 
-    tilePos { tilePosP },
-    color { colorP }
+    color { colorP },
+    tilePos { tilePosP }
 {}
 
 void Cube::load() {
@@ -72,6 +72,7 @@ void Cube::load() {
 void Cube::draw(Shader& shader) {
     shader.use();
     shader.setMatrix4("mv_matrix", transform);
+    shader.setVector4f("cube_color", color.toVector());
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 

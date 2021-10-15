@@ -15,6 +15,7 @@
         "utility": "cpp",
         "array": "cpp",
         "typeinfo": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "string": "cpp"
     }
 }
