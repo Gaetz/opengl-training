@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "atomic": "cpp",
+        "ios": "cpp",
+        "istream": "cpp",
+        "streambuf": "cpp",
+        "system_error": "cpp",
+        "xiosbase": "cpp",
+        "xstring": "cpp",
+        "sstream": "cpp",
+        "xlocale": "cpp",
+        "xlocnum": "cpp",
+        "utility": "cpp",
+        "array": "cpp",
+        "typeinfo": "cpp"
+    }
+}
