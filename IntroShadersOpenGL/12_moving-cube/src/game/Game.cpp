@@ -21,7 +21,7 @@ void Game::load() {
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     projection = Matrix4::createPerspectiveFOV(70.0f, windowWidth, windowHeight, 0.1f, 1000.0f);
-    static const GLfloat vertexPositions[] =
+    static const GLfloat vertexPositions[]
     {
             -0.25f,  0.25f, -0.25f,
             -0.25f, -0.25f, -0.25f,
@@ -117,6 +117,7 @@ void Game::handleInputs() {
 void Game::update(float dt) {
     timeSinceStart += dt;
     const float t = timeSinceStart * 0.3f;
+    
     Matrix4 basePosition = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -4.0f));
     Matrix4 move = Matrix4::createTranslation(Vector3(Maths::sin(2.1f * t) * 0.5f, Maths::cos(1.7f * t) * 0.5f, Maths::sin(1.3f * t) * Maths::cos(1.5f * t) * 2.0f));
     Matrix4 yRotation = Matrix4::createRotationY(t * 45.0f / 10.0f);

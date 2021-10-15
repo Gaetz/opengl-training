@@ -6,14 +6,14 @@ class Vector3
 {
 
 public:
-	float x;
-	float y;
-	float z;
+	float x { 0.0f };
+	float y { 0.0f };
+	float z { 0.0f };
 
-	Vector3(): x(0.0f), y(0.0f), z(0.0f) {}
+	Vector3() = default;
 
 	explicit Vector3(float xP, float yP, float zP)
-		:x(xP), y(yP), z(zP) {}
+		:x { xP} , y { yP }, z {zP } {}
 
 	void set(float xP, float yP, float zP);
 	float lengthSq() const;
