@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include "Cube.h"
+#include "Constants.h"
 
 #include <array>
 using std::array;
@@ -13,10 +14,6 @@ using std::string;
 #include <vector>
 using std::vector;
 
-
-
-constexpr int LEVEL_WIDTH { 19 };
-constexpr int LEVEL_HEIGHT { 20 };
 
 enum class TileContent {
     Empty = 0,

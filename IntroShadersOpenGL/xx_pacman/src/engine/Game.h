@@ -40,7 +40,7 @@ class Game {
 
     vector<Cube> staticCubes;
     Level level;
-    Pacman pacman;
+    Pacman pacman { level };
 
     Shader shader;
 };
