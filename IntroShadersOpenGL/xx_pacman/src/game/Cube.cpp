@@ -71,7 +71,7 @@ void Cube::load() {
 
 void Cube::draw(Shader& shader) {
     shader.use();
-    shader.setMatrix4("mv_matrix", transform);
+    shader.setMatrix4("model_matrix", transform);
     shader.setVector4f("cube_color", color.toVector());
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
@@ -81,6 +81,6 @@ void Cube::clean() {
 }
 
 void Cube::updateTransform() {
-    Matrix4 translationOffset = Matrix4::createTranslation(Vector3(-5.0f + tilePos.x / 2.0f, 5.0f + tilePos.y / 2.0f, -10.0f));
+    Matrix4 translationOffset = Matrix4::createTranslation(Vector3(GRID_X_OFFSET + tilePos.x / 2.0f, 0.0f, GRID_Z_OFFSET + tilePos.y / 2.0f));
     transform = translationOffset;
 }

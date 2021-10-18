@@ -34,7 +34,7 @@ class Game {
     GLuint buffer;
     float timeSinceStart;
 
-    Matrix4 transform;
+    Matrix4 view;
     Matrix4 projection;
 
     vector<Cube> staticCubes;

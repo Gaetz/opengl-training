@@ -1,6 +1,6 @@
 #ifndef SHADER_H
 #define SHADER_H
- 
+
 #include <GL/glew.h>
 #include "Log.h"
 #include "Vector2.h"
@@ -13,7 +13,7 @@ class Shader
 public:
     Shader();
     virtual ~Shader();
- 
+
     GLuint programId;
 
     void compileVertexShader();
@@ -34,22 +34,23 @@ public:
 	void setVector4f(const GLchar *name, const Vector4 &value);
 	void setMatrix4(const GLchar *name, const Matrix4 &matrix);
 	//void setMatrix4Row(const GLchar *name, const Matrix4Row &matrix);
- 
+
 private:
     GLuint vs;
     GLuint fs;
- 
+
     const char* vertexShader =
         "#version 430\n"
         "in vec4 position;"
 
-        "uniform mat4 mv_matrix;"
+        "uniform mat4 model_matrix;"
+        "uniform mat4 view_matrix;"
         "uniform mat4 proj_matrix;"
 
 
         "void main(void)"
         "{"
-            "gl_Position = proj_matrix * mv_matrix * position;"
+            "gl_Position = proj_matrix * view_matrix * model_matrix * position;"
         "}";
 
 
@@ -64,7 +65,7 @@ private:
         "{"
             "color = cube_color;"
         "}";
- 
+
     void checkShaderErrors(GLuint shader, std::string shaderType);
 
     void printShaderInfoLog(GLuint shaderIndex);
@@ -72,9 +73,9 @@ private:
     const char *GLTypeToString(GLenum type);
     void printAllParams(GLuint programId);
     bool isValid(GLuint programId);
- 
+
     Shader(const Shader &) = delete;
     Shader& operator=(const Shader &) = delete;
 };
- 
+
 #endif

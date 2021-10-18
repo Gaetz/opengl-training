@@ -10,6 +10,9 @@ using std::array;
 #include "../engine/Shader.h"
 #include "Color.h"
 
+constexpr float GRID_X_OFFSET { -5.0f };
+constexpr float GRID_Z_OFFSET { -10.0f };
+
 class Cube {
 public:
     Cube() = default;
