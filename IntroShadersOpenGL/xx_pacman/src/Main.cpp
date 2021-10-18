@@ -48,8 +48,8 @@ int main(int argc = 0, char **argv = nullptr) {
         dt = static_cast<float>(timer.computeDeltaTime()) / 1000.0f;
         window.updateFpsCounter(dt);
 
-        game.handleInputs();
-        game.update(dt);
+        InputState inputState = game.handleInputs();
+        game.update(dt, inputState);
 
         window.clearBuffer();
         game.render();

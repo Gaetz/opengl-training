@@ -8,8 +8,9 @@
 #include <vector>
 
 #include "Shader.h"
-#include "../game/Cube.h"
+#include "InputState.h"
 #include "../game/Level.h"
+#include "../game/Pacman.h"
 
 using std::vector;
 
@@ -21,8 +22,8 @@ class Game {
 
     void init(int screenWidth, int screenHeight);
     void load();
-    void handleInputs();
-    void update(float dt);
+    InputState handleInputs();
+    void update(float dt, const InputState& inputState);
     void render();
     void clean();
 
@@ -39,6 +40,7 @@ class Game {
 
     vector<Cube> staticCubes;
     Level level;
+    Pacman pacman;
 
     Shader shader;
 };

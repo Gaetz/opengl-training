@@ -42,10 +42,13 @@ void Game::load() {
     for(auto& cube : staticCubes) {
         cube.updateTransform();
     }
+    pacman.load();
 }
 
-void Game::handleInputs() {
+InputState Game::handleInputs() {
     SDL_Event event;
+    InputState inputState;
+    bool inputHasChanged { false }; // Only one input for a frame
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
             case SDL_QUIT:
@@ -56,16 +59,33 @@ void Game::handleInputs() {
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
                     isRunning = false;
                 }
+                if (event.key.keysym.sym == SDLK_UP && !inputHasChanged) {
+                    inputState.up = true;
+                    inputHasChanged = true;
+                }
+                if (event.key.keysym.sym == SDLK_DOWN && !inputHasChanged) {
+                    inputState.down = true;
+                    inputHasChanged = true;
+                }
+                if (event.key.keysym.sym == SDLK_LEFT && !inputHasChanged) {
+                    inputState.left = true;
+                    inputHasChanged = true;
+                }
+                if (event.key.keysym.sym == SDLK_RIGHT && !inputHasChanged) {
+                    inputState.right = true;
+                    inputHasChanged = true;
+                }
                 break;
 
             default:
                 break;
         }
     }
+    return inputState;
 }
 
-void Game::update(float dt) {
-
+void Game::update(float dt, const InputState& inputState) {
+    pacman.update(dt, inputState);
 }
 
 void Game::render() {
@@ -75,9 +95,11 @@ void Game::render() {
     for(auto& cube:staticCubes) {
         cube.draw(shader);
     }
+    pacman.draw(shader);
 }
 
 void Game::clean() {
+    pacman.clean();
     for(auto& cube:staticCubes) {
         cube.clean();
     }

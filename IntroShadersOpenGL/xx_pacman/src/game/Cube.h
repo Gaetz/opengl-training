@@ -24,9 +24,9 @@ public:
     void load();
     void draw(Shader& shader);
     void clean();
-    void updateTransform();
+    virtual void updateTransform();
 
-private:
+protected:
     Color color { GREY };
     Vector2 tilePos { 0.0f, 0.0f };
     Vector3 pos { 0.0f, 0.0f, 0.0f };
