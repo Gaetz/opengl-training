@@ -30,7 +30,7 @@ void Game::load() {
     shader.createShaderProgram();
 
     // Setup 3D scene
-    view = Matrix4::createLookAt(Vector3 {0.0f, 9.0f, 2.0f}, Vector3 {0.0f, 0.0f, -5.0f}, Vector3::unitY );
+    view = Matrix4::createLookAt(Vector3 {0.0f, 10.0f, 1.0f}, Vector3 {0.0f, -5.0f, -6.0f}, Vector3::unitY );
     projection = Matrix4::createPerspectiveFOV(70.0f, windowWidth, windowHeight, 0.1f, 1000.0f);
     shader.use();
     shader.setMatrix4("view_matrix", view);

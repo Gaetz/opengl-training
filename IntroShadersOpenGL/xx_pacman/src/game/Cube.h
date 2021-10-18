@@ -11,7 +11,7 @@ using std::array;
 #include "Color.h"
 
 constexpr float GRID_X_OFFSET { -5.0f };
-constexpr float GRID_Z_OFFSET { -10.0f };
+constexpr float GRID_Z_OFFSET { -9.0f };
 
 class Cube {
 public:
