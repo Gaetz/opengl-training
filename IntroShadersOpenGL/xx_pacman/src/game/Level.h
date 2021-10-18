@@ -1,6 +1,8 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include <fstream>
+
 #include <array>
 using std::array;
 
@@ -20,8 +22,9 @@ enum class TileContent {
 class Level {
 public:
     void load(string path);
-    static array<array<TileContent, 19>, 20> content;
+    static array<array<TileContent, LEVEL_WIDTH>, LEVEL_HEIGHT> content;
 private:
+    TileContent charToTile(char col);
 };
 
 #endif

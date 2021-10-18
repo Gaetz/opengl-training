@@ -38,6 +38,8 @@ void Game::load() {
         cube.load();
         cubes.push_back(cube);
     }
+    level.load("assets/level.txt");
+
 }
 
 void Game::handleInputs() {
@@ -63,12 +65,12 @@ void Game::handleInputs() {
 void Game::update(float dt) {
     timeSinceStart += dt;
     const float t = timeSinceStart * 0.3f;
-    
+
     Matrix4 basePosition = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -4.0f));
     Matrix4 move = Matrix4::createTranslation(Vector3(Maths::sin(2.1f * t) * 0.5f, Maths::cos(1.7f * t) * 0.5f, Maths::sin(1.3f * t) * Maths::cos(1.5f * t) * 2.0f));
     Matrix4 yRotation = Matrix4::createRotationY(t * 45.0f / 10.0f);
     Matrix4 xRotation = Matrix4::createRotationX(t * 81.0f / 10.0f);
-    
+
     Matrix4 translation = basePosition * move;
     Matrix4 rotation = yRotation * xRotation;
     transform = translation * rotation;
@@ -83,7 +85,7 @@ void Game::update(float dt) {
 void Game::render() {
     static const GLfloat bgColor[] = {0.0f, 0.0f, 0.2f, 1.0f};
     glClearBufferfv(GL_COLOR, 0, bgColor);
-    
+
     for(auto& cube:cubes) {
         cube.draw(shader);
     }

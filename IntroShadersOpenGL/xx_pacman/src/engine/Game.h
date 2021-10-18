@@ -9,6 +9,7 @@
 
 #include "Shader.h"
 #include "../game/Cube.h"
+#include "../game/Level.h"
 
 using std::vector;
 
@@ -37,6 +38,7 @@ class Game {
     Matrix4 projection;
 
     vector<Cube> cubes;
+    Level level;
 
     Shader shader;
 };
