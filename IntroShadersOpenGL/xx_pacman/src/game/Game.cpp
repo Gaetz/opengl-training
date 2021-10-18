@@ -35,7 +35,9 @@ void Game::load() {
     shader.setMatrix4("proj_matrix", projection);
     level.load("assets/level.txt");
     staticCubes = level.populateStatic();
-
+    for(auto& cube : staticCubes) {
+        cube.updateTransform();
+    }
 }
 
 void Game::handleInputs() {
@@ -60,14 +62,6 @@ void Game::handleInputs() {
 
 void Game::update(float dt) {
 
-    Matrix4 basePosition = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -4.0f));
-    transform = basePosition;
-
-    for(auto& cube : staticCubes) {
-        Vector2 offset { cube.getTilePos() };
-        Matrix4 translationOffset = Matrix4::createTranslation(Vector3(-5.0f + offset.x / 2.0f, 5.0f + offset.y / 2.0f, -4.0f));
-        cube.setTransform(transform * translationOffset);
-    }
 }
 
 void Game::render() {

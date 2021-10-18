@@ -50,7 +50,7 @@ const array<float, 108> Cube::vertexPositions {{
         -0.25f,  0.25f, -0.25f
 }};
 
-Cube::Cube(Vector2 tilePosP, Color colorP) : 
+Cube::Cube(Vector2 tilePosP, Color colorP) :
     color { colorP },
     tilePos { tilePosP }
 {}
@@ -58,7 +58,7 @@ Cube::Cube(Vector2 tilePosP, Color colorP) :
 void Cube::load() {
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
-    
+
     // Generate data and put it in buffer object
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -78,4 +78,9 @@ void Cube::draw(Shader& shader) {
 
 void Cube::clean() {
     glDeleteVertexArrays(1, &vao);
+}
+
+void Cube::updateTransform() {
+    Matrix4 translationOffset = Matrix4::createTranslation(Vector3(-5.0f + tilePos.x / 2.0f, 5.0f + tilePos.y / 2.0f, -10.0f));
+    transform = translationOffset;
 }

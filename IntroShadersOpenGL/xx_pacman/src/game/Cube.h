@@ -21,6 +21,7 @@ public:
     void load();
     void draw(Shader& shader);
     void clean();
+    void updateTransform();
 
 private:
     Color color { GREY };
@@ -31,6 +32,7 @@ private:
     uint32_t vao { 0 };
     uint32_t vbo { 0 };
     static const array<float, 108> vertexPositions;
+
 };
 
 #endif
