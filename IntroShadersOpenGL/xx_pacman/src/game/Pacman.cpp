@@ -68,9 +68,12 @@ Vector2 Pacman::computeNextTilePos(int direction) {
     }
 }
 
-
 Vector2 Pacman::computeTilePos(const Vector3& pos) {
     return Vector2 { static_cast<float>(round(pos.x)), static_cast<float>(round(pos.z)) };
+}
+
+Vector3 Pacman::computeCleanPos(const Vector2& tilePos) {
+    return Vector3 { tilePos.x, 0.0f, tilePos.y };
 }
 
 void Pacman::updateMoveWithCollisions(const Vector3& nextPos, const Vector2& nextTilePos) {
@@ -87,8 +90,5 @@ void Pacman::updateMoveWithCollisions(const Vector3& nextPos, const Vector2& nex
     tilePos = computeTilePos(pos);
 }
 
-Vector3 Pacman::computeCleanPos(const Vector2& tilePos) {
-    return Vector3 { tilePos.x, 0.0f, tilePos.y };
-}
 
 
