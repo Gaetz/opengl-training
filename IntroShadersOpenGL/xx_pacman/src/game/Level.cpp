@@ -23,3 +23,18 @@ TileContent Level::charToTile(char col) {
         return TileContent::Empty;
     }
 }
+
+vector<Cube> Level::populateStatic() {
+    vector<Cube> cubes;
+    for(int row = 0; row < LEVEL_HEIGHT; ++row) {
+        for(int col = 0; col < LEVEL_WIDTH; ++col) {
+            if (content[row][col] == TileContent::Wall) {
+                // OpenGL draw from bottom to top
+                Cube cube { Vector2 { static_cast<float>(col), -static_cast<float>(row) }, GREY };
+                cube.load();
+                cubes.push_back(cube);
+            }
+        }
+    }
+    return cubes;
+}

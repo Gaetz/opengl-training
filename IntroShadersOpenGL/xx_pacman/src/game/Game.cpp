@@ -33,12 +33,8 @@ void Game::load() {
     projection = Matrix4::createPerspectiveFOV(70.0f, windowWidth, windowHeight, 0.1f, 1000.0f);
     shader.use();
     shader.setMatrix4("proj_matrix", projection);
-    for(int i = 0; i < 100; ++i) {
-        Cube cube { Vector2 { static_cast<float>(i % 10), static_cast<float>(i / 10) }, WHITE };
-        cube.load();
-        cubes.push_back(cube);
-    }
     level.load("assets/level.txt");
+    staticCubes = level.populateStatic();
 
 }
 
@@ -63,21 +59,13 @@ void Game::handleInputs() {
 }
 
 void Game::update(float dt) {
-    timeSinceStart += dt;
-    const float t = timeSinceStart * 0.3f;
 
     Matrix4 basePosition = Matrix4::createTranslation(Vector3(0.0f, 0.0f, -4.0f));
-    Matrix4 move = Matrix4::createTranslation(Vector3(Maths::sin(2.1f * t) * 0.5f, Maths::cos(1.7f * t) * 0.5f, Maths::sin(1.3f * t) * Maths::cos(1.5f * t) * 2.0f));
-    Matrix4 yRotation = Matrix4::createRotationY(t * 45.0f / 10.0f);
-    Matrix4 xRotation = Matrix4::createRotationX(t * 81.0f / 10.0f);
+    transform = basePosition;
 
-    Matrix4 translation = basePosition * move;
-    Matrix4 rotation = yRotation * xRotation;
-    transform = translation * rotation;
-
-    for(auto& cube:cubes) {
+    for(auto& cube : staticCubes) {
         Vector2 offset { cube.getTilePos() };
-        Matrix4 translationOffset = Matrix4::createTranslation(Vector3(offset.x, offset.y, -4.0f));
+        Matrix4 translationOffset = Matrix4::createTranslation(Vector3(-5.0f + offset.x / 2.0f, 5.0f + offset.y / 2.0f, -4.0f));
         cube.setTransform(transform * translationOffset);
     }
 }
@@ -86,13 +74,13 @@ void Game::render() {
     static const GLfloat bgColor[] = {0.0f, 0.0f, 0.2f, 1.0f};
     glClearBufferfv(GL_COLOR, 0, bgColor);
 
-    for(auto& cube:cubes) {
+    for(auto& cube:staticCubes) {
         cube.draw(shader);
     }
 }
 
 void Game::clean() {
-    for(auto& cube:cubes) {
+    for(auto& cube:staticCubes) {
         cube.clean();
     }
 }

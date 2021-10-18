@@ -18,8 +18,8 @@ int main(int argc = 0, char **argv = nullptr) {
         }
     }
 
-    const int SCREEN_WIDTH = 800;
-    const int SCREEN_HEIGHT = 640;
+    const int SCREEN_WIDTH = 1280;
+    const int SCREEN_HEIGHT = 720;
 
     // Init logging
     LOG_CONFIG.reporting_level = Debug;

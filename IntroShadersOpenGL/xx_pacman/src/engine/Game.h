@@ -37,7 +37,7 @@ class Game {
     Matrix4 transform;
     Matrix4 projection;
 
-    vector<Cube> cubes;
+    vector<Cube> staticCubes;
     Level level;
 
     Shader shader;
