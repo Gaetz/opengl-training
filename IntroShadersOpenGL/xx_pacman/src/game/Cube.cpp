@@ -70,6 +70,7 @@ void Cube::load() {
 }
 
 void Cube::draw(Shader& shader) {
+    glBindVertexArray(vao);
     shader.use();
     shader.setMatrix4("model_matrix", transform);
     shader.setVector4f("cube_color", color.toVector());

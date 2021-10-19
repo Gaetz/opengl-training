@@ -18,12 +18,6 @@ void Game::init(int screenWidth, int screenHeight) {
 void Game::load() {
     std::srand((int) std::time(nullptr));
 
-    // Setup OpenGL
-    glEnable(GL_CULL_FACE);
-    glFrontFace(GL_CW);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-
     // Setup shader
     shader.compileVertexShader();
     shader.compileFragmentShader();
@@ -89,9 +83,6 @@ void Game::update(float dt, const InputState& inputState) {
 }
 
 void Game::render() {
-    static const GLfloat bgColor[] = {0.0f, 0.0f, 0.2f, 1.0f};
-    glClearBufferfv(GL_COLOR, 0, bgColor);
-
     for(auto& cube:staticCubes) {
         cube.draw(shader);
     }

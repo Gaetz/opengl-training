@@ -68,7 +68,11 @@ bool Window::init(int xPos, int yPos, int width, int height, bool isFullscreen) 
     // Enable cull face optimization
     glEnable(GL_CULL_FACE);         // Cull face
     glCullFace(GL_BACK);            // Cull back face
-    glFrontFace(GL_CCW);             // GL_CCW for Counter Clock-Wise 
+    glFrontFace(GL_CCW);             // GL_CCW for Counter Clock-Wise
+
+    // Depth
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
 
     // Window color
     glClearColor(0.0f, 0.0f, 0.2f, 1.0f);
