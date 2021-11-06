@@ -19,8 +19,8 @@
 #define SHADER_COMP(s) PATH3(SHADER_PATH, s, EXT_COMP)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_023_ComputeShaderBoids
-#define SHADER_NAME IDENT(023_ComputeShaderBoids)
+#define SCENE_NAME Scene_016_TerrainRendering
+#define SHADER_NAME IDENT(016_TerrainRendering)
 
 /**
  * Scene_023_ComputeShaderBoids
