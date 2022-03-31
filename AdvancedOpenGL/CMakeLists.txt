@@ -41,7 +41,7 @@ if (WIN32)
     file(COPY external/SDL2_mixer-2.0.4/lib/x64/SDL2_mixer.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
     file(COPY external/SDL2_ttf-2.0.15/lib/x64/SDL2_ttf.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
     file(COPY external/SDL2_ttf-2.0.15/lib/x64/zlib1.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
-    file(COPY external/glew-2.1.0/bin/Release/x64/glew32.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
+    file(COPY external/glew-2.1.0/lib/Release/x64/glew32.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug)
 endif (WIN32)
 
 if (WIN32)
