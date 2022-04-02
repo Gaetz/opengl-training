@@ -1,0 +1,2 @@
+About geometry shaders: https://www.youtube.com/watch?v=5Ruv2H9lkGA
+About tellelation shaders: https://www.youtube.com/watch?v=OqRMNrvu6TE

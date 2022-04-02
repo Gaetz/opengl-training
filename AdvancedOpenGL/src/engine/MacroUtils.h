@@ -19,8 +19,8 @@
 #define SHADER_COMP(s) PATH3(SHADER_PATH, s, EXT_COMP)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_016_TerrainRendering
-#define SHADER_NAME IDENT(016_TerrainRendering)
+#define SCENE_NAME Scene_017_CubicBezierPatches
+#define SHADER_NAME IDENT(017_CubicBezierPatches)
 
 /**
  * Scene_023_ComputeShaderBoids

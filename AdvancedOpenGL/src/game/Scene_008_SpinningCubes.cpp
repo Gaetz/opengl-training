@@ -123,11 +123,11 @@ void Scene_008_SpinningCubes::update(float dt) {
     }
 }
 
-void Scene_008_SpinningCubes::draw() 
+void Scene_008_SpinningCubes::draw()
 {
     static const GLfloat bgColor[] = {0.0f, 0.0f, 0.2f, 1.0f};
     glClearBufferfv(GL_COLOR, 0, bgColor);
-    
+
     shader.use();
     shader.setMatrix4("proj_matrix", projection);
     for(int i = 0; i < 24; ++i)
