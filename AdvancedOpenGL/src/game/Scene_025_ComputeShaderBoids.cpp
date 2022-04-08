@@ -1,4 +1,4 @@
-#include "Scene_023_ComputeShaderBoids.h"
+#include "Scene_025_ComputeShaderBoids.h"
 #include "../engine/Timer.h"
 #include "../engine/MacroUtils.h"
 #include "../engine/Log.h"
@@ -8,33 +8,33 @@
 #include <GL/glew.h>
 
 
-Scene_023_ComputeShaderBoids::Scene_023_ComputeShaderBoids() : totalTime(0), frameIndex(0) {
+Scene_025_ComputeShaderBoids::Scene_025_ComputeShaderBoids() : totalTime(0), frameIndex(0) {
 
 }
 
-Scene_023_ComputeShaderBoids::~Scene_023_ComputeShaderBoids() {
+Scene_025_ComputeShaderBoids::~Scene_025_ComputeShaderBoids() {
     clean();
 }
 
-void Scene_023_ComputeShaderBoids::setGame(Game *_game) {
+void Scene_025_ComputeShaderBoids::setGame(Game *_game) {
     game = _game;
 }
 
-void Scene_023_ComputeShaderBoids::clean() {
+void Scene_025_ComputeShaderBoids::clean() {
 
 }
 
-void Scene_023_ComputeShaderBoids::pause() {
+void Scene_025_ComputeShaderBoids::pause() {
 }
 
-void Scene_023_ComputeShaderBoids::resume() {
+void Scene_025_ComputeShaderBoids::resume() {
 }
 
-void Scene_023_ComputeShaderBoids::handleEvent(const InputState &inputState) {
+void Scene_025_ComputeShaderBoids::handleEvent(const InputState &inputState) {
 
 }
 
-void Scene_023_ComputeShaderBoids::load() {
+void Scene_025_ComputeShaderBoids::load() {
     Assets::loadComputeShader(SHADER_COMP(SHADER_NAME), SHADER_ID(SHADER_NAME));
     Assets::loadShader(SHADER_VERT(SHADER_NAME), SHADER_FRAG(SHADER_NAME), "", "", "", SHADER_ID(SHADER_NAME));
 
@@ -67,9 +67,9 @@ void Scene_023_ComputeShaderBoids::load() {
 
     glGenBuffers(2, flockBuffer);
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, flockBuffer[0]);
-    glBufferData(GL_SHADER_STORAGE_BUFFER, FLOCK_SIZE * sizeof(flock_member), NULL, GL_DYNAMIC_COPY);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, FLOCK_SIZE * sizeof(FlockMember), NULL, GL_DYNAMIC_COPY);
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, flockBuffer[1]);
-    glBufferData(GL_SHADER_STORAGE_BUFFER, FLOCK_SIZE * sizeof(flock_member), NULL, GL_DYNAMIC_COPY);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, FLOCK_SIZE * sizeof(FlockMember), NULL, GL_DYNAMIC_COPY);
 
     int i;
 
@@ -87,8 +87,8 @@ void Scene_023_ComputeShaderBoids::load() {
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void *)(8 * sizeof(Vector3)));
 
         glBindBuffer(GL_ARRAY_BUFFER, flockBuffer[i]);
-        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(flock_member), NULL);
-        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(flock_member), (void *)sizeof(Vector4));
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(FlockMember), NULL);
+        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(FlockMember), (void *)sizeof(Vector4));
         glVertexAttribDivisor(2, 1);
         glVertexAttribDivisor(3, 1);
 
@@ -99,7 +99,7 @@ void Scene_023_ComputeShaderBoids::load() {
     }
 
     glBindBuffer(GL_ARRAY_BUFFER, flockBuffer[0]);
-    flock_member * ptr = reinterpret_cast<flock_member *>(glMapBufferRange(GL_ARRAY_BUFFER, 0, FLOCK_SIZE * sizeof(flock_member), GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT));
+    FlockMember * ptr = reinterpret_cast<FlockMember *>(glMapBufferRange(GL_ARRAY_BUFFER, 0, FLOCK_SIZE * sizeof(FlockMember), GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT));
 
     for (i = 0; i < FLOCK_SIZE; i++)
     {
@@ -113,7 +113,7 @@ void Scene_023_ComputeShaderBoids::load() {
     glDepthFunc(GL_LEQUAL);
 }
 
-void Scene_023_ComputeShaderBoids::update(float dt) {
+void Scene_025_ComputeShaderBoids::update(float dt) {
     totalTime += dt;
 
     computeShader.use();
@@ -129,7 +129,7 @@ void Scene_023_ComputeShaderBoids::update(float dt) {
     glDispatchCompute(NUM_WORKGROUPS, 1, 1);
 }
 
-void Scene_023_ComputeShaderBoids::draw()
+void Scene_025_ComputeShaderBoids::draw()
 {
     renderShader.use();
 

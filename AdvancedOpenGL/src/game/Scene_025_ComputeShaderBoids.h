@@ -1,5 +1,5 @@
-#ifndef Scene_022_ComputeShaderPrefixSum_H
-#define Scene_022_ComputeShaderPrefixSum_H
+#ifndef Scene_025_ComputeShaderBoids_H
+#define Scene_025_ComputeShaderBoids_H
 
 #include "../engine/Scene.h"
 #include "../engine/Assets.h"
@@ -9,7 +9,7 @@ constexpr int WORKGROUP_SIZE = 256;
 constexpr int NUM_WORKGROUPS = 64;
 constexpr int FLOCK_SIZE = (NUM_WORKGROUPS * WORKGROUP_SIZE);
 
-struct flock_member
+struct FlockMember
 {
     Vector3 position;
     unsigned int : 32;
@@ -17,10 +17,10 @@ struct flock_member
     unsigned int : 32;
 };
 
-class Scene_023_ComputeShaderBoids : public Scene {
+class Scene_025_ComputeShaderBoids : public Scene {
 public:
-    Scene_023_ComputeShaderBoids();
-    ~Scene_023_ComputeShaderBoids();
+    Scene_025_ComputeShaderBoids();
+    ~Scene_025_ComputeShaderBoids();
     void load();
     void clean();
     void pause();
@@ -58,4 +58,4 @@ static inline float randomFloat()
 }
 
 
-#endif //Scene_022_ComputeShaderPrefixSum_H
+#endif //Scene_025_ComputeShaderBoids_H

@@ -23,7 +23,9 @@
 #define SHADER_NAME IDENT(017_CubicBezierPatches)
 
 /**
- * Scene_023_ComputeShaderBoids
+ * Scene_025_ComputeShaderBoids
+ * Scene_024_ComputeShaderRaycast
+ * Scene_023_ComputeShaderGrid
  * Scene_022_ComputeShaderPrefixSum
  * Scene_021_ChangePrimitiveType
  * Scene_020_GenerateGeometry
