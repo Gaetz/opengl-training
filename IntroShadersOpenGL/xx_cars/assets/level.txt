@@ -1,0 +1,20 @@
+xxxxxx  x.x  xxxxxx
+x....x  x.x  x....x
+x.xx.x  x.x  x.xx.x
+x.xx.xxxx.xxxx.xx.x
+x....x.x...x.x....x
+x.xx.....x.....xx.x
+x..x.xxx.x.xxx.x..x
+xx.x...........x.xx
+ x...x.xxxxx.x...x
+ x.x.x.x...x.x.x.x
+ x...x.x...x.x...x
+ x.x.x.x...x.x.x.x
+xx.x...........x.xx
+x....x.xxxxx.x....x
+x.xx.x..xxx..x.xx.x
+x....xx.....xx....x
+x.xx.xxxx.xxxx.xx.x
+x.xx.x  x.x  x.xx.x
+x....x  x.x  x....x
+xxxxxx  x.x  xxxxxx
