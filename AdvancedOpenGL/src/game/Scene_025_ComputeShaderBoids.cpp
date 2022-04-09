@@ -99,7 +99,10 @@ void Scene_025_ComputeShaderBoids::load() {
     }
 
     glBindBuffer(GL_ARRAY_BUFFER, flockBuffer[0]);
-    FlockMember * ptr = reinterpret_cast<FlockMember *>(glMapBufferRange(GL_ARRAY_BUFFER, 0, FLOCK_SIZE * sizeof(FlockMember), GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT));
+    FlockMember * ptr = reinterpret_cast<FlockMember *>(
+        glMapBufferRange(GL_ARRAY_BUFFER, 0, FLOCK_SIZE * sizeof(FlockMember), 
+                         GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT)
+    );
 
     for (i = 0; i < FLOCK_SIZE; i++)
     {

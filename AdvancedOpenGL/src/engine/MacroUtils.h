@@ -19,8 +19,8 @@
 #define SHADER_COMP(s) PATH3(SHADER_PATH, s, EXT_COMP)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_017_CubicBezierPatches
-#define SHADER_NAME IDENT(017_CubicBezierPatches)
+#define SCENE_NAME Scene_025_ComputeShaderBoids
+#define SHADER_NAME IDENT(025_ComputeShaderBoids)
 
 /**
  * Scene_025_ComputeShaderBoids
