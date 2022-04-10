@@ -34,23 +34,21 @@ void Scene_024_ComputeShaderRaytracing::handleEvent(const InputState &inputState
 }
 
 void Scene_024_ComputeShaderRaytracing::load() {
-
-
     // Create quads
-    Rgba * quadTexture = new Rgba[1280 * 720];
+    Rgba * quadTexture = new Rgba[512 * 512];
     Coords * quadVertex = new Coords[4];
     unsigned short int * quadIndex = new unsigned short int[3];
 
-    quadVertex[0].x = -1.0f;
+    quadVertex[0].x = -512.0f/1280.0f * 1.5f;
     quadVertex[0].y = 1.0f;
 
-    quadVertex[1].x = -1.0f;
+    quadVertex[1].x = -512.0f/1280.0f * 1.5f;
     quadVertex[1].y = -1.0f;
 
-    quadVertex[2].x = 1.0f;
+    quadVertex[2].x = 512.0f/1280.0f * 1.5f;
     quadVertex[2].y = 1.0f;
 
-    quadVertex[3].x = 1.0f;
+    quadVertex[3].x = 512.0f/1280.0f * 1.5f;
     quadVertex[3].y = -1.0f;
 
     quadIndex[0] = 0;
@@ -67,12 +65,12 @@ void Scene_024_ComputeShaderRaytracing::load() {
     quadVertex[3].s = 1.0f;
     quadVertex[3].t = 1.0f;
 
-    for (int x = 0; x < 1280; x++) {
-        for (int y = 0; y < 720; y++) {
-            quadTexture[x + y * 1280].Red = 1.0f;
-            quadTexture[x + y * 1280].Green = .5f;
-            quadTexture[x + y * 1280].Blue = .0f;
-            quadTexture[x + y * 1280].Alpha = 1.0f;
+    for (int x = 0; x < 512; x++) {
+        for (int y = 0; y < 512; y++) {
+            quadTexture[x + y * 512].Red = 1.0f;
+            quadTexture[x + y * 512].Green = .5f;
+            quadTexture[x + y * 512].Blue = .0f;
+            quadTexture[x + y * 512].Alpha = 1.0f;
         }
     }
 
@@ -87,7 +85,7 @@ void Scene_024_ComputeShaderRaytracing::load() {
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, texWidth, texHeight, 0, GL_RGBA, GL_FLOAT, NULL);
     glBindImageTexture(0, quadTextureID, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA32F);
 
-
+    // OpenGL setup
     glGenBuffers(1, &quadIBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quadIBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, 4 * sizeof(unsigned short int), quadIndex, GL_STATIC_DRAW);
@@ -113,29 +111,12 @@ void Scene_024_ComputeShaderRaytracing::load() {
     glBindVertexArray(0);
 
 
-
     // Load shaders
     Assets::loadComputeShader(SHADER_COMP(SHADER_NAME), SHADER_ID(SHADER_NAME));
     Assets::loadShader(SHADER_VERT(SHADER_NAME), SHADER_FRAG(SHADER_NAME), "", "", "", SHADER_ID(SHADER_NAME));
 
     computeShader = Assets::getComputeShader(SHADER_ID(SHADER_NAME));
     renderShader = Assets::getShader(SHADER_ID(SHADER_NAME));
-/*
-    computeShader = Assets::getComputeShader(SHADER_ID(SHADER_NAME));
-    renderShader = Assets::getShader(SHADER_ID(SHADER_NAME));
-
-    // Run Compute shader
-    computeShader.use();
-    glBindTexture(GL_TEXTURE_2D, quadTextureID);
-    glBindImageTexture(0, quadTextureID, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA32F);
-    glDispatchCompute(1280, 720, 1);
-    glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
-
-    // Unbind
-    glBindImageTexture(0, 0, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA32F);
-    glBindTexture(GL_TEXTURE_2D, 0);
-    glUseProgram(0);
-    */
 }
 
 void Scene_024_ComputeShaderRaytracing::update(float dt) {
