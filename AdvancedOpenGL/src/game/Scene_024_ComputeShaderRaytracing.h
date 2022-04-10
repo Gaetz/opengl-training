@@ -1,5 +1,5 @@
-#ifndef Scene_023_ComputeShaderGrid_H
-#define Scene_023_ComputeShaderGrid_H
+#ifndef Scene_024_ComputeShaderRaytracing_H
+#define Scene_024_ComputeShaderRaytracing_H
 
 #include "../engine/Scene.h"
 #include "../engine/Assets.h"
@@ -18,10 +18,10 @@ struct Rgba {
   GLfloat Alpha;
 };
 
-class Scene_023_ComputeShaderGrid : public Scene {
+class Scene_024_ComputeShaderRaytracing : public Scene {
 public:
-    Scene_023_ComputeShaderGrid();
-    ~Scene_023_ComputeShaderGrid();
+    Scene_024_ComputeShaderRaytracing();
+    ~Scene_024_ComputeShaderRaytracing();
     void load();
     void clean();
     void pause();
@@ -34,6 +34,9 @@ public:
 private:
     Game *game;
 
+    int texWidth { 512 };
+    int texHeight { 512 };
+
     Coords* quadTexture;
     Rgba* quadVertex;
     unsigned short int* quadIndex;
@@ -42,9 +45,9 @@ private:
     GLuint quadVBO;
     GLuint quadVAO;
     GLuint quadTextureID;
-
+    
     ComputeShader computeShader;
     Shader renderShader;
 };
 
-#endif //Scene_023_ComputeShaderGrid_H
+#endif //Scene_024_ComputeShaderRaytracing_H

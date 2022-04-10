@@ -1,6 +1,6 @@
 #version 450
 
-// We will draw patches of 16*16 pixels, 40*30 times for a final 640*480 image
+// We will draw patches of 16*16 pixels, 80*45 times for a final 1280*720 image
 layout (local_size_x = 16, local_size_y = 16) in;
 
 // No data input: the compute shader will create the image output.
