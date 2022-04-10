@@ -25,7 +25,7 @@ void main() {
   float b = dot(ray_d, omc);
   float c = dot(omc, omc) - sphere_r * sphere_r;
   float bsqmc = b * b - c;
-  // hit one or both sides
+  // Hit one or both sides
   if (bsqmc >= 0.0) {
     pixel = vec4(0.4, 0.4, 1.0, 1.0);
   }
