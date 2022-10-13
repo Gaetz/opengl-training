@@ -8,6 +8,10 @@
 #include "../engine/Scene.h"
 #include "../engine/Assets.h"
 
+#include "CubeObject.h"
+
+class CubeMesh;
+
 class Scene_007_SpinningCube : public Scene {
 public:
     Scene_007_SpinningCube();
@@ -23,12 +27,13 @@ public:
 
 private:
     Game *game;
-    GLuint vao;
-    GLuint buffer;
-    Matrix4 transform;
-    Matrix4 projection;
+    CubeMesh* cubeMesh;
 
+    Matrix4 projection;
     Shader shader;
+
+    vector<CubeObject> cubes;
+    float newXPosition { 0 };
 };
 
 
