@@ -5,8 +5,10 @@
 
 const unsigned char TextureKtx::identifier[] = {0xAB, 0x4B, 0x54, 0x58, 0x20, 0x31, 0x31, 0xBB, 0x0D, 0x0A, 0x1A, 0x0A};
 
-const unsigned int TextureKtx::swap32(const unsigned int u32) {
-    union {
+const unsigned int TextureKtx::swap32(const unsigned int u32)
+{
+    union
+    {
         unsigned int u32;
         unsigned char u8[4];
     } a, b;
@@ -20,8 +22,10 @@ const unsigned int TextureKtx::swap32(const unsigned int u32) {
     return b.u32;
 }
 
-const unsigned short TextureKtx::swap16(const unsigned short u16) {
-    union {
+const unsigned short TextureKtx::swap16(const unsigned short u16)
+{
+    union
+    {
         unsigned short u16;
         unsigned char u8[2];
     } a, b;
@@ -33,24 +37,26 @@ const unsigned short TextureKtx::swap16(const unsigned short u16) {
     return b.u16;
 }
 
-unsigned int TextureKtx::calculateStride(const TextureKtxHeader &h, unsigned int width, unsigned int pad) {
+unsigned int TextureKtx::calculateStride(const TextureKtxHeader &h, unsigned int width, unsigned int pad)
+{
     unsigned int channels = 0;
 
-    switch (h.glbaseinternalformat) {
-        case GL_RED:
-            channels = 1;
-            break;
-        case GL_RG:
-            channels = 2;
-            break;
-        case GL_BGR:
-        case GL_RGB:
-            channels = 3;
-            break;
-        case GL_BGRA:
-        case GL_RGBA:
-            channels = 4;
-            break;
+    switch (h.glbaseinternalformat)
+    {
+    case GL_RED:
+        channels = 1;
+        break;
+    case GL_RG:
+        channels = 2;
+        break;
+    case GL_BGR:
+    case GL_RGB:
+        channels = 3;
+        break;
+    case GL_BGRA:
+    case GL_RGBA:
+        channels = 4;
+        break;
     }
 
     unsigned int stride = h.gltypesize * channels * width;
@@ -60,13 +66,15 @@ unsigned int TextureKtx::calculateStride(const TextureKtxHeader &h, unsigned int
     return stride;
 }
 
-unsigned int TextureKtx::calculateFaceSize(const TextureKtxHeader &h) {
+unsigned int TextureKtx::calculateFaceSize(const TextureKtxHeader &h)
+{
     unsigned int stride = calculateStride(h, h.pixelwidth);
 
     return stride * h.pixelheight;
 }
 
-unsigned int TextureKtx::load(const char *filename, unsigned int tex) {
+unsigned int TextureKtx::load(const char *filename, unsigned int tex)
+{
     FILE *fp;
     GLuint temp = 0;
     GLuint retval = 0;
@@ -77,15 +85,21 @@ unsigned int TextureKtx::load(const char *filename, unsigned int tex) {
 
     fp = fopen(filename, "rb");
 
-    if (!fp) return 0;
+    if (!fp)
+        return 0;
 
-    if (fread(&h, sizeof(h), 1, fp) != 1) goto fail_read;
+    if (fread(&h, sizeof(h), 1, fp) != 1)
+        goto fail_read;
 
-    if (memcmp(h.identifier, &identifier, sizeof(identifier)) != 0) goto fail_header;
+    if (memcmp(h.identifier, &identifier, sizeof(identifier)) != 0)
+        goto fail_header;
 
-    if (h.endianness == 0x04030201) {
+    if (h.endianness == 0x04030201)
+    {
         // No swap needed
-    } else if (h.endianness == 0x01020304) {
+    }
+    else if (h.endianness == 0x01020304)
+    {
         // Swap needed
         h.endianness = swap32(h.endianness);
         h.gltype = swap32(h.gltype);
@@ -100,45 +114,65 @@ unsigned int TextureKtx::load(const char *filename, unsigned int tex) {
         h.faces = swap32(h.faces);
         h.miplevels = swap32(h.miplevels);
         h.keypairbytes = swap32(h.keypairbytes);
-    } else {
+    }
+    else
+    {
         goto fail_header;
     }
 
     // Guess target (texture type)
-    if (h.pixelheight == 0) {
-        if (h.arrayelements == 0) {
+    if (h.pixelheight == 0)
+    {
+        if (h.arrayelements == 0)
+        {
             target = GL_TEXTURE_1D;
-        } else {
+        }
+        else
+        {
             target = GL_TEXTURE_1D_ARRAY;
         }
-    } else if (h.pixeldepth == 0) {
-        if (h.arrayelements == 0) {
-            if (h.faces == 0) {
+    }
+    else if (h.pixeldepth == 0)
+    {
+        if (h.arrayelements == 0)
+        {
+            if (h.faces == 0)
+            {
                 target = GL_TEXTURE_2D;
-            } else {
+            }
+            else
+            {
                 target = GL_TEXTURE_CUBE_MAP;
             }
-        } else {
-            if (h.faces == 0) {
+        }
+        else
+        {
+            if (h.faces == 0)
+            {
                 target = GL_TEXTURE_2D_ARRAY;
-            } else {
+            }
+            else
+            {
                 target = GL_TEXTURE_CUBE_MAP_ARRAY;
             }
         }
-    } else {
+    }
+    else
+    {
         target = GL_TEXTURE_3D;
     }
 
     // Check for insanity...
-    if (target == GL_NONE ||                        // Couldn't figure out target
-        (h.pixelwidth == 0) ||                      // Texture has no width???
-        (h.pixelheight == 0 && h.pixeldepth != 0))  // Texture has depth but no height???
+    if (target == GL_NONE ||                       // Couldn't figure out target
+        (h.pixelwidth == 0) ||                     // Texture has no width???
+        (h.pixelheight == 0 && h.pixeldepth != 0)) // Texture has depth but no height???
     {
         goto fail_header;
     }
 
     temp = tex;
-    if (tex == 0) {
+    if (tex == 0)
+    {
         glGenTextures(1, &tex);
     }
 
@@ -154,77 +188,87 @@ unsigned int TextureKtx::load(const char *filename, unsigned int tex) {
 
     fread(data, 1, data_end - data_start, fp);
 
-    if (h.miplevels == 0) {
+    if (h.miplevels == 0)
+    {
         h.miplevels = 1;
     }
 
-    switch (target) {
-        case GL_TEXTURE_1D:
-            glTexStorage1D(GL_TEXTURE_1D, h.miplevels, h.glinternalformat, h.pixelwidth);
-            glTexSubImage1D(GL_TEXTURE_1D, 0, 0, h.pixelwidth, h.glformat, h.glinternalformat, data);
-            break;
-        case GL_TEXTURE_2D:
-            // glTexImage2D(GL_TEXTURE_2D, 0, h.glinternalformat, h.pixelwidth, h.pixelheight, 0, h.glformat, h.gltype,
-            // data);
-            if (h.gltype == GL_NONE) {
-                glCompressedTexImage2D(GL_TEXTURE_2D, 0, h.glinternalformat, h.pixelwidth, h.pixelheight, 0,
-                                       420 * 380 / 2, data);
-            } else {
-                glTexStorage2D(GL_TEXTURE_2D, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight);
-                {
-                    unsigned char *ptr = data;
-                    unsigned int height = h.pixelheight;
-                    unsigned int width = h.pixelwidth;
-                    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-                    for (unsigned int i = 0; i < h.miplevels; i++) {
-                        glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, width, height, h.glformat, h.gltype, ptr);
-                        ptr += height * calculateStride(h, width, 1);
-                        height >>= 1;
-                        width >>= 1;
-                        if (!height) height = 1;
-                        if (!width) width = 1;
-                    }
-                }
-            }
-            break;
-        case GL_TEXTURE_3D:
-            glTexStorage3D(GL_TEXTURE_3D, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight, h.pixeldepth);
-            glTexSubImage3D(GL_TEXTURE_3D, 0, 0, 0, 0, h.pixelwidth, h.pixelheight, h.pixeldepth, h.glformat, h.gltype,
-                            data);
-            break;
-        case GL_TEXTURE_1D_ARRAY:
-            glTexStorage2D(GL_TEXTURE_1D_ARRAY, h.miplevels, h.glinternalformat, h.pixelwidth, h.arrayelements);
-            glTexSubImage2D(GL_TEXTURE_1D_ARRAY, 0, 0, 0, h.pixelwidth, h.arrayelements, h.glformat, h.gltype, data);
-            break;
-        case GL_TEXTURE_2D_ARRAY:
-            glTexStorage3D(GL_TEXTURE_2D_ARRAY, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight,
-                           h.arrayelements);
-            glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 0, h.pixelwidth, h.pixelheight, h.arrayelements, h.glformat,
-                            h.gltype, data);
-            break;
-        case GL_TEXTURE_CUBE_MAP:
-            glTexStorage2D(GL_TEXTURE_CUBE_MAP, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight);
-            // glTexSubImage3D(GL_TEXTURE_CUBE_MAP, 0, 0, 0, 0, h.pixelwidth, h.pixelheight, h.faces, h.glformat,
-            // h.gltype, data);
+    switch (target)
+    {
+    case GL_TEXTURE_1D:
+        glTexStorage1D(GL_TEXTURE_1D, h.miplevels, h.glinternalformat, h.pixelwidth);
+        glTexSubImage1D(GL_TEXTURE_1D, 0, 0, h.pixelwidth, h.glformat, h.glinternalformat, data);
+        break;
+    case GL_TEXTURE_2D:
+        // glTexImage2D(GL_TEXTURE_2D, 0, h.glinternalformat, h.pixelwidth, h.pixelheight, 0, h.glformat, h.gltype,
+        // data);
+        if (h.gltype == GL_NONE)
+        {
+            glCompressedTexImage2D(GL_TEXTURE_2D, 0, h.glinternalformat, h.pixelwidth, h.pixelheight, 0,
+                                   420 * 380 / 2, data);
+        }
+        else
+        {
+            glTexStorage2D(GL_TEXTURE_2D, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight);
             {
-                unsigned int face_size = calculateFaceSize(h);
-                for (unsigned int i = 0; i < h.faces; i++) {
-                    glTexSubImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, 0, 0, h.pixelwidth, h.pixelheight,
-                                    h.glformat, h.gltype, data + face_size * i);
+                unsigned char *ptr = data;
+                unsigned int height = h.pixelheight;
+                unsigned int width = h.pixelwidth;
+                glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+                for (unsigned int i = 0; i < h.miplevels; i++)
+                {
+                    glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, width, height, h.glformat, h.gltype, ptr);
+                    ptr += height * calculateStride(h, width, 1);
+                    height >>= 1;
+                    width >>= 1;
+                    if (!height)
+                        height = 1;
+                    if (!width)
+                        width = 1;
                 }
             }
-            break;
-        case GL_TEXTURE_CUBE_MAP_ARRAY:
-            glTexStorage3D(GL_TEXTURE_CUBE_MAP_ARRAY, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight,
-                           h.arrayelements);
-            glTexSubImage3D(GL_TEXTURE_CUBE_MAP_ARRAY, 0, 0, 0, 0, h.pixelwidth, h.pixelheight,
-                            h.faces * h.arrayelements, h.glformat, h.gltype, data);
-            break;
-        default:  // Should never happen
-            goto fail_target;
+        }
+        break;
+    case GL_TEXTURE_3D:
+        glTexStorage3D(GL_TEXTURE_3D, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight, h.pixeldepth);
+        glTexSubImage3D(GL_TEXTURE_3D, 0, 0, 0, 0, h.pixelwidth, h.pixelheight, h.pixeldepth, h.glformat, h.gltype,
+                        data);
+        break;
+    case GL_TEXTURE_1D_ARRAY:
+        glTexStorage2D(GL_TEXTURE_1D_ARRAY, h.miplevels, h.glinternalformat, h.pixelwidth, h.arrayelements);
+        glTexSubImage2D(GL_TEXTURE_1D_ARRAY, 0, 0, 0, h.pixelwidth, h.arrayelements, h.glformat, h.gltype, data);
+        break;
+    case GL_TEXTURE_2D_ARRAY:
+        glTexStorage3D(GL_TEXTURE_2D_ARRAY, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight,
+                       h.arrayelements);
+        glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, 0, h.pixelwidth, h.pixelheight, h.arrayelements, h.glformat,
+                        h.gltype, data);
+        break;
+    case GL_TEXTURE_CUBE_MAP:
+        glTexStorage2D(GL_TEXTURE_CUBE_MAP, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight);
+        // glTexSubImage3D(GL_TEXTURE_CUBE_MAP, 0, 0, 0, 0, h.pixelwidth, h.pixelheight, h.faces, h.glformat,
+        // h.gltype, data);
+        {
+            unsigned int face_size = calculateFaceSize(h);
+            for (unsigned int i = 0; i < h.faces; i++)
+            {
+                glTexSubImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, 0, 0, h.pixelwidth, h.pixelheight,
+                                h.glformat, h.gltype, data + face_size * i);
+            }
+        }
+        break;
+    case GL_TEXTURE_CUBE_MAP_ARRAY:
+        glTexStorage3D(GL_TEXTURE_CUBE_MAP_ARRAY, h.miplevels, h.glinternalformat, h.pixelwidth, h.pixelheight,
+                       h.arrayelements);
+        glTexSubImage3D(GL_TEXTURE_CUBE_MAP_ARRAY, 0, 0, 0, 0, h.pixelwidth, h.pixelheight,
+                        h.faces * h.arrayelements, h.glformat, h.gltype, data);
+        break;
+    default: // Should never happen
+        goto fail_target;
     }
 
-    if (h.miplevels == 1) {
+    if (h.miplevels == 1)
+    {
         glGenerateMipmap(target);
     }
 
@@ -244,7 +288,8 @@ fail_read:;
     return retval;
 }
 
-bool TextureKtx::save(const char *filename, unsigned int target, unsigned int tex) {
+bool TextureKtx::save(const char *filename, unsigned int target, unsigned int tex)
+{
     TextureKtxHeader h;
 
     memset(&h, 0, sizeof(h));

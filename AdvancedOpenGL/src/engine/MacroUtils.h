@@ -11,16 +11,16 @@
 #define EXT_GEOM .geom
 #define EXT_COMP .glsl
 #define SHADER_PATH assets/shaders/
-#define SHADER_VERT(s) PATH3(SHADER_PATH, s, EXT_VERT)
-#define SHADER_FRAG(s) PATH3(SHADER_PATH, s, EXT_FRAG)
-#define SHADER_TECS(s) PATH3(SHADER_PATH, s, EXT_TECS)
-#define SHADER_TESE(s) PATH3(SHADER_PATH, s, EXT_TESE)
-#define SHADER_GEOM(s) PATH3(SHADER_PATH, s, EXT_GEOM)
-#define SHADER_COMP(s) PATH3(SHADER_PATH, s, EXT_COMP)
+#define SHADER_VERT(s) PATH3(SHADER_PATH,s,EXT_VERT)
+#define SHADER_FRAG(s) PATH3(SHADER_PATH,s,EXT_FRAG)
+#define SHADER_TECS(s) PATH3(SHADER_PATH,s,EXT_TECS)
+#define SHADER_TESE(s) PATH3(SHADER_PATH,s,EXT_TESE)
+#define SHADER_GEOM(s) PATH3(SHADER_PATH,s,EXT_GEOM)
+#define SHADER_COMP(s) PATH3(SHADER_PATH,s,EXT_COMP)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_024_ComputeShaderRaytracing
-#define SHADER_NAME IDENT(024_ComputeShaderRaytracing)
+#define SCENE_NAME Scene_011_MipmapTunnel
+#define SHADER_NAME IDENT(011_MipmapTunnel)
 
 /**
  * Scene_025_ComputeShaderBoids
