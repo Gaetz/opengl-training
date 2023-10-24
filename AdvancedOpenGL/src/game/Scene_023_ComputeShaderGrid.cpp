@@ -123,7 +123,7 @@ void Scene_023_ComputeShaderGrid::load() {
     computeShader.use();
     glBindTexture(GL_TEXTURE_2D, quadTextureID);
     glBindImageTexture(0, quadTextureID, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA32F);
-    glDispatchCompute(1280, 720, 1);
+    glDispatchCompute(80, 45, 1);
     glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
 
     // Unbind

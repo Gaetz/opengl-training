@@ -543,6 +543,7 @@ Global
 		{2D1E2F6E-721A-49CA-B972-35BBE9CE5C13}.Release|x64.Build.0 = Release|x64
 		{2D1E2F6E-721A-49CA-B972-35BBE9CE5C13}.Release|x86.ActiveCfg = Release|Win32
 		{2D1E2F6E-721A-49CA-B972-35BBE9CE5C13}.Release|x86.Build.0 = Release|Win32
+<<<<<<< HEAD
 		{A0B705B5-0B1C-4B48-9DCD-2DC417261591}.Debug|x64.ActiveCfg = Debug|x64
 		{A0B705B5-0B1C-4B48-9DCD-2DC417261591}.Debug|x64.Build.0 = Debug|x64
 		{A0B705B5-0B1C-4B48-9DCD-2DC417261591}.Debug|x86.ActiveCfg = Debug|Win32
@@ -551,6 +552,16 @@ Global
 		{A0B705B5-0B1C-4B48-9DCD-2DC417261591}.Release|x64.Build.0 = Release|x64
 		{A0B705B5-0B1C-4B48-9DCD-2DC417261591}.Release|x86.ActiveCfg = Release|Win32
 		{A0B705B5-0B1C-4B48-9DCD-2DC417261591}.Release|x86.Build.0 = Release|Win32
+=======
+		{D45AEAB0-1231-4F59-9F8C-2D8C925A4D91}.Debug|x64.ActiveCfg = Debug|x64
+		{D45AEAB0-1231-4F59-9F8C-2D8C925A4D91}.Debug|x64.Build.0 = Debug|x64
+		{D45AEAB0-1231-4F59-9F8C-2D8C925A4D91}.Debug|x86.ActiveCfg = Debug|Win32
+		{D45AEAB0-1231-4F59-9F8C-2D8C925A4D91}.Debug|x86.Build.0 = Debug|Win32
+		{D45AEAB0-1231-4F59-9F8C-2D8C925A4D91}.Release|x64.ActiveCfg = Release|x64
+		{D45AEAB0-1231-4F59-9F8C-2D8C925A4D91}.Release|x64.Build.0 = Release|x64
+		{D45AEAB0-1231-4F59-9F8C-2D8C925A4D91}.Release|x86.ActiveCfg = Release|Win32
+		{D45AEAB0-1231-4F59-9F8C-2D8C925A4D91}.Release|x86.Build.0 = Release|Win32
+>>>>>>> cacfba9 (Small update for compute shader)
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

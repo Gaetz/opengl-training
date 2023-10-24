@@ -10,7 +10,7 @@ void main() {
   // gl_LocalInvocationID.xy * gl_WorkGroupID.xy == gl_GlobalInvocationID
   ivec2 coords = ivec2(gl_GlobalInvocationID);
 
-  // We want to draw an orange and blue grid 
+  // We want to draw an orange and blue grid
   vec4 pixel;
   // Orange alternance: when workgroup x is even we want workgroup y to be odd, and vice-versa
   if ( ((gl_WorkGroupID.x & 1u) != 1u) != ((gl_WorkGroupID.y & 1u) == 1u)) {

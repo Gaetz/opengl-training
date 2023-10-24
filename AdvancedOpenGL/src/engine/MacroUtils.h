@@ -19,8 +19,13 @@
 #define SHADER_COMP(s) PATH3(SHADER_PATH,s,EXT_COMP)
 #define SHADER_ID(s) STR(s)
 
+<<<<<<< HEAD
 #define SCENE_NAME Scene_011_MipmapTunnel
 #define SHADER_NAME IDENT(011_MipmapTunnel)
+=======
+#define SCENE_NAME Scene_023_ComputeShaderGrid
+#define SHADER_NAME IDENT(023_ComputeShaderGrid)
+>>>>>>> cacfba9 (Small update for compute shader)
 
 /**
  * Scene_025_ComputeShaderBoids
