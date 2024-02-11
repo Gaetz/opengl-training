@@ -11,6 +11,7 @@
 #include "FollowActor.h"
 #include "OrbitActor.h"
 #include "SplineActor.h"
+#include <algorithm>
 
 bool Game::initialize()
 {

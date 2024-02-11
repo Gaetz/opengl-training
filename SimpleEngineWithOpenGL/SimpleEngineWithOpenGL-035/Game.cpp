@@ -12,6 +12,7 @@
 #include "OrbitActor.h"
 #include "SplineActor.h"
 #include "TargetActor.h"
+#include <algorithm>
 
 bool Game::initialize()
 {
